@@ -16,11 +16,5 @@ export default {
 .v-icon {
   width: 1em;
   height: 1em;
-  margin-right: .3em;
-  margin-left: 0;
-  margin-top: .1em;
-  fill: currentColor;
-  overflow: hidden;
-  order: 1;
   }
 </style>
