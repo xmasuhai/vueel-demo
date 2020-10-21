@@ -22,9 +22,9 @@
         <use :xlink:href="`#i-${icon}`"></use>
       </svg>
       -->
-      <VueIcon v-if="!!icon" class="icon" :name="icon"></VueIcon>
+      <VueIcon v-if="!!icon" :name="icon" class="icon"/>
       <div class="content">
-        <slot></slot>
+        <slot/>
       </div>
     </button>
   </div>
