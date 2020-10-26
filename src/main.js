@@ -4,9 +4,11 @@ import App from './App.vue'
 /*
 import VueButton from './components/vuebutton/VueButton'
 import VueIcon from './components/icon/Icon'
+import ButtonGroup from './components/ButtonGroup/ButtonGroup.vue'
 
 Vue.component('v-button', VueButton)
 Vue.component('v-icon', VueIcon)
+Vue.component('v-button-group', ButtonGroup)
 */
 
 Vue.config.productionTip = false

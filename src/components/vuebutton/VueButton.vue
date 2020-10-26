@@ -15,20 +15,20 @@
         </button>
       </div>
       -->
-  <div class="vue-demo-button">
-    <button class="vue-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
-      <!-- 组件化 <Icon>
-        <svg v-if="icon" class="icon" aria-hidden="true">
-          <use :xlink:href="`#i-${icon}`"></use>
-        </svg>
-        -->
-      <VueIcon v-if="!!icon && !isLoading" :name="icon" class="icon" @click="kClick"/>
-      <VueIcon v-if="isLoading" name="loading" class="loading icon"/>
-      <div class="content">
-        <slot/>
-      </div>
-    </button>
-  </div>
+  <!--  <div class="vue-demo-button"> -->
+  <button class="vue-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
+    <!-- 组件化 <Icon>
+      <svg v-if="icon" class="icon" aria-hidden="true">
+        <use :xlink:href="`#i-${icon}`"></use>
+      </svg>
+      -->
+    <VueIcon v-if="!!icon && !isLoading" :name="icon" class="icon" @click="kClick"/>
+    <VueIcon v-if="isLoading" name="loading" class="loading icon"/>
+    <div class="content">
+      <slot/>
+    </div>
+  </button>
+  <!--  </div> -->
 </template>
 
 <script>
@@ -94,13 +94,18 @@ export default {
   --border-radius: 4px;
   --color: #333;
   --border-color: #999;
-  --border-color-hover: #666;
+  --border-color-hover: red;
+  //--border-color-hover: #666;
   }
+/*
 .vue-demo-button {
-  display: inline-block;
-  margin-right: 10px;
+  display: inline-flex;
+  vertical-align: middle;
   }
+*/
 .vue-button {
+  margin-right: 10px;
+  margin-top: 10px;
   display: inline-flex;
   justify-content: center;
   align-items: center;

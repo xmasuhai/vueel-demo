@@ -12,11 +12,17 @@
     <VueButton :is-loading="isLoading3" @click="isLoading3 = !isLoading3" icon="download" icon-position="right">
       下载
     </VueButton>
+    <vue-button-group>
+      <VueButton icon="left">上一页</VueButton>
+      <VueButton icon="">更多</VueButton>
+      <VueButton icon="right" icon-position="right">下一页</VueButton>
+    </vue-button-group>
   </div>
 </template>
 
 <script>
 import VueButton from './components/vuebutton/VueButton.vue'
+import VueButtonGroup from './components/ButtonGroup/ButtonGroup.vue'
 
 export default {
   name: 'App',
@@ -29,6 +35,7 @@ export default {
   },
   components: {
     VueButton,
+    VueButtonGroup
   }
 }
 </script>
