@@ -3,13 +3,13 @@
     <VueButton>
       按钮
     </VueButton>
-    <VueButton icon="settings">
+    <VueButton :isLoading="isLoading1" @click="isLoading1 = !isLoading1" icon="settings">
       按钮
     </VueButton>
-    <VueButton icon="settings" icon-position="right">
+    <VueButton :is-loading="isLoading2" @click="isLoading2 = !isLoading2" icon="settings" icon-position="right">
       按钮
     </VueButton>
-    <VueButton icon="download" icon-position="right">
+    <VueButton :is-loading="isLoading3" @click="isLoading3 = !isLoading3" icon="download" icon-position="right">
       下载
     </VueButton>
   </div>
@@ -20,6 +20,13 @@ import VueButton from './components/vuebutton/VueButton.vue'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      isLoading1: false,
+      isLoading2: false,
+      isLoading3: false,
+    }
+  },
   components: {
     VueButton,
   }

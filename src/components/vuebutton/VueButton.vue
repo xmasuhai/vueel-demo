@@ -16,14 +16,14 @@
       </div>
       -->
   <div class="vue-demo-button">
-    <button class="vue-button" :class="{[`icon-${iconPosition}`]: true}">
+    <button class="vue-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
       <!-- 组件化 <Icon>
         <svg v-if="icon" class="icon" aria-hidden="true">
           <use :xlink:href="`#i-${icon}`"></use>
         </svg>
         -->
-      <VueIcon v-if="!!icon" :name="icon" class="icon"/>
-      <VueIcon name="loading" class="loading icon"/>
+      <VueIcon v-if="!!icon && !isLoading" :name="icon" class="icon" @click="kClick"/>
+      <VueIcon v-if="isLoading" name="loading" class="loading icon"/>
       <div class="content">
         <slot/>
       </div>
@@ -39,6 +39,10 @@ export default {
   props: {
     icon: {
       type: String, // ['settings'. 'loading'. 'right'. 'left'. 'download'. 'arrow-down'. 'thumbs-up']
+    },
+    isLoading: {
+      type: Boolean,
+      default: false,
     },
     iconPosition: {
       type: String,
@@ -62,7 +66,11 @@ export default {
   data() {
     return {}
   },
-  methods: {},
+  methods: {
+    kClick() {
+      this.$emit('click')
+    },
+  },
   components: {
     VueIcon
   },
@@ -134,6 +142,7 @@ export default {
     fill: currentColor;
     overflow: hidden;
     order: 1;
+    //fill: red;
     }
   > .content {
     order: 2;
