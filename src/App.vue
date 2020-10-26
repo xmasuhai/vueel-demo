@@ -9,6 +9,9 @@
     <VueButton icon="settings" icon-position="right">
       按钮
     </VueButton>
+    <VueButton icon="download" icon-position="right">
+      下载
+    </VueButton>
   </div>
 </template>
 
