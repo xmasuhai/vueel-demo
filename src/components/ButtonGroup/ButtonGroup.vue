@@ -30,7 +30,6 @@ export default {
   > .vue-button {
     margin-right: 0px;
     border-radius: 0;
-    margin-left: -1px;
     &:hover {
       position: relative;
       z-index: 1;
@@ -48,6 +47,9 @@ export default {
       border-left: none;
       }
     */
+    &:not(:first-child) {
+      margin-left: -1px;
+      }
     }
   }
 </style>
