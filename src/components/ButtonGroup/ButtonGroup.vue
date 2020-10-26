@@ -7,6 +7,19 @@
 <script>
 export default {
   props: {},
+  mounted() {
+    // console.log('here')
+    // console.log(this.$children)
+    // console.log(this.$el)
+    // console.log(this.$el.children)
+    for (const node of this.$el.children) {
+      // console.log(node)
+      const name = node.nodeName.toLowerCase()
+      if(name != 'button') {
+        console.warn(`vue-button-group 的子元素应该全是 VueButton，但你写的是${name}`)
+      }
+    }
+  },
 }
 </script>
 

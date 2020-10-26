@@ -13,6 +13,7 @@
       下载
     </VueButton>
     <vue-button-group>
+      <!-- <div>非 VueButton 标签 </div> -->
       <VueButton icon="left">上一页</VueButton>
       <VueButton icon="">更多</VueButton>
       <VueButton icon="right" icon-position="right">下一页</VueButton>
@@ -29,7 +30,7 @@ export default {
   data() {
     return {
       isLoading1: false,
-      isLoading2: false,
+      isLoading2: true,
       isLoading3: false,
     }
   },
