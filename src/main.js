@@ -16,3 +16,7 @@ Vue.config.productionTip = false
 new Vue({
   render: h => h(App),
 }).$mount('#app')
+
+// 单元测试
+import chai from 'chai'
+import spies from 'chai-spies'

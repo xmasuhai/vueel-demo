@@ -9,6 +9,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "chai-spies": "^1.0.0",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^8.4.2",
@@ -27,9 +28,11 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-typescript": "^5.0.2",
     "@vue/test-utils": "^1.0.3",
+    "chai": "*",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "lint-staged": "^9.5.0",
+    "mocha": "*",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "typescript": "~3.9.3",
