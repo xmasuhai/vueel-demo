@@ -22,8 +22,94 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import VueButton from './components/vuebutton/VueButton.vue'
 import VueButtonGroup from './components/ButtonGroup/ButtonGroup.vue'
+
+import VueButton2 from './components/vuebutton/VueButton'
+import VueIcon from './components/icon/Icon'
+import ButtonGroup from './components/ButtonGroup/ButtonGroup.vue'
+
+Vue.component('v-button', VueButton2)
+Vue.component('v-icon', VueIcon)
+Vue.component('v-button-group', ButtonGroup)
+
+
+// 单元测试
+import chai from 'chai'
+import spies from 'chai-spies'
+const expect = chai.expect
+
+{
+  const Constructor = Vue.extend(VueButton2)
+  const button = new Constructor({
+    propsData: {
+      icon: 'settings'
+    },
+  })
+  // button.$mount('#test')
+  button.$mount()
+  const useElement = button.$el.querySelector('use')
+  // console.log(userElement)
+  /*
+  // Uncaught AssertionError
+  // expect(useElement.getAttribute('xlink:href')).to.equal('settings')
+  */
+  // 可以通过的测试用例
+  expect(useElement.getAttribute('xlink:href')).to.equal('#i-settings')
+  const href = useElement.getAttribute('xlink:href')
+  expect(href).to.eq('#i-settings')
+}
+
+// 测试 isLoading
+{
+  const Constructor = Vue.extend(VueButton2)
+  const button = new Constructor({
+    propsData: {
+      icon: 'settings',
+      isLoading: true,
+    },
+  })
+  button.$mount()
+  const useElement = button.$el.querySelector('use')
+  const href = useElement.getAttribute('xlink:href')
+  // Uncaught AssertionError
+  // expect(href).to.eq('#i-settings')
+  expect(href).to.eq('#i-loading')
+}
+
+// 测试 iconPosition order
+{
+  const Constructor = Vue.extend(VueButton2)
+  const button = new Constructor({
+    propsData: {
+      icon: 'settings',
+    },
+  })
+  // button 必须被加载并且渲染到页面中，才能识别 order
+  button.$mount()
+  const svg = button.$el.querySelector('svg')
+  // const order = window.getComputedStyle(svg).order
+  // ES6+
+  const {order} = window.getComputedStyle(svg)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default {
   name: 'App',
