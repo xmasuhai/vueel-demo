@@ -28,28 +28,28 @@ import VueButtonGroup from './components/ButtonGroup/ButtonGroup.vue'
 
 import VueButton2 from './components/vuebutton/VueButton'
 import VueIcon from './components/icon/Icon'
-import ButtonGroup from './components/ButtonGroup/ButtonGroup.vue'
 
 Vue.component('v-button', VueButton2)
 Vue.component('v-icon', VueIcon)
-Vue.component('v-button-group', ButtonGroup)
-
+Vue.component('v-button-group', VueButtonGroup)
 
 // 单元测试
 import chai from 'chai'
 import spies from 'chai-spies'
+chai.use(spies)
 const expect = chai.expect
 
+// 测试 icon
 {
   const Constructor = Vue.extend(VueButton2)
-  const button = new Constructor({
+  const vm = new Constructor({
     propsData: {
       icon: 'settings'
     },
   })
   // button.$mount('#test')
-  button.$mount()
-  const useElement = button.$el.querySelector('use')
+  vm.$mount()
+  const useElement = vm.$el.querySelector('use')
   // console.log(userElement)
   /*
   // Uncaught AssertionError
@@ -64,52 +64,86 @@ const expect = chai.expect
 // 测试 isLoading
 {
   const Constructor = Vue.extend(VueButton2)
-  const button = new Constructor({
+  const vm = new Constructor({
     propsData: {
       icon: 'settings',
       isLoading: true,
     },
   })
-  button.$mount()
-  const useElement = button.$el.querySelector('use')
+  vm.$mount()
+  const useElement = vm.$el.querySelector('use')
   const href = useElement.getAttribute('xlink:href')
   // Uncaught AssertionError
   // expect(href).to.eq('#i-settings')
   expect(href).to.eq('#i-loading')
 }
 
-// 测试 iconPosition order
+// 测试 iconPosition order 默认为 1 左边 ；2 右边
 {
   const Constructor = Vue.extend(VueButton2)
-  const button = new Constructor({
+  const vm = new Constructor({
     propsData: {
       icon: 'settings',
     },
   })
-  // button 必须被加载并且渲染到页面中，才能识别 order
-  button.$mount()
-  const svg = button.$el.querySelector('svg')
+  // button 必须被加载 渲染到页面中，CSS加载，才能识别 order，否则 expect(order).to.eq(‘’)为空
+  const div =document.createElement('div')
+  document.body.appendChild(div)
+  vm.$mount(div)
+  const svg = vm.$el.querySelector('svg')
   // const order = window.getComputedStyle(svg).order
-  // ES6+
+  // ES6+ 解构赋值
   const {order} = window.getComputedStyle(svg)
+  // 错误断言
+  // expect(order).to.eq(1)
+  // 正确断言
+  //CSS 所有属性值都是字符串
+  expect(order).to.eq("1")
+  vm.$el.remove()
+  vm.$destroy()
 }
 
+// 测试 iconPosition order 为 2 右边
+{
+  const Constructor = Vue.extend(VueButton2)
+  const vm = new Constructor({
+    propsData: {
+      icon: 'settings',
+      iconPosition: 'right',
+    },
+  })
+  const div =document.createElement('div')
+  document.body.appendChild(div)
+  vm.$mount(div)
+  const svg = vm.$el.querySelector('svg')
+  const {order} = window.getComputedStyle(svg)
+  // 错误断言
+  // expect(order).to.eq("1")
+  // 正确断言
+  expect(order).to.eq("2")
+  vm.$el.remove()
+  vm.$destroy()
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// 测试 按钮触发 click
+{
+  const Constructor = Vue.extend(VueButton2)
+  const vm = new Constructor({
+    propsData: {
+      icon: 'settings',
+    },
+  })
+  vm.$mount()
+  vm.$on('click', function() {
+    console.log('click OK')
+  })
+  const button = vm.$el
+  // console.log(vButton.$el)
+  // 期望 函数被执行
+  // 错误断言
+  // 正确断言
+  button.click()
+}
 
 export default {
   name: 'App',
