@@ -28,14 +28,14 @@ import VueButtonGroup from './components/ButtonGroup/ButtonGroup.vue'
 
 import VueButton2 from './components/vuebutton/VueButton'
 import VueIcon from './components/icon/Icon'
+// 单元测试
+import chai from 'chai'
+import spies from 'chai-spies'
 
 Vue.component('v-button', VueButton2)
 Vue.component('v-icon', VueIcon)
 Vue.component('v-button-group', VueButtonGroup)
 
-// 单元测试
-import chai from 'chai'
-import spies from 'chai-spies'
 chai.use(spies)
 const expect = chai.expect
 
@@ -87,7 +87,7 @@ const expect = chai.expect
     },
   })
   // button 必须被加载 渲染到页面中，CSS加载，才能识别 order，否则 expect(order).to.eq(‘’)为空
-  const div =document.createElement('div')
+  const div = document.createElement('div')
   document.body.appendChild(div)
   vm.$mount(div)
   const svg = vm.$el.querySelector('svg')
@@ -98,7 +98,7 @@ const expect = chai.expect
   // expect(order).to.eq(1)
   // 正确断言
   //CSS 所有属性值都是字符串
-  expect(order).to.eq("1")
+  expect(order).to.eq('1')
   vm.$el.remove()
   vm.$destroy()
 }
@@ -112,7 +112,7 @@ const expect = chai.expect
       iconPosition: 'right',
     },
   })
-  const div =document.createElement('div')
+  const div = document.createElement('div')
   document.body.appendChild(div)
   vm.$mount(div)
   const svg = vm.$el.querySelector('svg')
@@ -120,12 +120,12 @@ const expect = chai.expect
   // 错误断言
   // expect(order).to.eq("1")
   // 正确断言
-  expect(order).to.eq("2")
+  expect(order).to.eq('2')
   vm.$el.remove()
   vm.$destroy()
 }
 
-// 测试 按钮触发 click
+// 测试 按钮触发 click // mock 使用 chai.spies 监听函数
 {
   const Constructor = Vue.extend(VueButton2)
   const vm = new Constructor({
@@ -134,15 +134,17 @@ const expect = chai.expect
     },
   })
   vm.$mount()
-  vm.$on('click', function() {
-    console.log('click OK')
+  // console.log(chai.spy)
+  const spy = chai.spy(() => {
+    console.log('spy OK')
   })
+  vm.$on('click', spy)
   const button = vm.$el
-  // console.log(vButton.$el)
+  button.click()
   // 期望 函数被执行
   // 错误断言
   // 正确断言
-  button.click()
+  expect(spy).to.have.been.called()
 }
 
 export default {
