@@ -7,18 +7,21 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "dev-test": "rm -rf dist && parcel watch test/* --no-cache && karma start",
+    "dev-test": "parcel watch test/* --no-cache && karma run && karma start",
     "test": "parcel build test/* --no-cache --no-minify && karma start --single-run",
     "test2": "parcel build index.html --nominify --no-cache; node ./test.js"
+  },
+  "optionalDependencies": {
+    "fsevents": "*"
   },
   "dependencies": {
     "@babel/preset-env": "^7.12.1",
     "@vue/cli-plugin-babel": "^4.5.8",
-    "autoprefixer": "^10.0.1",
-    "browserslist": "^4.14.6",
+    "autoprefixer": "^10.0.2",
     "chai-spies": "^1.0.0",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.6",
+    "vue-cli": "^2.9.6",
     "vue-property-decorator": "^8.4.2",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
@@ -35,7 +38,10 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-typescript": "^5.0.2",
     "@vue/test-utils": "^1.1.1",
+    "browserslist": "^4.14.7",
+    "caniuse-lite": "^1.0.30001158",
     "chai": "*",
+    "chai-spies": "^1.0.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "karma": "^5.2.3",
@@ -83,10 +89,5 @@
   "bugs": {
     "url": "https://github.com/xmasuhai/vueel-demo/issues"
   },
-  "homepage": "https://github.com/xmasuhai/vueel-demo#readme",
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+  "homepage": "https://github.com/xmasuhai/vueel-demo#readme"
 }

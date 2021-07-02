@@ -33,6 +33,7 @@ import VueIcon from './components/icon/Icon'
 import chai from 'chai'
 import spies from 'chai-spies'
 
+// 全局注册组件
 Vue.component('v-button', VueButton2)
 Vue.component('v-icon', VueIcon)
 Vue.component('v-button-group', VueButtonGroup)

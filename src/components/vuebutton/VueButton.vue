@@ -1,38 +1,39 @@
 <template>
-<!--
-      <div class="vue-demo-button">
-        <button class="vue-button" v-if="icon-position === 'right'">
-          <slot></slot>
-          <svg v-if="icon" class="icon" aria-hidden="true">
-            <use :xlink:href="`#i-${icon}`"></use>
-          </svg>
-        </button>
-        <button class="vue-button" v-else>
-          <svg v-if="icon" class="icon" aria-hidden="true">
-            <use :xlink:href="`#i-${icon}`"></use>
-          </svg>
-          <slot></slot>
-        </button>
-      </div>
-      -->
-<!--  <div class="vue-demo-button"> -->
-<button class="vue-button" :class="{ [`icon-${iconPosition}`]: true }" @click="$emit('click')">
-  <!-- 组件化 <Icon>
-      <svg v-if="icon" class="icon" aria-hidden="true">
-        <use :xlink:href="`#i-${icon}`"></use>
-      </svg>
-      -->
-  <VueIcon v-if="!!icon && !isLoading" :name="icon" class="icon" @click="kClick" />
-  <VueIcon v-if="isLoading" name="loading" class="loading icon" />
-  <div class="content">
-    <slot />
-  </div>
-</button>
-<!--  </div> -->
+  <!--
+        <div class="vue-demo-button">
+          <button class="vue-button" v-if="icon-position === 'right'">
+            <slot></slot>
+            <svg v-if="icon" class="icon" aria-hidden="true">
+              <use :xlink:href="`#i-${icon}`"></use>
+            </svg>
+          </button>
+          <button class="vue-button" v-else>
+            <svg v-if="icon" class="icon" aria-hidden="true">
+              <use :xlink:href="`#i-${icon}`"></use>
+            </svg>
+            <slot></slot>
+          </button>
+        </div>
+        -->
+  <!--  <div class="vue-demo-button"> -->
+  <button class="vue-button" :class="{ [`icon-${iconPosition}`]: true }" @click="$emit('click')">
+    <!-- 组件化 <Icon>
+        <svg v-if="icon" class="icon" aria-hidden="true">
+          <use :xlink:href="`#i-${icon}`"></use>
+        </svg>
+        -->
+    <VueIcon v-if="!!icon && !isLoading" :name="icon" class="icon" @click="kClick"/>
+    <VueIcon v-if="isLoading" name="loading" class="loading icon"/>
+    <div class="content">
+      <slot/>
+    </div>
+  </button>
+  <!--  </div> -->
+
 </template>
 
 <script>
-import VueIcon from "../icon/Icon.vue";
+import VueIcon from '../icon/Icon.vue'
 /*
 // 全局注册 icon
 import Vue from "vue";
@@ -51,9 +52,9 @@ export default {
     },
     iconPosition: {
       type: String,
-      default: "left",
+      default: 'left',
       validator(userValue) {
-        console.log(userValue);
+        console.log(userValue)
         /*
         if (userValue !== 'left' && userValue !== 'right') {
           return false
@@ -64,22 +65,22 @@ export default {
         // simplify if-else
         // return value !== 'left' && value !== 'right' ? false : true;
         // return !(userValue !== 'left' && userValue !== 'right');
-        return userValue === "left" || userValue === "right";
+        return userValue === 'left' || userValue === 'right'
       },
     },
   },
   data() {
-    return {};
+    return {}
   },
   methods: {
     kClick() {
-      this.$emit("click");
+      this.$emit('click')
     },
   },
   components: {
     VueIcon,
   },
-};
+}
 </script>
 
 <style lang="scss">
@@ -139,20 +140,20 @@ export default {
   }
 
   &.icon-right {
-    >.icon {
+    > .icon {
       order: 2;
       margin-left: 0.3em;
       margin-right: 0;
       margin-top: 0.1em;
     }
 
-    >.content {
+    > .content {
       order: 1;
     }
   }
 
   /* ali iconfont common css */
-  >.icon {
+  > .icon {
     width: 1em;
     height: 1em;
     margin-right: 0.3em;
@@ -164,7 +165,7 @@ export default {
     //fill: red;
   }
 
-  >.content {
+  > .content {
     order: 2;
   }
 

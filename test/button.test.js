@@ -1,6 +1,13 @@
-const expect = chai.expect;
+/* eslint-disable */
+// 单元测试
+
 import Vue from 'vue'
+import chai from 'chai'
 import Button from '../src/components/vuebutton/VueButton.vue'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
+chai.use(sinonChai)
+const expect = chai.expect;
 
 Vue.config.productionTip = false
 Vue.config.devtools = false
@@ -32,6 +39,7 @@ describe('Button', () => {
     const useElements = vm.$el.querySelectorAll('use')
     expect(useElements.length).to.equal(1)
     expect(useElements[0].getAttribute('xlink:href')).to.equal('#i-loading')
+    console.log('可以设置loading')
     vm.$destroy()
   })
   it('icon 默认的 order 是 1', () => {
