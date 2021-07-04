@@ -120,7 +120,7 @@ export default {
   vertical-align: middle;
   font-size: var(--font-size);
   height: var(--button-height);
-  padding: 0 0.73em
+  padding: 0 0.73em;
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
   background: var(--button-bg);
