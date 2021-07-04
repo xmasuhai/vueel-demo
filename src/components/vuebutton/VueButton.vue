@@ -102,7 +102,6 @@ export default {
   --border-radius: 4px;
   --color: #333;
   --border-color: #999;
-  //--border-color-hover: red;
   --border-color-hover: #666;
 }
 
@@ -121,8 +120,7 @@ export default {
   vertical-align: middle;
   font-size: var(--font-size);
   height: var(--button-height);
-  padding: 0 0.73em;
-  font: inherit;
+  padding: 0 0.73em
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
   background: var(--button-bg);
