@@ -172,7 +172,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+:root {
+  --button-height: 32px;
+  --font-size: 14px;
+  --button-bg: white;
+  --button-active-bg: #eee;
+  --border-radius: 4px;
+  --color: #333;
+  --border-color: #999;
+  --border-color-hover: #666;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -181,4 +192,6 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   }
+
+
 </style>

@@ -1,6 +1,8 @@
 # vueel-demo
 
-UI 是一个基于Vue 2.6.11的 UI 框架
+> UI 是一个基于Vue 2.6.11的 UI 组件库
+
+作者：徐某人
 
 ## Project setup
 ```

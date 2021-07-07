@@ -1,34 +1,33 @@
 <template>
   <!--
-        <div class="vue-demo-button">
-          <button class="vue-button" v-if="icon-position === 'right'">
-            <slot></slot>
-            <svg v-if="icon" class="icon" aria-hidden="true">
-              <use :xlink:href="`#i-${icon}`"></use>
-            </svg>
-          </button>
-          <button class="vue-button" v-else>
-            <svg v-if="icon" class="icon" aria-hidden="true">
-              <use :xlink:href="`#i-${icon}`"></use>
-            </svg>
-            <slot></slot>
-          </button>
-        </div>
-        -->
-  <!--  <div class="vue-demo-button"> -->
-  <button class="vue-button" :class="{ [`icon-${iconPosition}`]: true }" @click="$emit('click')">
-    <!-- 组件化 <Icon>
+    <div class="vue-demo-button">
+      <button class="vue-button" v-if="icon-position === 'right'">
+        <slot></slot>
         <svg v-if="icon" class="icon" aria-hidden="true">
           <use :xlink:href="`#i-${icon}`"></use>
         </svg>
-        -->
+      </button>
+      <button class="vue-button" v-else>
+        <svg v-if="icon" class="icon" aria-hidden="true">
+          <use :xlink:href="`#i-${icon}`"></use>
+        </svg>
+        <slot></slot>
+      </button>
+    </div>
+  -->
+
+  <button class="vue-button" :class="{ [`icon-${iconPosition}`]: true }" @click="$emit('click')">
+    <!-- 组件化 <VueIcon></VueIcon>
+      <svg v-if="icon" class="icon" aria-hidden="true">
+        <use :xlink:href="`#i-${icon}`"></use>
+      </svg>
+    -->
     <VueIcon v-if="!!icon && !isLoading" :name="icon" class="icon" @click="kClick"/>
     <VueIcon v-if="isLoading" name="loading" class="loading icon"/>
     <div class="content">
       <slot/>
     </div>
   </button>
-  <!--  </div> -->
 
 </template>
 
@@ -83,7 +82,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -94,23 +93,13 @@ export default {
   }
 }
 
-:root {
-  --button-height: 32px;
-  --font-size: 14px;
-  --button-bg: white;
-  --button-active-bg: #eee;
-  --border-radius: 4px;
-  --color: #333;
-  --border-color: #999;
-  --border-color-hover: #666;
-}
-
 /*
 .vue-demo-button {
   display: inline-flex;
   vertical-align: middle;
   }
 */
+
 .vue-button {
   margin-right: 10px;
   margin-top: 10px;
@@ -122,7 +111,7 @@ export default {
   height: var(--button-height);
   padding: 0 0.73em;
   border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
+  border: 2px solid var(--border-color);
   background: var(--button-bg);
 
   &:hover {
