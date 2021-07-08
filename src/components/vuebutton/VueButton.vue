@@ -28,17 +28,18 @@
       <slot/>
     </div>
   </button>
-
 </template>
 
 <script>
-import VueIcon from '../icon/Icon.vue'
+import VueIcon from '@/components/icon/Icon.vue'
+
 /*
 // 全局注册 icon
 import Vue from "vue";
 import Icon from "../icon/Icon.vue";
 Vue.component("v-icon", Icon);
  */
+
 export default {
   // props: ['icon', 'iconPosition'], // 'iconPosition': 'left' || 'right'
   props: {
