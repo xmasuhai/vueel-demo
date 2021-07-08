@@ -1,29 +1,14 @@
 <template>
-  <!--
-    <div class="vue-demo-button">
-      <button class="vue-button" v-if="icon-position === 'right'">
-        <slot></slot>
-        <svg v-if="icon" class="icon" aria-hidden="true">
-          <use :xlink:href="`#i-${icon}`"></use>
-        </svg>
-      </button>
-      <button class="vue-button" v-else>
-        <svg v-if="icon" class="icon" aria-hidden="true">
-          <use :xlink:href="`#i-${icon}`"></use>
-        </svg>
-        <slot></slot>
-      </button>
-    </div>
-  -->
-
-  <button class="vue-button" :class="{ [`icon-${iconPosition}`]: true }" @click="$emit('click')">
-    <!-- 组件化 <VueIcon></VueIcon>
-      <svg v-if="icon" class="icon" aria-hidden="true">
-        <use :xlink:href="`#i-${icon}`"></use>
-      </svg>
-    -->
-    <VueIcon v-if="!!icon && !isLoading" :name="icon" class="icon" @click="kClick"/>
-    <VueIcon v-if="isLoading" name="loading" class="loading icon"/>
+  <button class="vue-button"
+          :class="{ [`icon-${iconPosition}`]: true }"
+          @click="$emit('click')">
+    <VueIcon v-if="!!icon && !isLoading"
+             :name="icon"
+             class="icon"
+             @click="kClick"/>
+    <VueIcon v-if="isLoading"
+             name="loading"
+             class="loading icon"/>
     <div class="content">
       <slot/>
     </div>
@@ -69,9 +54,6 @@ export default {
       },
     },
   },
-  data() {
-    return {}
-  },
   methods: {
     kClick() {
       this.$emit('click')
@@ -79,7 +61,7 @@ export default {
   },
   components: {
     VueIcon,
-  },
+  }
 }
 </script>
 
@@ -93,13 +75,6 @@ export default {
     transform: rotate(360deg);
   }
 }
-
-/*
-.vue-demo-button {
-  display: inline-flex;
-  vertical-align: middle;
-  }
-*/
 
 .vue-button {
   margin-right: 10px;
