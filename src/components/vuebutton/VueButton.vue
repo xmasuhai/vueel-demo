@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import VueIcon from '@/components/icon/Icon.vue'
+import VueIcon from '../icon/Icon.vue'
 
 /*
 // 全局注册 icon

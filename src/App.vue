@@ -27,9 +27,9 @@
 
 <script>
 import Vue from 'vue'
-import VueButtonGroup from '@/components/ButtonGroup/ButtonGroup.vue'
-import VueButton from '@/components/vuebutton/VueButton.vue'
-import VueIcon from '@/components/icon/Icon.vue'
+import VueButtonGroup from './components/ButtonGroup/ButtonGroup.vue'
+import VueButton from './components/vuebutton/VueButton.vue'
+import VueIcon from './components/icon/Icon.vue'
 
 // 全局注册组件
 Vue.component('v-button', VueButton)
