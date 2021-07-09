@@ -3,40 +3,42 @@
     <VueButton>
       按钮
     </VueButton>
-    <VueButton :isLoading="isLoading1" @click="isLoading1 = !isLoading1" icon="settings">
-      按钮
+    <VueButton :isLoading="isLoading1"
+               @click="isLoading1 = !isLoading1"
+               icon="settings">按钮
     </VueButton>
-    <VueButton :is-loading="isLoading2" @click="isLoading2 = !isLoading2" icon="settings" icon-position="right">
-      按钮
+    <VueButton :is-loading="isLoading2"
+               @click="isLoading2 = !isLoading2"
+               icon="settings" icon-position="right">按钮
     </VueButton>
-    <VueButton :is-loading="isLoading3" @click="isLoading3 = !isLoading3" icon="download" icon-position="right">
-      下载
+    <VueButton :is-loading="isLoading3"
+               @click="isLoading3 = !isLoading3"
+               icon="download" icon-position="right">下载
     </VueButton>
     <vue-button-group>
-      <!-- <div>非 VueButton 标签 </div> -->
       <VueButton icon="left">上一页</VueButton>
       <VueButton icon="">更多</VueButton>
-      <VueButton icon="right" icon-position="right">下一页</VueButton>
+      <VueButton icon="right"
+                 icon-position="right">下一页
+      </VueButton>
     </vue-button-group>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import VueButton from './components/vuebutton/VueButton.vue'
-import VueButtonGroup from './components/ButtonGroup/ButtonGroup.vue'
+import VueButtonGroup from '@/components/ButtonGroup/ButtonGroup.vue'
+import VueButton from '@/components/vuebutton/VueButton.vue'
+import VueIcon from '@/components/icon/Icon.vue'
 
-import VueButton2 from './components/vuebutton/VueButton'
-import VueIcon from './components/icon/Icon'
+// 全局注册组件
+Vue.component('v-button', VueButton)
+Vue.component('v-icon', VueIcon)
+Vue.component('v-button-group', VueButtonGroup)
 
 // 单元测试
 import chai from 'chai'
 import spies from 'chai-spies'
-
-// 全局注册组件
-Vue.component('v-button', VueButton2)
-Vue.component('v-icon', VueIcon)
-Vue.component('v-button-group', VueButtonGroup)
 
 chai.use(spies)
 const expect = chai.expect
@@ -44,7 +46,7 @@ const expect = chai.expect
 try {
 // 测试按钮含有 icon
   {
-    const Constructor = Vue.extend(VueButton2)
+    const Constructor = Vue.extend(VueButton)
     const vm = new Constructor({
       propsData: {
         icon: 'settings'
@@ -66,7 +68,7 @@ try {
 
 // 测试 isLoading属性 是否显示#i-loading的图标
   {
-    const Constructor = Vue.extend(VueButton2)
+    const Constructor = Vue.extend(VueButton)
     const vm = new Constructor({
       propsData: {
         icon: 'settings',
@@ -83,13 +85,14 @@ try {
 
 // 测试 iconPosition order 默认为 1 左边 ；2 右边
   {
-    const Constructor = Vue.extend(VueButton2)
+    const Constructor = Vue.extend(VueButton)
     const vm = new Constructor({
       propsData: {
         icon: 'settings',
       },
     })
-    // button 必须被加载 渲染到页面中，CSS加载，才能识别 order，否则 expect(order).to.eq(‘’)为空
+    // button 必须被加载 渲染到页面中，CSS加载，才能识别 order
+    // 否则 expect(order).to.eq('')为空
     const div = document.createElement('div')
     document.body.appendChild(div)
     vm.$mount(div)
@@ -108,7 +111,7 @@ try {
 
 // 测试 iconPosition order 为 2 右边
   {
-    const Constructor = Vue.extend(VueButton2)
+    const Constructor = Vue.extend(VueButton)
     const vm = new Constructor({
       propsData: {
         icon: 'settings',
@@ -130,7 +133,7 @@ try {
 
 // 测试 按钮触发 click // mock 使用 chai.spies 监听函数
   {
-    const Constructor = Vue.extend(VueButton2)
+    const Constructor = Vue.extend(VueButton)
     const vm = new Constructor({
       propsData: {
         icon: 'settings',
@@ -156,6 +159,7 @@ try {
     console.error(error.message)
   })
 }
+
 export default {
   name: 'App',
   data() {
@@ -172,8 +176,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-:root {
+<style lang="scss" scoped>
+::v-deep {
   --button-height: 32px;
   --font-size: 14px;
   --button-bg: white;
@@ -191,7 +195,6 @@ export default {
   /*text-align: center;*/
   color: #2c3e50;
   margin-top: 60px;
-  }
-
+}
 
 </style>
