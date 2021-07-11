@@ -1,14 +1,14 @@
 <template>
   <button class="vue-button"
           :class="{ [`icon-${iconPosition}`]: true }"
-          @click="$emit('click')">
+          @click="clickLoading">
     <VueIcon v-if="!!icon && !isLoading"
              :name="icon"
              class="icon"
-             @click="kClick"/>
+             @click="clickLoading"/>
     <VueIcon v-if="isLoading"
              name="loading"
-             class="loading icon"/>
+             class="icon loading"/>
     <div class="content">
       <slot/>
     </div>
@@ -18,50 +18,36 @@
 <script>
 import VueIcon from '../icon/Icon.vue'
 
-/*
-// 全局注册 icon
-import Vue from "vue";
-import Icon from "../icon/Icon.vue";
-Vue.component("v-icon", Icon);
- */
-
 export default {
-  // props: ['icon', 'iconPosition'], // 'iconPosition': 'left' || 'right'
+  components: {
+    VueIcon,
+  },
   props: {
+    /*
+    'icon': 'settings' || 'loading' || 'right' ||
+      'left' || 'download' || 'arrow-down' || 'thumbs-up'
+    */
     icon: {
-      type: String, // ['settings'. 'loading'. 'right'. 'left'. 'download'. 'arrow-down'. 'thumbs-up']
+      type: String,
     },
     isLoading: {
       type: Boolean,
       default: false,
     },
+    // 'iconPosition': 'left' || 'right'
     iconPosition: {
       type: String,
       default: 'left',
       validator(userValue) {
-        console.log(userValue)
-        /*
-        if (userValue !== 'left' && userValue !== 'right') {
-          return false
-        }else {
-          return true
-        }
-        */
-        // simplify if-else
-        // return value !== 'left' && value !== 'right' ? false : true;
-        // return !(userValue !== 'left' && userValue !== 'right');
         return userValue === 'left' || userValue === 'right'
       },
-    },
+    }
   },
   methods: {
-    kClick() {
+    clickLoading() {
       this.$emit('click')
     },
   },
-  components: {
-    VueIcon,
-  }
 }
 </script>
 
@@ -76,6 +62,7 @@ export default {
   }
 }
 
+$button-bg: whitesmoke;
 .vue-button {
   margin-right: 10px;
   margin-top: 10px;
@@ -88,10 +75,14 @@ export default {
   padding: 0 0.73em;
   border-radius: var(--border-radius);
   border: 2px solid var(--border-color);
-  background: var(--button-bg);
+  background: $button-bg;
 
   &:hover {
-    border-color: var(--border-color-hover);
+    border: 2px solid var(--border-color-hover);
+    box-shadow: 0 0 0 1px var(--border-color-hover);
+    outline-width: 1px;
+    outline-color: var(--border-color-hover);
+    background: lighten($button-bg, 5%);
   }
 
   &:active {

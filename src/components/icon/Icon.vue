@@ -16,5 +16,5 @@ export default {
 .v-icon {
   width: 1em;
   height: 1em;
-  }
+}
 </style>

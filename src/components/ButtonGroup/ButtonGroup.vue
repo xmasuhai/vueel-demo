@@ -7,14 +7,11 @@
 <script>
 export default {
   mounted() {
-    // console.log(this.$children)
-    // console.log(this.$el)
-    // console.log(this.$el.children)
     for (const node of this.$el.children) {
-      // console.log(node)
       const name = node.nodeName.toLowerCase()
       if (name !== 'button') {
-        console.warn(`vue-button-group 的子元素应该全是 VueButton，但你写的是${name}`)
+        console.warn(`vue-button-group 的子元素应该全是 VueButton，
+        但你写的是${name}`)
       }
     }
   },
@@ -29,11 +26,6 @@ export default {
   > .vue-button {
     margin-right: 0;
     border-radius: 0;
-
-    &:hover {
-      position: relative;
-      z-index: 1;
-    }
 
     &:first-child {
       border-top-left-radius: var(--border-radius);
@@ -53,6 +45,12 @@ export default {
     */
     &:not(:first-child) {
       margin-left: -2px;
+    }
+
+    // 解决border被后面的遮挡掉一边
+    &:hover {
+      position: relative;
+      z-index: 1;
     }
   }
 }

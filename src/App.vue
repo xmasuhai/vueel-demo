@@ -5,11 +5,11 @@
     </VueButton>
     <VueButton :isLoading="isLoading1"
                @click="isLoading1 = !isLoading1"
-               icon="settings">按钮
+               icon="settings">设置
     </VueButton>
     <VueButton :is-loading="isLoading2"
                @click="isLoading2 = !isLoading2"
-               icon="settings" icon-position="right">按钮
+               icon="settings" icon-position="right">设置
     </VueButton>
     <VueButton :is-loading="isLoading3"
                @click="isLoading3 = !isLoading3"
@@ -27,14 +27,27 @@
 
 <script>
 import Vue from 'vue'
-import VueButtonGroup from './components/ButtonGroup/ButtonGroup.vue'
 import VueButton from './components/vuebutton/VueButton.vue'
-import VueIcon from './components/icon/Icon.vue'
+import VueButtonGroup from './components/ButtonGroup/ButtonGroup.vue'
 
 // 全局注册组件
 Vue.component('v-button', VueButton)
-Vue.component('v-icon', VueIcon)
 Vue.component('v-button-group', VueButtonGroup)
+
+export default {
+  name: 'App',
+  data() {
+    return {
+      isLoading1: false,
+      isLoading2: true,
+      isLoading3: false,
+    }
+  },
+  components: {
+    VueButton,
+    VueButtonGroup
+  }
+}
 
 // 单元测试
 import chai from 'chai'
@@ -42,7 +55,6 @@ import spies from 'chai-spies'
 
 chai.use(spies)
 const expect = chai.expect
-
 try {
 // 测试按钮含有 icon
   {
@@ -160,20 +172,6 @@ try {
   })
 }
 
-export default {
-  name: 'App',
-  data() {
-    return {
-      isLoading1: false,
-      isLoading2: true,
-      isLoading3: false,
-    }
-  },
-  components: {
-    VueButton,
-    VueButtonGroup
-  }
-}
 </script>
 
 <style lang="scss" scoped>
