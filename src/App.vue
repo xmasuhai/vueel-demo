@@ -54,7 +54,7 @@ import spies from 'chai-spies';
 chai.use(spies);
 const expect = chai.expect;
 try {
-// 测试按钮含有 icon
+  // 测试按钮含有 icon
   {
     const Constructor = Vue.extend(VueButton);
     const vm = new Constructor({
@@ -80,7 +80,7 @@ try {
     vm.$destroy();
   }
 
-// 测试 isLoading属性 是否显示#i-loading的图标
+  // 测试 isLoading属性 是否显示#i-loading的图标
   {
     const Constructor = Vue.extend(VueButton);
     const vm = new Constructor({
@@ -99,7 +99,7 @@ try {
     vm.$destroy();
   }
 
-// 测试 iconPosition order 默认为 1 左边 ；2 右边
+  // 测试 iconPosition order 默认为 1 左边 ；2 右边
   {
     const Constructor = Vue.extend(VueButton);
     const vm = new Constructor({
@@ -123,7 +123,7 @@ try {
     vm.$destroy();
   }
 
-// 测试 iconPosition order 为 2 右边
+  // 测试 iconPosition order 为 2 右边
   {
     const Constructor = Vue.extend(VueButton);
     const vm = new Constructor({
@@ -142,7 +142,7 @@ try {
     vm.$destroy();
   }
 
-// 测试 按钮触发 click // mock 使用 chai.spies 监听函数
+  // 测试 按钮触发 click // mock 使用 chai.spies 监听函数
   {
     const Constructor = Vue.extend(VueButton);
     const vm = new Constructor({
@@ -151,18 +151,15 @@ try {
       },
     });
     vm.$mount();
-
-    // console.log(chai.spy)
-    const spy = chai.spy(() => {
-      console.log('spy OK');
+    const spyFn = chai.spy(() => {
+      console.log('spy function OK');
     });
 
-    vm.$on('click', spy);
+    vm.$on('click', spyFn);
     const button = vm.$el;
     (button as HTMLButtonElement).click();
     // 期望 函数被执行
-    // 正确断言
-    expect(spy).to.have.been.called();
+    expect(spyFn).to.have.been.called();
     vm.$el.remove();
     vm.$destroy();
   }

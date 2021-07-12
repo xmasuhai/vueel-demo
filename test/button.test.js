@@ -6,8 +6,9 @@ import chai from 'chai'
 import Button from '../src/components/vuebutton/VueButton.vue'
 import sinon from 'sinon'
 import sinonChai from 'sinon-chai'
+
 chai.use(sinonChai)
-const expect = chai.expect;
+const expect = chai.expect
 
 Vue.config.productionTip = false
 Vue.config.devtools = false
@@ -79,7 +80,7 @@ describe('Button', () => {
       }
     }).$mount()
 
-    const callback = sinon.fake();
+    const callback = sinon.fake()
     vm.$on('click', callback)
     vm.$el.click()
     expect(callback).to.have.been.called
