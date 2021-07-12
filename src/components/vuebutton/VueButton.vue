@@ -2,52 +2,50 @@
   <button class="vue-button"
           :class="{ [`icon-${iconPosition}`]: true }"
           @click="clickLoading">
-    <VueIcon v-if="!!icon && !isLoading"
-             :name="icon"
+    <VueIcon v-if="loadingStatus"
+             :name="loadingName"
              class="icon"
-             @click="clickLoading"/>
-    <VueIcon v-if="isLoading"
-             name="loading"
-             class="icon loading"/>
+             :class="{loading: isLoading}"/>
     <div class="content">
       <slot/>
     </div>
   </button>
 </template>
 
-<script>
-import VueIcon from '../icon/Icon.vue'
+<script lang="ts">
+import {Component, Prop, Emit, Vue} from 'vue-property-decorator';
+import VueIcon from '../icon/VueIcon.vue';
 
-export default {
+@Component({
   components: {
     VueIcon,
-  },
-  props: {
-    /*
-    'icon': 'settings' || 'loading' || 'right' ||
-      'left' || 'download' || 'arrow-down' || 'thumbs-up'
-    */
-    icon: {
-      type: String,
-    },
-    isLoading: {
-      type: Boolean,
-      default: false,
-    },
-    // 'iconPosition': 'left' || 'right'
-    iconPosition: {
-      type: String,
-      default: 'left',
-      validator(userValue) {
-        return userValue === 'left' || userValue === 'right'
-      },
+  }
+})
+export default class VueButton extends Vue {
+  @Prop() icon!: 'settings' | 'loading' | 'right' |
+    'left' | 'download' | 'arrow-down' | 'thumbs-up';
+  @Prop({type: Boolean, default: false}) isLoading!: boolean;
+  @Prop({
+    type: String,
+    default: 'left',
+    validator(userValue) {
+      return userValue === 'left' || userValue === 'right';
     }
-  },
-  methods: {
-    clickLoading() {
-      this.$emit('click')
-    },
-  },
+  }) iconPosition!: string;
+
+  get loadingStatus() {
+    return this.isLoading ? this.isLoading : (!!this.icon && !this.isLoading);
+  }
+
+  get loadingName() {
+    return this.isLoading ? 'loading' : this.icon;
+  }
+
+  @Emit('click')
+  clickLoading() {
+    return;
+  }
+
 }
 </script>
 
