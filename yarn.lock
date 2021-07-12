@@ -1191,6 +1191,18 @@
     "@types/connect" "*"
     "@types/node" "*"
 
+"@types/chai-spies@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.nlark.com/@types/chai-spies/download/@types/chai-spies-1.0.3.tgz#a52dc61af3853ec9b80965040811d15dfd401542"
+  integrity sha1-pS3GGvOFPsm4CWUECBHRXf1AFUI=
+  dependencies:
+    "@types/chai" "*"
+
+"@types/chai@*", "@types/chai@^4.2.21":
+  version "4.2.21"
+  resolved "https://registry.nlark.com/@types/chai/download/@types/chai-4.2.21.tgz#9f35a5643129df132cf3b5c1ec64046ea1af0650"
+  integrity sha1-nzWlZDEp3xMs87XB7GQEbqGvBlA=
+
 "@types/connect-history-api-fallback@*":
   version "1.3.3"
   resolved "https://registry.npm.taobao.org/@types/connect-history-api-fallback/download/@types/connect-history-api-fallback-1.3.3.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fconnect-history-api-fallback%2Fdownload%2F%40types%2Fconnect-history-api-fallback-1.3.3.tgz"
@@ -3075,12 +3087,12 @@ caw@^2.0.0:
 
 chai-spies@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.npm.taobao.org/chai-spies/download/chai-spies-1.0.0.tgz"
+  resolved "https://registry.npm.taobao.org/chai-spies/download/chai-spies-1.0.0.tgz#d16b39336fb316d03abf8c375feb23c0c8bb163d"
   integrity sha1-0Ws5M2+zFtA6v4w3X+sjwMi7Fj0=
 
 chai@^4.3.4:
   version "4.3.4"
-  resolved "https://registry.npm.taobao.org/chai/download/chai-4.3.4.tgz"
+  resolved "https://registry.npm.taobao.org/chai/download/chai-4.3.4.tgz#b55e655b31e1eac7099be4c08c21964fce2e6c49"
   integrity sha1-tV5lWzHh6scJm+TAjCGWT84ubEk=
   dependencies:
     assertion-error "^1.1.0"

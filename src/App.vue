@@ -55,7 +55,6 @@ import spies from 'chai-spies'
 
 chai.use(spies)
 const expect = chai.expect
-
 try {
 // 测试按钮含有 icon
   {
