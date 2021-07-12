@@ -76,6 +76,8 @@ try {
       const href = useElement.getAttribute('xlink:href');
       expect(href).to.eq('#i-settings');
     }
+    vm.$el.remove();
+    vm.$destroy();
   }
 
 // 测试 isLoading属性 是否显示#i-loading的图标
@@ -93,6 +95,8 @@ try {
     // Uncaught AssertionError
     // expect(href).to.eq('#i-settings')
     expect(href).to.eq('#i-loading');
+    vm.$el.remove();
+    vm.$destroy();
   }
 
 // 测试 iconPosition order 默认为 1 左边 ；2 右边
@@ -159,6 +163,8 @@ try {
     // 期望 函数被执行
     // 正确断言
     expect(spy).to.have.been.called();
+    vm.$el.remove();
+    vm.$destroy();
   }
 
 } catch (error) {
