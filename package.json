@@ -8,6 +8,7 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "dev-watch-test": "parcel watch test/* --no-cache & karma start",
+    "dwt": "parcel watch test/* --no-cache && karma start",
     "dev-watch": "parcel watch test/* --no-cache",
     "dev-test": "karma start --auto-watch",
     "test": "rm -rf .cache dist && parcel build test/* --no-cache --no-minify && karma start --single-run",
