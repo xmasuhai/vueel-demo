@@ -4,6 +4,8 @@
 
 作者：徐某人
 
+## 使用 GitHub Actions 测试通过
+
 ## Project setup
 ```
 yarn install
