@@ -1227,6 +1227,13 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@sinonjs/fake-timers@^7.1.0":
+  version "7.1.2"
+  resolved "https://registry.nlark.com/@sinonjs/fake-timers/download/@sinonjs/fake-timers-7.1.2.tgz?cache=0&sync_timestamp=1622212444306&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40sinonjs%2Ffake-timers%2Fdownload%2F%40sinonjs%2Ffake-timers-7.1.2.tgz#2524eae70c4910edccf99b2f4e6efc5894aff7b5"
+  integrity sha1-JSTq5wxJEO3M+ZsvTm78WJSv97U=
+  dependencies:
+    "@sinonjs/commons" "^1.7.0"
+
 "@sinonjs/samsam@^5.3.1":
   version "5.3.1"
   resolved "https://registry.nlark.com/@sinonjs/samsam/download/@sinonjs/samsam-5.3.1.tgz#375a45fe6ed4e92fca2fb920e007c48232a6507f"
@@ -1447,6 +1454,21 @@
   dependencies:
     "@types/mime" "^1"
     "@types/node" "*"
+
+"@types/sinon-chai@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.nlark.com/@types/sinon-chai/download/@types/sinon-chai-3.2.5.tgz?cache=0&sync_timestamp=1621244552086&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fsinon-chai%2Fdownload%2F%40types%2Fsinon-chai-3.2.5.tgz#df21ae57b10757da0b26f512145c065f2ad45c48"
+  integrity sha1-3yGuV7EHV9oLJvUSFFwGXyrUXEg=
+  dependencies:
+    "@types/chai" "*"
+    "@types/sinon" "*"
+
+"@types/sinon@*", "@types/sinon@^10.0.2":
+  version "10.0.2"
+  resolved "https://registry.nlark.com/@types/sinon/download/@types/sinon-10.0.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fsinon%2Fdownload%2F%40types%2Fsinon-10.0.2.tgz#f360d2f189c0fd433d14aeb97b9d705d7e4cc0e4"
+  integrity sha1-82DS8YnA/UM9FK65e51wXX5MwOQ=
+  dependencies:
+    "@sinonjs/fake-timers" "^7.1.0"
 
 "@types/source-list-map@*":
   version "0.1.2"
