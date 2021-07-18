@@ -29,15 +29,21 @@
 import {Component, Vue} from 'vue-property-decorator';
 import VueButton from './components/button/VueButton.vue';
 import VueButtonGroup from './components/button-group/ButtonGroup.vue';
+import VueInput from './components/input/VueInput.vue';
+import VueIcon from './components/icon/VueIcon.vue';
 
 // 全局注册组件
 Vue.component('v-button', VueButton);
 Vue.component('v-button-group', VueButtonGroup);
+Vue.component('v-icon', VueIcon);
+Vue.component('v-input', VueInput);
 
 @Component({
   components: {
     VueButton,
-    VueButtonGroup
+    VueButtonGroup,
+    VueIcon,
+    VueInput
   }
 })
 export default class App extends Vue {
