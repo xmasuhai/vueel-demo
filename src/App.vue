@@ -1,36 +1,15 @@
 <template>
-  <div id="app">
-    <VueButton>
-      按钮
-    </VueButton>
-    <VueButton :isLoading="isLoading1"
-               @click="isLoading1 = !isLoading1"
-               icon="settings">设置
-    </VueButton>
-    <VueButton :is-loading="isLoading2"
-               @click="isLoading2 = !isLoading2"
-               icon="settings" icon-position="right">设置
-    </VueButton>
-    <VueButton :is-loading="isLoading3"
-               @click="isLoading3 = !isLoading3"
-               icon="download" icon-position="right">下载
-    </VueButton>
-    <vue-button-group>
-      <VueButton icon="left">上一页</VueButton>
-      <VueButton icon="">更多</VueButton>
-      <VueButton icon="right"
-                 icon-position="right">下一页
-      </VueButton>
-    </vue-button-group>
-  </div>
+  <main id="app">
+    <router-view></router-view>
+  </main>
 </template>
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
 import VueButton from './components/button/VueButton.vue';
 import VueButtonGroup from './components/button-group/ButtonGroup.vue';
-import VueInput from './components/input/VueInput.vue';
 import VueIcon from './components/icon/VueIcon.vue';
+import VueInput from './components/input/VueInput.vue';
 
 // 全局注册组件
 Vue.component('v-button', VueButton);
@@ -38,19 +17,9 @@ Vue.component('v-button-group', VueButtonGroup);
 Vue.component('v-icon', VueIcon);
 Vue.component('v-input', VueInput);
 
-@Component({
-  components: {
-    VueButton,
-    VueButtonGroup,
-    VueIcon,
-    VueInput
-  }
-})
+@Component
 export default class App extends Vue {
   name = 'App';
-  isLoading1 = false;
-  isLoading2 = true;
-  isLoading3 = false;
 }
 
 </script>

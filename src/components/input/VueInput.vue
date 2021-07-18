@@ -1,6 +1,6 @@
 <template>
   <div>
-    $END$
+
   </div>
 </template>
 
