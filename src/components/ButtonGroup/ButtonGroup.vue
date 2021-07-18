@@ -4,17 +4,20 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import {Component, Vue} from 'vue-property-decorator';
+
+@Component
+export default class VueIcon extends Vue {
   mounted() {
-    for (const node of this.$el.children) {
-      const name = node.nodeName.toLowerCase()
+    for (const node of Array.from(this.$el.children)) {
+      const name = node.nodeName.toLowerCase();
       if (name !== 'button') {
         console.warn(`vue-button-group 的子元素应该全是 VueButton，
-        但你写的是${name}`)
+        但你写的是${name}`);
       }
     }
-  },
+  }
 }
 </script>
 
