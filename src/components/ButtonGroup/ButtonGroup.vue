@@ -9,6 +9,8 @@ import {Component, Vue} from 'vue-property-decorator';
 
 @Component
 export default class VueIcon extends Vue {
+  name = 'VueButtonGroup';
+
   mounted() {
     for (const node of Array.from(this.$el.children)) {
       const name = node.nodeName.toLowerCase();

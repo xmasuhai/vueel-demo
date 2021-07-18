@@ -3,7 +3,7 @@
           :class="{ [`icon-${iconPosition}`]: true }"
           @click="clickLoading">
     <VueIcon v-if="loadingStatus"
-             :name="loadingName"
+             :icon-name="loadingName"
              class="icon"
              :class="{loading: isLoading}"/>
     <div class="content">
@@ -22,6 +22,8 @@ import VueIcon from '../icon/VueIcon.vue';
   }
 })
 export default class VueButton extends Vue {
+  name = 'VueButton';
+
   @Prop() icon!: 'settings' | 'loading' | 'right' |
     'left' | 'download' | 'arrow-down' | 'thumbs-up';
   @Prop({type: Boolean, default: false}) isLoading!: boolean;
