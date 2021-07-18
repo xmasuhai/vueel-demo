@@ -27,8 +27,8 @@
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
-import VueButton from './components/vuebutton/VueButton.vue';
-import VueButtonGroup from './components/ButtonGroup/ButtonGroup.vue';
+import VueButton from './components/button/VueButton.vue';
+import VueButtonGroup from './components/button-group/ButtonGroup.vue';
 
 // 全局注册组件
 Vue.component('v-button', VueButton);

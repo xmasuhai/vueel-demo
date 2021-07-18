@@ -1,5 +1,5 @@
-import VueButton from './src/components/vuebutton/VueButton.vue'
-import VueButtonGroup from './src/components/ButtonGroup/ButtonGroup.vue'
+import VueButton from './src/components/button/VueButton.vue'
+import VueButtonGroup from './src/components/button-group/ButtonGroup.vue'
 import VueIcon from './src/components/icon/VueIcon.vue'
 
 export {VueButton, VueButtonGroup, VueIcon}
