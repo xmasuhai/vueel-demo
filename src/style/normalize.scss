@@ -7,7 +7,10 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-* {
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -32,9 +35,9 @@ html {
 html {
   font-size: 100%;
   /* 1 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
   -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
   /* 2 */
 }
 
@@ -49,10 +52,10 @@ q {
   quotes: none;
 }
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
   content: '';
 }
 
@@ -144,10 +147,10 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
-  padding: 0;
   border: 0;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
   vertical-align: baseline;
 }
 
@@ -158,9 +161,9 @@ video {
 audio,
 canvas,
 video {
-  display: inline-block;
   *display: inline;
   *zoom: 1;
+  display: inline-block;
   max-width: 100%;
 }
 
@@ -189,7 +192,7 @@ main {
 
 h1 {
   font-size: 2em;
-  margin: 0.67em 0;
+  margin: .67em 0;
 }
 
 /* Grouping content
@@ -238,7 +241,7 @@ a {
  */
 
 abbr[title] {
-  border-bottom: none;
+  border-bottom: 0;
   /* 1 */
   text-decoration: underline;
 }
@@ -288,11 +291,11 @@ sup {
 }
 
 sub {
-  bottom: -0.25em;
+  bottom: -.25em;
 }
 
 sup {
-  top: -0.5em;
+  top: -.5em;
 }
 
 /* Embedded content
@@ -305,8 +308,8 @@ sup {
  */
 
 img {
-  border-style: none;
   border: 0;
+  border-style: none;
   /* 1 */
   -ms-interpolation-mode: bicubic;
   /* 2 */
