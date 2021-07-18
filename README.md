@@ -35,6 +35,26 @@ yarn add vueel-demo
 yarn install
 ```
 
+#### 引入 `vueel-demo`
+
+```js
+import {VueButton, VueButtonGroup, VueIcon} from 'vueel-demo'
+
+export default {
+  components: {
+    VueButton, VueButtonGroup, VueIcon
+  }
+}
+```
+
+#### 可省略引入 `svg symbols`
+
+```html
+<script src="//at.alicdn.com/t/font_2138557_rt8obmx2qyd.js"></script>
+```
+
+
+
 #### 启动服务 Compiles and hot-reloads for development
 
 ```
