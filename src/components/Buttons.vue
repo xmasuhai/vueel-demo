@@ -45,7 +45,3 @@ export default class Buttons extends Vue {
   isLoading3 = false;
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

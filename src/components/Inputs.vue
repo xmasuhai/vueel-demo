@@ -1,14 +1,19 @@
 <template>
   <div>
-
+    <VueInput value="张三"></VueInput>
+    <VueInput value="李四" :isFakeFocus="true"></VueInput>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import {Component,} from 'vue-property-decorator';
+import {Component, Vue} from 'vue-property-decorator';
+import VueInput from './input/VueInput.vue';
 
-@Component
+@Component({
+  components: {
+    VueInput
+  }
+})
 export default class Inputs extends Vue {
   name = 'Inputs';
 }

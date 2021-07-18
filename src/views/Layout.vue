@@ -2,12 +2,12 @@
   <section class="layout-wrapper"
            :class="classPrefix && `${classPrefix}-wrapper`">
     <Nav @update:tabName="changeTabComponent"/>
-    <div class="content"
-         :class="classPrefix && `${classPrefix}-content`">
+    <section class="content"
+             :class="classPrefix && `${classPrefix}-content`">
       <keep-alive>
         <component :is="currentTabComponent" class="tab"></component>
       </keep-alive>
-    </div>
+    </section>
   </section>
 </template>
 
