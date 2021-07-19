@@ -1,8 +1,49 @@
 <template>
   <div>
-    <VueInput value="张三"></VueInput>
-    <VueInput value="李四" :isFakeHover="true"></VueInput>
-    <VueInput value="王五" :isFakeFocus="true"></VueInput>
+    <details open>
+      <summary>Primary</summary>
+      <div>
+        <VueInput placeholder="Enable">
+        </VueInput>
+        <VueInput placeholder="Hover"
+                  :isFakeHover="true">
+        </VueInput>
+        <VueInput placeholder="Focus"
+                  :isFakeFocus="true">
+        </VueInput>
+        <VueInput placeholder="Readonly"
+                  :readonly="true">
+        </VueInput>
+        <VueInput placeholder="Disabled"
+                  :disabled="true">
+        </VueInput>
+      </div>
+    </details>
+    <br>
+    <details open>
+      <summary>Error</summary>
+      <div>
+        <VueInput placeholder="Error Enable"
+                  error="姓名不能少于2个字">
+        </VueInput>
+        <VueInput placeholder="Error Hover"
+                  :isFakeHover="true"
+                  error="姓名不能少于2个字">
+        </VueInput>
+        <VueInput placeholder="Error Focus"
+                  :isFakeFocus="true"
+                  error="姓名不能少于2个字">
+        </VueInput>
+        <VueInput placeholder="Error Readonly"
+                  :readonly="true"
+                  error="姓名不能少于2个字">
+        </VueInput>
+        <VueInput placeholder="Error Disabled"
+                  :disabled="true"
+                  error="姓名不能少于2个字">
+        </VueInput>
+      </div>
+    </details>
   </div>
 </template>
 
@@ -21,5 +62,7 @@ export default class Inputs extends Vue {
 </script>
 
 <style lang="scss" scoped>
-
+details {
+  cursor: pointer;
+}
 </style>

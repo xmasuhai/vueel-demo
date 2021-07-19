@@ -20,5 +20,6 @@ export default class VueIcon extends Vue {
 .v-icon {
   width: 1em;
   height: 1em;
+  margin: 0 1em;
 }
 </style>
