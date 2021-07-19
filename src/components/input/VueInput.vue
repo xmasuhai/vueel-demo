@@ -1,8 +1,14 @@
 <template>
   <div class="wrapper">
-    <input type="text"
-           :value="value"
-           :class="{'fake-focus': isFakeFocus}">
+    <label class="form-item">
+      <template>
+        <span class="name">{{ fieldName }}</span>
+        <input type="text"
+               :value="value"
+               :class="{'fake-focus': isFakeFocus,
+                        'fake-hover': isFakeHover}">
+      </template>
+    </label>
   </div>
 </template>
 
@@ -12,8 +18,10 @@ import {Component, Prop, Vue} from 'vue-property-decorator';
 @Component
 export default class VueInput extends Vue {
   name = 'VueInput';
+  fieldName = '';
   @Prop(String) value!: string;
   @Prop(Boolean) isFakeFocus!: false;
+  @Prop(Boolean) isFakeHover!: false;
 }
 </script>
 
@@ -32,25 +40,27 @@ $box-shadow-color: rgb(0, 0, 0, 0.5);
   font-size: $font-size;
   padding: 5px;
 
-  > input {
-    height: $button-height;
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
-    padding: 0 8px;
-    font-size: inherit;
-
-    &:hover {
-      border: 1px solid $border-color-hover;
+  .form-item {
+    > input {
+      height: $button-height;
+      border: 1px solid $border-color;
       border-radius: $border-radius;
-    }
+      padding: 0 8px;
+      font-size: inherit;
 
-    &:focus, &.fake-focus {
-      box-shadow: inset 0 1px 3px $box-shadow-color;
-      border-radius: $border-radius;
-    }
+      &:hover, &.fake-hover {
+        border: 1px solid $border-color-hover;
+        border-radius: $border-radius;
+      }
 
-    &:focus-visible {
-      outline: none;
+      &:focus, &.fake-focus {
+        box-shadow: inset 0 1px 3px $box-shadow-color;
+        border-radius: $border-radius;
+      }
+
+      &:focus-visible {
+        outline: none;
+      }
     }
   }
 }

@@ -47,7 +47,6 @@ export default class VueButton extends Vue {
   clickLoading() {
     return;
   }
-
 }
 </script>
 

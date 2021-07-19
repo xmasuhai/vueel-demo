@@ -8,7 +8,6 @@
         {{ tab }}
       </span>
     </button>
-
   </nav>
 </template>
 

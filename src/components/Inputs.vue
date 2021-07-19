@@ -1,7 +1,8 @@
 <template>
   <div>
     <VueInput value="张三"></VueInput>
-    <VueInput value="李四" :isFakeFocus="true"></VueInput>
+    <VueInput value="李四" :isFakeHover="true"></VueInput>
+    <VueInput value="王五" :isFakeFocus="true"></VueInput>
   </div>
 </template>
 

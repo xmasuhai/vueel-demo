@@ -7,7 +7,7 @@
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
 import VueButton from './components/button/VueButton.vue';
-import VueButtonGroup from './components/button-group/ButtonGroup.vue';
+import VueButtonGroup from './components/button-group/VueButtonGroup.vue';
 import VueIcon from './components/icon/VueIcon.vue';
 import VueInput from './components/input/VueInput.vue';
 

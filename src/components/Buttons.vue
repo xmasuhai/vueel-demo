@@ -28,7 +28,7 @@
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
 import VueButton from './button/VueButton.vue';
-import VueButtonGroup from './button-group/ButtonGroup.vue';
+import VueButtonGroup from './button-group/VueButtonGroup.vue';
 import VueIcon from './icon/VueIcon.vue';
 
 @Component({
