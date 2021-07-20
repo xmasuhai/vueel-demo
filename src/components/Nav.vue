@@ -27,6 +27,7 @@ export default class Nav extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import '../style/global.scss';
 nav {
   display: flex;
   flex-direction: row;

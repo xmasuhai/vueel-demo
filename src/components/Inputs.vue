@@ -12,6 +12,7 @@
                   :isFakeFocus="true">
         </VueInput>
         <VueInput placeholder="Readonly"
+                  value="Error Readonly"
                   :readonly="true">
         </VueInput>
         <VueInput placeholder="Disabled"
@@ -21,7 +22,7 @@
     </details>
     <br>
     <details open>
-      <summary>Error</summary>
+      <summary class="error">Error</summary>
       <div>
         <VueInput placeholder="Error Enable"
                   error="姓名不能少于2个字">
@@ -36,6 +37,7 @@
         </VueInput>
         <VueInput placeholder="Error Readonly"
                   :readonly="true"
+                  value="Error Readonly"
                   error="姓名不能少于2个字">
         </VueInput>
         <VueInput placeholder="Error Disabled"
@@ -62,7 +64,13 @@ export default class Inputs extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import '../style/global.scss';
+
 details {
   cursor: pointer;
+
+  .error {
+    color: $danger;
+  }
 }
 </style>

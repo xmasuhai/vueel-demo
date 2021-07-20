@@ -1,9 +1,11 @@
 <template>
   <div class="wrapper">
-    <label class="form-item">
+    <label class="form-item" :for="labelName">
       <template>
         <span class="name">{{ labelName }}</span>
         <input type="text"
+               :name="labelName"
+               :value="value"
                :placeholder="placeholder"
                :disabled="disabled"
                :readonly="readonly"
@@ -12,10 +14,10 @@
                         'fake-hover': isFakeHover && !error,
                         'fake-hover-error': isFakeHover && error,
                         error}">
-        <template v-if="error">
+        <div class="input-info" v-if="error">
           <VueIcon icon-name="settings"></VueIcon>
           <span>{{ error }}</span>
-        </template>
+        </div>
       </template>
     </label>
   </div>
@@ -31,6 +33,7 @@ import VueIcon from '../icon/VueIcon.vue';
 export default class VueInput extends Vue {
   name = 'VueInput';
   @Prop(String) labelName!: string;
+  @Prop(String) value!: '';
   @Prop(String) placeholder!: string;
   @Prop(Boolean) isFakeFocus!: false;
   @Prop(Boolean) isFakeHover!: false;
@@ -41,29 +44,16 @@ export default class VueInput extends Vue {
 </script>
 
 <style lang="scss" scoped>
-$button-height: 32px;
-$font-size: 14px;
-$border-radius: 4px;
-$button-bg: white;
-$button-active-bg: #eee;
-$color: #333;
-$disabled-color: #bbb;
-$border-color: #999;
-$border-color-hover: #666;
-$border-color-hover-error: #f1453d;
-$primary: #0d6efd;
-$danger: #ff4136;
-$success: #198754;
-$info: #0dcaf0;
-$warning: #ffc107;
-$attention: #fd7e14;
-$box-shadow-color: rgb(0, 0, 0, 0.5);
+@import '../../style/global.scss';
 
 .wrapper {
   font-size: $font-size;
   padding: 5px;
+  overflow: hidden;
 
   .form-item {
+    display: inline-block;
+
     > input {
       height: $button-height;
       border: 1px solid $border-color;
@@ -71,15 +61,21 @@ $box-shadow-color: rgb(0, 0, 0, 0.5);
       padding: 0 8px;
       font-size: inherit;
 
+      &:read-write {
+        background-color: $input-color;
+      }
+
       &:hover, &.fake-hover {
         border: 1px solid $border-color-hover;
         border-radius: $border-radius;
         box-shadow: 0 0 0 1px var(--border-color-hover);
+        background-color: $input-hover-color;
       }
 
       &:focus, &.fake-focus {
         box-shadow: inset 0 1px 3px $box-shadow-color;
         border-radius: $border-radius;
+        background-color: $input-hover-color;
       }
 
       &:focus-visible {
@@ -87,9 +83,12 @@ $box-shadow-color: rgb(0, 0, 0, 0.5);
       }
 
       &[disabled],
-      &[readonly] {
+      &:read-only {
         border-color: $disabled-color;
         color: $disabled-color;
+      }
+
+      &[disabled] {
         cursor: not-allowed;
       }
 
@@ -105,6 +104,7 @@ $box-shadow-color: rgb(0, 0, 0, 0.5);
         &.fake-hover-error {
           border: 1px solid $border-color-hover-error;
           box-shadow: 0 0 0 1px $border-color-hover-error;
+          background-color: $input-hover-color;
         }
 
         &:focus, &.fake-focus {
@@ -112,6 +112,19 @@ $box-shadow-color: rgb(0, 0, 0, 0.5);
           box-shadow: inset 0 1px 3px $box-shadow-color,
           0 0 0 1px $border-color-hover-error;
         }
+      }
+    }
+
+    .input-info {
+      vertical-align: middle;
+      display: inline-block;
+      color: $danger;
+      overflow: hidden;
+
+      ::v-deep > .v-icon {
+        vertical-align: -12%;
+        fill: $danger;
+        margin-right: 0.2em;
       }
     }
   }

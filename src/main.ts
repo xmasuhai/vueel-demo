@@ -2,6 +2,9 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import './style/normalize.scss';
+import './style/reset.scss';
+import './style/global.scss';
 
 Vue.config.productionTip = false;
 
