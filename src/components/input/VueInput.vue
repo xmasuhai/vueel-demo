@@ -15,7 +15,8 @@
                         'fake-hover-error': isFakeHover && error,
                         error}">
         <div class="input-info" v-if="error">
-          <VueIcon icon-name="settings"></VueIcon>
+          <VueIcon icon-name="error-solid"
+                   class="icon-error"></VueIcon>
           <span>{{ error }}</span>
         </div>
       </template>
@@ -50,6 +51,12 @@ export default class VueInput extends Vue {
   font-size: $font-size;
   padding: 5px;
   overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+
+  > :not(last-child) {
+    margin-right: .5em;
+  }
 
   .form-item {
     display: inline-block;
@@ -122,10 +129,16 @@ export default class VueInput extends Vue {
       color: $danger;
       overflow: hidden;
 
-      ::v-deep > .v-icon {
-        vertical-align: -12%;
+      .icon-error {
         fill: $danger;
+      }
+
+      ::v-deep > .v-icon {
+        width: 1.35em;
+        height: 1.35em;
+        vertical-align: -20%;
         margin-right: 0.2em;
+        margin-left: 0.5em;
       }
     }
   }
