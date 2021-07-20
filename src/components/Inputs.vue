@@ -3,7 +3,8 @@
     <details open>
       <summary>Primary</summary>
       <div>
-        <VueInput placeholder="Enable">
+        <VueInput placeholder="Enable"
+                  @updateChange="inputChange">
         </VueInput>
         <VueInput placeholder="Hover"
                   :isFakeHover="true">
@@ -60,6 +61,10 @@ import VueInput from './input/VueInput.vue';
 })
 export default class Inputs extends Vue {
   name = 'Inputs';
+
+  inputChange(e: string) {
+    console.log(e);
+  }
 }
 </script>
 

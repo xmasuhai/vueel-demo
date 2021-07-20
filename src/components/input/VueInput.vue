@@ -13,11 +13,15 @@
                :class="{'fake-focus': isFakeFocus,
                         'fake-hover': isFakeHover && !error,
                         'fake-hover-error': isFakeHover && error,
-                        error}">
+                        error}"
+               @change="change"
+               @input="input"
+               @focus="focus"
+               @blur="blur">
         <div class="input-info" v-if="error">
           <VueIcon icon-name="error-solid"
                    class="icon-error"></VueIcon>
-          <span>{{ error }}</span>
+          <span class="errorMessage">{{ error }}</span>
         </div>
       </template>
     </label>
@@ -41,6 +45,17 @@ export default class VueInput extends Vue {
   @Prop(Boolean) readonly!: false;
   @Prop(Boolean) disabled!: false;
   @Prop(String) error!: '';
+
+  change($event: { target: HTMLInputElement }) {
+    this.$emit('updateChange',
+      $event.target.value);
+  }
+
+  input() {console.log('Hi');}
+
+  focus() {console.log('Hi');}
+
+  blur() {console.log('Hi');}
 }
 </script>
 

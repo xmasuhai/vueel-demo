@@ -25,7 +25,8 @@ describe('Button', () => {
       }
     }).$mount();
     const useElement = vm.$el.querySelector('use');
-    expect((useElement as SVGUseElement).getAttribute('xlink:href')).to.equal('#i-settings');
+    expect((useElement as SVGUseElement).getAttribute('xlink:href'))
+      .to.equal('#i-settings');
     console.log('Button可以设置icon');
     vm.$destroy();
   });
