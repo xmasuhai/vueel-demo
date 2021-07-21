@@ -17,7 +17,7 @@
 - `TypeScript`
 - `SCSS`
 - `parcel`
-- `GitHub Actions` `CI/CD`持续集成
+- [`GitHub Actions` `CI/CD`持续集成](https://github.com/xmasuhai/vueel-demo/actions)
 
 ## 开始使用
 
