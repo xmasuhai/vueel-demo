@@ -47,8 +47,7 @@ export default class VueInput extends Vue {
   @Prop(String) error!: '';
 
   change($event: { target: HTMLInputElement }) {
-    this.$emit('change',
-      $event.target.value);
+    this.$emit('change', $event);
   }
 
   input($event: { target: HTMLInputElement }) {

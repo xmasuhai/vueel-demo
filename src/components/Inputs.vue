@@ -4,7 +4,8 @@
       <summary>Primary</summary>
       <div>
         <VueInput placeholder="Enable"
-                  @change.native="inputChange">
+                  id="testInput"
+                  @change="inputChange">
         </VueInput>
         <VueInput placeholder="Hover"
                   :isFakeHover="true">
@@ -62,9 +63,21 @@ import VueInput from './input/VueInput.vue';
 export default class Inputs extends Vue {
   name = 'Inputs';
 
-  inputChange(e: string) {
+  mounted() {
+    setTimeout(() => {
+      const event = new Event('change');
+      const inputElement = this.$el.querySelector('#testInput');
+      console.log('inputElement: ', inputElement);
+      console.log('event: ', event);
+      (inputElement as HTMLInputElement).dispatchEvent(event);
+      console.log('自己触发input事件');
+    }, 0);
+  }
+
+  inputChange(e: Event) {
     console.log(e);
   }
+
 }
 </script>
 
