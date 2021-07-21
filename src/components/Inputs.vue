@@ -4,7 +4,7 @@
       <summary>Primary</summary>
       <div>
         <VueInput placeholder="Enable"
-                  @updateChange="inputChange">
+                  @change.native="inputChange">
         </VueInput>
         <VueInput placeholder="Hover"
                   :isFakeHover="true">

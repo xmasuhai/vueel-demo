@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import chai from 'chai';
-// import sinon from 'sinon';
+import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import VueInput from '../src/components/input/VueInput.vue';
 
@@ -11,13 +11,13 @@ Vue.config.productionTip = false;
 Vue.config.devtools = false;
 
 describe('VueInput', () => {
+
   it('VueInput存在.', () => {
     expect(VueInput).to.exist;
     console.log('VueInput存在');
   });
 
-  describe('props',  ()=> {
-
+  describe('props', () => {
     it('VueInput可以接受value', () => {
       const Constructor = Vue.extend(VueInput);
       const vm = new Constructor({
@@ -76,40 +76,30 @@ describe('VueInput', () => {
       console.log('VueInput可以接受error');
       vm.$destroy();
     });
-  })
-
-  /*
-
-  it('VueInput可以设置loading.', () => {
-    const Constructor = Vue.extend(VueInput);
-    const vm = new Constructor({
-      propsData: {
-        icon: 'loading',
-        loading: true
-      }
-    }).$mount();
-    const useElements = vm.$el.querySelectorAll('use');
-    expect(useElements.length).to.equal(1);
-    expect(useElements[0].getAttribute('xlink:href')).to.equal('#i-loading');
-    console.log('VueInput可以设置loading');
-    vm.$destroy();
   });
 
-  it('点击 button 触发 click 事件', () => {
-    const Constructor = Vue.extend(VueInput);
-    const vm = new Constructor({
-      propsData: {
-        icon: 'settings',
-      }
-    }).$mount();
+/*
 
+  it('input 触发 change 事件', () => {
+    const Constructor = Vue.extend(VueInput);
+    const vm = new Constructor({}).$mount();
     const callback = sinon.fake();
-    vm.$on('click', callback);
-    (vm.$el as HTMLElement).click();
-    expect(callback).to.have.been.called;
-    console.log('点击 button 触发 click 事件');
+    // 监听
+    vm.$on('change', callback);
+
+    // 手动触发 input 的事件
+    const changeEvent = new Event('change');
+    const inputElement = vm.$el.querySelector('input');
+    changeEvent.initEvent('change', false, true);
+    (inputElement as HTMLInputElement).value = 'New Value';
+    (inputElement as HTMLInputElement).dispatchEvent(changeEvent);
+
+    console.log(inputElement);
+    expect(callback).to.have.been.calledWith(changeEvent);
+
+    console.log('改变 input 值 触发 change 事件');
     vm.$destroy();
   });
+*/
 
-  */
 });

@@ -47,15 +47,24 @@ export default class VueInput extends Vue {
   @Prop(String) error!: '';
 
   change($event: { target: HTMLInputElement }) {
-    this.$emit('updateChange',
+    this.$emit('change',
       $event.target.value);
   }
 
-  input() {console.log('Hi');}
+  input($event: { target: HTMLInputElement }) {
+    this.$emit('input',
+      $event.target.value);
+  }
 
-  focus() {console.log('Hi');}
+  focus($event: { target: HTMLInputElement }) {
+    this.$emit('focus',
+      $event.target.value);
+  }
 
-  blur() {console.log('Hi');}
+  blur($event: { target: HTMLInputElement }) {
+    this.$emit('blur',
+      $event.target.value);
+  }
 }
 </script>
 
