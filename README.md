@@ -14,10 +14,10 @@
 ## 技术栈
 
 - `Vue.js`全家桶
+- `TypeScript`
+- `SCSS`
 - `parcel`
 - `GitHub Actions` `CI/CD`持续集成
-- `SCSS`
-- `TypeScript`
 
 ## 开始使用
 
@@ -88,6 +88,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## 提问
 
 ## 变更记录
+
+- 添加 按钮组件
+- 添加 输入框组件
 
 ## 使用 GitHub Actions 测试通过
 
