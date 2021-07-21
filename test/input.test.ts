@@ -81,19 +81,23 @@ describe('VueInput', () => {
       vm.$destroy();
     });
 
-    it('input 支持 change 事件', () => {
-      vm = new Constructor({}).$mount();
-      const callback = sinon.fake();
-      // 监听
-      vm.$on('change', callback);
-      // 手动触发 input 的事件
-      const changeEvent = new Event('change');
-      const inputElement = vm.$el.querySelector('input');
-      (inputElement as HTMLInputElement).dispatchEvent(changeEvent);
+    it('VueInput 支持 change/input/focus/blur 事件', () => {
+      ['change', 'input', 'focus', 'blur']
+        .forEach((eventName) => {
+          vm = new Constructor({}).$mount();
+          const callback = sinon.fake();
+          // 监听
+          vm.$on(eventName, callback);
+          // 手动触发 input 的事件
+          const changeEvent = new Event(eventName);
+          const inputElement = vm.$el.querySelector('input');
+          (inputElement as HTMLInputElement).dispatchEvent(changeEvent);
 
-      // 断言
-      expect(callback).to.have.been.calledWith(changeEvent);
-      console.log('改变 input 值 触发 change 事件');
+          // 断言
+          expect(callback).to.have.been.calledWith(changeEvent);
+          console.log(`VueInput 支持 ${eventName} 事件`);
+        });
+
     });
 
   });

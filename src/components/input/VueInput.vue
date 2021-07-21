@@ -51,19 +51,17 @@ export default class VueInput extends Vue {
   }
 
   input($event: { target: HTMLInputElement }) {
-    this.$emit('input',
-      $event.target.value);
+    this.$emit('input', $event);
   }
 
   focus($event: { target: HTMLInputElement }) {
-    this.$emit('focus',
-      $event.target.value);
+    this.$emit('focus', $event);
   }
 
   blur($event: { target: HTMLInputElement }) {
-    this.$emit('blur',
-      $event.target.value);
+    this.$emit('blur', $event);
   }
+
 }
 </script>
 
