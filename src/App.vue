@@ -21,16 +21,6 @@ Vue.component('v-input', VueInput);
 export default class App extends Vue {
   name = 'App';
 
-  created() {
-    setTimeout(() => {
-      const event = new Event('change');
-      const inputElement = this.$el.querySelector('input');
-      (inputElement as HTMLInputElement).dispatchEvent(event);
-      console.log('hi');
-    }, 0);
-
-    console.log('hi');
-  }
 }
 
 </script>
