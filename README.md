@@ -83,6 +83,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 文档
 
+- 本 UI 组件库参考了 饥人谷的 [轱辘 UI](https://github.com/FrankFang/frank-test-1)
+
 ## 提问
 
 ## 变更记录
