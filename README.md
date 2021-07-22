@@ -17,7 +17,7 @@
 - `TypeScript`
 - `SCSS`
 - `parcel`
-- [查看此项目的`GitHub Actions` `CI/CD`持续集成](https://github.com/xmasuhai/vueel-demo/actions)
+- `GitHub Actions` [查看此项目的`CI/CD`持续集成](https://github.com/xmasuhai/vueel-demo/actions)
 
 ## 开始使用
 
@@ -50,7 +50,7 @@ export default {
 #### 可省略引入 `svg symbols`
 
 ```html
-<script src="//at.alicdn.com/t/font_2138557_rt8obmx2qyd.js"></script>
+<script src="//at.alicdn.com/t/font_2138557_fmq5zqg2y0j.js"></script>
 ```
 
 ## 启动服务 Compiles and hot-reloads for development
