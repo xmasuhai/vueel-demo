@@ -45,3 +45,9 @@ export default class Buttons extends Vue {
   isLoading3 = false;
 }
 </script>
+
+<style lang="scss" scoped>
+::v-deep {
+  margin-right: 10px;
+}
+</style>

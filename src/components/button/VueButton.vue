@@ -1,7 +1,8 @@
 <template>
   <button class="vue-button"
           :class="{ [`icon-${iconPosition}`]: true }"
-          @click="clickLoading">
+          @click="clickLoading"
+          type="button">
     <VueIcon v-if="loadingStatus"
              :icon-name="loadingName"
              class="icon"
@@ -63,8 +64,6 @@ export default class VueButton extends Vue {
 
 $button-bg: whitesmoke;
 .vue-button {
-  margin-right: 10px;
-  margin-top: 10px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -73,14 +72,12 @@ $button-bg: whitesmoke;
   height: var(--button-height);
   padding: 0 0.73em;
   border-radius: var(--border-radius);
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
   background: $button-bg;
 
   &:hover {
-    border: 2px solid var(--border-color-hover);
+    border: 1px solid var(--border-color-hover);
     box-shadow: 0 0 0 1px var(--border-color-hover);
-    outline-width: 1px;
-    outline-color: var(--border-color-hover);
     background: lighten($button-bg, 5%);
   }
 
