@@ -88,16 +88,21 @@ describe('VueInput', () => {
           const callback = sinon.fake();
           // 监听
           vm.$on(eventName, callback);
-          // 手动触发 input 的事件
-          const changeEvent = new Event(eventName);
+          // 创建事件 给事件对象添加属性
+          const triggerEvent = new Event(eventName);
+          Object.defineProperty(
+            triggerEvent,
+            'target',
+            {value: {value: 'hi'}}
+          );
           const inputElement = vm.$el.querySelector('input');
-          (inputElement as HTMLInputElement).dispatchEvent(changeEvent);
-
+          // 手动触发 input 的事件
+          (inputElement as HTMLInputElement).dispatchEvent(triggerEvent);
           // 断言
-          expect(callback).to.have.been.calledWith(changeEvent);
+          expect(callback).to.have.been.calledWith('hi');
           console.log(`VueInput 支持 ${eventName} 事件`);
         });
-
+      console.log(`VueInput 支持 v-model`);
     });
 
   });
