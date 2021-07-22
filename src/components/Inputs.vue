@@ -4,7 +4,6 @@
       <summary>Primary</summary>
       <div>
         <VueInput placeholder="Enable"
-                  id="testInput"
                   @change="inputChange">
         </VueInput>
         <VueInput placeholder="Hover"
@@ -48,31 +47,34 @@
         </VueInput>
       </div>
     </details>
+    <br>
+    <form>
+      <fieldset>
+        <legend>v-model binding value: {{ message }}</legend>
+        <VueInput placeholder="Enable"
+                  @change="inputChange"
+                  v-model="message">
+        </VueInput>
+        <VueButton @click="message += 1">+1</VueButton>
+      </fieldset>
+    </form>
   </div>
 </template>
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
 import VueInput from './input/VueInput.vue';
+import VueButton from './button/VueButton.vue';
 
 @Component({
   components: {
-    VueInput
+    VueInput,
+    VueButton
   }
 })
 export default class Inputs extends Vue {
   name = 'Inputs';
-
-  mounted() {
-    setTimeout(() => {
-      const event = new Event('change');
-      const inputElement = this.$el.querySelector('#testInput');
-      console.log('inputElement: ', inputElement);
-      console.log('event: ', event);
-      (inputElement as HTMLInputElement).dispatchEvent(event);
-      console.log('自己触发input事件');
-    }, 0);
-  }
+  message = 'hi';
 
   inputChange(e: Event) {
     console.log(e);
