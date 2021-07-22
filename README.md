@@ -17,7 +17,7 @@
 - `TypeScript`
 - `SCSS`
 - `parcel`
-- [`GitHub Actions` `CI/CD`持续集成](https://github.com/xmasuhai/vueel-demo/actions)
+- [查看此项目的`GitHub Actions` `CI/CD`持续集成](https://github.com/xmasuhai/vueel-demo/actions)
 
 ## 开始使用
 
@@ -53,9 +53,7 @@ export default {
 <script src="//at.alicdn.com/t/font_2138557_rt8obmx2qyd.js"></script>
 ```
 
-
-
-#### 启动服务 Compiles and hot-reloads for development
+## 启动服务 Compiles and hot-reloads for development
 
 ```
 yarn serve
