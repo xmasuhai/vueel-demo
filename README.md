@@ -1,6 +1,6 @@
 # vueel-demo
 
-![github actions badge](https://github.com/xmasuhai/vueel-demo/actions/workflows/unit-test-actions.yml/badge.svg)
+[![CI](https://github.com/xmasuhai/vueel-demo/actions/workflows/unit-test-actions.yml/badge.svg)](https://github.com/xmasuhai/vueel-demo/actions/workflows/unit-test-actions.yml)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/xmasuhai/vueel-demo)
 
 ## 介绍
