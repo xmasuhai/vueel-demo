@@ -84,6 +84,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## 文档
 
 - 本 UI 组件库参考了 饥人谷的 [轱辘 UI](https://github.com/FrankFang/frank-test-1)
+- [轱辘 UI源码](https://github.com/FrankFang/gulu)
+- [Gulu UI for Vue 3](https://github.com/FrankFang/gulu-for-vue3)
 
 ## 提问
 
