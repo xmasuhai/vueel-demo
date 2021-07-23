@@ -6,21 +6,10 @@
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
-import VueButton from './components/button/VueButton.vue';
-import VueButtonGroup from './components/button-group/VueButtonGroup.vue';
-import VueIcon from './components/icon/VueIcon.vue';
-import VueInput from './components/input/VueInput.vue';
-
-// 全局注册组件
-Vue.component('v-button', VueButton);
-Vue.component('v-button-group', VueButtonGroup);
-Vue.component('v-icon', VueIcon);
-Vue.component('v-input', VueInput);
 
 @Component
 export default class App extends Vue {
   name = 'App';
-
 }
 
 </script>

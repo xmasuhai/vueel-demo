@@ -1,5 +1,47 @@
 <template>
   <div>
+    <form>
+      <fieldset>
+        <legend>Button Types</legend>
+        <details open>
+          <summary>Color - (Colorful the title Text)</summary>
+          <VueButton color="primary">Primary</VueButton>
+          <VueButton color="danger">Danger</VueButton>
+          <VueButton color="info">Info</VueButton>
+          <VueButton color="success">Success</VueButton>
+          <VueButton color="warning">Warning</VueButton>
+          <VueButton color="attention">Attention</VueButton>
+        </details>
+        <details open>
+          <summary>Size</summary>
+        </details>
+        <details open>
+          <summary>Event</summary>
+        </details>
+        <details open>
+          <summary>Button Group</summary>
+        </details>
+      </fieldset>
+    </form>
+    <br>
+    <form>
+      <fieldset>
+        <legend>Button with Icons</legend>
+        <details open>
+          <summary>Primary</summary>
+        </details>
+        <details open>
+          <summary>Primary</summary>
+        </details>
+        <details open>
+          <summary>Primary</summary>
+        </details>
+        <details open>
+          <summary>Primary</summary>
+        </details>
+      </fieldset>
+    </form>
+    <br>
     <VueButton>
       按钮
     </VueButton>

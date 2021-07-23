@@ -1,6 +1,6 @@
 <template>
-  <button class="vue-button"
-          :class="{ [`icon-${iconPosition}`]: true }"
+  <button :class="classes"
+          :color="color"
           @click="clickLoading"
           type="button">
     <VueIcon v-if="loadingStatus"
@@ -35,6 +35,14 @@ export default class VueButton extends Vue {
       return userValue === 'left' || userValue === 'right';
     }
   }) iconPosition!: string;
+  @Prop({
+    type: String,
+    default: '',
+    validator(color) {
+      return ['', 'primary', 'warning', 'danger', 'info', 'success', 'attention']
+        .indexOf(color) > -1;
+    }
+  }) color!: string;
 
   get loadingStatus() {
     return this.isLoading ? this.isLoading : (!!this.icon && !this.isLoading);
@@ -42,6 +50,14 @@ export default class VueButton extends Vue {
 
   get loadingName() {
     return this.isLoading ? 'loading' : this.icon;
+  }
+
+  get classes() {
+    return {
+      'vue-button': 'vue-button',
+      [`icon-${this.iconPosition}`]: true,
+      [`vue-button-${this.color}`]: true
+    };
   }
 
   @Emit('click')
@@ -52,6 +68,8 @@ export default class VueButton extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import '../../style/global.scss';
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -62,7 +80,14 @@ export default class VueButton extends Vue {
   }
 }
 
-$button-bg: whitesmoke;
+@mixin default-color($background: #000) {
+  color: #fff;
+  background: $background;
+  &:hover {
+    background: lighten($background, 10%);
+  }
+}
+
 .vue-button {
   display: inline-flex;
   justify-content: center;
@@ -73,35 +98,58 @@ $button-bg: whitesmoke;
   padding: 0 0.73em;
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
-  background: $button-bg;
+  background: ghostwhite;
+  color: #000;
 
   &:hover {
     border: 1px solid var(--border-color-hover);
-    box-shadow: 0 0 0 1px var(--border-color-hover);
+    box-shadow: 0 0 0 1px var(--border-color-hover),
+    0 0 2px 3px rgba(255, 255, 255, 1);
     background: lighten($button-bg, 5%);
   }
 
   &:active {
     background-color: var(--button-active-bg);
+    backface-visibility: hidden;
+    transform: $--pressed-scale;
   }
 
   &:focus {
     outline: none;
   }
 
-  &.icon-right {
-    > .icon {
-      order: 2;
-      margin-left: 0.3em;
-      margin-right: 0;
-      margin-top: 0.1em;
-    }
-
-    > .content {
-      order: 1;
-    }
+  // Colors
+  &-primary {
+    $background: $primary;
+    @include default-color($background);
   }
 
+  &-success {
+    $background: $success;
+    @include default-color($background);
+  }
+
+  &-danger {
+    $background: $danger;
+    @include default-color($background);
+  }
+
+  &-warning {
+    $background: $warning;
+    @include default-color($background);
+  }
+
+  &-attention {
+    $background: $attention;
+    @include default-color($background);
+  }
+
+  &-info {
+    $background: $info;
+    @include default-color($background);
+  }
+
+  // Icon
   /* ali iconfont common css */
   > .icon {
     width: 1em;
@@ -119,6 +167,20 @@ $button-bg: whitesmoke;
     order: 2;
   }
 
+  &.icon-right {
+    > .icon {
+      order: 2;
+      margin-left: 0.3em;
+      margin-right: 0;
+      margin-top: 0.1em;
+    }
+
+    > .content {
+      order: 1;
+    }
+  }
+
+  // animation
   .loading {
     animation: spin 1s infinite linear;
   }
