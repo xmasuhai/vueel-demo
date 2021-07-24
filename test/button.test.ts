@@ -80,6 +80,33 @@ describe('VueButton', () => {
       console.log('Button 设置 iconPosition 可以改变 order');
     });
 
+    [
+      {'': 'rgb(248, 248, 255)'},
+      {'primary': 'rgb(13, 110, 253)'},
+      {'danger': 'rgb(255, 65, 54)'},
+      {'warning': 'rgb(255, 193, 7)'},
+      {'success': 'rgb(25, 135, 84)'},
+      {'info': 'rgb(13, 202, 240)'},
+      {'attention': 'rgb(253, 126, 20)'}
+    ].forEach((typeObj) => {
+      const colorType = Object.keys(typeObj)[0];
+      const colorString = Object.values(typeObj)[0];
+      it('设置 color 可以改变 按钮种类', () => {
+        const div = document.createElement('div');
+        document.body.appendChild(div);
+        vm = new Constructor({
+          propsData: {
+            colorType
+          }
+        }).$mount(div);
+        const buttonElement = vm.$el;
+        expect(getComputedStyle(buttonElement as HTMLButtonElement).backgroundColor)
+          .to.eq(colorString);
+        console.log(`Button 设置 color 可以改变 ${colorType}按钮种类`);
+      });
+
+    });
+
   });
 
   describe('测试事件', () => {
@@ -100,7 +127,6 @@ describe('VueButton', () => {
       expect(callback).to.have.been.called;
       console.log('点击 button 触发 click 事件');
     });
-
   });
 
 });

@@ -4,13 +4,13 @@
       <fieldset>
         <legend>Button Types</legend>
         <details open>
-          <summary>Color - (Colorful the title Text)</summary>
-          <VueButton color="primary">Primary</VueButton>
-          <VueButton color="danger">Danger</VueButton>
-          <VueButton color="info">Info</VueButton>
-          <VueButton color="success">Success</VueButton>
-          <VueButton color="warning">Warning</VueButton>
-          <VueButton color="attention">Attention</VueButton>
+          <summary><span class="rainbow-text">Buttons with Color</span></summary>
+          <VueButton colorType="primary">Primary</VueButton>
+          <VueButton colorType="danger">Danger</VueButton>
+          <VueButton colorType="info">Info</VueButton>
+          <VueButton colorType="success">Success</VueButton>
+          <VueButton colorType="warning">Warning</VueButton>
+          <VueButton colorType="attention">Attention</VueButton>
         </details>
         <details open>
           <summary>Size</summary>
@@ -91,5 +91,13 @@ export default class Buttons extends Vue {
 <style lang="scss" scoped>
 ::v-deep {
   margin-right: 10px;
+}
+
+summary {
+  .rainbow-text {
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <button :class="classes"
-          :color="color"
+          :colorType="colorType"
           @click="clickLoading"
           type="button">
     <VueIcon v-if="loadingStatus"
@@ -38,11 +38,11 @@ export default class VueButton extends Vue {
   @Prop({
     type: String,
     default: '',
-    validator(color) {
+    validator(colorType) {
       return ['', 'primary', 'warning', 'danger', 'info', 'success', 'attention']
-        .indexOf(color) > -1;
+        .indexOf(colorType) > -1;
     }
-  }) color!: string;
+  }) colorType!: string;
 
   get loadingStatus() {
     return this.isLoading ? this.isLoading : (!!this.icon && !this.isLoading);
@@ -56,7 +56,7 @@ export default class VueButton extends Vue {
     return {
       'vue-button': 'vue-button',
       [`icon-${this.iconPosition}`]: true,
-      [`vue-button-${this.color}`]: true
+      [`vue-button-${this.colorType}`]: true
     };
   }
 
@@ -80,11 +80,15 @@ export default class VueButton extends Vue {
   }
 }
 
-@mixin default-color($background: #000) {
+@mixin setColorType($background: $button-bg) {
   color: #fff;
   background: $background;
+  border: 0 solid transparent;
   &:hover {
     background: lighten($background, 10%);
+    border: 0 solid transparent;
+    box-shadow: 0 0 0 1px $background,
+    0 0 1px 1px $background;
   }
 }
 
@@ -98,7 +102,7 @@ export default class VueButton extends Vue {
   padding: 0 0.73em;
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
-  background: ghostwhite;
+  background: $button-bg;
   color: #000;
 
   &:hover {
@@ -121,32 +125,32 @@ export default class VueButton extends Vue {
   // Colors
   &-primary {
     $background: $primary;
-    @include default-color($background);
+    @include setColorType($background);
   }
 
   &-success {
     $background: $success;
-    @include default-color($background);
+    @include setColorType($background);
   }
 
   &-danger {
     $background: $danger;
-    @include default-color($background);
+    @include setColorType($background);
   }
 
   &-warning {
     $background: $warning;
-    @include default-color($background);
+    @include setColorType($background);
   }
 
   &-attention {
     $background: $attention;
-    @include default-color($background);
+    @include setColorType($background);
   }
 
   &-info {
     $background: $info;
-    @include default-color($background);
+    @include setColorType($background);
   }
 
   // Icon
