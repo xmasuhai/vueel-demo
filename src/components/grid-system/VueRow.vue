@@ -1,7 +1,6 @@
 <template>
   <div class="row"
-       :style="{ marginLeft: -gutter + 'px',
-                 marginRight: -gutter + 'px'}">
+       :style="rowStyle">
     <slot></slot>
   </div>
 </template>
@@ -18,9 +17,17 @@ export default class VueRow extends Vue {
     default: '0'
   }) gutter!: string;
 
+  get rowStyle() {
+    return {
+      marginLeft: -this.gutter + 'px',
+      marginRight: -this.gutter + 'px'
+    };
+  }
+
   mounted() {
     this.$children.forEach((vm) => {
-      (vm as any).gutter = this.gutter;
+      const source = {'gutter': this.gutter};
+      Object.assign(vm, source);
     });
   }
 }
@@ -31,6 +38,7 @@ export default class VueRow extends Vue {
   display: flex;
   justify-content: center;
   align-items: center;
+
   &:not(last-child) {
     margin: 16px 0;
   }

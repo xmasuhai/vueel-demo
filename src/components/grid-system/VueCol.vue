@@ -1,11 +1,7 @@
 <template>
   <div class="col"
-       :class="[span && `col-${span}`,
-       offset && `offset-${offset}`
-       ]"
-       :style="{ marginLeft: gutter/2 + 'px',
-                 marginRight: gutter/2 + 'px'
-                }">
+       :class="colClass"
+       :style="colStyle">
     <slot></slot>
   </div>
 </template>
@@ -26,6 +22,21 @@ export default class VueCol extends Vue {
   @Prop({
     type: [String, Number],
   }) offset!: string;
+
+  get colClass() {
+    const {span, offset} = this;
+    return [
+      span && `col-${span}`,
+      offset && `offset-${offset}`
+    ];
+  }
+
+  get colStyle() {
+    return {
+      marginLeft: this.gutter / 2 + 'px',
+      marginRight: this.gutter / 2 + 'px'
+    };
+  }
 
 }
 </script>
