@@ -98,6 +98,11 @@ summary {
     background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
     -webkit-background-clip: text;
     color: transparent;
+
+    &::selection {
+      color: #000;
+      background-color: #fff;
+    }
   }
 }
 </style>

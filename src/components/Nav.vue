@@ -18,7 +18,7 @@ import {Component, Vue} from 'vue-property-decorator';
 export default class Nav extends Vue {
   name = 'Nav';
   currentTabText = 'Buttons';
-  tabs = ['Buttons', 'Inputs'];
+  tabs = ['Buttons', 'Inputs', 'GridSystems'];
 
   showTab(tab: string) {
     this.$emit('update:tabName', tab);

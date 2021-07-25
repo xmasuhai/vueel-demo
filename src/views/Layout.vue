@@ -5,7 +5,9 @@
     <section class="content"
              :class="classPrefix && `${classPrefix}-content`">
       <keep-alive>
-        <component :is="currentTabComponent" class="tab"></component>
+        <component :is="currentTabComponent"
+                   class="tab">
+        </component>
       </keep-alive>
     </section>
   </section>
@@ -15,18 +17,20 @@
 import {Component, Prop, Vue} from 'vue-property-decorator';
 import Buttons from '../components/Buttons.vue';
 import Inputs from '../components/Inputs.vue';
+import GridSystems from '../components/GridSystems.vue';
 import Nav from '../components/Nav.vue';
 
 @Component({
   components: {
     Buttons,
     Inputs,
+    GridSystems,
     Nav
   }
 })
 export default class Layout extends Vue {
   name = 'Layout';
-  currentTabText = 'buttons';
+  currentTabText = 'Buttons';
 
   // 由动态外部参数 获取 类样式
   @Prop(String) ['classPrefix']: string;

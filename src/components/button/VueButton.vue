@@ -90,6 +90,9 @@ export default class VueButton extends Vue {
     box-shadow: 0 0 0 1px $background,
     0 0 1px 1px $background;
   }
+  &:active {
+    background: darken($background, 3%);
+  }
 }
 
 .vue-button {
@@ -109,7 +112,7 @@ export default class VueButton extends Vue {
     border: 1px solid var(--border-color-hover);
     box-shadow: 0 0 0 1px var(--border-color-hover),
     0 0 2px 3px rgba(255, 255, 255, 1);
-    background: lighten($button-bg, 5%);
+    background-color: lighten($button-bg, 5%);
   }
 
   &:active {
