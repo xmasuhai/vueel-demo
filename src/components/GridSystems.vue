@@ -58,19 +58,59 @@
       <fieldset>
         <legend>Grid</legend>
         <details open>
+          <summary>Offset</summary>
+          <VueRow>
+            <VueCol span="2">1/12</VueCol>
+            <VueCol span="20" offset="2">5/6 offset_2</VueCol>
+          </VueRow>
+          <VueRow>
+            <VueCol span="4">1/6</VueCol>
+            <VueCol span="18" offset="2">5/6 offset_2</VueCol>
+          </VueRow>
+          <VueRow>
+            <VueCol span="4">1/6</VueCol>
+            <VueCol span="8" offset="2">1/3 offset_2</VueCol>
+            <VueCol span="8" offset="2">1/3 offset_2</VueCol>
+          </VueRow>
+          <VueRow>
+            <VueCol span="4">1/6</VueCol>
+            <VueCol span="4" offset="6">1/6 offset_6</VueCol>
+            <VueCol span="8" offset="2">1/3 offset_2</VueCol>
+          </VueRow>
+        </details>
+      </fieldset>
+    </form>
+    <br>
+
+    <form>
+      <fieldset>
+        <legend>Grid</legend>
+        <details open>
+          <summary>gutter</summary>
+          <VueRow gutter="20">
+            <VueCol span="4">1/12</VueCol>
+            <VueCol span="20">5/6</VueCol>
+          </VueRow>
+        </details>
+      </fieldset>
+    </form>
+    <br>
+
+    <form>
+      <fieldset>
+        <legend>Grid</legend>
+        <details open>
           <summary>Other</summary>
 
         </details>
       </fieldset>
     </form>
     <br>
-
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import {Component,} from 'vue-property-decorator';
+import {Component, Vue} from 'vue-property-decorator';
 import VueCol from './grid-system/VueCol.vue';
 import VueRow from './grid-system/VueRow.vue';
 
@@ -84,3 +124,10 @@ export default class GridSystems extends Vue {
   name = 'GridSystems';
 }
 </script>
+
+<style lang="scss" scoped>
+// BFC
+details {
+  overflow: hidden;
+}
+</style>

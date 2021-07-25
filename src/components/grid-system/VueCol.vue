@@ -1,5 +1,11 @@
 <template>
-  <div class="col" :class="[`col-${span}`]">
+  <div class="col"
+       :class="[span && `col-${span}`,
+       offset && `offset-${offset}`
+       ]"
+       :style="{ marginLeft: gutter/2 + 'px',
+                 marginRight: gutter/2 + 'px'
+                }">
     <slot></slot>
   </div>
 </template>
@@ -10,11 +16,16 @@ import {Component, Prop, Vue} from 'vue-property-decorator';
 @Component
 export default class VueCol extends Vue {
   name = 'VueCol';
+  gutter = 0;
 
   @Prop({
     type: [String, Number],
     default: '12'
   }) span!: string;
+
+  @Prop({
+    type: [String, Number],
+  }) offset!: string;
 
 }
 </script>
@@ -45,5 +56,12 @@ export default class VueCol extends Vue {
     }
   }
 
+  // .offset-2 ~ .offset-24
+  $class-prefix: offset-;
+  @for $n from 1 through 24 {
+    &.#{$class-prefix}#{$n} {
+      margin-left: ($n / 24) * 100%;
+    }
+  }
 }
 </style>
