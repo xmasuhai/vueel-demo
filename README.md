@@ -93,6 +93,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 - 添加 按钮组件
 - 添加 输入框组件
+- 添加 栅栏组件
 
 ## 使用 GitHub Actions 测试通过
 
