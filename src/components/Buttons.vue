@@ -5,12 +5,11 @@
         <legend>Button Types</legend>
         <details open>
           <summary><span class="rainbow-text">Buttons with Color</span></summary>
-          <VueButton colorType="primary">Primary</VueButton>
-          <VueButton colorType="danger">Danger</VueButton>
-          <VueButton colorType="info">Info</VueButton>
-          <VueButton colorType="success">Success</VueButton>
-          <VueButton colorType="warning">Warning</VueButton>
-          <VueButton colorType="attention">Attention</VueButton>
+          <VueButton v-for="type of colorTypeStringList"
+                     :colorType="type"
+                     :key="type">
+            {{ type }}
+          </VueButton>
         </details>
         <details open>
           <summary>Size</summary>
@@ -85,6 +84,14 @@ export default class Buttons extends Vue {
   isLoading1 = false;
   isLoading2 = true;
   isLoading3 = false;
+  colorTypeStringList = [
+    'primary',
+    'danger',
+    'info',
+    'success',
+    'warning',
+    'attention'
+  ];
 }
 </script>
 

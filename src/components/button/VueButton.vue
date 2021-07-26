@@ -126,34 +126,18 @@ export default class VueButton extends Vue {
   }
 
   // Colors
-  &-primary {
-    $background: $primary;
-    @include setColorType($background);
-  }
-
-  &-success {
-    $background: $success;
-    @include setColorType($background);
-  }
-
-  &-danger {
-    $background: $danger;
-    @include setColorType($background);
-  }
-
-  &-warning {
-    $background: $warning;
-    @include setColorType($background);
-  }
-
-  &-attention {
-    $background: $attention;
-    @include setColorType($background);
-  }
-
-  &-info {
-    $background: $info;
-    @include setColorType($background);
+  $color-types: (
+    'primary': $primary,
+    'danger': $danger,
+    'info': $info,
+    'success': $success,
+    'warning': $warning,
+    'attention': $attention
+  );
+  @each $name, $type in $color-types {
+    &-#{$name} {
+      @include setColorType($type);
+    }
   }
 
   // Icon
