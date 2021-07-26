@@ -1,7 +1,7 @@
 <template>
   <div class="col"
-       :class="colClass"
-       :style="colStyle">
+       :style="colStyle"
+       :class="colClass">
     <slot></slot>
   </div>
 </template>
@@ -15,13 +15,13 @@ export default class VueCol extends Vue {
   gutter = 0;
 
   @Prop({
-    type: [String, Number],
-    default: '12'
-  }) span!: string;
+    type: Number,
+    default: 12
+  }) span!: number;
 
   @Prop({
-    type: [String, Number],
-  }) offset!: string;
+    type: Number,
+  }) offset!: number;
 
   get colClass() {
     const {span, offset} = this;
@@ -32,6 +32,9 @@ export default class VueCol extends Vue {
   }
 
   get colStyle() {
+    if (!this.gutter) {
+      return {};
+    }
     return {
       marginLeft: this.gutter / 2 + 'px',
       marginRight: this.gutter / 2 + 'px'
@@ -67,7 +70,7 @@ export default class VueCol extends Vue {
     }
   }
 
-  // .offset-2 ~ .offset-24
+  // .col.offset-2 ~ .col.offset-24
   $class-prefix: offset-;
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {

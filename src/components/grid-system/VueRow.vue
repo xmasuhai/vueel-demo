@@ -13,9 +13,9 @@ export default class VueRow extends Vue {
   name = 'VueRow';
 
   @Prop({
-    type: [String, Number],
-    default: '0'
-  }) gutter!: string;
+    type: Number,
+    default: 0
+  }) gutter!: number;
 
   get rowStyle() {
     return {
