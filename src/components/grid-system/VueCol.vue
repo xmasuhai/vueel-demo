@@ -47,10 +47,10 @@ export default class VueCol extends Vue {
 <style lang="scss" scoped>
 .col {
   min-height: 45px;
-  max-width: 100%;
-  flex-grow: 1;
+  flex: auto;
   display: inline-flex;
   justify-content: center;
+  align-items: center;
   line-height: 45px;
   color: #fff;
 

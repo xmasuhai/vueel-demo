@@ -1,6 +1,7 @@
 <template>
   <div class="row"
-       :style="rowStyle">
+       :style="rowStyle"
+       :class="rowClass">
     <slot></slot>
   </div>
 </template>
@@ -17,11 +18,26 @@ export default class VueRow extends Vue {
     default: 0
   }) gutter!: number;
 
+  @Prop({
+    type: String,
+    default: 'center',
+    validator(value: string): boolean {
+      return ['', 'left', 'right', 'center'].includes(value);
+    }
+  }) align!: string;
+
   get rowStyle() {
     return {
-      marginLeft: -this.gutter + 'px',
-      marginRight: -this.gutter + 'px'
+      marginLeft: (-this.gutter / 2) + 'px',
+      marginRight: (-this.gutter / 2) + 'px'
     };
+  }
+
+  get rowClass() {
+    const {align} = this;
+    return [
+      align && `align-${align}`
+    ];
   }
 
   mounted() {
@@ -36,11 +52,18 @@ export default class VueRow extends Vue {
 <style lang="scss" scoped>
 .row {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex: auto;
 
-  &:not(last-child) {
-    margin: 16px 0;
+  // Align
+  $align-types: (
+    'left': flex-start,
+    'right': flex-end,
+    'center': center,
+  );
+  @each $name, $type in $align-types {
+    &.align-#{$name} {
+      justify-content: $type;
+    }
   }
 
 }

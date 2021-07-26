@@ -91,6 +91,61 @@
             <VueCol :span="4">1/12</VueCol>
             <VueCol :span="20">5/6</VueCol>
           </VueRow>
+          <VueRow :gutter="20">
+            <VueCol>1/2</VueCol>
+            <VueCol>1/2</VueCol>
+          </VueRow>
+          <VueRow :gutter="20">
+            <VueCol>1/3</VueCol>
+            <VueCol>1/3</VueCol>
+            <VueCol>1/3</VueCol>
+          </VueRow>
+          <VueRow :gutter="20">
+            <VueCol>1/4</VueCol>
+            <VueCol>1/4</VueCol>
+            <VueCol>1/4</VueCol>
+            <VueCol>1/4</VueCol>
+          </VueRow>
+        </details>
+      </fieldset>
+    </form>
+    <br>
+
+    <form>
+      <fieldset>
+        <legend>Grid</legend>
+        <details open>
+          <summary>align</summary>
+          <VueRow>
+            <VueCol :span="9">
+              <VueRow align="left">
+                <VueCol>1</VueCol>
+                <VueCol>2</VueCol>
+                <VueCol>3</VueCol>
+                <VueCol>4</VueCol>
+              </VueRow>
+            </VueCol>
+            <VueCol :span="15">
+              <VueRow align="right">
+                <VueCol>1</VueCol>
+                <VueCol>2</VueCol>
+                <VueCol>3</VueCol>
+                <VueCol>4</VueCol>
+                <VueCol>5</VueCol>
+                <VueCol>6</VueCol>
+                <VueCol>7</VueCol>
+              </VueRow>
+            </VueCol>
+          </VueRow>
+          <VueRow>
+            <VueCol :span="4">
+              <VueRow align="center">
+                <VueCol>LOGO</VueCol>
+              </VueRow>
+            </VueCol>
+            <VueCol :span="14">Main</VueCol>
+            <VueCol :span="6">Aside</VueCol>
+          </VueRow>
         </details>
       </fieldset>
     </form>
@@ -106,6 +161,7 @@
       </fieldset>
     </form>
     <br>
+
   </div>
 </template>
 
@@ -129,5 +185,9 @@ export default class GridSystems extends Vue {
 // BFC
 details {
   overflow: hidden;
+
+  > div:not(last-child) {
+    padding: 16px 0;
+  }
 }
 </style>
