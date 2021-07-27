@@ -9,6 +9,11 @@
 <script lang="ts">
 import {Component, Prop, Vue} from 'vue-property-decorator';
 
+type media = {
+  'span': number;
+  'offset': number;
+};
+
 @Component
 export default class VueCol extends Vue {
   name = 'VueCol';
@@ -21,13 +26,36 @@ export default class VueCol extends Vue {
 
   @Prop({
     type: Number,
+    default: 0
   }) offset!: number;
 
+  @Prop({
+    type: Object,
+    validator(value: media): boolean {
+      const keys = Object.keys(value);
+      let valid = true;
+      keys.forEach((key) => {
+        if (!['span', 'offset'].includes(key)) {
+          valid = false;
+        }
+      });
+      return valid;
+    }
+  }) mobile!: media;
+
   get colClass() {
-    const {span, offset} = this;
+    const {span, offset, mobile} = this;
+    let mobileClass: string[] = [''];
+    if (mobile) {
+      mobileClass = [
+        `col-mobile-${mobile.span}`,
+        `offset-mobile-${(mobile.offset)}`,
+      ];
+    }
     return [
       span && `col-${span}`,
-      offset && `offset-${offset}`
+      offset && `offset-${offset}`,
+      ...(mobileClass)
     ];
   }
 
@@ -75,6 +103,24 @@ export default class VueCol extends Vue {
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
       margin-left: ($n / 24) * 100%;
+    }
+  }
+
+  @media (max-width: 576px) {
+    // .col.col-1 ~ .col.col-24
+    $class-prefix: col-mobile-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n / 24) * 100%;
+      }
+    }
+
+    // .col.offset-2 ~ .col.offset-24
+    $class-prefix: offset-mobile-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: ($n / 24) * 100%;
+      }
     }
   }
 }

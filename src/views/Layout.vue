@@ -30,7 +30,7 @@ import Nav from '../components/Nav.vue';
 })
 export default class Layout extends Vue {
   name = 'Layout';
-  currentTabText = 'Buttons';
+  currentTabText = 'GridSystems';
 
   // 由动态外部参数 获取 类样式
   @Prop(String) ['classPrefix']: string;
@@ -59,9 +59,14 @@ export default class Layout extends Vue {
   }
 
   .content {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
     flex-grow: 1;
     overflow-y: auto;
     overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 }
 </style>

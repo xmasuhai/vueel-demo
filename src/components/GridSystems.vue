@@ -116,7 +116,7 @@
         <legend>Grid</legend>
         <details open>
           <summary>align</summary>
-          <VueRow>
+          <VueRow :gutter="20">
             <VueCol :span="9">
               <VueRow align="left">
                 <VueCol>1</VueCol>
@@ -156,7 +156,16 @@
         <legend>Grid</legend>
         <details open>
           <summary>@media</summary>
-
+          <VueRow>
+            <VueCol :span="2"
+                    :mobile="{span: 12}">
+              Aside
+            </VueCol>
+            <VueCol :span="18" :offset="2"
+                    :mobile="{span: 12, offset: 0}">
+              Main
+            </VueCol>
+          </VueRow>
         </details>
       </fieldset>
     </form>
@@ -183,6 +192,11 @@ export default class GridSystems extends Vue {
 
 <style lang="scss" scoped>
 details {
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   // BFC isolated margin
   overflow: hidden;
 

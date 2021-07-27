@@ -3,7 +3,7 @@
     <button v-for="tab in tabs"
             :key="tab"
             :class="['tab-button', { active: currentTabText === tab }]"
-            @click="currentTabText = tab; showTab(tab)">
+            @click="showTab(tab)">
       <span>
         {{ tab }}
       </span>
@@ -17,10 +17,13 @@ import {Component, Vue} from 'vue-property-decorator';
 @Component
 export default class Nav extends Vue {
   name = 'Nav';
-  currentTabText = 'Buttons';
+  currentTabText = 'GridSystems';
   tabs = ['Buttons', 'Inputs', 'GridSystems'];
 
   showTab(tab: string) {
+    // 切换对应样式
+    this.currentTabText = tab;
+    // 发布 切换对应组件 的自定义事件
     this.$emit('update:tabName', tab);
   }
 }
