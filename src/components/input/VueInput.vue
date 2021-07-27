@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue} from 'vue-property-decorator';
+import {Component, Emit, Prop, Vue} from 'vue-property-decorator';
 import VueIcon from '../icon/VueIcon.vue';
 
 @Component({
@@ -37,6 +37,7 @@ import VueIcon from '../icon/VueIcon.vue';
 })
 export default class VueInput extends Vue {
   name = 'VueInput';
+
   @Prop(String) labelName!: string;
   @Prop(String) value!: '';
   @Prop(String) placeholder!: string;
@@ -46,20 +47,24 @@ export default class VueInput extends Vue {
   @Prop(Boolean) disabled!: false;
   @Prop(String) error!: '';
 
+  @Emit()
   change($event: { target: HTMLInputElement }) {
-    this.$emit('change', $event.target.value);
+    return $event.target.value;
   }
 
+  @Emit()
   input($event: { target: HTMLInputElement }) {
-    this.$emit('input', $event.target.value);
+    return $event.target.value;
   }
 
+  @Emit()
   focus($event: { target: HTMLInputElement }) {
-    this.$emit('focus', $event.target.value);
+    return $event.target.value;
   }
 
+  @Emit()
   blur($event: { target: HTMLInputElement }) {
-    this.$emit('blur', $event.target.value);
+    return $event.target.value;
   }
 
 }

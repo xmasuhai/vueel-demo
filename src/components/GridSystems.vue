@@ -155,7 +155,7 @@
       <fieldset>
         <legend>Grid</legend>
         <details open>
-          <summary>Other</summary>
+          <summary>@media</summary>
 
         </details>
       </fieldset>
@@ -182,8 +182,8 @@ export default class GridSystems extends Vue {
 </script>
 
 <style lang="scss" scoped>
-// BFC
 details {
+  // BFC isolated margin
   overflow: hidden;
 
   > div:not(last-child) {
