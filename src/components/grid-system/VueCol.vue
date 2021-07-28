@@ -29,49 +29,43 @@ export default class VueCol extends Vue {
 
   @Prop({
     type: Object,
-    default: () => ({span: 12, offset: 0}),
     validator
   }) mobile!: mediaQuery;
 
   @Prop({
     type: Object,
-    default: () => ({span: 8, offset: 0}),
     validator
   }) pad!: mediaQuery;
 
   @Prop({
     type: Object,
-    default: () => ({span: 6, offset: 0}),
     validator
   }) laptop!: mediaQuery;
 
   @Prop({
     type: Object,
-    default: () => ({span: 4, offset: 0}),
     validator
   }) pc!: mediaQuery;
 
   @Prop({
     type: Object,
-    default: () => ({span: 2, offset: 0}),
     validator
   }) pcw!: mediaQuery;
 
   @Prop({
     type: Object,
-    default: () => ({span: 1, offset: 0}),
     validator
   }) pcx!: mediaQuery;
 
   get colClass() {
     const {span, offset, mobile, pad, laptop, pc, pcw, pcx} = this;
     return [
-      ...(pcx && [`col-pcx-${pcx.span}`, `offset-pcx-${(pcx.offset)}`]),
-      ...(pcw && [`col-pcw-${pcw.span}`, `offset-pcw-${(pcw.offset)}`]),
-      ...(pc && [`col-pc-${pc.span}`, `offset-pc-${(pc.offset)}`]),
-      ...(laptop && [`col-laptop-${laptop.span}`, `offset-laptop-${(laptop.offset)}`]),
-      ...(pad && [`col-pad-${pad.span}`, `offset-pad-${(pad.offset)}`]),
-      ...(mobile && [`col-mobile-${mobile.span}`, `offset-mobile-${(mobile.offset)}`]),
+      ...(pcx ? [`col-pcx-${pcx.span}`, `offset-pcx-${(pcx.offset)}`] : []),
+      ...(pcw ? [`col-pcw-${pcw.span}`, `offset-pcw-${(pcw.offset)}`] : []),
+      ...(pc ? [`col-pc-${pc.span}`, `offset-pc-${(pc.offset)}`] : []),
+      ...(laptop ? [`col-laptop-${laptop.span}`, `offset-laptop-${(laptop.offset)}`] : []),
+      ...(pad ? [`col-pad-${pad.span}`, `offset-pad-${(pad.offset)}`] : []),
+      ...(mobile ? [`col-mobile-${mobile.span}`, `offset-mobile-${(mobile.offset)}`] : []),
       span && `col-${span}`,
       offset && `offset-${offset}`,
     ];
