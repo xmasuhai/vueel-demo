@@ -14,10 +14,10 @@ describe('VueButton', () => {
   const Constructor = Vue.extend(VueButton);
   let vm: Vue;
 
-  it('存在.', () => {
+  it('VueButton存在.', () => {
     // expect(Button).to.be.ok
     expect(VueButton).to.exist;
-    console.log('VueButton');
+    console.log('VueButton存在');
   });
 
   describe('测试props', () => {
