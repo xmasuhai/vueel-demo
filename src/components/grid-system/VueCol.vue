@@ -8,6 +8,9 @@
 
 <script lang="ts">
 import {Component, Prop, Vue} from 'vue-property-decorator';
+import objKeyValidator from '../../libs/objKeyValidator';
+
+const validator = (value: mediaQuery) => objKeyValidator(value, ['span', 'offset']);
 
 @Component
 export default class VueCol extends Vue {
@@ -27,31 +30,50 @@ export default class VueCol extends Vue {
   @Prop({
     type: Object,
     default: () => ({span: 12, offset: 0}),
-    validator(value: mediaQuery): boolean {
-      const keys = Object.keys(value);
-      let valid = true;
-      keys.forEach((key) => {
-        if (!['span', 'offset'].includes(key)) {
-          valid = false;
-        }
-      });
-      return valid;
-    }
+    validator
   }) mobile!: mediaQuery;
 
+  @Prop({
+    type: Object,
+    default: () => ({span: 8, offset: 0}),
+    validator
+  }) pad!: mediaQuery;
+
+  @Prop({
+    type: Object,
+    default: () => ({span: 6, offset: 0}),
+    validator
+  }) laptop!: mediaQuery;
+
+  @Prop({
+    type: Object,
+    default: () => ({span: 4, offset: 0}),
+    validator
+  }) pc!: mediaQuery;
+
+  @Prop({
+    type: Object,
+    default: () => ({span: 2, offset: 0}),
+    validator
+  }) pcw!: mediaQuery;
+
+  @Prop({
+    type: Object,
+    default: () => ({span: 1, offset: 0}),
+    validator
+  }) pcx!: mediaQuery;
+
   get colClass() {
-    const {span, offset, mobile} = this;
-    let mobileClass: string[] = [''];
-    if (mobile) {
-      mobileClass = [
-        `col-mobile-${mobile.span}`,
-        `offset-mobile-${(mobile.offset)}`,
-      ];
-    }
+    const {span, offset, mobile, pad, laptop, pc, pcw, pcx} = this;
     return [
+      ...(pcx && [`col-pcx-${pcx.span}`, `offset-pcx-${(pcx.offset)}`]),
+      ...(pcw && [`col-pcw-${pcw.span}`, `offset-pcw-${(pcw.offset)}`]),
+      ...(pc && [`col-pc-${pc.span}`, `offset-pc-${(pc.offset)}`]),
+      ...(laptop && [`col-laptop-${laptop.span}`, `offset-laptop-${(laptop.offset)}`]),
+      ...(pad && [`col-pad-${pad.span}`, `offset-pad-${(pad.offset)}`]),
+      ...(mobile && [`col-mobile-${mobile.span}`, `offset-mobile-${(mobile.offset)}`]),
       span && `col-${span}`,
       offset && `offset-${offset}`,
-      ...(mobileClass)
     ];
   }
 
@@ -102,6 +124,7 @@ export default class VueCol extends Vue {
     }
   }
 
+  // mobile
   @media (max-width: 576px) {
     // .col.col-1 ~ .col.col-24
     $class-prefix: col-mobile-;
@@ -119,5 +142,101 @@ export default class VueCol extends Vue {
       }
     }
   }
+
+  // pad
+  @media (min-width: 577px) and (max-width: 768px) {
+    // .col.col-1 ~ .col.col-24
+    $class-prefix: col-pad-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n / 24) * 100%;
+      }
+    }
+
+    // .col.offset-2 ~ .col.offset-24
+    $class-prefix: offset-pad-;
+    @for $i from 0 through 24 {
+      &.#{$class-prefix}#{$i} {
+        margin-left: ($i / 24) * 100%;
+      }
+    }
+  }
+
+  // laptop
+  @media (min-width: 769px) and (max-width: 992px) {
+    // .col.col-1 ~ .col.col-24
+    $class-prefix: col-laptop-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n / 24) * 100%;
+      }
+    }
+
+    // .col.offset-2 ~ .col.offset-24
+    $class-prefix: offset-laptop-;
+    @for $i from 0 through 24 {
+      &.#{$class-prefix}#{$i} {
+        margin-left: ($i / 24) * 100%;
+      }
+    }
+  }
+
+  // pc
+  @media (min-width: 993px) and (max-width: 1200px) {
+    // .col.col-1 ~ .col.col-24
+    $class-prefix: col-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n / 24) * 100%;
+      }
+    }
+
+    // .col.offset-2 ~ .col.offset-24
+    $class-prefix: offset-pc-;
+    @for $i from 0 through 24 {
+      &.#{$class-prefix}#{$i} {
+        margin-left: ($i / 24) * 100%;
+      }
+    }
+  }
+
+  // pcw
+  @media (min-width: 1201px) and (max-width: 1600px) {
+    // .col.col-1 ~ .col.col-24
+    $class-prefix: col-pcw-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n / 24) * 100%;
+      }
+    }
+
+    // .col.offset-2 ~ .col.offset-24
+    $class-prefix: offset-pcw-;
+    @for $i from 0 through 24 {
+      &.#{$class-prefix}#{$i} {
+        margin-left: ($i / 24) * 100%;
+      }
+    }
+  }
+
+  // pcx
+  @media (min-width: 1601px) {
+    // .col.col-1 ~ .col.col-24
+    $class-prefix: col-pcx-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n / 24) * 100%;
+      }
+    }
+
+    // .col.offset-2 ~ .col.offset-24
+    $class-prefix: offset-pcx-;
+    @for $i from 0 through 24 {
+      &.#{$class-prefix}#{$i} {
+        margin-left: ($i / 24) * 100%;
+      }
+    }
+  }
+
 }
 </style>

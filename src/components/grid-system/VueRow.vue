@@ -66,5 +66,14 @@ export default class VueRow extends Vue {
     }
   }
 
+  // mobile
+  @media (max-width: 576px) {
+    .row {
+      display: flex;
+      flex: auto;
+      flex-wrap: wrap;
+    }
+  }
+
 }
 </style>

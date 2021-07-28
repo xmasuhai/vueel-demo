@@ -158,23 +158,35 @@
           <summary>media query</summary>
           <VueRow>
             <VueCol :span="2"
-                    :mobile="{span: 12}">
+                    :mobile="{span: 12}"
+                    :pad="{span: 8}"
+                    :laptop="{span: 6}"
+                    :pc="{span: 4}"
+                    :pcw="{span: 2}"
+                    :pcx="{span: 1}">
               Aside
             </VueCol>
             <VueCol :span="18" :offset="2"
-                    :mobile="{span: 12, offset: 0}">
+                    :mobile="{span: 12, offset: 0}"
+                    :pad="{span: 16}"
+                    :laptop="{span: 18}"
+                    :pc="{span: 20}"
+                    :pcw="{span: 22}"
+                    :pcx="{span: 23}">
               Main
             </VueCol>
           </VueRow>
           <VueRow>
-            <VueCol :span="2"
-                    :mobile="{span: 12}">
-              Aside
-            </VueCol>
-            <VueCol :span="18" :offset="10"
-                    :mobile="{span: 12, offset: 2}">
-              Main
-            </VueCol>
+            <VueRow>
+              <VueCol :span="6"
+                      :mobile="{span: 24}">
+                Aside
+              </VueCol>
+              <VueCol :span="18"
+                      :mobile="{span: 24}">
+                Main
+              </VueCol>
+            </VueRow>
           </VueRow>
         </details>
       </fieldset>
