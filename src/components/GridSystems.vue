@@ -155,7 +155,7 @@
       <fieldset>
         <legend>Grid</legend>
         <details open>
-          <summary>@media</summary>
+          <summary>media query</summary>
           <VueRow>
             <VueCol :span="2"
                     :mobile="{span: 12}">
@@ -163,6 +163,16 @@
             </VueCol>
             <VueCol :span="18" :offset="2"
                     :mobile="{span: 12, offset: 0}">
+              Main
+            </VueCol>
+          </VueRow>
+          <VueRow>
+            <VueCol :span="2"
+                    :mobile="{span: 12}">
+              Aside
+            </VueCol>
+            <VueCol :span="18" :offset="10"
+                    :mobile="{span: 12, offset: 2}">
               Main
             </VueCol>
           </VueRow>

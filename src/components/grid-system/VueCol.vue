@@ -9,11 +9,6 @@
 <script lang="ts">
 import {Component, Prop, Vue} from 'vue-property-decorator';
 
-type media = {
-  'span': number;
-  'offset': number;
-};
-
 @Component
 export default class VueCol extends Vue {
   name = 'VueCol';
@@ -31,7 +26,8 @@ export default class VueCol extends Vue {
 
   @Prop({
     type: Object,
-    validator(value: media): boolean {
+    default: () => ({span: 12, offset: 0}),
+    validator(value: mediaQuery): boolean {
       const keys = Object.keys(value);
       let valid = true;
       keys.forEach((key) => {
@@ -41,7 +37,7 @@ export default class VueCol extends Vue {
       });
       return valid;
     }
-  }) mobile!: media;
+  }) mobile!: mediaQuery;
 
   get colClass() {
     const {span, offset, mobile} = this;
@@ -100,9 +96,9 @@ export default class VueCol extends Vue {
 
   // .col.offset-2 ~ .col.offset-24
   $class-prefix: offset-;
-  @for $n from 1 through 24 {
-    &.#{$class-prefix}#{$n} {
-      margin-left: ($n / 24) * 100%;
+  @for $i from 0 through 24 {
+    &.#{$class-prefix}#{$i} {
+      margin-left: ($i / 24) * 100%;
     }
   }
 
@@ -117,9 +113,9 @@ export default class VueCol extends Vue {
 
     // .col.offset-2 ~ .col.offset-24
     $class-prefix: offset-mobile-;
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        margin-left: ($n / 24) * 100%;
+    @for $i from 0 through 24 {
+      &.#{$class-prefix}#{$i} {
+        margin-left: ($i / 24) * 100%;
       }
     }
   }
