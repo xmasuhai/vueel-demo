@@ -85,6 +85,9 @@ export default class VueCol extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@use "sass:list";
+@use "sass:math";
+
 .col {
   min-height: 45px;
   flex: auto;
@@ -106,7 +109,7 @@ export default class VueCol extends Vue {
   $class-prefix: col-;
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
-      width: ($n / 24) * 100%;
+      width: (math.div($n, 24)) * 100%;
     }
   }
 
@@ -114,120 +117,36 @@ export default class VueCol extends Vue {
   $class-prefix: offset-;
   @for $i from 0 through 24 {
     &.#{$class-prefix}#{$i} {
-      margin-left: ($i / 24) * 100%;
+      margin-left: (math.div($i, 24)) * 100%;
     }
   }
 
-  // mobile
-  @media (max-width: 576px) {
-    // .col.col-1 ~ .col.col-24
-    $class-prefix: col-mobile-;
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        width: ($n / 24) * 100%;
+  // media loops
+  // $media-types: ($type, $sizeList)
+  $media-types: (
+    'mobile': (0 576px),
+    'pad': (577px 768px),
+    'laptop': (769px 992px),
+    'pc': (993px 1200px),
+    'pcw': (1201px 1600px),
+    'pcx': (1601px 10000px),
+  );
+  @each $type, $sizeList in $media-types {
+    @media (min-width: (list.nth($sizeList, 1))) and (max-width: (list.nth($sizeList, 2))) {
+      // .col.col-1 ~ .col.col-24
+      $class-prefix: col-#{$type}-;
+      @for $n from 1 through 24 {
+        &.#{$class-prefix}#{$n} {
+          width: (math.div($n, 24)) * 100%;
+        }
       }
-    }
 
-    // .col.offset-2 ~ .col.offset-24
-    $class-prefix: offset-mobile-;
-    @for $i from 0 through 24 {
-      &.#{$class-prefix}#{$i} {
-        margin-left: ($i / 24) * 100%;
-      }
-    }
-  }
-
-  // pad
-  @media (min-width: 577px) and (max-width: 768px) {
-    // .col.col-1 ~ .col.col-24
-    $class-prefix: col-pad-;
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        width: ($n / 24) * 100%;
-      }
-    }
-
-    // .col.offset-2 ~ .col.offset-24
-    $class-prefix: offset-pad-;
-    @for $i from 0 through 24 {
-      &.#{$class-prefix}#{$i} {
-        margin-left: ($i / 24) * 100%;
-      }
-    }
-  }
-
-  // laptop
-  @media (min-width: 769px) and (max-width: 992px) {
-    // .col.col-1 ~ .col.col-24
-    $class-prefix: col-laptop-;
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        width: ($n / 24) * 100%;
-      }
-    }
-
-    // .col.offset-2 ~ .col.offset-24
-    $class-prefix: offset-laptop-;
-    @for $i from 0 through 24 {
-      &.#{$class-prefix}#{$i} {
-        margin-left: ($i / 24) * 100%;
-      }
-    }
-  }
-
-  // pc
-  @media (min-width: 993px) and (max-width: 1200px) {
-    // .col.col-1 ~ .col.col-24
-    $class-prefix: col-pc-;
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        width: ($n / 24) * 100%;
-      }
-    }
-
-    // .col.offset-2 ~ .col.offset-24
-    $class-prefix: offset-pc-;
-    @for $i from 0 through 24 {
-      &.#{$class-prefix}#{$i} {
-        margin-left: ($i / 24) * 100%;
-      }
-    }
-  }
-
-  // pcw
-  @media (min-width: 1201px) and (max-width: 1600px) {
-    // .col.col-1 ~ .col.col-24
-    $class-prefix: col-pcw-;
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        width: ($n / 24) * 100%;
-      }
-    }
-
-    // .col.offset-2 ~ .col.offset-24
-    $class-prefix: offset-pcw-;
-    @for $i from 0 through 24 {
-      &.#{$class-prefix}#{$i} {
-        margin-left: ($i / 24) * 100%;
-      }
-    }
-  }
-
-  // pcx
-  @media (min-width: 1601px) {
-    // .col.col-1 ~ .col.col-24
-    $class-prefix: col-pcx-;
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        width: ($n / 24) * 100%;
-      }
-    }
-
-    // .col.offset-2 ~ .col.offset-24
-    $class-prefix: offset-pcx-;
-    @for $i from 0 through 24 {
-      &.#{$class-prefix}#{$i} {
-        margin-left: ($i / 24) * 100%;
+      // .col.offset-2 ~ .col.offset-24
+      $class-prefix: offset-#{$type}-;
+      @for $i from 0 through 24 {
+        &.#{$class-prefix}#{$i} {
+          margin-left: (math.div($i, 24)) * 100%;
+        }
       }
     }
   }
