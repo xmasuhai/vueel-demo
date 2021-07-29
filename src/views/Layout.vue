@@ -1,9 +1,9 @@
 <template>
   <section class="layout-wrapper"
-           :class="classPrefix && `${classPrefix}-wrapper`">
+           :class="getLayoutClass('wrapper')">
     <Nav @update:tabName="changeTabComponent"/>
     <section class="content"
-             :class="classPrefix && `${classPrefix}-content`">
+             :class="getLayoutClass('content')">
       <keep-alive>
         <component :is="currentTabComponent"
                    class="tab">
@@ -31,6 +31,7 @@ import Nav from '../components/Nav.vue';
 export default class Layout extends Vue {
   name = 'Layout';
   currentTabText = 'GridSystems';
+  layoutType = '';
 
   // 由动态外部参数 获取 类样式
   @Prop(String) ['classPrefix']: string;
@@ -43,22 +44,26 @@ export default class Layout extends Vue {
     return this.currentTabText;
   }
 
+  getLayoutClass(value: string) {
+    this.layoutType = value;
+    return (this.classPrefix && `${this.classPrefix}-${this.layoutType}`);
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-.layout-wrapper {
+section.layout-wrapper {
   display: flex;
   overflow-scrolling: touch;
   flex-direction: column;
   height: 100vh;
 
-  .tab {
-    border: 1px solid #ccc;
-    padding: 20px;
-  }
+  section.content {
+    .tab {
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
 
-  .content {
     &::-webkit-scrollbar {
       display: none;
     }
@@ -67,6 +72,34 @@ export default class Layout extends Vue {
     overflow-y: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
+
+    ::v-deep {
+      form {
+        fieldset {
+          details {
+            padding: 8px 0;
+
+            > summary {
+              padding: 2px 0;
+              cursor: pointer;
+            }
+
+            ::-webkit-scrollbar {
+              display: none;
+            }
+
+            // BFC isolated margin
+            overflow: hidden;
+
+            > div:not(:last-child) {
+              padding: 0 0 16px;
+            }
+          }
+        }
+      }
+    }
+
   }
+
 }
 </style>

@@ -211,19 +211,3 @@ export default class GridSystems extends Vue {
   name = 'GridSystems';
 }
 </script>
-
-<style lang="scss" scoped>
-details {
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
-
-  // BFC isolated margin
-  overflow: hidden;
-
-  > div:not(last-child) {
-    padding: 16px 0;
-  }
-}
-</style>
