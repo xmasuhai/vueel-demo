@@ -81,8 +81,9 @@ export default class VueCol extends Vue {
     };
   }
 
+  width = 0;
   xx() {
-    console.log('hi');
+    this.width = document.documentElement.clientWidth;
   }
 
 }
