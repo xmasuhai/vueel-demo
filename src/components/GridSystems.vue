@@ -180,7 +180,7 @@
             <VueRow>
               <VueCol :span="6"
                       :mobile="{span: 24}">
-                Aside
+                Aside: {{ dymClientWidth }}
               </VueCol>
               <VueCol :span="18"
                       :mobile="{span: 24}">
@@ -201,6 +201,7 @@ import {Component, Vue} from 'vue-property-decorator';
 import VueCol from './grid-system/VueCol.vue';
 import VueRow from './grid-system/VueRow.vue';
 
+
 @Component({
   components: {
     VueCol,
@@ -209,5 +210,9 @@ import VueRow from './grid-system/VueRow.vue';
 })
 export default class GridSystems extends Vue {
   name = 'GridSystems';
+
+  get dymClientWidth() {
+    return document.documentElement.clientWidth;
+  }
 }
 </script>

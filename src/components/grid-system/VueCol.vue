@@ -1,5 +1,5 @@
 <template>
-  <div class="col"
+  <div @resize="xx" class="col"
        :style="colStyle"
        :class="colClass">
     <slot></slot>
@@ -81,12 +81,16 @@ export default class VueCol extends Vue {
     };
   }
 
+  xx() {
+    console.log('hi');
+  }
+
 }
 </script>
 
 <style lang="scss" scoped>
-@use "sass:list";
 @use "sass:math";
+@use "sass:list";
 
 .col {
   min-height: 45px;

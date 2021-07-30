@@ -8,7 +8,7 @@
              class="icon"
              :class="{loading: isLoading}"/>
     <div class="content">
-      <slot/>
+      <slot></slot>
     </div>
   </button>
 </template>
