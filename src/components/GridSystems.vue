@@ -180,7 +180,20 @@
             <VueRow>
               <VueCol :span="6"
                       :mobile="{span: 24}">
-                Aside: {{ dymClientWidth }}
+                Aside
+              </VueCol>
+              <VueCol :span="18"
+                      :mobile="{span: 24}">
+                Main
+              </VueCol>
+            </VueRow>
+          </VueRow>
+          <VueRow>
+            <VueRow>
+              <VueCol :span="6"
+                      :mobile="{span: 24}"
+                      @update:ClientWidth="getDymClientWidth">
+                Aside: {{ clientWidth }}
               </VueCol>
               <VueCol :span="18"
                       :mobile="{span: 24}">
@@ -210,9 +223,11 @@ import VueRow from './grid-system/VueRow.vue';
 })
 export default class GridSystems extends Vue {
   name = 'GridSystems';
+  clientWidth = document.body.clientWidth.toString();
 
-  get dymClientWidth() {
-    return document.documentElement.clientWidth;
+  getDymClientWidth(value: string) {
+    this.clientWidth = value;
   }
+
 }
 </script>

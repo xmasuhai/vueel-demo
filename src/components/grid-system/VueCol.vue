@@ -1,5 +1,5 @@
 <template>
-  <div @resize="xx" class="col"
+  <div class="col"
        :style="colStyle"
        :class="colClass">
     <slot></slot>
@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue} from 'vue-property-decorator';
+import {Component, Emit, Prop, Vue} from 'vue-property-decorator';
 import objKeyValidator from '../../libs/objKeyValidator';
 
 const validator = (value: mediaQuery) => objKeyValidator(value, ['span', 'offset']);
@@ -16,6 +16,7 @@ const validator = (value: mediaQuery) => objKeyValidator(value, ['span', 'offset
 export default class VueCol extends Vue {
   name = 'VueCol';
   gutter = 0;
+  screenWidth = document.body.clientWidth;
 
   @Prop({
     type: Number,
@@ -81,9 +82,18 @@ export default class VueCol extends Vue {
     };
   }
 
-  width = 0;
-  xx() {
-    this.width = document.documentElement.clientWidth;
+  @Emit('update:ClientWidth')
+  listenResize() {
+    console.log('窗口大小改变时的操作');
+    return this.screenWidth = document.body.clientWidth;
+  }
+
+  mounted() {
+    window.addEventListener('resize', this.listenResize);
+  }
+
+  beforeDestroy() {
+    window.removeEventListener('resize', this.listenResize);
   }
 
 }
