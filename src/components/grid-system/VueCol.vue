@@ -59,17 +59,29 @@ export default class VueCol extends Vue {
     validator
   }) pcx!: mediaQuery;
 
+  createMediaClasses(mediaObj: { span: number; offset: number }, infix = '') {
+    if (!mediaObj) {return [];}
+    const array = [];
+    if (mediaObj.span) {
+      array.push(`col-${infix}${mediaObj.span}`);
+    }
+    if (mediaObj.offset) {
+      array.push(`offset-${infix}${mediaObj.offset}`);
+    }
+    return array;
+  }
+
   get colClass() {
     const {span, offset, mobile, pad, laptop, pc, pcw, pcx} = this;
+    const createMediaClasses = this.createMediaClasses;
     return [
-      ...(pcx ? [`col-pcx-${pcx.span}`, `offset-pcx-${(pcx.offset)}`] : []),
-      ...(pcw ? [`col-pcw-${pcw.span}`, `offset-pcw-${(pcw.offset)}`] : []),
-      ...(pc ? [`col-pc-${pc.span}`, `offset-pc-${(pc.offset)}`] : []),
-      ...(laptop ? [`col-laptop-${laptop.span}`, `offset-laptop-${(laptop.offset)}`] : []),
-      ...(pad ? [`col-pad-${pad.span}`, `offset-pad-${(pad.offset)}`] : []),
-      ...(mobile ? [`col-mobile-${mobile.span}`, `offset-mobile-${(mobile.offset)}`] : []),
-      span && `col-${span}`,
-      offset && `offset-${offset}`,
+      ...createMediaClasses({span, offset}),
+      ...createMediaClasses(mobile, 'mobile-'),
+      ...createMediaClasses(pad, 'pad-'),
+      ...createMediaClasses(laptop, 'laptop-'),
+      ...createMediaClasses(pc, 'pc-'),
+      ...createMediaClasses(pcw, 'pcw-'),
+      ...createMediaClasses(pcx, 'pcx-'),
     ];
   }
 
