@@ -162,31 +162,19 @@
                     :pad="{span: 8}"
                     :laptop="{span: 6}"
                     :pc="{span: 4}"
-                    :pcw="{span: 2}"
+                    :pcw="{span: 10}"
                     :pcx="{span: 1}">
               Aside
             </VueCol>
             <VueCol :span="18" :offset="2"
                     :mobile="{span: 12, offset: 0}"
-                    :pad="{span: 16}"
-                    :laptop="{span: 18}"
-                    :pc="{span: 20}"
-                    :pcw="{span: 22}"
-                    :pcx="{span: 23}">
+                    :pad="{span: 16, offset: 0}"
+                    :laptop="{span: 18, offset: 0}"
+                    :pc="{span: 20, offset: 0}"
+                    :pcw="{span: 12, offset: 2}"
+                    :pcx="{span: 22, offset: 1}">
               Main
             </VueCol>
-          </VueRow>
-          <VueRow>
-            <VueRow>
-              <VueCol :span="6"
-                      :mobile="{span: 24}">
-                Aside
-              </VueCol>
-              <VueCol :span="18"
-                      :mobile="{span: 24}">
-                Main
-              </VueCol>
-            </VueRow>
           </VueRow>
           <VueRow>
             <VueRow>
@@ -201,6 +189,28 @@
                       :pc="{span: 16, offset: 1}">
                 Main
               </VueCol>
+            </VueRow>
+          </VueRow>
+          <VueRow>
+            <VueRow>
+              <VueCol :span="24" :pad="{span: 12}" :laptop="{span: 8}" :pc="{span: 6}">mobile</VueCol>
+              <VueCol :span="24" :pad="{span: 12}" :laptop="{span: 8}" :pc="{span: 6}">pad</VueCol>
+              <VueCol :span="24" :pad="{span: 12}" :laptop="{span: 8}" :pc="{span: 6}">laptop</VueCol>
+              <VueCol :span="24" :pad="{span: 12}" :laptop="{span: 8}" :pc="{span: 6}">pc</VueCol>
+              <VueCol :span="24" :pad="{span: 12}" :laptop="{span: 8}" :pc="{span: 6}">no pcw</VueCol>
+              <VueCol :span="24" :pad="{span: 12}" :laptop="{span: 8}" :pc="{span: 6}">no pcx</VueCol>
+            </VueRow>
+          </VueRow>
+          <VueRow>
+            <VueRow>
+              <VueCol :span="24" :laptop="{span: 8}" :pc="{span: 6}" :pxw="{span: 4}">mobile</VueCol>
+              <VueCol :span="24" :laptop="{span: 8}" :pc="{span: 6}" :pxw="{span: 4}">no pad</VueCol>
+              <VueCol :span="24" :laptop="{span: 8}" :pc="{span: 6}" :pxw="{span: 4}">laptop</VueCol>
+              <VueCol :span="24" :laptop="{span: 8}" :pc="{span: 6}" :pxw="{span: 4}">pc</VueCol>
+              <VueCol :span="24" :laptop="{span: 8}" :pc="{span: 6}" :pxw="{span: 4}">pcw</VueCol>
+              <VueCol :span="24" :laptop="{span: 8}" :pc="{span: 6}" :pxw="{span: 4}">no pcx</VueCol>
+              <VueCol :span="24" :laptop="{span: 8}" :pc="{span: 6}" :pxw="{span: 4}">pcw</VueCol>
+              <VueCol :span="24" :laptop="{span: 8}" :pc="{span: 6}" :pxw="{span: 4}">no pcx</VueCol>
             </VueRow>
           </VueRow>
         </details>

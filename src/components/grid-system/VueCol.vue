@@ -139,17 +139,17 @@ export default class VueCol extends Vue {
   }
 
   // media loops
-  // $media-types: ($type, $sizeList)
+  // $media-types: ($type, $size)
   $media-types: (
-    'mobile': (0 576px),
-    'pad': (577px 768px),
-    'laptop': (769px 992px),
-    'pc': (993px 1200px),
-    'pcw': (1201px 1600px),
-    'pcx': (1601px 10000px),
+    'mobile': 372px,
+    'pad': 577px,
+    'laptop': 769px,
+    'pc': 993px,
+    'pcw': 1201px,
+    'pcx': 1601px,
   );
-  @each $type, $sizeList in $media-types {
-    @media (min-width: (list.nth($sizeList, 1))) and (max-width: (list.nth($sizeList, 2))) {
+  @each $type, $size in $media-types {
+    @media (min-width: $size) {
       // .col.col-1 ~ .col.col-24
       $class-prefix: col-#{$type}-;
       @for $n from 1 through 24 {
