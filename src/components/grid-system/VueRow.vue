@@ -42,8 +42,13 @@ export default class VueRow extends Vue {
 
   mounted() {
     this.$children.forEach((vm) => {
+      /*
       const source = {'gutter': this.gutter};
       Object.assign(vm, source);
+      */
+      // Vue.set(vm,'gutter', this.gutter );
+      this.$set(vm, 'gutter', this.gutter);
+      console.log(this.gutter);
     });
   }
 }

@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Emit, Prop, Vue} from 'vue-property-decorator';
+import {Component, Emit, Prop, Vue, Watch} from 'vue-property-decorator';
 import objKeyValidator from '../../utils/objKeyValidator';
 import _ from 'lodash';
 
@@ -18,6 +18,14 @@ export default class VueCol extends Vue {
   name = 'VueCol';
   gutter = 0;
   screenWidth = document.body.clientWidth;
+
+  @Watch('gutter', {immediate: true})
+  gutterHandler(val: number, oldValue: number) {
+    console.log('gutter: ', this.gutter);
+    console.log('val:', val);
+    console.log('oldValue:', oldValue);
+    this.gutter = val;
+  }
 
   @Prop({
     type: Number,
