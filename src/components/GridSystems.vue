@@ -192,11 +192,13 @@
             <VueRow>
               <VueCol :span="6"
                       :mobile="{span: 24}"
+                      :pc="{span: 6}"
                       @update:ClientWidth="getDymClientWidth">
                 Aside: {{ clientWidth }}
               </VueCol>
               <VueCol :span="18"
-                      :mobile="{span: 24}">
+                      :mobile="{span: 24}"
+                      :pc="{span: 16, offset: 1}">
                 Main
               </VueCol>
             </VueRow>
@@ -226,7 +228,9 @@ export default class GridSystems extends Vue {
   clientWidth = document.body.clientWidth.toString();
 
   getDymClientWidth(value: string) {
-    this.clientWidth = value;
+    this.$nextTick(() => {
+      this.clientWidth = value;
+    });
   }
 
 }

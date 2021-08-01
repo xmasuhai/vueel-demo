@@ -8,7 +8,8 @@
 
 <script lang="ts">
 import {Component, Emit, Prop, Vue} from 'vue-property-decorator';
-import objKeyValidator from '../../libs/objKeyValidator';
+import objKeyValidator from '../../utils/objKeyValidator';
+import _ from 'lodash';
 
 const validator = (value: mediaQuery) => objKeyValidator(value, ['span', 'offset']);
 
@@ -84,16 +85,17 @@ export default class VueCol extends Vue {
 
   @Emit('update:ClientWidth')
   listenResize() {
-    console.log('窗口大小改变时的操作');
-    return this.screenWidth = document.body.clientWidth;
+    _.debounce(() => {
+      this.screenWidth = document.body.clientWidth;
+    }, 500)();
+    return this.screenWidth;
   }
 
   mounted() {
-    window.addEventListener('resize', this.listenResize);
-  }
-
-  beforeDestroy() {
-    window.removeEventListener('resize', this.listenResize);
+    window.addEventListener('resize', this.listenResize, true);
+    this.$once('hook:beforeDestroy', () => {
+      window.removeEventListener('resize', this.listenResize, true);
+    });
   }
 
 }
