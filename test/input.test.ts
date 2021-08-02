@@ -16,7 +16,6 @@ describe('VueInput', () => {
 
   it('VueInput存在.', () => {
     expect(VueInput).to.exist;
-    console.log('VueInput存在');
   });
 
   describe('props', () => {
@@ -33,7 +32,6 @@ describe('VueInput', () => {
       const inputElement = vm.$el.querySelector('input');
       expect((inputElement as HTMLInputElement).value)
         .to.equal('1234');
-      console.log('VueInput可以接受value');
     });
 
     it('VueInput可以接受disabled', () => {
@@ -45,7 +43,6 @@ describe('VueInput', () => {
       const inputElement = vm.$el.querySelector('input');
       expect((inputElement as HTMLInputElement).disabled)
         .to.equal(true);
-      console.log('VueInput可以接受disabled');
     });
 
     it('VueInput可以接受readOnly', () => {
@@ -57,7 +54,6 @@ describe('VueInput', () => {
       const inputElement = vm.$el.querySelector('input');
       expect((inputElement as HTMLInputElement).readOnly)
         .to.equal(true);
-      console.log('VueInput可以接受readOnly');
     });
 
     it('VueInput可以接受error', () => {
@@ -72,7 +68,6 @@ describe('VueInput', () => {
         .to.equal('#i-error-solid');
       const errorMessage = vm.$el.querySelector('.errorMessage');
       expect((errorMessage as HTMLElement).innerText).to.equal('你错了');
-      console.log('VueInput可以接受error');
     });
   });
 
@@ -100,9 +95,7 @@ describe('VueInput', () => {
           (inputElement as HTMLInputElement).dispatchEvent(triggerEvent);
           // 断言
           expect(callback).to.have.been.calledWith('hi');
-          console.log(`VueInput 支持 ${eventName} 事件`);
         });
-      console.log(`VueInput 支持 v-model`);
     });
 
   });

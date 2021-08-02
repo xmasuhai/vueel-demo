@@ -2,7 +2,7 @@
 // @ts-ignore
 import Vue from '../node_modules/vue/dist/vue.js';
 import chai from 'chai';
-import sinon from 'sinon';
+// import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import VueRow from '../src/components/grid-system/VueRow.vue';
 import VueCol from '../src/components/grid-system/VueCol.vue';
@@ -16,54 +16,46 @@ Vue.config.devtools = false;
 describe('VueRow', () => {
   const div = document.createElement('div');
   document.body.appendChild(div);
+
+  const RowConstructor = Vue.extend(VueRow);
+  const ColConstructor = Vue.extend(VueCol);
   let vmRow: Vue;
+  let vmCol: Vue;
 
   it('VueRow存在.', () => {
     expect(VueRow).to.exist;
-    console.log('VueRow存在');
+    expect(VueCol).to.exist;
   });
 
   describe('测试props', () => {
-    /*
     afterEach(() => {
       vmRow.$el.remove();
       vmRow.$destroy();
       vmCol.$el.remove();
       vmCol.$destroy();
     });
-    */
 
     it('VueRow 接受 gutter 属性', (done) => {
       Vue.component('v-row', VueRow);
       Vue.component('v-col', VueCol);
 
       div.innerHTML = `
-        <v-row :gutter="20">
-          <v-col :span="12">1</v-col>
-          <v-col :span="12">2</v-col>
-        </v-row>
+        <vmRow :gutter="20">
+          <vmCol :span="12">1</vmCol>
+          <vmCol :span="12">2</vmCol>
+        </vmRow>
       `;
 
-      vmRow = new Vue().$mount(div);
+      const row = vmRow.$el.querySelector('.row');
+      const cols = vmRow.$el.querySelectorAll('.col');
 
       setTimeout(() => {
-        const row = vmRow.$el.querySelector('.row');
         expect(getComputedStyle(row).marginLeft).to.eq('-10px');
         expect(getComputedStyle(row).marginRight).to.eq('-10px');
-        /*
-        const cols = vmRow.$el.querySelectorAll('.col');
-        console.log(getComputedStyle(cols[1]).marginTop);
         expect(getComputedStyle(cols[1]).marginRight).to.eq('10px');
         expect(getComputedStyle(cols[1]).marginLeft).to.eq('10px');
-        */
         done();
       }, 0);
-      /*
-      expect((useElement as SVGUseElement)
-        .getAttribute('xlink:href'))
-        .to.equal('#i-settings');
-      console.log('VueRow 可以设置icon');
-      */
     });
 
   });

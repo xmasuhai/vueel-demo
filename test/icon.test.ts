@@ -16,7 +16,6 @@ describe('VueIcon', () => {
   it('存在.', () => {
     // expect(Button).to.be.ok
     expect(VueIcon).to.exist;
-    console.log('VueIcon存在');
   });
 
   describe('测试props', () => {
@@ -50,7 +49,6 @@ describe('VueIcon', () => {
           expect((useElement as SVGUseElement)
             .getAttribute('xlink:href'))
             .to.equal(`#i-${iconName}`);
-          console.log(`VueIcon可以设置icon图标${iconName}`);
         });
       });
 

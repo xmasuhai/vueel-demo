@@ -17,7 +17,6 @@ describe('VueButton', () => {
   it('VueButton存在.', () => {
     // expect(Button).to.be.ok
     expect(VueButton).to.exist;
-    console.log('VueButton存在');
   });
 
   describe('测试props', () => {
@@ -36,7 +35,6 @@ describe('VueButton', () => {
       expect((useElement as SVGUseElement)
         .getAttribute('xlink:href'))
         .to.equal('#i-settings');
-      console.log('Button可以设置icon');
     });
 
     it('可以设置loading.', () => {
@@ -50,7 +48,6 @@ describe('VueButton', () => {
       expect(useElements.length).to.equal(1);
       expect(useElements[0].getAttribute('xlink:href'))
         .to.equal('#i-loading');
-      console.log('Button可以设置loading');
     });
 
     it('icon 默认的 order 是 1', () => {
@@ -63,7 +60,6 @@ describe('VueButton', () => {
       }).$mount(div);
       const icon = vm.$el.querySelector('svg');
       expect(getComputedStyle(icon as SVGSVGElement).order).to.eq('1');
-      console.log('Button icon 默认的 order 是 1');
     });
 
     it('设置 iconPosition 可以改变 order', () => {
@@ -77,7 +73,6 @@ describe('VueButton', () => {
       }).$mount(div);
       const icon = vm.$el.querySelector('svg');
       expect(getComputedStyle(icon as SVGSVGElement).order).to.eq('2');
-      console.log('Button 设置 iconPosition 可以改变 order');
     });
 
     [
@@ -102,7 +97,6 @@ describe('VueButton', () => {
         const buttonElement = vm.$el;
         expect(getComputedStyle(buttonElement as HTMLButtonElement).backgroundColor)
           .to.eq(colorString);
-        console.log(`Button 设置 color 可以改变 ${colorType}按钮种类`);
       });
 
     });
@@ -125,7 +119,6 @@ describe('VueButton', () => {
       vm.$on('click', callback);
       (vm.$el as HTMLElement).click();
       expect(callback).to.have.been.called;
-      console.log('点击 button 触发 click 事件');
     });
   });
 

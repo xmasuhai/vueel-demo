@@ -1,8 +1,8 @@
-const objKeyValidator = (attriObj: mediaQuery, attriData: string[]): boolean => {
+const objKeyValidator = (attributeObj: mediaQuery, attributeData: string[]): boolean => {
   let valid = true;
-  const keys = Object.keys(attriObj);
+  const keys = Object.keys(attributeObj);
   keys.forEach((key) => {
-    if (!attriData.includes(key)) {
+    if (!attributeData.includes(key)) {
       valid = false;
     }
   });
