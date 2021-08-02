@@ -1,13 +1,13 @@
 <template>
   <div class="col"
-       :style="colStyle"
-       :class="colClass">
+       :class="colClass"
+       :style="colStyle">
     <slot></slot>
   </div>
 </template>
 
 <script lang="ts">
-import {Component, Emit, Prop, Vue} from 'vue-property-decorator';
+import {Component, Emit, Prop, Inject, Vue} from 'vue-property-decorator';
 import objKeyValidator from '../../utils/objKeyValidator';
 import _ from 'lodash';
 
@@ -16,49 +16,44 @@ const validator = (value: mediaQuery) => objKeyValidator(value, ['span', 'offset
 @Component
 export default class VueCol extends Vue {
   name = 'VueCol';
-  gutter = 0;
   screenWidth = document.body.clientWidth;
+
+  // @Inject('gutter') readonly gutter!: number;
 
   @Prop({
     type: Number,
     default: 12
   }) span!: number;
-
   @Prop({
     type: Number,
     default: 0
   }) offset!: number;
-
   @Prop({
     type: Object,
     validator
   }) mobile!: mediaQuery;
-
   @Prop({
     type: Object,
     validator
   }) pad!: mediaQuery;
-
   @Prop({
     type: Object,
     validator
   }) laptop!: mediaQuery;
-
   @Prop({
     type: Object,
     validator
   }) pc!: mediaQuery;
-
   @Prop({
     type: Object,
     validator
   }) pcw!: mediaQuery;
-
   @Prop({
     type: Object,
     validator
   }) pcx!: mediaQuery;
 
+  // 拼装class名的 中缀 后缀 ,返回 类样式的数组
   createMediaClasses(mediaObj: { span: number; offset: number }, infix = '') {
     if (!mediaObj) {return [];}
     const array = [];
@@ -72,6 +67,7 @@ export default class VueCol extends Vue {
   }
 
   get colClass() {
+    console.log('colClass');
     const {span, offset, mobile, pad, laptop, pc, pcw, pcx} = this;
     const createMediaClasses = this.createMediaClasses;
     return [
@@ -87,8 +83,9 @@ export default class VueCol extends Vue {
 
   get colStyle() {
     if (!this.gutter) {
-      return {};
+      this.gutter = 0;
     }
+    console.log('colStyle', 'this.gutter: ', this.gutter );
     return {
       marginLeft: this.gutter / 2 + 'px',
       marginRight: this.gutter / 2 + 'px'

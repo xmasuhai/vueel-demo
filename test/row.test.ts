@@ -1,63 +1,54 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore
-import Vue from '../node_modules/vue/dist/vue.js';
+import Vue from 'vue2';
 import chai from 'chai';
 // import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
+// chai.use(sinonChai);
+const expect = chai.expect;
+
 import VueRow from '../src/components/grid-system/VueRow.vue';
 import VueCol from '../src/components/grid-system/VueCol.vue';
-
-chai.use(sinonChai);
-const expect = chai.expect;
 
 Vue.config.productionTip = false;
 Vue.config.devtools = false;
 
 describe('VueRow', () => {
-  const div = document.createElement('div');
-  document.body.appendChild(div);
-
-  const RowConstructor = Vue.extend(VueRow);
-  const ColConstructor = Vue.extend(VueCol);
-  let vmRow: Vue;
-  let vmCol: Vue;
-
-  it('VueRow存在.', () => {
+  Vue.component('g-row', VueRow);
+  it('存在.', () => {
     expect(VueRow).to.exist;
-    expect(VueCol).to.exist;
   });
 
-  describe('测试props', () => {
-    afterEach(() => {
-      vmRow.$el.remove();
-      vmRow.$destroy();
-      vmCol.$el.remove();
-      vmCol.$destroy();
+  it('接收 gutter 属性', (done) => {
+    Vue.component('g-col', VueCol);
+    const div = document.createElement('div');
+    document.body.appendChild(div);
+
+    div.innerHTML = `
+      <g-row :gutter="20">
+        <g-col :span="8"></g-col>
+        <g-col :span="8"></g-col>
+        <g-col :span="8"></g-col>
+      </g-row>
+    `;
+
+    const vm = new Vue({
+      el: div,
     });
 
-    it('VueRow 接受 gutter 属性', (done) => {
-      Vue.component('v-row', VueRow);
-      Vue.component('v-col', VueCol);
+    setTimeout(() => {
+      const row = vm.$el.querySelector('.row');
+      expect(getComputedStyle(row).marginLeft).to.eq('-10px');
+      expect(getComputedStyle(row).marginRight).to.eq('-10px');
+      const cols = vm.$el.querySelectorAll('.col');
+      console.log(vm.$el.outerHTML);
+      expect(getComputedStyle(cols[0]).marginRight).to.eq('10px');
+      expect(getComputedStyle(cols[1]).marginLeft).to.eq('10px');
+      done();
 
-      div.innerHTML = `
-        <vmRow :gutter="20">
-          <vmCol :span="12">1</vmCol>
-          <vmCol :span="12">2</vmCol>
-        </vmRow>
-      `;
-
-      const row = vmRow.$el.querySelector('.row');
-      const cols = vmRow.$el.querySelectorAll('.col');
-
-      setTimeout(() => {
-        expect(getComputedStyle(row).marginLeft).to.eq('-10px');
-        expect(getComputedStyle(row).marginRight).to.eq('-10px');
-        expect(getComputedStyle(cols[1]).marginRight).to.eq('10px');
-        expect(getComputedStyle(cols[1]).marginLeft).to.eq('10px');
-        done();
-      }, 0);
+      vm?.$el.remove();
+      vm?.$destroy();
     });
-
   });
 
   /*

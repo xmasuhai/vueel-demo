@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue} from 'vue-property-decorator';
+import {Component, Prop, Provide, Vue} from 'vue-property-decorator';
 
 @Component
 export default class VueRow extends Vue {
@@ -40,15 +40,17 @@ export default class VueRow extends Vue {
     ];
   }
 
+  // @Provide('gutter') gutterToSon = this.gutter;
+
   mounted() {
     this.$children.forEach((vm) => {
+      (vm as any).gutter = this.gutter;
       /*
       const source = {'gutter': this.gutter};
       Object.assign(vm, source);
       */
       // Vue.set(vm,'gutter', this.gutter );
-      this.$set(vm, 'gutter', this.gutter);
-      console.log(this.gutter);
+      // this.$set(vm, 'gutter', this.gutter);
     });
   }
 }
