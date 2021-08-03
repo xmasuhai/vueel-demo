@@ -3,8 +3,7 @@
     <details open>
       <summary>Primary</summary>
       <div>
-        <VueInput placeholder="Enable"
-                  @change="inputChange">
+        <VueInput placeholder="Enable">
         </VueInput>
         <VueInput placeholder="Hover"
                   :isFakeHover="true">

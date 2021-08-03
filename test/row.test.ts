@@ -19,37 +19,55 @@ describe('VueRow', () => {
     expect(VueCol).to.exist;
   });
 
-  it('接收 gutter 属性', (done) => {
-    Vue.component('g-row', VueRow);
-    Vue.component('g-col', VueCol);
+  describe('测试属性 props', () => {
+    let vm: Vue;
     const div = document.createElement('div');
     document.body.appendChild(div);
 
-    div.innerHTML = `
-          <g-row :gutter="20">
-            <g-col :span="8"></g-col>
-            <g-col :span="8"></g-col>
-          </g-row>
+    afterEach(() => {
+      vm.$el.remove();
+      vm.$destroy();
+    });
+
+    it('接收 gutter 属性', (done) => {
+      Vue.component('v-row', VueRow);
+      Vue.component('v-col', VueCol);
+      div.innerHTML = `
+          <v-row :gutter="20">
+            <v-col :span="8"></g-col>
+            <v-col :span="8"></g-col>
+          </v-row>
     `;
 
-    const vm = new Vue({
-      el: div,
+      vm = new Vue({
+        el: div,
+      });
+
+      setTimeout(() => {
+        const row = vm.$el.querySelector('.row');
+        expect(getComputedStyle(row).marginLeft).to.eq('-10px');
+        expect(getComputedStyle(row).marginRight).to.eq('-10px');
+        const cols = vm.$el.querySelectorAll('.col');
+        // console.log(vm.$el.innerHTML);
+        expect(getComputedStyle(cols[0]).marginRight).to.eq('10px');
+        expect(getComputedStyle(cols[1]).marginLeft).to.eq('10px');
+        done();
+      });
     });
 
-    setTimeout(() => {
-      const row = vm.$el.querySelector('.row');
-      expect(getComputedStyle(row).marginLeft).to.eq('-10px');
-      expect(getComputedStyle(row).marginRight).to.eq('-10px');
-      const cols = vm.$el.querySelectorAll('.col');
-      console.log(vm.$el.outerHTML);
-      expect(getComputedStyle(cols[0]).marginRight).to.eq('10px');
-      expect(getComputedStyle(cols[1]).marginLeft).to.eq('10px');
-      done();
-
-      vm?.$el.remove();
-      vm?.$destroy();
+    it('接收 align 属性', () => {
+      const Constructor = Vue.extend(VueRow);
+      const vm = new Constructor({
+        propsData: {
+          align: 'center'
+        }
+      }).$mount(div);
+      const element = vm.$el;
+      expect(getComputedStyle(element).justifyContent).to.eq('center');
     });
+
   });
+
 
   /*
     describe('测试事件', () => {
@@ -58,18 +76,18 @@ describe('VueRow', () => {
         vm.$destroy();
       });
 
-      it('点击 button 触发 click 事件', () => {
+      it('触发  事件', () => {
         vm = new Constructor({
           propsData: {
-            icon: 'settings',
           }
         }).$mount();
         const callback = sinon.fake();
-        vm.$on('click', callback);
-        (vm.$el as HTMLElement).click();
+        vm.$on('resize', callback);
+        (vm.$el as HTMLElement).resize();
         expect(callback).to.have.been.called;
-        console.log('点击 button 触发 click 事件');
+        console.log('点击 button 触发  事件');
       });
+
     });
     */
 

@@ -14,21 +14,23 @@ export default class VueRow extends Vue {
   name = 'VueRow';
 
   @Prop({
-    type: Number,
-    default: 0
-  }) gutter!: number;
+    type: [Number, String],
+  }) gutter!: number | string;
   @Prop({
     type: String,
     default: 'center',
     validator(value: string): boolean {
-      return ['', 'left', 'right', 'center'].includes(value);
+      return (['', 'left', 'right', 'center', 'space-between', 'space-around']
+        .includes(value));
     }
   }) align!: string;
 
   get rowStyle() {
+    const {gutter} = this;
+    console.log('gutter in VueRow', gutter);
     return {
-      marginLeft: (-this.gutter / 2) + 'px',
-      marginRight: (-this.gutter / 2) + 'px'
+      marginLeft: `${-gutter / 2}px`,
+      marginRight: `${-gutter / 2}px`
     };
   }
 
@@ -39,7 +41,17 @@ export default class VueRow extends Vue {
     ];
   }
 
-  @Provide('gutterToSon') gutterToSon = this.gutter;
+  // 传递 gutter 属性
+  // @Provide('gutterToSon') gutterToSon = this.gutter;
+  mounted() {
+    const {$children, gutter} = this;
+    console.log('$children in VueRow', $children);
+    if ($children && gutter) {
+      $children.forEach(vm => {
+        Vue.set(vm, 'gutter', gutter);
+      });
+    }
+  }
 
   /*
     mounted() {
@@ -68,6 +80,8 @@ export default class VueRow extends Vue {
     'left': flex-start,
     'right': flex-end,
     'center': center,
+    'space-between': space-between,
+    'space-around': space-around
   );
   @each $name, $type in $align-types {
     &.align-#{$name} {

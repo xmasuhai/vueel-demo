@@ -18,8 +18,9 @@ export default class VueCol extends Vue {
   name = 'VueCol';
   screenWidth = document.body.clientWidth;
 
-  @Inject('gutterToSon') gutterToSon!: number;
-  gutter = this.gutterToSon;
+  // @Inject('gutterToSon') gutterToSon!: number;
+  // gutter = this.gutterToSon;
+  gutter = 0;
 
   @Prop({
     type: Number,
@@ -82,13 +83,18 @@ export default class VueCol extends Vue {
   }
 
   get colStyle() {
+
     if (!this.gutter) {
       this.gutter = 0;
+      return {};
     }
-    console.log('colStyle', 'this.gutter: ', this.gutter);
+
+    const gutter = `${this.gutter / 2}px`;
+
+    console.log('gutter in VueCol', this.gutter);
     return {
-      marginLeft: this.gutter / 2 + 'px',
-      marginRight: this.gutter / 2 + 'px'
+      marginLeft: gutter,
+      marginRight: gutter
     };
   }
 
