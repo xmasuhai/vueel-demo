@@ -52,7 +52,6 @@
       <fieldset>
         <legend>v-model binding value: {{ message }}</legend>
         <VueInput placeholder="Enable"
-                  @change="inputChange"
                   v-model="message">
         </VueInput>
         <VueButton @click="message += 1">+1</VueButton>
@@ -75,10 +74,6 @@ import VueButton from './button/VueButton.vue';
 export default class Inputs extends Vue {
   name = 'Inputs';
   message = 'hi';
-
-  inputChange(e: Event) {
-    console.log(e);
-  }
 
 }
 </script>

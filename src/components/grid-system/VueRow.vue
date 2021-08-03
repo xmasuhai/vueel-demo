@@ -17,7 +17,6 @@ export default class VueRow extends Vue {
     type: Number,
     default: 0
   }) gutter!: number;
-
   @Prop({
     type: String,
     default: 'center',
@@ -40,19 +39,22 @@ export default class VueRow extends Vue {
     ];
   }
 
-  // @Provide('gutter') gutterToSon = this.gutter;
+  @Provide('gutterToSon') gutterToSon = this.gutter;
 
-  mounted() {
-    this.$children.forEach((vm) => {
-      (vm as any).gutter = this.gutter;
-      /*
-      const source = {'gutter': this.gutter};
-      Object.assign(vm, source);
-      */
-      // Vue.set(vm,'gutter', this.gutter );
-      // this.$set(vm, 'gutter', this.gutter);
-    });
-  }
+  /*
+    mounted() {
+      this.$children.forEach((vm) => {
+        (vm as any).gutter = this.gutter;
+        /!*
+        const source = {'gutter': this.gutter};
+        Object.assign(vm, source);
+        *!/
+        // Vue.set(vm,'gutter', this.gutter );
+        // this.$set(vm, 'gutter', this.gutter);
+      });
+    }
+  */
+
 }
 </script>
 

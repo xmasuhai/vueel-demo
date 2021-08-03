@@ -18,7 +18,8 @@ export default class VueCol extends Vue {
   name = 'VueCol';
   screenWidth = document.body.clientWidth;
 
-  // @Inject('gutter') readonly gutter!: number;
+  @Inject('gutterToSon') gutterToSon!: number;
+  gutter = this.gutterToSon;
 
   @Prop({
     type: Number,
@@ -67,7 +68,6 @@ export default class VueCol extends Vue {
   }
 
   get colClass() {
-    console.log('colClass');
     const {span, offset, mobile, pad, laptop, pc, pcw, pcx} = this;
     const createMediaClasses = this.createMediaClasses;
     return [
@@ -85,7 +85,7 @@ export default class VueCol extends Vue {
     if (!this.gutter) {
       this.gutter = 0;
     }
-    console.log('colStyle', 'this.gutter: ', this.gutter );
+    console.log('colStyle', 'this.gutter: ', this.gutter);
     return {
       marginLeft: this.gutter / 2 + 'px',
       marginRight: this.gutter / 2 + 'px'
