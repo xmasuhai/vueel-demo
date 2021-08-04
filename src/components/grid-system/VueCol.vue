@@ -83,15 +83,13 @@ export default class VueCol extends Vue {
   }
 
   get colStyle() {
-
     if (!this.gutter) {
       this.gutter = 0;
       return {};
     }
 
     const gutter = `${this.gutter / 2}px`;
-
-    console.log('gutter in VueCol', this.gutter);
+    // console.log('gutter in VueCol', this.gutter);
     return {
       marginLeft: gutter,
       marginRight: gutter

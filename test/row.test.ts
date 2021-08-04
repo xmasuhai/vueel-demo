@@ -34,7 +34,8 @@ describe('VueRow', () => {
       const Constructor = Vue.extend(VueRow);
       vm = new Constructor({
         propsData: {
-          align: 'center'
+          align: 'center',
+          gutter: 20
         }
       }).$mount(div);
       const element = vm.$el;
@@ -70,7 +71,6 @@ describe('VueRow', () => {
       });
 
     });
-
 
   });
 

@@ -27,7 +27,7 @@ export default class VueRow extends Vue {
 
   get rowStyle() {
     const {gutter} = this;
-    console.log('gutter in VueRow', gutter);
+    // console.log('gutter in VueRow', gutter);
     return {
       marginLeft: `${-gutter / 2}px`,
       marginRight: `${-gutter / 2}px`
