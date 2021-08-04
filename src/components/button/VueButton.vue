@@ -45,7 +45,8 @@ export default class VueButton extends Vue {
   }) colorType!: string;
 
   get loadingStatus() {
-    return this.isLoading ? this.isLoading : (!!this.icon && !this.isLoading);
+    // return this.isLoading ? this.isLoading : (!!this.icon && !this.isLoading);
+    return this.isLoading || (!!this.icon && !this.isLoading);
   }
 
   get loadingName() {

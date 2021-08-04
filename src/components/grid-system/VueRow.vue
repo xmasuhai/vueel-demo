@@ -45,10 +45,11 @@ export default class VueRow extends Vue {
   // @Provide('gutterToSon') gutterToSon = this.gutter;
   mounted() {
     const {$children, gutter} = this;
-    console.log('$children in VueRow', $children);
+    // console.log('$children in VueRow', $children);
+
     if ($children && gutter) {
       $children.forEach(vm => {
-        Vue.set(vm, 'gutter', gutter);
+        (vm as any).gutter = this.gutter;
       });
     }
   }

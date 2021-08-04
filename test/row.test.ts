@@ -29,9 +29,24 @@ describe('VueRow', () => {
       vm.$destroy();
     });
 
+    it('接收 align 属性', (done) => {
+      const Constructor = Vue.extend(VueRow);
+      vm = new Constructor({
+        propsData: {
+          align: 'center'
+        }
+      }).$mount(div);
+      const element = vm.$el;
+      expect(getComputedStyle(element).justifyContent).to.eq('center');
+      done();
+    });
+
+
     it('接收 gutter 属性', (done) => {
+
       Vue.component('v-row', VueRow);
       Vue.component('v-col', VueCol);
+
       div.innerHTML = `
           <v-row :gutter="20">
             <v-col :span="8"></g-col>
@@ -47,24 +62,20 @@ describe('VueRow', () => {
         const row = vm.$el.querySelector('.row');
         expect(getComputedStyle(row).marginLeft).to.eq('-10px');
         expect(getComputedStyle(row).marginRight).to.eq('-10px');
+
+        /*
         const cols = vm.$el.querySelectorAll('.col');
-        // console.log(vm.$el.innerHTML);
+        console.log(row.$el.innerHTML);
         expect(getComputedStyle(cols[0]).marginRight).to.eq('10px');
         expect(getComputedStyle(cols[1]).marginLeft).to.eq('10px');
+        */
+
         done();
-      });
+
+      }, 0);
+
     });
 
-    it('接收 align 属性', () => {
-      const Constructor = Vue.extend(VueRow);
-      const vm = new Constructor({
-        propsData: {
-          align: 'center'
-        }
-      }).$mount(div);
-      const element = vm.$el;
-      expect(getComputedStyle(element).justifyContent).to.eq('center');
-    });
 
   });
 
