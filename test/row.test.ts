@@ -3,7 +3,7 @@
 import Vue from 'vue2';
 import chai from 'chai';
 // import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
+// import sinonChai from 'sinon-chai';
 // chai.use(sinonChai);
 const expect = chai.expect;
 
@@ -20,6 +20,7 @@ describe('VueRow', () => {
   });
 
   describe('测试属性 props', () => {
+
     let vm: Vue;
     const div = document.createElement('div');
     document.body.appendChild(div);
@@ -29,7 +30,7 @@ describe('VueRow', () => {
       vm.$destroy();
     });
 
-    it('接收 align 属性', (done) => {
+    it('接收 align 属性', () => {
       const Constructor = Vue.extend(VueRow);
       vm = new Constructor({
         propsData: {
@@ -38,19 +39,18 @@ describe('VueRow', () => {
       }).$mount(div);
       const element = vm.$el;
       expect(getComputedStyle(element).justifyContent).to.eq('center');
-      done();
+
     });
 
-
     it('接收 gutter 属性', (done) => {
-
       Vue.component('v-row', VueRow);
       Vue.component('v-col', VueCol);
+      document.body.appendChild(div);
 
       div.innerHTML = `
           <v-row :gutter="20">
-            <v-col :span="8"></g-col>
-            <v-col :span="8"></g-col>
+            <v-col :span="12"></g-col>
+            <v-col :span="12"></g-col>
           </v-row>
     `;
 
@@ -62,17 +62,12 @@ describe('VueRow', () => {
         const row = vm.$el.querySelector('.row');
         expect(getComputedStyle(row).marginLeft).to.eq('-10px');
         expect(getComputedStyle(row).marginRight).to.eq('-10px');
-
-        /*
-        const cols = vm.$el.querySelectorAll('.col');
-        console.log(row.$el.innerHTML);
-        expect(getComputedStyle(cols[0]).marginRight).to.eq('10px');
-        expect(getComputedStyle(cols[1]).marginLeft).to.eq('10px');
-        */
-
+        // const cols = vm.$el.querySelectorAll('.col');
+        // expect(getComputedStyle(cols[0]).marginRight).to.eq('10px');
+        // expect(getComputedStyle(cols[0]).marginLeft).to.eq('10px');
         done();
 
-      }, 0);
+      });
 
     });
 
