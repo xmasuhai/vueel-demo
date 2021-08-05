@@ -41,32 +41,27 @@ export default class VueRow extends Vue {
     ];
   }
 
+  // Provide 传递 gutter 属性
+  @Provide('gutterToSon') gutterToSon = this.gutter;
+
   // 传递 gutter 属性
-  // @Provide('gutterToSon') gutterToSon = this.gutter;
+  /*
   mounted() {
     const {$children, gutter} = this;
     // console.log('$children in VueRow', $children);
-
     if ($children && gutter) {
       $children.forEach(vm => {
-        (vm as any).gutter = this.gutter;
+        (vm as any).gutter = gutter;
+        /!*
+        const source = {'gutter': gutter};
+        Object.assign(vm, source);
+        *!/
+        // Vue.set(vm,'gutter', gutter);
+        // this.$set(vm, 'gutter', gutter);
       });
     }
   }
-
-  /*
-    mounted() {
-      this.$children.forEach((vm) => {
-        (vm as any).gutter = this.gutter;
-        /!*
-        const source = {'gutter': this.gutter};
-        Object.assign(vm, source);
-        *!/
-        // Vue.set(vm,'gutter', this.gutter );
-        // this.$set(vm, 'gutter', this.gutter);
-      });
-    }
-  */
+*/
 
 }
 </script>

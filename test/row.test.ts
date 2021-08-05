@@ -9,6 +9,7 @@ const expect = chai.expect;
 
 import VueRow from '../src/components/grid-system/VueRow.vue';
 import VueCol from '../src/components/grid-system/VueCol.vue';
+import {mount} from '@vue/test-utils';
 
 Vue.config.productionTip = false;
 Vue.config.devtools = false;
@@ -74,6 +75,21 @@ describe('VueRow', () => {
 
   });
 
+  describe('VueRow.vue', () => {
+    let wrapper: Vue;
+
+    beforeEach(() => {
+      wrapper = mount(VueRow, {
+        propsData: {
+          gutter: 20
+        }
+      });
+    });
+
+    it('should contain gutter', function () {
+      expect(wrapper.find('.row').isVisible()).to.eq(true);
+    });
+  });
 
   /*
     describe('测试事件', () => {

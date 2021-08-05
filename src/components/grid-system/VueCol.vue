@@ -11,16 +11,17 @@ import {Component, Emit, Prop, Inject, Vue} from 'vue-property-decorator';
 import objKeyValidator from '../../utils/objKeyValidator';
 import _ from 'lodash';
 
-const validator = (value: mediaQuery) => objKeyValidator(value, ['span', 'offset']);
+// const validator = (value: mediaQuery) => objKeyValidator(value, ['span', 'offset']);
+const validator = (value: mediaQuery) => { return objKeyValidator(value, ['span', 'offset']); };
 
 @Component
 export default class VueCol extends Vue {
   name = 'VueCol';
   screenWidth = document.body.clientWidth;
 
-  // @Inject('gutterToSon') gutterToSon!: number;
-  // gutter = this.gutterToSon;
-  gutter = 0;
+  // Inject 注入 属性 代替 data 数据 gutter = 0;
+  @Inject('gutterToSon') gutterToSon!: number;
+  gutter = this.gutterToSon;
 
   @Prop({
     type: Number,
@@ -55,7 +56,7 @@ export default class VueCol extends Vue {
     validator
   }) pcx!: mediaQuery;
 
-  // 拼装class名的 中缀 后缀 ,返回 类样式的数组
+  // 拼装class名的 中缀 后缀; 返回 类样式的数组
   createMediaClasses(mediaObj: { span: number; offset: number }, infix = '') {
     if (!mediaObj) {return [];}
     const array = [];
@@ -83,16 +84,15 @@ export default class VueCol extends Vue {
   }
 
   get colStyle() {
-    if (!this.gutter) {
-      this.gutter = 0;
+    const {gutter} = this;
+    if (!gutter) {
       return {};
     }
-
-    const gutter = `${this.gutter / 2}px`;
-    // console.log('gutter in VueCol', this.gutter);
+    const colGutter = `${gutter / 2}px`;
+    // console.log('gutter in VueCol', colGutter);
     return {
-      marginLeft: gutter,
-      marginRight: gutter
+      marginLeft: colGutter,
+      marginRight: colGutter
     };
   }
 
