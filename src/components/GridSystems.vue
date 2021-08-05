@@ -218,31 +218,15 @@
             <VueCol>Mobile</VueCol>
             <VueCol>Mobile</VueCol>
             <VueCol>Mobile</VueCol>
-          </VueRow>
-          <VueRow>
-            <VueCol>Pad</VueCol>
-            <VueCol>Pad</VueCol>
-            <VueCol>Pad</VueCol>
-          </VueRow>
-          <VueRow>
-            <VueCol>Laptop</VueCol>
-            <VueCol>Laptop</VueCol>
-            <VueCol>Laptop</VueCol>
-          </VueRow>
-          <VueRow>
-            <VueCol>PC</VueCol>
-            <VueCol>PC</VueCol>
-            <VueCol>PC</VueCol>
-          </VueRow>
-          <VueRow>
-            <VueCol>PCw</VueCol>
-            <VueCol>PCw</VueCol>
-            <VueCol>PCw</VueCol>
-          </VueRow>
-          <VueRow>
-            <VueCol>PCx</VueCol>
-            <VueCol>PCx</VueCol>
-            <VueCol>PCx</VueCol>
+            <VueCol>Mobile</VueCol>
+            <VueCol>Mobile</VueCol>
+            <VueCol>Mobile</VueCol>
+            <VueCol>Mobile</VueCol>
+            <VueCol>Mobile</VueCol>
+            <VueCol>Mobile</VueCol>
+            <VueCol>Mobile</VueCol>
+            <VueCol>Mobile</VueCol>
+            <VueCol>Mobile</VueCol>
           </VueRow>
         </details>
       </fieldset>
@@ -253,7 +237,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Vue} from 'vue-property-decorator';
+import {Component, Vue, Watch} from 'vue-property-decorator';
 // import VueRow from './grid-system/VueRow.vue';
 import VueCol from './grid-system/VueCol.vue';
 
@@ -267,10 +251,13 @@ import VueCol from './grid-system/VueCol.vue';
 export default class GridSystems extends Vue {
   name = 'GridSystems';
   clientWidth = document.body.clientWidth.toString();
-
+  mediaText = '';
   getDymClientWidth(value: string) {
     this.clientWidth = value;
   }
-
+  @Watch('clientWidth')
+  onClientWidthChange(val: string,){
+    this.mediaText = val;
+  }
 }
 </script>
