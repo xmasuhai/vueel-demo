@@ -3,6 +3,7 @@ import chai from 'chai';
 
 const expect = chai.expect;
 import VueCol from '../src/components/grid-system/VueCol.vue';
+import VueRow from '../src/components/grid-system/VueRow.vue';
 
 Vue.config.productionTip = false;
 Vue.config.devtools = false;
@@ -55,14 +56,19 @@ describe('VueCol', () => {
     ['mobile', 'pad', 'laptop', 'pc', 'pcw', 'pcx'].forEach((mediaType) => {
       for (let n = 1; n < 24; n++) {
         for (let m = 1; m < 24; m++) {
-
           it(`接收 ${mediaType} 属性`, () => {
             const Constructor = Vue.extend(VueCol);
+            const RowConstructor = Vue.extend(VueRow);
+            const vmRow = new RowConstructor({
+              propsData: {
+                gutter: 20
+              }
+            }).$mount(div);
             vm = new Constructor({
               propsData: {
                 [mediaType]: {span: n, offset: m}
               }
-            }).$mount(div);
+            }).$mount(vmRow.$el);
             const element = vm.$el;
             expect(element.classList.contains(`col-${mediaType}-${n}`)).to.eq(true);
             expect(element.classList.contains(`offset-${mediaType}-${m}`)).to.eq(true);

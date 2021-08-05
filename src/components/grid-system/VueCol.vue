@@ -20,8 +20,7 @@ export default class VueCol extends Vue {
   screenWidth = document.body.clientWidth;
 
   // Inject 注入 属性 代替 data 数据 gutter = 0;
-  @Inject('gutterToSon') gutterToSon!: number;
-  gutter = this.gutterToSon;
+  @Inject({from: 'gutterToSon'}) gutter!: number;
 
   @Prop({
     type: Number,
