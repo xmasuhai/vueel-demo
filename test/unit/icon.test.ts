@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import chai from 'chai';
 import sinonChai from 'sinon-chai';
-import VueIcon from '../src/components/icon/VueIcon.vue';
+import VueIcon from '../../src/components/icon/VueIcon.vue';
 
 chai.use(sinonChai);
 const expect = chai.expect;

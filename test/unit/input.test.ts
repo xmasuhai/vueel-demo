@@ -2,7 +2,7 @@ import Vue from 'vue';
 import chai from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
-import VueInput from '../src/components/input/VueInput.vue';
+import VueInput from '../../src/components/input/VueInput.vue';
 
 chai.use(sinonChai);
 const expect = chai.expect;

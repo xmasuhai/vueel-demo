@@ -7,8 +7,8 @@ import chai from 'chai';
 // chai.use(sinonChai);
 const expect = chai.expect;
 
-import VueRow from '../src/components/grid-system/VueRow.vue';
-import VueCol from '../src/components/grid-system/VueCol.vue';
+import VueRow from '../../src/components/grid-system/VueRow.vue';
+import VueCol from '../../src/components/grid-system/VueCol.vue';
 
 Vue.config.productionTip = false;
 Vue.config.devtools = false;
