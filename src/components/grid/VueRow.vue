@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Prop, Provide, Vue} from 'vue-property-decorator';
+import {Component, Prop, /*Provide,*/ Vue} from 'vue-property-decorator';
 
 @Component
 export default class VueRow extends Vue {
@@ -42,26 +42,24 @@ export default class VueRow extends Vue {
   }
 
   // Provide 传递 gutter 属性
-  @Provide('gutterToSon') gutterToSon = this.gutter;
+  // @Provide('gutterToSon') gutterToSon = this.gutter;
 
   // 传递 gutter 属性
-  /*
   mounted() {
     const {$children, gutter} = this;
     // console.log('$children in VueRow', $children);
     if ($children && gutter) {
       $children.forEach(vm => {
         (vm as any).gutter = gutter;
-        /!*
+        /*
         const source = {'gutter': gutter};
         Object.assign(vm, source);
-        *!/
+        */
         // Vue.set(vm,'gutter', gutter);
         // this.$set(vm, 'gutter', gutter);
       });
     }
   }
-*/
 
 }
 </script>

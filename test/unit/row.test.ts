@@ -74,7 +74,7 @@ describe('VueRow', () => {
     `;
 
       vm = new Vue({
-        el: div,
+        el: div
       });
 
       setTimeout(() => {

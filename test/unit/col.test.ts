@@ -3,7 +3,7 @@ import chai from 'chai';
 
 const expect = chai.expect;
 import VueCol from '../../src/components/grid/VueCol.vue';
-import VueRow from '../../src/components/grid/VueRow.vue';
+import {createTestVM, destroyVM} from '../testUtil';
 
 Vue.config.productionTip = false;
 Vue.config.devtools = false;
@@ -15,37 +15,24 @@ describe('VueCol', () => {
 
   describe('测试属性 props', () => {
     let vm: Vue;
-    let div: HTMLDivElement;
 
-    beforeEach(() => {
-      div = document.createElement('div');
-      document.body.appendChild(div);
-    });
     afterEach(() => {
-      vm.$el.remove();
-      vm.$destroy();
+      destroyVM(vm);
     });
 
     for (let n = 1; n < 24; n++) {
-
       it('接收 span 属性', () => {
-        const Constructor = Vue.extend(VueCol);
-        vm = new Constructor({
-          propsData: {
-            span: n
-          }
-        }).$mount(div);
+        vm = createTestVM(VueCol, {
+          span: n
+        }, true);
         const element = vm.$el;
         expect(element.classList.contains(`col-${n}`)).to.eq(true);
       });
 
       it('接收 offset 属性', () => {
-        const Constructor = Vue.extend(VueCol);
-        vm = new Constructor({
-          propsData: {
-            offset: n
-          }
-        }).$mount(div);
+        vm = createTestVM(VueCol, {
+          offset: n
+        }, true);
         const element = vm.$el;
         expect(element.classList.contains(`offset-${n}`)).to.eq(true);
       });
@@ -53,33 +40,24 @@ describe('VueCol', () => {
     }
 
     // O(n^2) x 6
-    ['mobile', 'pad', 'laptop', 'pc', 'pcw', 'pcx'].forEach((mediaType) => {
-      for (let n = 1; n < 24; n++) {
-        for (let m = 1; m < 24; m++) {
-          it(`接收 ${mediaType} 属性`, () => {
-            const Constructor = Vue.extend(VueCol);
-            const RowConstructor = Vue.extend(VueRow);
-            const vmRow = new RowConstructor({
-              propsData: {
-                gutter: 20
-              }
-            }).$mount(div);
-            vm = new Constructor({
-              propsData: {
+    ['mobile', 'pad', 'laptop', 'pc', 'pcw', 'pcx']
+      .forEach((mediaType) => {
+        for (let n = 1; n < 24; n++) {
+          for (let m = 1; m < 24; m++) {
+            it(`接收 ${mediaType} 属性`, () => {
+              vm = createTestVM(VueCol, {
                 [mediaType]: {span: n, offset: m}
-              }
-            }).$mount(vmRow.$el);
-            const element = vm.$el;
-            expect(element.classList.contains(`col-${mediaType}-${n}`)).to.eq(true);
-            expect(element.classList.contains(`offset-${mediaType}-${m}`)).to.eq(true);
-          });
+              }, true);
+              const element = vm.$el;
+              expect(element.classList.contains(`col-${mediaType}-${n}`)).to.eq(true);
+              expect(element.classList.contains(`offset-${mediaType}-${m}`)).to.eq(true);
+            });
 
+          }
         }
-      }
 
-    });
+      });
 
   });
-
 
 });

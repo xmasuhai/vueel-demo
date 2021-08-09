@@ -3,6 +3,7 @@ import chai from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import VueButton from '../../src/components/button/VueButton.vue';
+import {createTestVM, /*createVueVM,*/ destroyVM} from '../testUtil';
 
 chai.use(sinonChai);
 const expect = chai.expect;
@@ -21,16 +22,17 @@ describe('VueButton', () => {
 
   describe('测试props', () => {
     afterEach(() => {
+      /*
       vm.$el.remove();
       vm.$destroy();
+      */
+      destroyVM(vm);
     });
 
     it('可以设置icon.', () => {
-      vm = new Constructor({
-        propsData: {
-          icon: 'settings'
-        }
-      }).$mount();
+      vm = createTestVM(VueButton, {
+        icon: 'settings'
+      }, true);
       const useElement = vm.$el.querySelector('use');
       expect((useElement as SVGUseElement)
         .getAttribute('xlink:href'))
@@ -38,12 +40,10 @@ describe('VueButton', () => {
     });
 
     it('可以设置loading.', () => {
-      vm = new Constructor({
-        propsData: {
-          icon: 'loading',
-          loading: true
-        }
-      }).$mount();
+      vm = createTestVM(VueButton, {
+        icon: 'loading',
+        loading: true
+      }, false);
       const useElements = vm.$el.querySelectorAll('use');
       expect(useElements.length).to.equal(1);
       expect(useElements[0].getAttribute('xlink:href'))
@@ -86,7 +86,7 @@ describe('VueButton', () => {
     ].forEach((typeObj) => {
       const colorType = Object.keys(typeObj)[0];
       const colorString = Object.values(typeObj)[0];
-      it('设置 color 可以改变 按钮种类', () => {
+      it(`设置 color 可以改变${colorType}按钮种类`, () => {
         const div = document.createElement('div');
         document.body.appendChild(div);
         vm = new Constructor({
