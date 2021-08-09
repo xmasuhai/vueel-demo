@@ -238,13 +238,13 @@
 
 <script lang="ts">
 import {Component, Vue, Watch} from 'vue-property-decorator';
-// import VueRow from './grid-system/VueRow.vue';
-import VueCol from './grid-system/VueCol.vue';
+// import VueRow from './grid/VueRow.vue';
+import VueCol from './grid/VueCol.vue';
 
 @Component({
   components: {
     // VueRow,
-    'VueRow': () => import('./grid-system/VueRow.vue'),
+    'VueRow': () => import('./grid/VueRow.vue'),
     VueCol
   }
 })

@@ -2,8 +2,8 @@ import Vue from 'vue';
 import chai from 'chai';
 
 const expect = chai.expect;
-import VueCol from '../../src/components/grid-system/VueCol.vue';
-import VueRow from '../../src/components/grid-system/VueRow.vue';
+import VueCol from '../../src/components/grid/VueCol.vue';
+import VueRow from '../../src/components/grid/VueRow.vue';
 
 Vue.config.productionTip = false;
 Vue.config.devtools = false;

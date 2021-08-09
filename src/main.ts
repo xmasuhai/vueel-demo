@@ -8,7 +8,7 @@ import './style/global.scss';
 
 // 组件
 import VueButton from './components/button/VueButton.vue';
-import VueButtonGroup from './components/button-group/VueButtonGroup.vue';
+import VueButtonGroup from './components/button/VueButtonGroup.vue';
 import VueIcon from './components/icon/VueIcon.vue';
 import VueInput from './components/input/VueInput.vue';
 

@@ -58,7 +58,7 @@
     </VueButton>
     <vue-button-group>
       <VueButton icon="left">上一页</VueButton>
-      <VueButton icon="">更多</VueButton>
+      <VueButton icon="settings">更多</VueButton>
       <VueButton icon="right"
                  icon-position="right">下一页
       </VueButton>
@@ -69,7 +69,7 @@
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
 import VueButton from './button/VueButton.vue';
-import VueButtonGroup from './button-group/VueButtonGroup.vue';
+import VueButtonGroup from './button/VueButtonGroup.vue';
 import VueIcon from './icon/VueIcon.vue';
 
 @Component({
