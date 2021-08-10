@@ -14,5 +14,8 @@ export default class VueMain extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.main {}
+.main {
+  display: flex;
+  flex-direction: column;
+}
 </style>

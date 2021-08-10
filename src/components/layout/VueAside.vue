@@ -9,7 +9,7 @@ import {Component, Vue} from 'vue-property-decorator';
 
 @Component
 export default class VueAside extends Vue {
-  name = 'VueAside.vue';
+  name = 'VueAside';
 }
 </script>
 

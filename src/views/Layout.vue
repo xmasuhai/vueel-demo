@@ -19,18 +19,20 @@ import Buttons from '../components/Buttons.vue';
 import Inputs from '../components/Inputs.vue';
 import GridSystems from '../components/GridSystems.vue';
 import Nav from '../components/Nav.vue';
+import LayoutGroups from '../components/LayoutGroups.vue';
 
 @Component({
   components: {
     Buttons,
     Inputs,
     GridSystems,
+    LayoutGroups,
     Nav
   }
 })
 export default class Layout extends Vue {
   name = 'Layout';
-  currentTabText = 'GridSystems';
+  currentTabText = 'LayoutGroups';
   layoutType = '';
 
   // 由动态外部参数 获取 类样式
