@@ -6,7 +6,7 @@ import chai from 'chai';
 // import sinonChai from 'sinon-chai';
 // chai.use(sinonChai);
 const expect = chai.expect;
-
+import { createTestVM, destroyVM } from '../testUtil';
 import VueRow from '../../src/components/grid/VueRow.vue';
 import VueCol from '../../src/components/grid/VueCol.vue';
 
@@ -14,33 +14,51 @@ Vue.config.productionTip = false;
 Vue.config.devtools = false;
 
 describe('VueRow', () => {
+  let vm: Vue;
   it('存在.', () => {
     expect(VueRow).to.exist;
     expect(VueCol).to.exist;
   });
 
+  it('classList row', () => {
+    vm = createTestVM(VueRow, true);
+    const rowElm = vm.$el;
+    expect(rowElm.classList.contains('row')).to.be.true;
+  });
+
   describe('测试属性 props', () => {
 
-    let vm: Vue;
     const div = document.createElement('div');
     document.body.appendChild(div);
 
     afterEach(() => {
-      vm.$el.remove();
-      vm.$destroy();
+      destroyVM(vm)
     });
 
     it('接收 align 属性', () => {
+      vm = createTestVM(VueRow, {
+        gutter: 20
+      }, true);
+      /*
       const Constructor = Vue.extend(VueRow);
       vm = new Constructor({
         propsData: {
           align: 'center',
-          gutter: 20
         }
       }).$mount(div);
+      */
       const element = vm.$el;
       expect(getComputedStyle(element).justifyContent).to.eq('center');
 
+    });
+
+    it('gutter', () => {
+      vm = createTestVM(VueRow, {
+        gutter: 20
+      }, true);
+      const rowElm = vm.$el;
+      expect(rowElm.style.marginLeft).to.be.equal('-10px');
+      expect(rowElm.style.marginRight).to.be.equal('-10px');
     });
 
     it('接收 gutter 属性', (done) => {
@@ -56,7 +74,7 @@ describe('VueRow', () => {
     `;
 
       vm = new Vue({
-        el: div,
+        el: div
       });
 
       setTimeout(() => {

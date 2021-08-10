@@ -9,11 +9,11 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "dev-p": "parcel watch test/* --no-cache",
+    "dev-p": "parcel watch test/unit/* --no-cache",
     "dev-k": "karma start --auto-watch",
-    "dev-test": "parcel watch test/* --no-cache & karma start --auto-watch",
-    "dev-test2": "parcel watch test/* --no-cache & npx karma start --auto-watch",
-    "test": "parcel build test/* --no-cache --no-minify && karma start --single-run",
+    "dev-test": "parcel watch test/unit/* --no-cache & karma start --auto-watch",
+    "dev-test2": "parcel watch test/unit/* --no-cache & npx karma start --auto-watch",
+    "test": "parcel build test/unit/* --no-cache --no-minify && karma start --single-run",
     "test2": "parcel build index.html --no-cache --no-minify; node ./test.js"
   },
   "optionalDependencies": {

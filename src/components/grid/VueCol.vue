@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Emit, Prop, Inject, Vue} from 'vue-property-decorator';
+import {Component, Emit, Prop, /*Inject,*/ Vue} from 'vue-property-decorator';
 import objKeyValidator from '../../utils/objKeyValidator';
 import _ from 'lodash';
 
@@ -20,7 +20,8 @@ export default class VueCol extends Vue {
   screenWidth = document.body.clientWidth;
 
   // Inject 注入 属性 代替 data 数据 gutter = 0;
-  @Inject({from: 'gutterToSon'}) gutter!: number;
+  // @Inject({from: 'gutterToSon'}) gutter!: number;
+  gutter = 0;
 
   @Prop({
     type: Number,
