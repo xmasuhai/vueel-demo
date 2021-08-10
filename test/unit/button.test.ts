@@ -3,7 +3,7 @@ import chai from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import VueButton from '../../src/components/button/VueButton.vue';
-import {createTestVM, /*createVueVM,*/ destroyVM} from '../testUtil';
+import {createTestVM, destroyVM} from '../testUtil';
 
 chai.use(sinonChai);
 const expect = chai.expect;
@@ -12,7 +12,6 @@ Vue.config.productionTip = false;
 Vue.config.devtools = false;
 
 describe('VueButton', () => {
-  const Constructor = Vue.extend(VueButton);
   let vm: Vue;
 
   it('VueButton存在.', () => {
@@ -32,7 +31,7 @@ describe('VueButton', () => {
     it('可以设置icon.', () => {
       vm = createTestVM(VueButton, {
         icon: 'settings'
-      }, true);
+      }, false);
       const useElement = vm.$el.querySelector('use');
       expect((useElement as SVGUseElement)
         .getAttribute('xlink:href'))
@@ -53,11 +52,9 @@ describe('VueButton', () => {
     it('icon 默认的 order 是 1', () => {
       const div = document.createElement('div');
       document.body.appendChild(div);
-      vm = new Constructor({
-        propsData: {
-          icon: 'settings',
-        }
-      }).$mount(div);
+      vm = createTestVM(VueButton, {
+        icon: 'settings',
+      }, true);
       const icon = vm.$el.querySelector('svg');
       expect(getComputedStyle(icon as SVGSVGElement).order).to.eq('1');
     });
@@ -65,12 +62,10 @@ describe('VueButton', () => {
     it('设置 iconPosition 可以改变 order', () => {
       const div = document.createElement('div');
       document.body.appendChild(div);
-      vm = new Constructor({
-        propsData: {
-          icon: 'settings',
-          iconPosition: 'right'
-        }
-      }).$mount(div);
+      vm = createTestVM(VueButton, {
+        icon: 'settings',
+        iconPosition: 'right'
+      }, true);
       const icon = vm.$el.querySelector('svg');
       expect(getComputedStyle(icon as SVGSVGElement).order).to.eq('2');
     });
@@ -83,30 +78,29 @@ describe('VueButton', () => {
       {'success': 'rgb(25, 135, 84)'},
       {'info': 'rgb(13, 202, 240)'},
       {'attention': 'rgb(253, 126, 20)'}
-    ].forEach((typeObj) => {
-      const colorType = Object.keys(typeObj)[0];
-      const colorString = Object.values(typeObj)[0];
-      it(`设置 color 可以改变${colorType}按钮种类`, () => {
-        const div = document.createElement('div');
-        document.body.appendChild(div);
-        vm = new Constructor({
-          propsData: {
+    ]
+      .forEach((typeObj) => {
+        const colorType = Object.keys(typeObj)[0];
+        const colorString = Object.values(typeObj)[0];
+        it(`设置 color 可以改变${colorType}按钮种类`, () => {
+          const div = document.createElement('div');
+          document.body.appendChild(div);
+          vm = createTestVM(VueButton, {
             colorType
-          }
-        }).$mount(div);
-        const buttonElement = vm.$el;
-        expect(getComputedStyle(buttonElement as HTMLButtonElement).backgroundColor)
-          .to.eq(colorString);
-      });
+          }, true);
+          const buttonElement = vm.$el;
+          expect(getComputedStyle(buttonElement as HTMLButtonElement).backgroundColor)
+            .to.eq(colorString);
+        });
 
-    });
+      });
 
   });
 
   describe('测试事件', () => {
+    const Constructor = Vue.extend(VueButton);
     afterEach(() => {
-      vm.$el.remove();
-      vm.$destroy();
+      destroyVM(vm);
     });
 
     it('点击 button 触发 click 事件', () => {

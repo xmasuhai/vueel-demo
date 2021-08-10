@@ -3,6 +3,7 @@ import chai from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import VueInput from '../../src/components/input/VueInput.vue';
+import {createTestVM, destroyVM} from '../testUtil';
 
 chai.use(sinonChai);
 const expect = chai.expect;
@@ -11,7 +12,6 @@ Vue.config.productionTip = false;
 Vue.config.devtools = false;
 
 describe('VueInput', () => {
-  const Constructor = Vue.extend(VueInput);
   let vm: Vue;
 
   it('VueInput存在.', () => {
@@ -20,48 +20,40 @@ describe('VueInput', () => {
 
   describe('props', () => {
     afterEach(() => {
-      vm.$destroy();
+      destroyVM(vm);
     });
 
     it('VueInput可以接受value', () => {
-      vm = new Constructor({
-        propsData: {
-          value: '1234'
-        }
-      }).$mount();
+      vm = createTestVM(VueInput, {
+        value: '1234'
+      }, true);
       const inputElement = vm.$el.querySelector('input');
       expect((inputElement as HTMLInputElement).value)
         .to.equal('1234');
     });
 
     it('VueInput可以接受disabled', () => {
-      vm = new Constructor({
-        propsData: {
-          disabled: true
-        }
-      }).$mount();
+      vm = createTestVM(VueInput, {
+        disabled: true
+      }, true);
       const inputElement = vm.$el.querySelector('input');
       expect((inputElement as HTMLInputElement).disabled)
         .to.equal(true);
     });
 
     it('VueInput可以接受readOnly', () => {
-      vm = new Constructor({
-        propsData: {
-          readonly: true
-        }
-      }).$mount();
+      vm = createTestVM(VueInput, {
+        readonly: true
+      }, false);
       const inputElement = vm.$el.querySelector('input');
       expect((inputElement as HTMLInputElement).readOnly)
         .to.equal(true);
     });
 
     it('VueInput可以接受error', () => {
-      vm = new Constructor({
-        propsData: {
-          error: '你错了'
-        }
-      }).$mount();
+      vm = createTestVM(VueInput, {
+        error: '你错了'
+      }, false);
       //svg
       const useElement = vm.$el.querySelector('use');
       expect((useElement as SVGUseElement).getAttribute('xlink:href'))
@@ -69,14 +61,16 @@ describe('VueInput', () => {
       const errorMessage = vm.$el.querySelector('.errorMessage');
       expect((errorMessage as HTMLElement).innerText).to.equal('你错了');
     });
+
   });
 
   describe('事件', () => {
     afterEach(() => {
-      vm.$destroy();
+      destroyVM(vm);
     });
 
     it('VueInput 支持 change/input/focus/blur 事件', () => {
+      const Constructor = Vue.extend(VueInput);
       ['change', 'input', 'focus', 'blur']
         .forEach((eventName) => {
           vm = new Constructor({}).$mount();

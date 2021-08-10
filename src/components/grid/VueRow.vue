@@ -12,7 +12,7 @@ import {Component, Prop, /*Provide,*/ Vue} from 'vue-property-decorator';
 @Component
 export default class VueRow extends Vue {
   name = 'VueRow';
-
+  // componentName = 'VueRow';
   @Prop({
     type: [Number, String],
   }) gutter!: number | string;
@@ -28,10 +28,13 @@ export default class VueRow extends Vue {
   get rowStyle() {
     const {gutter} = this;
     // console.log('gutter in VueRow', gutter);
-    return {
-      marginLeft: `${-gutter / 2}px`,
-      marginRight: `${-gutter / 2}px`
-    };
+    if (this.gutter) {
+      return {
+        marginLeft: `${-gutter / 2}px`,
+        marginRight: `${-gutter / 2}px`
+      };
+    }
+    return {};
   }
 
   get rowClass() {

@@ -2,6 +2,7 @@ import Vue from 'vue';
 import chai from 'chai';
 import sinonChai from 'sinon-chai';
 import VueIcon from '../../src/components/icon/VueIcon.vue';
+import {createTestVM, destroyVM} from '../testUtil';
 
 chai.use(sinonChai);
 const expect = chai.expect;
@@ -10,7 +11,7 @@ Vue.config.productionTip = false;
 Vue.config.devtools = false;
 
 describe('VueIcon', () => {
-  const Constructor = Vue.extend(VueIcon);
+  // const Constructor = Vue.extend(VueIcon);
   let vm: Vue;
 
   it('存在.', () => {
@@ -20,8 +21,7 @@ describe('VueIcon', () => {
 
   describe('测试props', () => {
     afterEach(() => {
-      vm.$el.remove();
-      vm.$destroy();
+      destroyVM(vm);
     });
 
     [
@@ -40,11 +40,9 @@ describe('VueIcon', () => {
     ]
       .forEach((iconName) => {
         it('可以设置icon.', () => {
-          vm = new Constructor({
-            propsData: {
-              iconName: iconName
-            }
-          }).$mount();
+          vm = createTestVM(VueIcon, {
+            iconName: iconName
+          }, false);
           const useElement = vm.$el.querySelector('use');
           expect((useElement as SVGUseElement)
             .getAttribute('xlink:href'))

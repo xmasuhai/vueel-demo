@@ -62,8 +62,8 @@ export default class VueButton extends Vue {
   }
 
   @Emit('click')
-  clickLoading() {
-    return;
+  clickLoading(/*e: MouseEvent*/) {
+    return /*e.target.value*/;
   }
 }
 </script>

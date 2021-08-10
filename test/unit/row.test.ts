@@ -6,7 +6,7 @@ import chai from 'chai';
 // import sinonChai from 'sinon-chai';
 // chai.use(sinonChai);
 const expect = chai.expect;
-import { createTestVM, destroyVM } from '../testUtil';
+import {createTestVM, destroyVM} from '../testUtil';
 import VueRow from '../../src/components/grid/VueRow.vue';
 import VueCol from '../../src/components/grid/VueCol.vue';
 
@@ -32,7 +32,7 @@ describe('VueRow', () => {
     document.body.appendChild(div);
 
     afterEach(() => {
-      destroyVM(vm)
+      destroyVM(vm);
     });
 
     it('接收 align 属性', () => {
@@ -52,7 +52,7 @@ describe('VueRow', () => {
 
     });
 
-    it('gutter', () => {
+    it('接收  gutter 属性', () => {
       vm = createTestVM(VueRow, {
         gutter: 20
       }, true);
@@ -61,15 +61,15 @@ describe('VueRow', () => {
       expect(rowElm.style.marginRight).to.be.equal('-10px');
     });
 
-    it('接收 gutter 属性', (done) => {
+    it('传递 gutter 属性给 VueCol', (done) => {
       Vue.component('v-row', VueRow);
       Vue.component('v-col', VueCol);
       document.body.appendChild(div);
 
       div.innerHTML = `
           <v-row :gutter="20">
-            <v-col :span="12"></g-col>
-            <v-col :span="12"></g-col>
+            <v-col :span="12" ref="col"></g-col>
+            <v-col :span="12" ref="col"></g-col>
           </v-row>
     `;
 
@@ -79,8 +79,15 @@ describe('VueRow', () => {
 
       setTimeout(() => {
         const row = vm.$el.querySelector('.row');
+        // console.log('row: ', row);
         expect(getComputedStyle(row).marginLeft).to.eq('-10px');
         expect(getComputedStyle(row).marginRight).to.eq('-10px');
+
+        // const colElm = vm.$refs.col.$el;
+        // console.log('colElm: ', colElm);
+        // expect(getComputedStyle(colElm).marginRight).to.eq('10px');
+        // expect(getComputedStyle(colElm).marginLeft).to.eq('10px');
+
         // const cols = vm.$el.querySelectorAll('.col');
         // expect(getComputedStyle(cols[0]).marginRight).to.eq('10px');
         // expect(getComputedStyle(cols[0]).marginLeft).to.eq('10px');
@@ -95,8 +102,7 @@ describe('VueRow', () => {
   /*
     describe('测试事件', () => {
       afterEach(() => {
-        vm.$el.remove();
-        vm.$destroy();
+      destroyVM(vm);
       });
 
       it('触发  事件', () => {

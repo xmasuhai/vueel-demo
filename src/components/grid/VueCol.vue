@@ -19,10 +19,6 @@ export default class VueCol extends Vue {
   name = 'VueCol';
   screenWidth = document.body.clientWidth;
 
-  // Inject 注入 属性 代替 data 数据 gutter = 0;
-  // @Inject({from: 'gutterToSon'}) gutter!: number;
-  gutter = 0;
-
   @Prop({
     type: Number,
     default: 12
@@ -83,8 +79,12 @@ export default class VueCol extends Vue {
     ];
   }
 
+  // Inject 注入 属性 代替 data 数据 gutter = 0;
+  // @Inject({from: 'gutterToSon'}) gutter!: number;
+  gutter = 0;
   get colStyle() {
     const {gutter} = this;
+
     if (!gutter) {
       return {};
     }
