@@ -12,10 +12,10 @@ import AsideColToRow from '../../mixins/AsideColToRow';
 @Component
 export default class VueFooter extends mixins(AsideColToRow) {
   name = 'VueFooter';
-  @Prop({type: String, default: '40px'}) height!: string;
+  @Prop({type: Number, default: 40}) height!: number;
 
   get footerStyle() {
-    return Object.assign(this.colToRowStyle, {height: this.height});
+    return Object.assign(this.colToRowStyle, {height: `${this.height}px`});
   }
 }
 </script>

@@ -12,10 +12,10 @@ import AsideColToRow from '../../mixins/AsideColToRow';
 @Component
 export default class VueAside extends mixins(AsideColToRow) {
   name = 'VueAside';
-  @Prop({type: String, default: '100px'}) width!: string;
+  @Prop({type: Number, default: 100}) width!: number;
 
   get asideStyle() {
-    return Object.assign(this.colToRowStyle, {width: this.width});
+    return Object.assign(this.colToRowStyle, {width: `${this.width}px`});
   }
 }
 </script>

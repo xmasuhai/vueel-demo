@@ -19,7 +19,7 @@ export default class VueContainer extends mixins(AsideColToRow) {
 .container {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex-grow: 2;
 }
 
 </style>

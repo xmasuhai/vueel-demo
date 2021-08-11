@@ -12,7 +12,7 @@ import AsideColToRow from '../../mixins/AsideColToRow';
 @Component
 export default class VueMain extends mixins(AsideColToRow) {
   name = 'VueMain';
-  componentName: 'VueMain';
+  componentName = 'VueMain';
 }
 </script>
 
