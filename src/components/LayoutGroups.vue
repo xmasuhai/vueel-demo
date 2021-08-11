@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="basic">
     <details open>
       <summary>三栏布局</summary>
       <vue-main style="height: 20vh;">
@@ -14,7 +14,7 @@
       <vue-main style="height: 20vh;">
         <vue-header class="demo">Header</vue-header>
         <vue-container class="demo">
-          <vue-aside>Aside</vue-aside>
+          <vue-aside class="demo">Aside</vue-aside>
           <vue-container>Content</vue-container>
         </vue-container>
         <vue-footer class="demo">Footer</vue-footer>
@@ -27,7 +27,7 @@
         <vue-header class="demo">Header</vue-header>
         <vue-container class="demo">
           <vue-container>Content</vue-container>
-          <vue-aside>Aside</vue-aside>
+          <vue-aside class="demo">Aside</vue-aside>
         </vue-container>
         <vue-footer class="demo">Footer</vue-footer>
       </vue-main>
@@ -36,10 +36,10 @@
     <details open>
       <summary>左右两栏布局 左侧菜单栏</summary>
       <vue-main style="height: 20vh;">
-        <vue-aside>Aside</vue-aside>
+        <vue-aside class="demo">Aside</vue-aside>
         <vue-container class="demo">
           <vue-header class="demo">Header</vue-header>
-          <vue-container>Content</vue-container>
+          <vue-container class="demo">Content</vue-container>
           <vue-footer class="demo">Footer</vue-footer>
         </vue-container>
       </vue-main>
@@ -73,8 +73,40 @@ export default class extends Vue {
 <style lang="scss" scoped>
 @import '../style/global.scss';
 
-.demo {
-  border: 1px solid orange;
-  min-height: 40px;
+.basic {
+  details {
+    .demo {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      vertical-align: middle;
+      flex-grow: 1;
+      color: #fff;
+      width: 100%;
+
+      &:nth-child(odd) {
+        background-color: #3D8FEE;
+      }
+
+      &:nth-child(even) {
+        background-color: #7CB8FF;
+      }
+
+      &.v-aside {
+        background-color: #3ba0e9;
+      }
+
+      &.container {
+        flex-grow: 2;
+        background-color: #108ee9;
+      }
+
+      &.v-header, &.footer {
+        background-color: #7dbcea;
+      }
+
+    }
+  }
 }
 </style>
