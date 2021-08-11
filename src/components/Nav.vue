@@ -17,8 +17,14 @@ import {Component, Vue} from 'vue-property-decorator';
 @Component
 export default class Nav extends Vue {
   name = 'Nav';
-  currentTabText = 'LayoutGroups';
-  tabs = ['Buttons', 'Inputs', 'GridSystems', 'LayoutGroups'];
+  currentTabText = 'ToastsTips';
+  tabs = [
+    'Buttons',
+    'Inputs',
+    'GridSystems',
+    'LayoutGroups',
+    'ToastsTips'
+  ];
 
   showTab(tab: string) {
     // 切换对应样式

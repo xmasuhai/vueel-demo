@@ -20,6 +20,7 @@ import Inputs from '../components/Inputs.vue';
 import GridSystems from '../components/GridSystems.vue';
 import Nav from '../components/Nav.vue';
 import LayoutGroups from '../components/LayoutGroups.vue';
+import ToastsTips from '../components/ToastsTips.vue';
 
 @Component({
   components: {
@@ -27,12 +28,13 @@ import LayoutGroups from '../components/LayoutGroups.vue';
     Inputs,
     GridSystems,
     LayoutGroups,
+    ToastsTips,
     Nav
   }
 })
 export default class Layout extends Vue {
   name = 'Layout';
-  currentTabText = 'LayoutGroups';
+  currentTabText = 'ToastsTips';
   layoutType = '';
 
   // 由动态外部参数 获取 类样式

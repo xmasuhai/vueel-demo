@@ -1,6 +1,6 @@
 <template>
-  <div>
-    VueToast
+  <div class="toast">
+    <slot></slot>
   </div>
 </template>
 
@@ -13,5 +13,11 @@ export default class VueToast extends Vue {
 </script>
 
 <style lang="scss" scoped>
-
+.toast {
+  height: 40px;
+  border: 1px solid red;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+}
 </style>
