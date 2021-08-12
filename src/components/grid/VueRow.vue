@@ -52,12 +52,15 @@ export default class VueRow extends Vue {
     const {$children, gutter} = this;
     // console.log('$children in VueRow', $children);
     if ($children && gutter) {
-      $children.forEach(vm => {
-        (vm as any).gutter = gutter;
+      $children.forEach((vm: Vue) => {
+        const state = Vue.observable({gutter});
+        Object.assign(vm, state);
         /*
-        const source = {'gutter': gutter};
+        // const source = {'gutter': gutter};
+        const source = {gutter};
         Object.assign(vm, source);
         */
+        // (vm as any).gutter = gutter
         // Vue.set(vm,'gutter', gutter);
         // this.$set(vm, 'gutter', gutter);
       });

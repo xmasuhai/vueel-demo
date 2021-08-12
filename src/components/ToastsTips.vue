@@ -15,8 +15,8 @@ import {Component, Vue} from 'vue-property-decorator';
 import VueToast from './toast/VueToast.vue';
 import VueButton from './button/VueButton.vue';
 import toastPlugin from './toast/toastPlugin';
-Vue.use(toastPlugin);
 
+Vue.use(toastPlugin);
 @Component({
   components: {
     VueToast,
@@ -25,8 +25,9 @@ Vue.use(toastPlugin);
 })
 export default class ToastsTips extends Vue {
   name = 'ToastsTips';
+
   showToast() {
-    (this as any).$toast('Haha');
+    this.$toast('我是一个VueToast组件');
   }
 }
 </script>

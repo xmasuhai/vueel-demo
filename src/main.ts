@@ -36,7 +36,6 @@ Vue.component('v-container', VueContainer);
 Vue.component('v-toast', VueToast);
 Vue.use(toastPlugin);
 
-/* Automatically generated ... */
 const components = [
   VueButton,
   VueButtonGroup,
