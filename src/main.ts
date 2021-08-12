@@ -36,6 +36,49 @@ Vue.component('v-container', VueContainer);
 Vue.component('v-toast', VueToast);
 Vue.use(toastPlugin);
 
+/* Automatically generated ... */
+const components = [
+  VueButton,
+  VueButtonGroup,
+  VueIcon,
+  VueInput,
+  VueRow,
+  VueCol,
+  VueMain,
+  VueContainer,
+  VueAside,
+  VueFooter,
+  VueHeader,
+  VueToast
+];
+
+const install = (Vue: any, opts = {}) => {
+  components.forEach(component => {
+    Vue.component(component.name, component);
+  });
+};
+
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue);
+}
+
+export default {
+  version: '2.26.12',
+  install,
+  VueButton,
+  VueButtonGroup,
+  VueIcon,
+  VueInput,
+  VueRow,
+  VueCol,
+  VueMain,
+  VueContainer,
+  VueAside,
+  VueFooter,
+  VueHeader,
+  VueToast
+};
+
 Vue.config.productionTip = false;
 
 new Vue({

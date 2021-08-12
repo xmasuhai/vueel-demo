@@ -17,6 +17,7 @@ export default class VueToast extends Vue {
   height: 40px;
   border: 1px solid red;
   position: fixed;
+  top: 5px;
   left: 50%;
   transform: translateX(-50%);
 }

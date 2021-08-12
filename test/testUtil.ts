@@ -36,8 +36,9 @@ export const createVueVM = (Template: string | { 'template': string },
   if (Object.prototype.toString.call(Template) === '[object String]') {
     Template = {'template': (Template as string)};
   }
+  const elm = createElm();
   return (new Vue(Template as { 'template': string })
-    .$mount(isMounted === false ? undefined : createElm()));
+    .$mount(isMounted === true ? elm : undefined));
 };
 
 /**
