@@ -6,6 +6,7 @@
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
+
 @Component
 export default class VueToast extends Vue {
   name = 'VueToast';
@@ -13,12 +14,21 @@ export default class VueToast extends Vue {
 </script>
 
 <style lang="scss" scoped>
+$font-size: 14px;
+$toast-height: 40px;
 .toast {
-  height: 40px;
-  border: 1px solid red;
+  font-size: $font-size;
+  height: $toast-height;
   position: fixed;
-  top: 5px;
+  top: 3px;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .74);
+  border-radius: 4px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, .5);
+  color: ghostwhite;
+  padding: 0 16px;
 }
 </style>
