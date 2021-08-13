@@ -48,6 +48,10 @@ export default class VueToast extends Vue {
     }
   }
 
+  popUpToast() {
+    this.visible = true;
+  }
+
   close() {
     this.closed = true;
   }
@@ -67,9 +71,7 @@ export default class VueToast extends Vue {
   }
 
   mounted() {
-    setTimeout(() => {
-      this.visible = true;
-    }, 0);
+    this.popUpToast();
     this.startTimer();
   }
 

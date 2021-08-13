@@ -3,7 +3,7 @@
     <details open>
       <summary>ToastsTips</summary>
       <div>
-        <VueButton @click="showToast">点击出现提示框</VueButton>
+        <VueButton @click="popUpToasts">点击出现提示框</VueButton>
       </div>
     </details>
     <br>
@@ -26,7 +26,7 @@ Vue.use(toastPlugin);
 export default class ToastsTips extends Vue {
   name = 'ToastsTips';
 
-  showToast() {
+  popUpToasts() {
     this.$toast('我是一个VueToast组件');
   }
 }
