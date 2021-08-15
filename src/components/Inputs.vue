@@ -1,51 +1,61 @@
 <template>
   <div>
-    <details open>
-      <summary>Primary</summary>
-      <div>
-        <VueInput placeholder="Enable">
-        </VueInput>
-        <VueInput placeholder="Hover"
-                  :isFakeHover="true">
-        </VueInput>
-        <VueInput placeholder="Focus"
-                  :isFakeFocus="true">
-        </VueInput>
-        <VueInput placeholder="Readonly"
-                  value="Error Readonly"
-                  :readonly="true">
-        </VueInput>
-        <VueInput placeholder="Disabled"
-                  :disabled="true">
-        </VueInput>
-      </div>
-    </details>
+    <form>
+      <fieldset>
+        <legend>Input</legend>
+        <details open>
+          <summary>Primary</summary>
+          <div>
+            <VueInput placeholder="Enable">
+            </VueInput>
+            <VueInput placeholder="Hover"
+                      :isFakeHover="true">
+            </VueInput>
+            <VueInput placeholder="Focus"
+                      :isFakeFocus="true">
+            </VueInput>
+            <VueInput placeholder="Readonly"
+                      value="Error Readonly"
+                      :readonly="true">
+            </VueInput>
+            <VueInput placeholder="Disabled"
+                      :disabled="true">
+            </VueInput>
+          </div>
+        </details>
+      </fieldset>
+    </form>
     <br>
-    <details open>
-      <summary class="error">Error</summary>
-      <div>
-        <VueInput placeholder="Error Enable"
-                  error="姓名不能少于2个字">
-        </VueInput>
-        <VueInput placeholder="Error Hover"
-                  :isFakeHover="true"
-                  error="姓名不能少于2个字">
-        </VueInput>
-        <VueInput placeholder="Error Focus"
-                  :isFakeFocus="true"
-                  error="姓名不能少于2个字">
-        </VueInput>
-        <VueInput placeholder="Error Readonly"
-                  :readonly="true"
-                  value="Error Readonly"
-                  error="姓名不能少于2个字">
-        </VueInput>
-        <VueInput placeholder="Error Disabled"
-                  :disabled="true"
-                  error="姓名不能少于2个字">
-        </VueInput>
-      </div>
-    </details>
+    <form>
+      <fieldset>
+        <legend>Input Types</legend>
+        <details open>
+          <summary class="error">Error</summary>
+          <div>
+            <VueInput placeholder="Error Enable"
+                      error="姓名不能少于2个字">
+            </VueInput>
+            <VueInput placeholder="Error Hover"
+                      :isFakeHover="true"
+                      error="姓名不能少于2个字">
+            </VueInput>
+            <VueInput placeholder="Error Focus"
+                      :isFakeFocus="true"
+                      error="姓名不能少于2个字">
+            </VueInput>
+            <VueInput placeholder="Error Readonly"
+                      :readonly="true"
+                      value="Error Readonly"
+                      error="姓名不能少于2个字">
+            </VueInput>
+            <VueInput placeholder="Error Disabled"
+                      :disabled="true"
+                      error="姓名不能少于2个字">
+            </VueInput>
+          </div>
+        </details>
+      </fieldset>
+    </form>
     <br>
     <form>
       <fieldset>

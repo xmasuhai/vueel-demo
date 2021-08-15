@@ -9,12 +9,19 @@
          @mouseleave="startTimer"
     >
       <slot></slot>
+      <template v-if="closeButton">
+        <div class="line"></div>
+        <span class="closeButton" @click="onClickCloseButton">
+          {{ closeButton.text }}
+        </span>
+      </template>
     </div>
   </transition>
 </template>
 
 <script lang="ts">
-import {Component, Vue, Watch} from 'vue-property-decorator';
+import {Component, Prop, Vue, Watch} from 'vue-property-decorator';
+import {closeButton} from '@/types/VueToast';
 
 @Component
 export default class VueToast extends Vue {
@@ -22,11 +29,26 @@ export default class VueToast extends Vue {
 
   visible = false;
   message = '';
-  duration = 1800;
   timer: number | null = null;
-  verticalOffset = 20;
-  closed = false;
+  verticalOffset = 8;
+  isClosed = false;
   onClose = null;
+
+  @Prop({type: Boolean, default: true}) autoClose!: boolean;
+  @Prop({type: Number, default: 1800}) autoCloseDelay!: number;
+  @Prop({
+    type: Object,
+    default() {
+      return undefined;
+    }
+  }) closeButton: closeButton | undefined;
+
+  onClickCloseButton() {
+    this.isClosed = true;
+    if (typeof (this?.closeButton?.callback) === 'function') {
+      this.closeButton.callback(this);
+    }
+  }
 
   get positionStyle() {
     return {
@@ -34,14 +56,17 @@ export default class VueToast extends Vue {
     };
   }
 
-  @Watch('closed')
+  // 监听 closed 的状态
+  @Watch('isClosed')
   onClosedChange(newVal: boolean) {
     if (newVal) {
       this.visible = false;
     }
   }
 
+  // 元素离开后执行钩子
   handleAfterLeave() {
+    this.$el.remove();
     this.$destroy();
     if (this.$el.parentNode) {
       this.$el.parentNode.removeChild(this.$el);
@@ -53,7 +78,7 @@ export default class VueToast extends Vue {
   }
 
   close() {
-    this.closed = true;
+    this.isClosed = true;
   }
 
   clearTimer() {
@@ -61,12 +86,12 @@ export default class VueToast extends Vue {
   }
 
   startTimer() {
-    if (this.duration > 0) {
+    if (this.autoClose && this.autoCloseDelay > 0) {
       this.timer = setTimeout(() => {
-        if (!this.closed) {
+        if (!this.isClosed) {
           this.close();
         }
-      }, this.duration);
+      }, this.autoCloseDelay);
     }
   }
 
@@ -97,6 +122,17 @@ $toast-height: 40px;
   overflow: hidden;
   display: flex;
   align-items: center;
+
+  .line {
+    height: 100%;
+    border-left: 1px solid #666;
+    margin-left: 16px;
+  }
+
+  .closeButton {
+    padding-left: 16px;
+  }
+
 }
 
 .eat-toast-fade-enter,
