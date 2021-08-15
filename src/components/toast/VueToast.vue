@@ -5,12 +5,15 @@
                  ]"
          :style="positionStyle"
          v-show="visible"
+         ref="toast"
          @mouseenter="clearTimer"
-         @mouseleave="startTimer"
-    >
-      <slot></slot>
+         @mouseleave="startTimer">
+      <div class="message">
+        <slot v-if="!enableHTML"></slot>
+        <div v-else v-html="$slots.default[0]"></div>
+      </div>
       <template v-if="closeButton">
-        <div class="line"></div>
+        <div ref="line" class="line"></div>
         <span class="closeButton" @click="onClickCloseButton">
           {{ closeButton.text }}
         </span>
@@ -34,6 +37,7 @@ export default class VueToast extends Vue {
   isClosed = false;
   onClose = null;
 
+  @Prop({type: Boolean, default: false}) enableHTML!: boolean;
   @Prop({type: Boolean, default: true}) autoClose!: boolean;
   @Prop({type: Number, default: 1800}) autoCloseDelay!: number;
   @Prop({
@@ -95,7 +99,17 @@ export default class VueToast extends Vue {
     }
   }
 
+  getRenderedHeight() {
+    this.$nextTick(() => {
+      if (this.$refs.line) {
+        (this.$refs.line as HTMLElement).style.height =
+          `${(this.$refs.toast as HTMLElement).getBoundingClientRect().height}px`;
+      }
+    });
+  }
+
   mounted() {
+    this.getRenderedHeight();
     this.popUpToast();
     this.startTimer();
   }
@@ -105,10 +119,11 @@ export default class VueToast extends Vue {
 
 <style lang="scss" scoped>
 $font-size: 14px;
-$toast-height: 40px;
+$toast-min-height: 40px;
 .toast {
   font-size: $font-size;
-  height: $toast-height;
+  min-height: $toast-min-height;
+  max-width: 288px;
   position: fixed;
   top: 3px;
   left: 50%;
@@ -119,9 +134,13 @@ $toast-height: 40px;
   color: ghostwhite;
   padding: 0 16px;
   transition: opacity 0.3s, transform .4s, top 0.4s;
-  overflow: hidden;
+  //overflow: hidden;
   display: flex;
   align-items: center;
+
+  .message {
+    padding: 8px 0;
+  }
 
   .line {
     height: 100%;
