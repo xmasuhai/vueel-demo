@@ -1,7 +1,7 @@
 <template>
   <div>
     <details open>
-      <summary>ToastsTips 无关闭按钮</summary>
+      <summary>ToastsTips 无关闭按钮 自动关闭</summary>
       <div>
         <VueButton @click="showToast">点击出现提示框</VueButton>
       </div>
@@ -22,7 +22,7 @@
     </details>
     <br>
     <details open>
-      <summary>ToastsTips 传递自定义节点</summary>
+      <summary>ToastsTips 传递自定义HTML节点</summary>
       <div>
         <VueButton @click="popUpToasts">点击出现提示框</VueButton>
       </div>
@@ -53,8 +53,9 @@ export default class ToastsTips extends Vue {
   showToast2() {
     this.$toast('我是一个VueToast组件', {
       propsData: {
+        autoClose: false,
         closeButton: {
-          text: '关闭'
+          text: '手动关闭'
         }
       }
     });
@@ -63,6 +64,7 @@ export default class ToastsTips extends Vue {
   popUpToasts() {
     this.$toast('我是一个VueToast组件', {
       propsData: {
+        autoClose: false,
         closeButton: {
           text: '手动关闭',
           callback(toast: VueToast) {
@@ -74,7 +76,3 @@ export default class ToastsTips extends Vue {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

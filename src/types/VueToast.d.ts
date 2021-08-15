@@ -18,6 +18,8 @@ export interface VueToastOptions {
   /** Callback function when closed with the message instance as the parameter */
   onClose?: CloseEventHandler;
   propsData: {
+    autoClose: boolean;
+    autoCloseDelay: number;
     closeButton: {
       text: string;
       callback: ((toast: VueToast) => void) | undefined;

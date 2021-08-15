@@ -131,6 +131,8 @@ $toast-height: 40px;
 
   .closeButton {
     padding-left: 16px;
+    min-width: 40px;
+    flex-shrink: 0;
   }
 
 }
