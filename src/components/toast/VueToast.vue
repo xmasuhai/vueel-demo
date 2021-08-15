@@ -1,9 +1,8 @@
 <template>
   <transition name="eat-toast-fade" @after-leave="handleAfterLeave">
-    <div :class="['toast',
-                  'customClass',
-                 ]"
-         :style="positionStyle"
+    <div class="toast"
+         :class="toastPosition"
+         :style="positionOffsetStyle"
          v-show="visible"
          ref="toast"
          @mouseenter="clearTimer"
@@ -33,11 +32,18 @@ export default class VueToast extends Vue {
   visible = false;
   message = '';
   timer: number | null = null;
-  verticalOffset = 8;
+  verticalOffset = 0;
   isClosed = false;
   onClose = null;
 
   @Prop({type: Boolean, default: false}) enableHTML!: boolean;
+  @Prop({
+    type: String,
+    default: 'top',
+    validator(value: string): boolean {
+      return ['top', 'middle', 'bottom'].includes(value);
+    }
+  }) position!: 'top' | 'middle' | 'bottom';
   @Prop({type: Boolean, default: true}) autoClose!: boolean;
   @Prop({type: Number, default: 1800}) autoCloseDelay!: number;
   @Prop({
@@ -54,9 +60,15 @@ export default class VueToast extends Vue {
     }
   }
 
-  get positionStyle() {
+  get toastPosition(): {} {
     return {
-      'top': `${this.verticalOffset}px`
+      [`position-${this.position}`]: true
+    };
+  }
+
+  get positionOffsetStyle() {
+    return {
+      [`${this.position}`]: `${this.verticalOffset}px`
     };
   }
 
@@ -125,9 +137,7 @@ $toast-min-height: 40px;
   min-height: $toast-min-height;
   max-width: 288px;
   position: fixed;
-  top: 3px;
   left: 50%;
-  transform: translateX(-50%);
   background-color: rgba(0, 0, 0, .74);
   border-radius: 4px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, .5);
@@ -137,6 +147,22 @@ $toast-min-height: 40px;
   //overflow: hidden;
   display: flex;
   align-items: center;
+
+  &.position-top {
+    transform: translateX(-50%); //一次有效赋值
+    top: 0;
+  }
+
+  &.position-middle {
+    transform: translate(-50%, -50%);
+    top: 50%;
+
+  }
+
+  &.position-bottom {
+    transform: translateX(-50%);
+    bottom: 0;
+  }
 
   .message {
     padding: 8px 0;

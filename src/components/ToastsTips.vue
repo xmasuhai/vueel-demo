@@ -41,6 +41,13 @@
         <VueButton @click="popUpToasts3">点击出现提示框</VueButton>
       </div>
     </details>
+    <br>
+    <details open>
+      <summary>ToastsTips 出现的位置</summary>
+      <div>
+        <VueButton @click="popUpToasts4">点击出现提示框</VueButton>
+      </div>
+    </details>
   </div>
 </template>
 
@@ -128,6 +135,22 @@ export default class ToastsTips extends Vue {
         enableHTML: true,
         closeButton: {
           text: '手动关闭',
+          callback(toast: VueToast) {
+            toast.close();
+          }
+        }
+      }
+    });
+  }
+
+  popUpToasts4() {
+    this.$toast(`智商需要充值 出现在底部`, {
+      propsData: {
+        position: 'middle',
+        autoClose: false,
+        enableHTML: true,
+        closeButton: {
+          text: '已充值',
           callback(toast: VueToast) {
             toast.close();
           }
