@@ -8,7 +8,7 @@
          @mouseenter="clearTimer"
          @mouseleave="startTimer">
       <div class="message">
-        <slot v-if="!enableHTML"></slot>
+        <slot v-if="!enableUnsafeHTML"></slot>
         <div v-else v-html="$slots.default[0]"></div>
       </div>
       <template v-if="closeButton">
@@ -36,7 +36,7 @@ export default class VueToast extends Vue {
   isClosed = false;
   onClose = null;
 
-  @Prop({type: Boolean, default: false}) enableHTML!: boolean;
+  @Prop({type: Boolean, default: false}) enableUnsafeHTML!: boolean;
   @Prop({
     type: String,
     default: 'top',
@@ -60,19 +60,21 @@ export default class VueToast extends Vue {
     }
   }
 
+  // 决定提示框出现的位置
   get toastPosition(): {} {
     return {
       [`position-${this.position}`]: true
     };
   }
 
+  // 提供偏移量
   get positionOffsetStyle() {
     return {
       [`${this.position}`]: `${this.verticalOffset}px`
     };
   }
 
-  // 监听 closed 的状态
+  // 监听 closed 的状态 决定visible是否变化
   @Watch('isClosed')
   onClosedChange(newVal: boolean) {
     if (newVal) {
@@ -82,6 +84,11 @@ export default class VueToast extends Vue {
 
   // 元素离开后执行钩子
   handleAfterLeave() {
+    this.clearVM();
+  }
+
+  //  清除组件
+  clearVM() {
     this.$el.remove();
     this.$destroy();
     if (this.$el.parentNode) {
@@ -89,10 +96,12 @@ export default class VueToast extends Vue {
     }
   }
 
+  // 显示提示框
   popUpToast() {
     this.visible = true;
   }
 
+  // 关闭提示框
   close() {
     this.isClosed = true;
   }
@@ -111,6 +120,7 @@ export default class VueToast extends Vue {
     }
   }
 
+  // 异步 得到渲染后的父元素高度
   getRenderedHeight() {
     this.$nextTick(() => {
       if (this.$refs.line) {
@@ -120,10 +130,24 @@ export default class VueToast extends Vue {
     });
   }
 
+  // 按Escape键关闭消息
+  keydown(e: KeyboardEvent) {
+    if (e.key === `Escape`) {
+      if (!this.isClosed) {
+        this.close();
+      }
+    }
+  }
+
   mounted() {
-    this.getRenderedHeight();
     this.popUpToast();
+    document.addEventListener('keydown', this.keydown);
+    this.getRenderedHeight(); // 注意顺序 必须放在 this.popUpToast() 之后
     this.startTimer();
+    this.$once('hook:beforeDestroy', () => {
+      document.removeEventListener('keydown', this.keydown);
+      this.clearVM();
+    });
   }
 
 }
