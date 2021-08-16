@@ -5,7 +5,7 @@ export declare class VueToast extends Vue {
   /** Close the Loading instance */
   close(): void;
 
-  popUpToast(): void;
+  // popUpToast(): void;
 }
 
 type closeButton = {

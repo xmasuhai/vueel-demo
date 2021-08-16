@@ -16,13 +16,6 @@
       <fieldset>
         <legend>有关闭按钮 手动关闭</legend>
         <details open>
-          <summary>ToastsTips 包含过长字符</summary>
-          <div>
-            <VueButton @click="showToast1">点击出现提示框</VueButton>
-          </div>
-        </details>
-        <br>
-        <details open>
           <summary>ToastsTips 点击关闭，无回调</summary>
           <div>
             <VueButton @click="showToast2">点击出现提示框</VueButton>
@@ -32,7 +25,7 @@
         <details open>
           <summary>ToastsTips 点击关闭，并执行回调</summary>
           <div>
-            <VueButton @click="popUpToasts">点击出现提示框</VueButton>
+            <VueButton @click="popUpToasts" ref="button">点击出现提示框</VueButton>
           </div>
         </details>
         <br>
@@ -47,6 +40,13 @@
           <summary>ToastsTips 传递自定义HTML节点</summary>
           <div>
             <VueButton @click="popUpToasts3">点击出现提示框</VueButton>
+          </div>
+        </details>
+        <br>
+        <details open>
+          <summary>ToastsTips 包含过长字符</summary>
+          <div>
+            <VueButton @click="showToast1">点击出现提示框</VueButton>
           </div>
         </details>
       </fieldset>
@@ -130,6 +130,12 @@ export default class ToastsTips extends Vue {
           text: '手动关闭',
           callback(toast: VueToast) {
             toast.close();
+            toast.$toast('关闭后，执行了一个回调', {
+              propsData: {
+                position: 'middle',
+                autoClose: true
+              }
+            });
           }
         }
       }
@@ -187,5 +193,6 @@ export default class ToastsTips extends Vue {
       }
     });
   }
+
 }
 </script>
