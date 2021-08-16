@@ -37,6 +37,7 @@ export default class VueToast extends Vue {
   onClose = null;
 
   @Prop({type: Boolean, default: false}) enableUnsafeHTML!: boolean;
+  @Prop({type: Boolean, default: true}) enableEscapeKey!: boolean;
   @Prop({
     type: String,
     default: 'top',
@@ -132,7 +133,7 @@ export default class VueToast extends Vue {
 
   // 按Escape键关闭消息
   keydown(e: KeyboardEvent) {
-    if (e.key === `Escape`) {
+    if (this.enableEscapeKey && e.key === `Escape`) {
       if (!this.isClosed) {
         this.close();
       }

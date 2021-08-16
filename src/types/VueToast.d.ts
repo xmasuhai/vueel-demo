@@ -18,8 +18,11 @@ export interface VueToastOptions {
   /** Callback function when closed with the message instance as the parameter */
   onClose?: CloseEventHandler;
   propsData: {
+    enableEscapeKey: boolean;
+    enableUnsafeHTML: boolean;
     autoClose: boolean;
     autoCloseDelay: number;
+    position: 'top' | 'middle' | 'bottom';
     closeButton: {
       text: string;
       callback: ((toast: VueToast) => void) | undefined;
