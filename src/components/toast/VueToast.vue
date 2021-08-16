@@ -1,22 +1,24 @@
 <template>
   <transition name="eat-toast-fade" @after-leave="handleAfterLeave">
-    <div class="toast"
+    <div class="wrapper"
          :class="toastPosition"
-         :style="positionOffsetStyle"
-         v-show="visible"
-         ref="toast"
-         @mouseenter="clearTimer"
-         @mouseleave="startTimer">
-      <div class="message">
-        <slot v-if="!enableUnsafeHTML"></slot>
-        <div v-else v-html="$slots.default[0]"></div>
-      </div>
-      <template v-if="closeButton">
-        <div ref="line" class="line"></div>
-        <span class="closeButton" @click="onClickCloseButton">
+         v-show="visible">
+      <div class="toast"
+           :style="positionOffsetStyle"
+           ref="toast"
+           @mouseenter="clearTimer"
+           @mouseleave="startTimer">
+        <div class="message">
+          <slot v-if="!enableUnsafeHTML"></slot>
+          <div v-else v-html="$slots.default[0]"></div>
+        </div>
+        <template v-if="closeButton">
+          <div ref="line" class="line"></div>
+          <span class="closeButton" @click="onClickCloseButton">
           {{ closeButton.text }}
         </span>
-      </template>
+        </template>
+      </div>
     </div>
   </transition>
 </template>
@@ -158,36 +160,67 @@ export default class VueToast extends Vue {
 <style lang="scss" scoped>
 $font-size: 14px;
 $toast-min-height: 40px;
-.toast {
-  font-size: $font-size;
-  min-height: $toast-min-height;
-  max-width: 288px;
+
+.eat-toast-fade-enter,
+.eat-toast-fade-leave-to,
+.eat-toast-fade-enter-active,
+.eat-toast-fade-leave-active {
+  opacity: 0;
+}
+.eat-toast-from-top-enter,
+.eat-toast-from-top-leave-to,
+.eat-toast-from-top-enter-active,
+.eat-toast-from-top-leave-active {
+  opacity: 0;
+  transform: translate(-50%, 100%);
+}
+.eat-toast-from-bottom-enter,
+.eat-toast-from-bottom-leave-to,
+.eat-toast-from-bottom-enter-active,
+.eat-toast-from-bottom-leave-active {
+  opacity: 0;
+  transform: translate(-50%, -100%);
+}
+
+.wrapper {
   position: fixed;
   left: 50%;
-  background-color: rgba(0, 0, 0, .74);
-  border-radius: 4px;
-  box-shadow: 0 0 3px 0 rgba(0, 0, 0, .5);
-  color: ghostwhite;
-  padding: 0 16px;
-  transition: opacity 0.3s, transform .4s, top 0.4s;
-  //overflow: hidden;
-  display: flex;
-  align-items: center;
   transform: translateX(-50%);
+  transition: opacity 0.3s, transform .4s, top 0.4s;
 
   &.position-top {
     top: 0;
+    .toast {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
   }
 
   &.position-middle {
     transform: translate(-50%, -50%);
     top: 50%;
-
   }
 
   &.position-bottom {
     bottom: 0;
+    .toast {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
+}
+
+.toast {
+  font-size: $font-size;
+  min-height: $toast-min-height;
+  max-width: 288px;
+  background-color: rgba(0, 0, 0, .74);
+  border-radius: 4px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, .5);
+  color: ghostwhite;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
 
   .message {
     padding: 8px 0;
@@ -207,11 +240,4 @@ $toast-min-height: 40px;
 
 }
 
-.eat-toast-fade-enter,
-.eat-toast-fade-leave-to,
-.eat-toast-fade-enter-active,
-.eat-toast-fade-leave-active {
-  opacity: 0;
-  transform: translate(-50%, -100%);
-}
 </style>
