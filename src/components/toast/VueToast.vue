@@ -172,9 +172,9 @@ $toast-min-height: 40px;
   //overflow: hidden;
   display: flex;
   align-items: center;
+  transform: translateX(-50%); //一次有效赋值
 
   &.position-top {
-    transform: translateX(-50%); //一次有效赋值
     top: 0;
   }
 
@@ -185,7 +185,6 @@ $toast-min-height: 40px;
   }
 
   &.position-bottom {
-    transform: translateX(-50%);
     bottom: 0;
   }
 

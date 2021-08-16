@@ -9,6 +9,12 @@
             <VueButton @click="showToast0">点击出现提示框</VueButton>
           </div>
         </details>
+        <details open>
+          <summary>ToastsTips 默认只出现一个提示框</summary>
+          <div>
+            <VueButton @click="showToast11">点击出现提示框</VueButton>
+          </div>
+        </details>
       </fieldset>
     </form>
     <br>
@@ -98,6 +104,10 @@ export default class ToastsTips extends Vue {
 
   showToast0() {
     this.$toast('我是一个VueToast组件');
+  }
+
+  showToast11() {
+    this.$toast(`你的智商目前为 ${Math.round(Math.random() * 100)}， 需要充值`);
   }
 
   showToast1() {
