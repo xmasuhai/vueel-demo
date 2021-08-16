@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue, Watch} from 'vue-property-decorator';
+import {Component, Emit, Prop, Vue, Watch} from 'vue-property-decorator';
 import {closeButton} from '@/types/VueToast';
 
 @Component
@@ -103,6 +103,7 @@ export default class VueToast extends Vue {
   }
 
   // 关闭提示框
+  @Emit('beforeClose')
   close() {
     this.isClosed = true;
   }
@@ -172,7 +173,7 @@ $toast-min-height: 40px;
   //overflow: hidden;
   display: flex;
   align-items: center;
-  transform: translateX(-50%); //一次有效赋值
+  transform: translateX(-50%);
 
   &.position-top {
     top: 0;
