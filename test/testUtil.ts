@@ -16,11 +16,13 @@ const createElm = (): HTMLDivElement => {
  * @param  {Object} vm
  */
 export const destroyVM = (vm: Vue): void => {
-  vm.$destroy && vm.$destroy();
-  // vm.$el.remove();
-  vm.$el &&
-  vm.$el.parentNode &&
-  vm.$el.parentNode.removeChild(vm.$el);
+  if (vm) {
+    vm?.$destroy();
+    // vm.$el.remove();
+    vm.$el &&
+    vm.$el.parentNode &&
+    vm.$el.parentNode.removeChild(vm.$el);
+  }
 };
 
 /**
