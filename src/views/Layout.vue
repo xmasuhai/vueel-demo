@@ -63,6 +63,8 @@ section.layout-wrapper {
   height: 100vh;
 
   section.content {
+    box-shadow: inset 0 1px 2px 2px #ccc;
+
     .tab {
       border: 1px solid #ccc;
       padding: 20px;

@@ -15,7 +15,7 @@
         <template v-if="closeButton">
           <div ref="line" class="line"></div>
           <span class="closeButton" @click="onClickCloseButton">
-          {{ closeButton.text }}
+            {{ closeButton.text }}
         </span>
         </template>
       </div>
@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Emit, Prop, Vue, Watch} from 'vue-property-decorator';
+import {Component, Emit, Prop, Ref, Vue, Watch} from 'vue-property-decorator';
 import {closeButton} from '@/types/VueToast';
 
 @Component
@@ -124,12 +124,15 @@ export default class VueToast extends Vue {
     }
   }
 
+  @Ref() readonly line!: HTMLElement;
+  @Ref() readonly toast!: HTMLElement;
+
   // 异步 得到渲染后的父元素高度
   getRenderedHeight() {
     this.$nextTick(() => {
-      if (this.$refs.line) {
-        (this.$refs.line as HTMLElement).style.height =
-          `${(this.$refs.toast as HTMLElement).getBoundingClientRect().height}px`;
+      if (this.line) {
+        this.toast.style.height =
+          `${this.toast.getBoundingClientRect().height}px`;
       }
     });
   }
@@ -167,6 +170,7 @@ $toast-min-height: 40px;
 .eat-toast-fade-leave-active {
   opacity: 0;
 }
+
 .eat-toast-from-top-enter,
 .eat-toast-from-top-leave-to,
 .eat-toast-from-top-enter-active,
@@ -174,6 +178,7 @@ $toast-min-height: 40px;
   opacity: 0;
   transform: translate(-50%, 100%);
 }
+
 .eat-toast-from-bottom-enter,
 .eat-toast-from-bottom-leave-to,
 .eat-toast-from-bottom-enter-active,
@@ -190,6 +195,7 @@ $toast-min-height: 40px;
 
   &.position-top {
     top: 0;
+
     .toast {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
@@ -203,6 +209,7 @@ $toast-min-height: 40px;
 
   &.position-bottom {
     bottom: 0;
+
     .toast {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
