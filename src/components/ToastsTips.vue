@@ -113,7 +113,7 @@ export default class ToastsTips extends Vue {
   showToast1() {
     this.$toast('我是一个VueToast组件我是一个VueToast组件我是一个VueToast组件我是一个VueToast组件我是一个VueToast组件', {
       propsData: {
-        autoClose: false,
+        autoCloseDelay: false,
         closeButton: {
           text: '手动关闭'
         }
@@ -124,7 +124,7 @@ export default class ToastsTips extends Vue {
   showToast2() {
     this.$toast('我是一个VueToast组件', {
       propsData: {
-        autoClose: false,
+        autoCloseDelay: false,
         closeButton: {
           text: '手动关闭'
         }
@@ -135,7 +135,7 @@ export default class ToastsTips extends Vue {
   popUpToasts() {
     this.$toast('我是一个VueToast组件', {
       propsData: {
-        autoClose: false,
+        autoCloseDelay: false,
         closeButton: {
           text: '手动关闭',
           callback(toast: VueToast) {
@@ -143,7 +143,7 @@ export default class ToastsTips extends Vue {
             toast.$toast('关闭后，执行了一个回调', {
               propsData: {
                 position: 'middle',
-                autoClose: true
+                autoCloseDelay: 1000
               }
             });
           }
@@ -158,7 +158,7 @@ export default class ToastsTips extends Vue {
           我是由一个<i>标签</i>包裹<strong>文字</strong>的VueToast组件
         </p>`, {
       propsData: {
-        autoClose: false,
+        autoCloseDelay: false,
         enableUnsafeHTML: true,
         closeButton: {
           text: '手动关闭',
@@ -176,7 +176,7 @@ export default class ToastsTips extends Vue {
           <a style="color: seagreen;" href="https://cn.vuejs.org">Vue官网链接</a>
         </p>`, {
       propsData: {
-        autoClose: false,
+        autoCloseDelay: false,
         enableUnsafeHTML: true,
         closeButton: {
           text: '手动关闭',
@@ -192,7 +192,7 @@ export default class ToastsTips extends Vue {
     this.$toast(`智商需要充值 出现在${position}`, {
       propsData: {
         position,
-        autoClose: true,
+        autoCloseDelay: 1200,
         enableUnsafeHTML: true,
         closeButton: {
           text: '已充值',

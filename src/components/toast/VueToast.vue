@@ -1,5 +1,5 @@
 <template>
-  <transition name="eat-toast-fade" @after-leave="handleAfterLeave">
+  <transition :name="fadeAnimationName" @after-leave="handleAfterLeave">
     <div class="wrapper"
          :class="toastPosition"
          v-show="visible">
@@ -47,8 +47,11 @@ export default class VueToast extends Vue {
       return ['top', 'middle', 'bottom'].includes(value);
     }
   }) position!: 'top' | 'middle' | 'bottom';
-  @Prop({type: Boolean, default: true}) autoClose!: boolean;
-  @Prop({type: Number, default: 1800}) autoCloseDelay!: number;
+  @Prop({
+    type: [Number, Boolean], default: 1800, validator(value: false | number): boolean {
+      return (value === false) || (value > 0);
+    }
+  }) autoCloseDelay!: false | number;
   @Prop({
     type: Object,
     default() {
@@ -68,6 +71,17 @@ export default class VueToast extends Vue {
     return {
       [`position-${this.position}`]: true
     };
+  }
+
+  // 根据提示框出现的位置 应用不同类样式进入动画
+  get fadeAnimationName() {
+    const map = {
+      'position-top': 'eat-toast-from-top',
+      'position-middle': 'eat-toast-fade',
+      'position-bottom': 'eat-toast-from-bottom',
+    };
+    type mapKey = 'position-top' | 'position-middle' | 'position-bottom';
+    return map[Object.keys(this.toastPosition)[0] as mapKey];
   }
 
   // 提供偏移量
@@ -115,7 +129,7 @@ export default class VueToast extends Vue {
   }
 
   startTimer() {
-    if (this.autoClose && this.autoCloseDelay > 0) {
+    if (this.autoCloseDelay) {
       this.timer = setTimeout(() => {
         if (!this.isClosed) {
           this.close();
@@ -164,34 +178,54 @@ export default class VueToast extends Vue {
 $font-size: 14px;
 $toast-min-height: 40px;
 
-.eat-toast-fade-enter,
-.eat-toast-fade-leave-to,
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0%);
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0%);
+  }
+}
+
 .eat-toast-fade-enter-active,
 .eat-toast-fade-leave-active {
   opacity: 0;
 }
 
-.eat-toast-from-top-enter,
-.eat-toast-from-top-leave-to,
-.eat-toast-from-top-enter-active,
-.eat-toast-from-top-leave-active {
-  opacity: 0;
-  transform: translate(-50%, 100%);
+.eat-toast-from-top-enter-active {
+  animation: slide-down .5s;
 }
 
-.eat-toast-from-bottom-enter,
-.eat-toast-from-bottom-leave-to,
-.eat-toast-from-bottom-enter-active,
+.eat-toast-from-top-leave-active {
+  animation: slide-down .5s reverse;
+}
+
+.eat-toast-from-bottom-enter-active {
+  animation: slide-up .5s;
+}
+
 .eat-toast-from-bottom-leave-active {
-  opacity: 0;
-  transform: translate(-50%, -100%);
+  animation: slide-up .5s reverse;
 }
 
 .wrapper {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  transition: opacity 0.3s, transform .4s, top 0.4s;
+  transition: opacity 0.3s ease, transform .4s ease, top 0.4s ease;
 
   &.position-top {
     top: 0;

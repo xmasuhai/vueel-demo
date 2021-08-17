@@ -20,8 +20,7 @@ export interface VueToastOptions {
   propsData: {
     enableEscapeKey: boolean;
     enableUnsafeHTML: boolean;
-    autoClose: boolean;
-    autoCloseDelay: number;
+    autoCloseDelay: false | number;
     position: 'top' | 'middle' | 'bottom';
     closeButton: {
       text: string;
