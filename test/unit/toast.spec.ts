@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import Vue, {VNode} from 'vue';
 import chai from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
@@ -10,7 +10,6 @@ const expect = chai.expect;
 
 Vue.config.productionTip = false;
 Vue.config.devtools = false;
-
 
 describe('Toast Component', () => {
   it('存在 VueToast', () => {
@@ -25,11 +24,14 @@ describe('Toast Component', () => {
 
     it('接受 autoCloseDelay', (done) => {
       const vm = createTestVM(VueToast, {
-        autoCloseDelay: 1000
+        autoCloseDelay: 300
       }, true);
+      expect(document.body.contains(vm.$el)).to.eq(true);
       vm.$on('beforeClose', () => {
-        expect(document.body.contains(vm.$el)).to.eq(true);
-        done();
+        setTimeout(() => {
+          expect(document.body.contains(vm.$el)).to.eq(false);
+          done();
+        }, 500);
       });
     });
 
@@ -47,18 +49,6 @@ describe('Toast Component', () => {
       expect(callback).to.have.been.called;
     });
 
-    it('接受 enableUnsafeHTML', () => {
-      const vm = createTestVM(VueToast, {
-        enableUnsafeHTML: true
-      }, false);
-
-      vm.$slots.default = ['<strong id="test">HI</strong>'];
-      // console.log(vm.$el);
-      vm.$mount();
-      const strong = vm.$el.querySelector('#test');
-      expect(strong).to.exist;
-    });
-
     it('接受 position', () => {
       const vm = createTestVM(VueToast, {
         position: 'bottom'
@@ -67,10 +57,51 @@ describe('Toast Component', () => {
       expect(vm.$el.classList.contains('position-bottom')).to.eq(true);
     });
 
-    /*
-        it('接受 enableEscapeKey', () => {
-        });
-    */
+    it('接受 enableUnsafeHTML', () => {
+      const vm = createTestVM(VueToast, {
+        enableUnsafeHTML: true,
+        autoCloseDelay: false
+      }, true);
+      /*
+      const h = vm.$createElement;
+      const vnode = h('strong', {
+        attrs: {
+          id: 'test'
+        },
+      });
+      */
+      vm.$slots.default = [`<strong id="test">Hi</strong>` as unknown as VNode];
+      vm.$mount();
+      // console.log(vm.$el);
+      const strong = vm.$el.querySelector('#test');
+      expect(strong).to.exist;
+    });
 
   });
+
+  describe('测试事件', () => {
+    let vm: Vue;
+    afterEach(() => {
+      destroyVM(vm);
+    });
+
+    it('接受 enableEscapeKey 触发beforeClose事件', (done) => {
+      const vm = createTestVM(VueToast, {
+        autoCloseDelay: 300
+      }, true);
+      const keyEvt = new KeyboardEvent('keydown', {
+        key: 'Escape'
+      });
+      expect(document.body.contains(vm.$el)).to.eq(true);
+      vm.$el.dispatchEvent(keyEvt);
+      vm.$on('beforeClose', () => {
+        setTimeout(() => {
+          expect(document.body.contains(vm.$el)).to.eq(false);
+          done();
+        }, 500);
+      });
+    });
+
+  })
+
 });
