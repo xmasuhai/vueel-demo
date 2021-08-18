@@ -25,7 +25,9 @@ describe('VueInput', () => {
 
     it('VueInput可以接受value', () => {
       vm = createTestVM(VueInput, {
-        value: '1234'
+        propsData: {
+          value: '1234'
+        }
       }, true);
       const inputElement = vm.$el.querySelector('input');
       expect((inputElement as HTMLInputElement).value)
@@ -34,7 +36,9 @@ describe('VueInput', () => {
 
     it('VueInput可以接受disabled', () => {
       vm = createTestVM(VueInput, {
-        disabled: true
+        propsData: {
+          disabled: true
+        }
       }, true);
       const inputElement = vm.$el.querySelector('input');
       expect((inputElement as HTMLInputElement).disabled)
@@ -43,7 +47,9 @@ describe('VueInput', () => {
 
     it('VueInput可以接受readOnly', () => {
       vm = createTestVM(VueInput, {
-        readonly: true
+        propsData: {
+          readonly: true
+        }
       }, false);
       const inputElement = vm.$el.querySelector('input');
       expect((inputElement as HTMLInputElement).readOnly)
@@ -52,7 +58,9 @@ describe('VueInput', () => {
 
     it('VueInput可以接受error', () => {
       vm = createTestVM(VueInput, {
-        error: '你错了'
+        propsData: {
+          error: '你错了'
+        }
       }, false);
       //svg
       const useElement = vm.$el.querySelector('use');

@@ -27,6 +27,7 @@ export interface VueToastOptions {
       callback: ((toast: VueToast) => void) | undefined;
     };
   };
+
 }
 
 export interface CloseEventHandler {

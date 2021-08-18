@@ -41,7 +41,9 @@ describe('VueIcon', () => {
       .forEach((iconName) => {
         it('可以设置icon.', () => {
           vm = createTestVM(VueIcon, {
-            iconName: iconName
+            propsData: {
+              iconName: iconName
+            }
           }, false);
           const useElement = vm.$el.querySelector('use');
           expect((useElement as SVGUseElement)

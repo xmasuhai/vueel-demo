@@ -19,23 +19,23 @@ describe('Container', () => {
   });
 
   it('create', () => {
-    vm = createTestVM(VueContainer, true);
+    vm = createTestVM(VueContainer, undefined, true);
     expect(vm.$el).to.exist;
   });
 
-/*
-  it('vertical', () => {
-    vm = createVueVM(`
-        <div>
-          <VueContainer>
-            <VueAside></VueAside>
-            <VueHeader></VueHeader>
-          </VueContainer>
-        </div>
-      `, true);
-    // expect(vm.$children[0].$el.classList.contains('is-vertical')).to.true;
-  });
-*/
+  /*
+    it('vertical', () => {
+      vm = createVueVM(`
+          <div>
+            <VueContainer>
+              <VueAside></VueAside>
+              <VueHeader></VueHeader>
+            </VueContainer>
+          </div>
+        `, true);
+      // expect(vm.$children[0].$el.classList.contains('is-vertical')).to.true;
+    });
+  */
 
 
 });

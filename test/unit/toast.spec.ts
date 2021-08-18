@@ -24,7 +24,9 @@ describe('Toast Component', () => {
 
     it('接受 autoCloseDelay', (done) => {
       const vm = createTestVM(VueToast, {
-        autoCloseDelay: 300
+        propsData: {
+          autoCloseDelay: 300
+        }
       }, true);
       expect(document.body.contains(vm.$el)).to.eq(true);
       vm.$on('beforeClose', () => {
@@ -38,9 +40,11 @@ describe('Toast Component', () => {
     it('接受 closeButton', () => {
       const callback = sinon.fake();
       const vm = createTestVM(VueToast, {
-        closeButton: {
-          text: '测试关闭',
-          callback,
+        propsData: {
+          closeButton: {
+            text: '测试关闭',
+            callback,
+          }
         }
       }, true);
       const closeButton = vm.$el.querySelector('.closeButton');
@@ -51,20 +55,22 @@ describe('Toast Component', () => {
 
     it('接受 position', () => {
       const vm = createTestVM(VueToast, {
-        position: 'bottom'
+        propsData: {
+          position: 'bottom'
+        }
       }, false);
       // console.log(vm.$el.outerHTML);
       expect(vm.$el.classList.contains('position-bottom')).to.eq(true);
     });
 
     it('接受 enableUnsafeHTML', () => {
-      const div = document.createElement('div');
       const vm = createTestVM(VueToast, {
-        enableUnsafeHTML: true,
-        autoCloseDelay: false
+        propsData: {
+          enableUnsafeHTML: true,
+          autoCloseDelay: false
+        },
       }, false);
       /*
-      console.log('vm.$el', vm.$el);
       const bodyNode = vm.$createElement('div',
         {domProps: {innerHTML: "<strong>Some Body Data</strong>"}});
       const vnode = h('strong', {
@@ -73,10 +79,12 @@ describe('Toast Component', () => {
         },
       });
       */
+      console.log('vm.$el1', vm.$slots.default[0]);
       vm.$slots.default = [`<strong id="test">Hi</strong>` as unknown as VNode];
-      // vm.$slots.default = [bodyNode];
+      console.log('vm.$el2', vm.$slots.default[0]);
       vm.$mount();
-      document.body.appendChild(div.appendChild(vm.$el));
+      console.log('vm.$el3', vm.$el);
+      // vm.$slots.default = [bodyNode];
       const strong = vm.$el.querySelector('#test');
       expect(strong).to.exist;
     });
@@ -91,7 +99,9 @@ describe('Toast Component', () => {
 
     it('接受 enableEscapeKey 触发beforeClose事件', (done) => {
       const vm = createTestVM(VueToast, {
-        autoCloseDelay: 300
+        propsData: {
+          autoCloseDelay: 300
+        }
       }, true);
       const keyEvt = new KeyboardEvent('keydown', {
         key: 'Escape'
@@ -106,6 +116,6 @@ describe('Toast Component', () => {
       });
     });
 
-  })
+  });
 
 });

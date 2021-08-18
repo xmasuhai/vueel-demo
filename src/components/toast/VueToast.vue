@@ -10,7 +10,7 @@
            @mouseleave="startTimer">
         <div class="message">
           <slot v-if="!enableUnsafeHTML"></slot>
-          <div v-else v-html="$slots.default[0]"></div>
+          <div v-else v-html="ifSlots"></div>
         </div>
         <template v-if="closeButton">
           <div ref="line" class="line"></div>
@@ -157,6 +157,15 @@ export default class VueToast extends Vue {
       if (!this.isClosed) {
         this.close();
       }
+    }
+  }
+
+  get ifSlots() {
+    return (this.$slots.default ? this.$slots.default[0] : `<slot></slot>`)
+  }
+  haveSlots() {
+    if (!this.$slots.default) {
+      this.$slots.default = [`<slot></slot>`];
     }
   }
 

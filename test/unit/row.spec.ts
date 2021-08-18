@@ -21,7 +21,7 @@ describe('VueRow', () => {
   });
 
   it('classList row', () => {
-    vm = createTestVM(VueRow, true);
+    vm = createTestVM(VueRow, undefined, true);
     const rowElm = vm.$el;
     expect(rowElm.classList.contains('row')).to.be.true;
   });
@@ -37,7 +37,9 @@ describe('VueRow', () => {
 
     it('接收 align 属性', () => {
       vm = createTestVM(VueRow, {
-        gutter: 20
+        propsData: {
+          gutter: 20
+        }
       }, true);
       /*
       const Constructor = Vue.extend(VueRow);
@@ -54,7 +56,9 @@ describe('VueRow', () => {
 
     it('接收  gutter 属性', () => {
       vm = createTestVM(VueRow, {
-        gutter: 20
+        propsData: {
+          gutter: 20
+        }
       }, true);
       const rowElm = vm.$el;
       expect(rowElm.style.marginLeft).to.be.equal('-10px');

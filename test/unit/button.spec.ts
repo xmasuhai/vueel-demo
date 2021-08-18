@@ -30,7 +30,9 @@ describe('VueButton', () => {
 
     it('可以设置icon.', () => {
       vm = createTestVM(VueButton, {
-        icon: 'settings'
+        propsData: {
+          icon: 'settings'
+        }
       }, false);
       const useElement = vm.$el.querySelector('use');
       expect((useElement as SVGUseElement)
@@ -40,8 +42,10 @@ describe('VueButton', () => {
 
     it('可以设置loading.', () => {
       vm = createTestVM(VueButton, {
-        icon: 'loading',
-        loading: true
+        propsData: {
+          icon: 'loading',
+          loading: true
+        }
       }, false);
       const useElements = vm.$el.querySelectorAll('use');
       expect(useElements.length).to.equal(1);
@@ -53,7 +57,9 @@ describe('VueButton', () => {
       const div = document.createElement('div');
       document.body.appendChild(div);
       vm = createTestVM(VueButton, {
-        icon: 'settings',
+        propsData: {
+          icon: 'settings',
+        }
       }, true);
       const icon = vm.$el.querySelector('svg');
       expect(getComputedStyle(icon as SVGSVGElement).order).to.eq('1');
@@ -63,8 +69,10 @@ describe('VueButton', () => {
       const div = document.createElement('div');
       document.body.appendChild(div);
       vm = createTestVM(VueButton, {
-        icon: 'settings',
-        iconPosition: 'right'
+        propsData: {
+          icon: 'settings',
+          iconPosition: 'right'
+        }
       }, true);
       const icon = vm.$el.querySelector('svg');
       expect(getComputedStyle(icon as SVGSVGElement).order).to.eq('2');
@@ -86,7 +94,9 @@ describe('VueButton', () => {
           const div = document.createElement('div');
           document.body.appendChild(div);
           vm = createTestVM(VueButton, {
-            colorType
+            propsData: {
+              colorType
+            }
           }, true);
           const buttonElement = vm.$el;
           expect(getComputedStyle(buttonElement as HTMLButtonElement).backgroundColor)

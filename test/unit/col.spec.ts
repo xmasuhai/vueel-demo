@@ -23,7 +23,9 @@ describe('VueCol', () => {
     for (let n = 1; n < 24; n++) {
       it('接收 span 属性', () => {
         vm = createTestVM(VueCol, {
-          span: n
+          propsData: {
+            span: n
+          }
         }, true);
         const element = vm.$el;
         expect(element.classList.contains(`col-${n}`)).to.eq(true);
@@ -31,7 +33,9 @@ describe('VueCol', () => {
 
       it('接收 offset 属性', () => {
         vm = createTestVM(VueCol, {
-          offset: n
+          propsData: {
+            offset: n
+          }
         }, true);
         const element = vm.$el;
         expect(element.classList.contains(`offset-${n}`)).to.eq(true);
@@ -46,7 +50,9 @@ describe('VueCol', () => {
           for (let m = 1; m < 24; m++) {
             it(`接收 ${mediaType} 属性`, () => {
               vm = createTestVM(VueCol, {
-                [mediaType]: {span: n, offset: m}
+                propsData: {
+                  [mediaType]: {span: n, offset: m}
+                }
               }, true);
               const element = vm.$el;
               expect(element.classList.contains(`col-${mediaType}-${n}`)).to.eq(true);
