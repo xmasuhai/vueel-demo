@@ -58,12 +58,15 @@ describe('Toast Component', () => {
     });
 
     it('接受 enableUnsafeHTML', () => {
+      const div = document.createElement('div');
       const vm = createTestVM(VueToast, {
         enableUnsafeHTML: true,
         autoCloseDelay: false
-      }, true);
+      }, false);
       /*
-      const h = vm.$createElement;
+      console.log('vm.$el', vm.$el);
+      const bodyNode = vm.$createElement('div',
+        {domProps: {innerHTML: "<strong>Some Body Data</strong>"}});
       const vnode = h('strong', {
         attrs: {
           id: 'test'
@@ -71,8 +74,9 @@ describe('Toast Component', () => {
       });
       */
       vm.$slots.default = [`<strong id="test">Hi</strong>` as unknown as VNode];
+      // vm.$slots.default = [bodyNode];
       vm.$mount();
-      // console.log(vm.$el);
+      document.body.appendChild(div.appendChild(vm.$el));
       const strong = vm.$el.querySelector('#test');
       expect(strong).to.exist;
     });
