@@ -79,11 +79,11 @@ describe('Toast Component', () => {
         },
       });
       */
-      console.log('vm.$el1', vm.$slots.default[0]);
+      // console.log('vm.$el1', vm.$slots.default[0]);
       vm.$slots.default = [`<strong id="test">Hi</strong>` as unknown as VNode];
-      console.log('vm.$el2', vm.$slots.default[0]);
+      // console.log('vm.$el2', vm.$slots.default[0]);
       vm.$mount();
-      console.log('vm.$el3', vm.$el);
+      // console.log('vm.$el3', vm.$el);
       // vm.$slots.default = [bodyNode];
       const strong = vm.$el.querySelector('#test');
       expect(strong).to.exist;

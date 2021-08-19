@@ -10,7 +10,7 @@
            @mouseleave="startTimer">
         <div class="message">
           <slot v-if="!enableUnsafeHTML"></slot>
-          <div v-else v-html="ifSlots"></div>
+          <div v-else v-html="$slots.default[0]"></div>
         </div>
         <template v-if="closeButton">
           <div ref="line" class="line"></div>
@@ -26,6 +26,7 @@
 <script lang="ts">
 import {Component, Emit, Prop, Ref, Vue, Watch} from 'vue-property-decorator';
 import {closeButton} from '@/types/VueToast';
+import {VNode} from 'vue/types/vnode';
 
 @Component
 export default class VueToast extends Vue {
@@ -138,10 +139,10 @@ export default class VueToast extends Vue {
     }
   }
 
+  // 异步 得到渲染后的父元素高度
   @Ref() readonly line!: HTMLElement;
   @Ref() readonly toast!: HTMLElement;
 
-  // 异步 得到渲染后的父元素高度
   getRenderedHeight() {
     this.$nextTick(() => {
       if (this.line) {
@@ -161,15 +162,19 @@ export default class VueToast extends Vue {
   }
 
   get ifSlots() {
-    return (this.$slots.default ? this.$slots.default[0] : `<slot></slot>`)
+    return (this.$slots.default ? this.$slots.default[0] : `<slot></slot>`);
   }
+
   haveSlots() {
     if (!this.$slots.default) {
-      this.$slots.default = [`<slot></slot>`];
+      this.$slots.default = [`<slot></slot>` as unknown as VNode];
     }
   }
 
   mounted() {
+    this.$nextTick(() => {
+      this.haveSlots();
+    });
     this.popUpToast();
     document.addEventListener('keydown', this.keydown);
     this.getRenderedHeight(); // 注意顺序 必须放在 this.popUpToast() 之后
