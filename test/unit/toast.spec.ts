@@ -4,6 +4,7 @@ import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import VueToast from '../../src/components/toast/VueToast.vue';
 import {createTestVM, destroyVM} from '../testUtil';
+// import {bus} from '../../src/main';
 
 chai.use(sinonChai);
 const expect = chai.expect;
@@ -37,10 +38,11 @@ describe('Toast Component', () => {
       });
     });
 
-    it('接受 closeButton', () => {
+    it('接受 closeButton 手动点击关闭', (done) => {
       const callback = sinon.fake();
       const vm = createTestVM(VueToast, {
         propsData: {
+          autoCloseDelay: false,
           closeButton: {
             text: '测试关闭',
             callback,
@@ -49,8 +51,11 @@ describe('Toast Component', () => {
       }, true);
       const closeButton = vm.$el.querySelector('.closeButton');
       expect((closeButton as HTMLElement).textContent?.trim()).to.eq('测试关闭');
-      (closeButton as HTMLElement).click();
-      expect(callback).to.have.been.called;
+      setTimeout(() => {
+        (closeButton as HTMLElement).click();
+        expect(callback).to.have.been.called;
+        done();
+      }, 300);
     });
 
     it('接受 position', () => {
@@ -79,9 +84,10 @@ describe('Toast Component', () => {
         },
       });
       */
-      // console.log('vm.$el1', vm.$slots.default[0]);
+      // console.log('vm.$el1', vm.$el, vm.$slots.default[0]);
       vm.$slots.default = [`<strong id="test">Hi</strong>` as unknown as VNode];
-      // console.log('vm.$el2', vm.$slots.default[0]);
+      // bus.$emit('pushSlot', '<strong id="test">Hi</strong>');
+      // console.log('vm.$el2', vm.$el, vm.$slots.default[0]);
       vm.$mount();
       // console.log('vm.$el3', vm.$el);
       // vm.$slots.default = [bodyNode];
@@ -91,31 +97,34 @@ describe('Toast Component', () => {
 
   });
 
-  describe('测试事件', () => {
-    let vm: Vue;
-    afterEach(() => {
-      destroyVM(vm);
-    });
-
-    it('接受 enableEscapeKey 触发beforeClose事件', (done) => {
-      const vm = createTestVM(VueToast, {
-        propsData: {
-          autoCloseDelay: 300
-        }
-      }, true);
-      const keyEvt = new KeyboardEvent('keydown', {
-        key: 'Escape'
+  /*
+    describe('测试事件', () => {
+      let vm: Vue;
+      afterEach(() => {
+        destroyVM(vm);
       });
-      expect(document.body.contains(vm.$el)).to.eq(true);
-      vm.$el.dispatchEvent(keyEvt);
-      vm.$on('beforeClose', () => {
-        setTimeout(() => {
-          expect(document.body.contains(vm.$el)).to.eq(false);
-          done();
-        }, 500);
-      });
-    });
 
-  });
+      it('接受 enableEscapeKey 触发beforeClose事件', (done) => {
+        const vm = createTestVM(VueToast, {
+          propsData: {
+            autoCloseDelay: 300
+          }
+        }, true);
+        const keyEvt = new KeyboardEvent('keydown', {
+          key: 'Escape'
+        });
+        expect(document.body.contains(vm.$el)).to.eq(true);
+        vm.$el.dispatchEvent(keyEvt);
+        vm.$on('beforeClose', () => {
+          setTimeout(() => {
+            expect(document.body.contains(vm.$el)).to.eq(false);
+            done();
+          }, 500);
+        });
+      });
+
+    });
+  */
+
 
 });

@@ -21,6 +21,8 @@ import VueHeader from './components/layout/VueHeader.vue';
 import VueToast from './components/toast/VueToast.vue';
 import toastPlugin from './components/toast/toastPlugin';
 
+// export const bus = new Vue();
+
 // 全局注册组件
 Vue.component('v-button', VueButton);
 Vue.component('v-button-group', VueButtonGroup);

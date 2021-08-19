@@ -27,11 +27,11 @@
 import {Component, Emit, Prop, Ref, Vue, Watch} from 'vue-property-decorator';
 import {closeButton} from '@/types/VueToast';
 import {VNode} from 'vue/types/vnode';
+// import {bus} from '../../main';
 
 @Component
 export default class VueToast extends Vue {
   name = 'VueToast';
-
   visible = false;
   message = '';
   timer: number | null = null;
@@ -172,14 +172,14 @@ export default class VueToast extends Vue {
   }
 
   mounted() {
-    this.$nextTick(() => {
-      this.haveSlots();
-    });
+    this.haveSlots()
+    // bus.$on('pushSlot', (value: VNode) => {this.haveSlots(value);});
     this.popUpToast();
     document.addEventListener('keydown', this.keydown);
     this.getRenderedHeight(); // 注意顺序 必须放在 this.popUpToast() 之后
     this.startTimer();
     this.$once('hook:beforeDestroy', () => {
+      // bus.$off('pushSlot');
       document.removeEventListener('keydown', this.keydown);
       this.clearVM();
     });
