@@ -13,15 +13,22 @@ type closeButton = {
   callback: (vm: Vue) => void | undefined;
 }
 
+interface ToastPosType {
+  top: string;
+  middle: number;
+  middle: string;
+}
+
 /** Options used in Message */
 export interface VueToastOptions {
   /** Callback function when closed with the message instance as the parameter */
   onClose?: CloseEventHandler;
+  data?: {} | (() => ({}));
   propsData: {
     enableEscapeKey: boolean;
     enableUnsafeHTML: boolean;
     autoCloseDelay: false | number;
-    position: 'top' | 'middle' | 'bottom';
+    position: keyof ToastPosType;
     closeButton: {
       text: string;
       callback: ((toast: VueToast) => void) | undefined;

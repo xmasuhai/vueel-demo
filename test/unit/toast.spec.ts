@@ -1,4 +1,4 @@
-import Vue, {VNode} from 'vue';
+import Vue from 'vue';
 import chai from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
@@ -74,7 +74,13 @@ describe('Toast Component', () => {
           enableUnsafeHTML: true,
           autoCloseDelay: false
         },
+        data() {
+          return {
+            message: '<strong id="test">Hi</strong>'
+          };
+        }
       }, false);
+
       /*
       const bodyNode = vm.$createElement('div',
         {domProps: {innerHTML: "<strong>Some Body Data</strong>"}});
@@ -85,7 +91,7 @@ describe('Toast Component', () => {
       });
       */
       // console.log('vm.$el1', vm.$el, vm.$slots.default[0]);
-      vm.$slots.default = [`<strong id="test">Hi</strong>` as unknown as VNode];
+      // vm.$slots.default = [`<strong id="test">Hi</strong>`];
       // bus.$emit('pushSlot', '<strong id="test">Hi</strong>');
       // console.log('vm.$el2', vm.$el, vm.$slots.default[0]);
       vm.$mount();
@@ -97,34 +103,31 @@ describe('Toast Component', () => {
 
   });
 
-  /*
-    describe('测试事件', () => {
-      let vm: Vue;
-      afterEach(() => {
-        destroyVM(vm);
-      });
-
-      it('接受 enableEscapeKey 触发beforeClose事件', (done) => {
-        const vm = createTestVM(VueToast, {
-          propsData: {
-            autoCloseDelay: 300
-          }
-        }, true);
-        const keyEvt = new KeyboardEvent('keydown', {
-          key: 'Escape'
-        });
-        expect(document.body.contains(vm.$el)).to.eq(true);
-        vm.$el.dispatchEvent(keyEvt);
-        vm.$on('beforeClose', () => {
-          setTimeout(() => {
-            expect(document.body.contains(vm.$el)).to.eq(false);
-            done();
-          }, 500);
-        });
-      });
-
+  describe('测试事件', () => {
+    let vm: Vue;
+    afterEach(() => {
+      destroyVM(vm);
     });
-  */
 
+    it('接受 enableEscapeKey 触发beforeClose事件', (done) => {
+      const vm = createTestVM(VueToast, {
+        propsData: {
+          autoCloseDelay: 300
+        }
+      }, true);
+      const keyEvt = new KeyboardEvent('keydown', {
+        key: 'Escape'
+      });
+      expect(document.body.contains(vm.$el)).to.eq(true);
+      vm.$el.dispatchEvent(keyEvt);
+      vm.$on('beforeClose', () => {
+        setTimeout(() => {
+          expect(document.body.contains(vm.$el)).to.eq(false);
+          done();
+        }, 500);
+      });
+    });
+
+  });
 
 });
