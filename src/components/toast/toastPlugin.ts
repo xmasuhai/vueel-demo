@@ -3,40 +3,29 @@ import {VNode} from 'vue';
 import {VueToast, VueToastOptions} from '@/types/VueToast';
 
 let currentToast: VueToast | null;
-let opt: {};
 
 function createToast(Vue: Record<string, any>,
                      message: string | VNode,
-                     onClose: () => void,
-                     VueToastOptions?: VueToastOptions | {}
-): VueToast {
+                     VueToastOptions: VueToastOptions | undefined,
+                     onClose: () => void): VueToast {
   const Constructor = Vue.extend(Toast);
-
-  VueToastOptions = VueToastOptions || {};
-  if (typeof message === 'string') {
-    opt = {
-      'message': message
-    };
-  }
-  const ob = Object.assign(VueToastOptions, {data: opt});
-  const toast = new Constructor(ob);
-  toast.$slots.default = [toast.message];
+  const toast = new Constructor(VueToastOptions);
+  toast.$slots.default = [message];
   toast.$mount();
-  document.body.appendChild(toast.$el);
   toast.$once('beforeClose', onClose);
+  document.body.appendChild(toast.$el);
   return toast;
 }
 
 export default {
   install(Vue: Record<string, any>, /* options: {} = {} */) {
-    Vue.prototype.$toast = (message: string | VNode = '',
-                            toastOptions?: VueToastOptions) => {
+    Vue.prototype.$toast = (message: string | VNode = '', toastOptions: VueToastOptions | undefined) => {
       if (currentToast) {
         currentToast.close();
       }
       toastOptions
-        ? currentToast = createToast(Vue, message, () => {currentToast = null;}, toastOptions)
-        : currentToast = createToast(Vue, message, () => {currentToast = null;});
+        ? currentToast = createToast(Vue, message, toastOptions, () => {currentToast = null;})
+        : currentToast = createToast(Vue, message, undefined, () => {currentToast = null;});
     };
   }
 };
