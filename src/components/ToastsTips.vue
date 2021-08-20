@@ -91,6 +91,7 @@ import {Component, Vue} from 'vue-property-decorator';
 import VueToast from './toast/VueToast.vue';
 import VueButton from './button/VueButton.vue';
 import toastPlugin from './toast/toastPlugin';
+import {ToastPosType} from '@/types/VueToast';
 
 Vue.use(toastPlugin);
 @Component({
@@ -133,7 +134,7 @@ export default class ToastsTips extends Vue {
   }
 
   popUpToasts() {
-    this.$toast('我是一个VueToast组件', {
+    this.$toast('我是一个VueToast组件，关闭我就执行一个回调', {
       propsData: {
         autoCloseDelay: false,
         closeButton: {
@@ -188,8 +189,13 @@ export default class ToastsTips extends Vue {
     });
   }
 
-  popUpToasts4(position = 'top') {
-    this.$toast(`智商需要充值 出现在${position}`, {
+  popUpToasts4(position: keyof ToastPosType) {
+    const positionMap = {
+      'top': '顶部',
+      'middle': '中部',
+      'bottom': '底部',
+    };
+    this.$toast(`智商需要充值 出现在${positionMap[position]}`, {
       propsData: {
         position,
         autoCloseDelay: 1200,

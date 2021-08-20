@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import {ComponentOptions} from 'vue/types/options';
 
 let id = 0;
 
@@ -52,22 +51,24 @@ export const createVueVM = (Template: string | { 'template': string },
  * @return {Object} vm
  */
 
+interface PartOptions {
+  propsData: {} | undefined;
+  data?: (() => ({})) | undefined | null;
+}
+
 export const createTestVM = (Compo: Vue.Component,
-                             /*propsData = {}*/ ComponentOptions: { propsData: {} } | undefined,
+                             /*propsData = {}*/ ComponentOptions: PartOptions | undefined,
                              isMounted: boolean | {} = false) => {
   const Constructor = Vue.extend(Compo as Vue);
   const elm = createElm();
   if (ComponentOptions) {
-    let {propsData} = ComponentOptions;
     // 参数顺序误传
-    if (propsData === true || propsData === false) {
-      isMounted = propsData;
-      propsData = {};
+    if (typeof ComponentOptions === 'boolean') {
+      isMounted = ComponentOptions;
+      // ComponentOptions = undefined;
     }
-    return (new Constructor({propsData})
-      .$mount(isMounted === true ? elm : undefined));
   }
-  return (new Constructor({})
+  return (new Constructor(ComponentOptions)
     .$mount(isMounted === true ? elm : undefined));
 };
 

@@ -9,8 +9,8 @@
            @mouseenter="clearTimer"
            @mouseleave="startTimer">
         <div class="message">
-          <slot v-if="!enableUnsafeHTML"></slot>
-          <div v-else v-html="$slots.default[0]"></div>
+          <slot v-if="!enableUnsafeHTML">{{ message }}</slot>
+          <div v-else v-html="ifSlots/*$slots.default[0]*/"></div>
         </div>
         <template v-if="closeButton">
           <div ref="line" class="line"></div>
@@ -162,7 +162,7 @@ export default class VueToast extends Vue {
   }
 
   get ifSlots() {
-    return (this.$slots.default ? this.$slots.default[0] : `<slot></slot>`);
+    return (this.$slots.default ? this.$slots.default[0] : this.message);
   }
 
   haveSlots() {
@@ -172,7 +172,7 @@ export default class VueToast extends Vue {
   }
 
   mounted() {
-    this.haveSlots()
+    this.haveSlots();
     // bus.$on('pushSlot', (value: VNode) => {this.haveSlots(value);});
     this.popUpToast();
     document.addEventListener('keydown', this.keydown);
