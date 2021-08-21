@@ -30,12 +30,14 @@ describe('Toast Component', () => {
         }
       }, true);
       expect(document.body.contains(vm.$el)).to.eq(true);
+
       vm.$on('beforeClose', () => {
         setTimeout(() => {
           expect(document.body.contains(vm.$el)).to.eq(false);
           done();
         }, 500);
       });
+
     });
 
     it('接受 closeButton 手动点击关闭', (done) => {
@@ -49,6 +51,7 @@ describe('Toast Component', () => {
           }
         }
       }, true);
+
       const closeButton = vm.$el.querySelector('.closeButton');
       expect((closeButton as HTMLElement).textContent?.trim()).to.eq('测试关闭');
       setTimeout(() => {
@@ -56,6 +59,7 @@ describe('Toast Component', () => {
         expect(callback).to.have.been.called;
         done();
       }, 300);
+
     });
 
     it('接受 position', () => {

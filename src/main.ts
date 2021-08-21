@@ -20,6 +20,11 @@ import VueFooter from './components/layout/VueFooter.vue';
 import VueHeader from './components/layout/VueHeader.vue';
 import VueToast from './components/toast/VueToast.vue';
 import toastPlugin from './components/toast/toastPlugin';
+import VueTab from './components/tabs/VueTab.vue';
+import VueTabNav from './components/tabs/VueTabNav.vue';
+import VueTabItem from './components/tabs/VueTabItem.vue';
+import VueTabContent from './components/tabs/VueTabContent.vue';
+import VueTabPane from './components/tabs/VueTabPane.vue';
 
 // export const bus = new Vue();
 
@@ -36,6 +41,11 @@ Vue.component('v-footer', VueFooter);
 Vue.component('v-aside', VueAside);
 Vue.component('v-container', VueContainer);
 Vue.component('v-toast', VueToast);
+Vue.component('v-tab', VueTab);
+Vue.component('v-tab-nav', VueTabNav);
+Vue.component('v-tab-item', VueTabItem);
+Vue.component('v-tab-content', VueTabContent);
+Vue.component('v-tab-pane', VueTabPane);
 Vue.use(toastPlugin);
 
 const components = [
@@ -50,7 +60,12 @@ const components = [
   VueAside,
   VueFooter,
   VueHeader,
-  VueToast
+  VueToast,
+  VueTab,
+  VueTabNav,
+  VueTabItem,
+  VueTabContent,
+  VueTabPane,
 ];
 
 const install = (Vue: any, opts = {}) => {
@@ -77,7 +92,12 @@ export default {
   VueAside,
   VueFooter,
   VueHeader,
-  VueToast
+  VueToast,
+  VueTab,
+  VueTabNav,
+  VueTabItem,
+  VueTabContent,
+  VueTabPane
 };
 
 Vue.config.productionTip = false;

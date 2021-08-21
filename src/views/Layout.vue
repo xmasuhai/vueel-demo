@@ -6,7 +6,7 @@
              :class="getLayoutClass('content')">
       <keep-alive>
         <component :is="currentTabComponent"
-                   class="tab">
+                   class="vue-tab">
         </component>
       </keep-alive>
     </section>
@@ -21,6 +21,7 @@ import GridSystems from '../components/GridSystems.vue';
 import Nav from '../components/Nav.vue';
 import LayoutGroups from '../components/LayoutGroups.vue';
 import ToastsTips from '../components/ToastsTips.vue';
+import Tabs from '../components/Tabs.vue';
 
 @Component({
   components: {
@@ -29,12 +30,13 @@ import ToastsTips from '../components/ToastsTips.vue';
     GridSystems,
     LayoutGroups,
     ToastsTips,
-    Nav
+    Nav,
+    Tabs
   }
 })
 export default class Layout extends Vue {
   name = 'Layout';
-  currentTabText = 'ToastsTips';
+  currentTabText = 'Tabs';
   layoutType = '';
 
   // 由动态外部参数 获取 类样式
@@ -65,7 +67,7 @@ section.layout-wrapper {
   section.content {
     box-shadow: inset 0 1px 2px 2px #ccc;
 
-    .tab {
+    .vue-tab {
       border: 1px solid #ccc;
       padding: 20px;
     }

@@ -144,7 +144,7 @@ export default class ToastsTips extends Vue {
             toast.$toast('关闭后，执行了一个回调', {
               propsData: {
                 position: 'middle',
-                autoCloseDelay: 1000
+                autoCloseDelay: 2000
               }
             });
           }
