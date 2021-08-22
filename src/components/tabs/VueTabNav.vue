@@ -13,10 +13,13 @@ import {Component, Inject, Vue} from 'vue-property-decorator';
 @Component
 export default class VueTabNav extends Vue {
   name = 'VueTabNav.vue';
+  defaultTab = '';
   @Inject('eventBus') readonly eventBus!: Vue;
 
-  created() {
-    this.$emit('update:selected', '这是 VueTabNav 抛出的数据');
+  mounted() {
+    this.$nextTick(() => {
+      this.eventBus.$emit('update:selected', (this.$children[0] as any).tabName);
+    });
   }
 }
 </script>
