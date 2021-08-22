@@ -23,7 +23,7 @@ export default class VueTabItem extends Vue {
   get classes() {
     return {
       active: this.active
-    }
+    };
   }
 
   created() {
@@ -39,6 +39,12 @@ export default class VueTabItem extends Vue {
 .tab-item {
   flex-shrink: 0;
   padding: 0 1em;
+  cursor: pointer;
+  height: 100%;
+  border: 1px solid red;
+  display: flex;
+  align-items: center;
+
   &.active {
     background-color: indianred;
   }
