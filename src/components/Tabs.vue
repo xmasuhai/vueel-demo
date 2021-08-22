@@ -21,6 +21,8 @@
       </fieldset>
     </form>
     <br>
+
+    <!--
     <form>
       <fieldset>
         <legend>Tabs 可被禁用、被隐藏</legend>
@@ -153,6 +155,8 @@
       </fieldset>
     </form>
     <br>
+    -->
+
   </div>
 </template>
 
@@ -171,7 +175,7 @@ import VueButton from '@/components/button/VueButton.vue';
 })
 export default class Tabs extends Vue {
   name = 'Tabs';
-  selectedTab = 'item1';
+  selectedTab = 'tab1';
 }
 </script>
 

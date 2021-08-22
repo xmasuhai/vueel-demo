@@ -17,7 +17,7 @@ export default class VueTabItem extends Vue {
   @Prop({type: String, required: true}) tabName!: string;
 
   xxx() {
-    this.eventBus.$emit('update:selected', this.tabName);
+    this.eventBus.$emit('update:selected', this.tabName, this);
   }
 
   get classes() {
@@ -36,17 +36,17 @@ export default class VueTabItem extends Vue {
 </script>
 
 <style lang="scss" scoped>
+$waterBlue: #3ba0e9;
 .tab-item {
   flex-shrink: 0;
   padding: 0 1em;
   cursor: pointer;
   height: 100%;
-  border: 1px solid red;
   display: flex;
   align-items: center;
 
   &.active {
-    background-color: indianred;
+    color: $waterBlue;
   }
 }
 </style>

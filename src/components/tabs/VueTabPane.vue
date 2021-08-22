@@ -32,7 +32,6 @@ export default class VueTabPane extends Vue {
 <style lang="scss" scoped>
 .tab-pane {
   &.active {
-    background-color: indianred;
   }
 }
 </style>

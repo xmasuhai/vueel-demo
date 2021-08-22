@@ -6,6 +6,9 @@
 
 <script lang="ts">
 import {Component, Prop, Provide, Vue} from 'vue-property-decorator';
+import {VueTabItem} from '@/types/VueTabItem';
+import {VueTabNav} from '@/types/VueTabNav';
+import {VueTabContent} from '@/types/VueTabContent';
 
 @Component
 export default class VueTab extends Vue {
@@ -23,7 +26,17 @@ export default class VueTab extends Vue {
   @Provide('eventBus') eBus = this.eventBus;
 
   mounted() {
-    this.eventBus.$emit('update:selected', this.selected);
+    // 发布 选中的实例 到 事件总线
+    this.$children.forEach((vm: VueTabNav | VueTabContent) => {
+      if (vm.$options.name === 'VueTabNav') {
+        (vm.$children as VueTabItem[]).forEach((item: VueTabItem) => {
+          if (item.$options.name === 'VueTabItem' && item.tabName === this.selected) {
+            this.eventBus.$emit('update:selected', this.selected, item);
+          }
+        });
+      }
+    });
+
   }
 
 }
