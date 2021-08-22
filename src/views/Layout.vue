@@ -85,7 +85,7 @@ section.layout-wrapper {
       form {
         fieldset {
           details {
-            padding: 8px 0;
+            padding: 8px 0 8px 2px;
 
             > summary {
               padding: 2px 0;
