@@ -8,7 +8,7 @@
           <VueTab :selected.sync="selectedTab">
             <VueTabNav class="custom-class">
               <VueTabItem tabName="tab1">Item1</VueTabItem>
-              <VueTabItem tabName="tab2" disabled>Item2Item2</VueTabItem>
+              <VueTabItem tabName="tab2">Item2Item2</VueTabItem>
               <VueTabItem tabName="tab3">Item3Item3Item3</VueTabItem>
             </VueTabNav>
             <VueTabContent>
@@ -53,7 +53,7 @@
                 <VueButton>额外的按钮</VueButton>
               </template>
               <VueTabItem tabName="tab1">Tab1</VueTabItem>
-              <VueTabItem tabName="tab2" disabled>Tab2</VueTabItem>
+              <VueTabItem tabName="tab2">Tab2</VueTabItem>
               <VueTabItem tabName="tab3">Tab3</VueTabItem>
             </VueTabNav>
             <VueTabContent>
@@ -77,7 +77,7 @@
                 <VueIcon iconName="settings"></VueIcon>
                 Tab1
               </VueTabItem>
-              <VueTabItem tabName="tab2" disabled>Tab2</VueTabItem>
+              <VueTabItem tabName="tab2">Tab2</VueTabItem>
               <VueTabItem tabName="tab3">Tab3</VueTabItem>
             </VueTabNav>
             <VueTabContent>
@@ -98,7 +98,7 @@
           <VueTab :selected.sync="selectedTab">
             <VueTabNav>
               <VueTabItem tabName="tab1">Tab1</VueTabItem>
-              <VueTabItem tabName="tab2" disabled>Tab2</VueTabItem>
+              <VueTabItem tabName="tab2">Tab2</VueTabItem>
               <VueTabItem tabName="tab3">Tab3</VueTabItem>
             </VueTabNav>
             <VueTabContent>
@@ -119,7 +119,7 @@
           <VueTab :selected.sync="selectedTab">
             <VueTabNav>
               <VueTabItem tabName="tab1">Tab1</VueTabItem>
-              <VueTabItem tabName="tab2" disabled>Tab2</VueTabItem>
+              <VueTabItem tabName="tab2">Tab2</VueTabItem>
               <VueTabItem tabName="tab3">Tab3</VueTabItem>
             </VueTabNav>
             <VueTabContent>
@@ -140,7 +140,7 @@
           <VueTab :selected.sync="selectedTab">
             <VueTabNav>
               <VueTabItem tabName="tab1">Tab1</VueTabItem>
-              <VueTabItem tabName="tab2" disabled>Tab2</VueTabItem>
+              <VueTabItem tabName="tab2">Tab2</VueTabItem>
               <VueTabItem tabName="tab3">Tab3</VueTabItem>
             </VueTabNav>
             <VueTabContent>

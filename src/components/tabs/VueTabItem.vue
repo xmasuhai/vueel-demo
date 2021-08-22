@@ -1,5 +1,5 @@
 <template>
-  <section class="tab-item" @click="xxx" :class="classes">
+  <section class="tab-item" @click="emitSelectedVMtoEventBus" :class="classes">
     <slot></slot>
   </section>
 </template>
@@ -16,13 +16,15 @@ export default class VueTabItem extends Vue {
 
   @Prop({type: String, required: true}) tabName!: string;
 
-  xxx() {
+  emitSelectedVMtoEventBus() {
+    if (this.disabled) {return;}
     this.eventBus.$emit('update:selected', this.tabName, this);
   }
 
   get classes() {
     return {
-      active: this.active
+      active: this.active,
+      disabled: this.disabled
     };
   }
 
@@ -37,6 +39,7 @@ export default class VueTabItem extends Vue {
 
 <style lang="scss" scoped>
 $waterBlue: #3ba0e9;
+$disabled-text-color: lightgrey;
 .tab-item {
   flex-shrink: 0;
   padding: 0 1em;
@@ -47,6 +50,11 @@ $waterBlue: #3ba0e9;
 
   &.active {
     color: $waterBlue;
+  }
+
+  &.disabled {
+    color: $disabled-text-color;
+    cursor: not-allowed;
   }
 }
 </style>
