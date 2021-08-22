@@ -25,8 +25,8 @@ export default class VueTab extends Vue {
   eventBus = new Vue;
   @Provide('eventBus') eBus = this.eventBus;
 
-  mounted() {
-    // 发布 选中的实例 到 事件总线
+  // 发布 选中的实例 到 事件总线
+  emitSelectedVMtoEventBus() {
     this.$children.forEach((vm: VueTabNav | VueTabContent) => {
       if (vm.$options.name === 'VueTabNav') {
         (vm.$children as VueTabItem[]).forEach((childVM: VueTabItem) => {
@@ -36,7 +36,10 @@ export default class VueTab extends Vue {
         });
       }
     });
+  }
 
+  mounted() {
+    this.emitSelectedVMtoEventBus();
   }
 
 }

@@ -21,8 +21,6 @@
       </fieldset>
     </form>
     <br>
-
-    <!--
     <form>
       <fieldset>
         <legend>Tabs 可被禁用、被隐藏</legend>
@@ -155,7 +153,6 @@
       </fieldset>
     </form>
     <br>
-    -->
 
   </div>
 </template>
