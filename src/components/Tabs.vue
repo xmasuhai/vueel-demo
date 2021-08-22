@@ -6,18 +6,36 @@
         <details open>
           <summary>Primary</summary>
           <VueTab :selected.sync="selectedTab">
-            <VueTabNav>
-              <VueTabItem name="tab1">
-                <VueIcon name="settings"></VueIcon>
-                Tab1
-              </VueTabItem>
-              <VueTabItem name="tab2" disabled>Tab2</VueTabItem>
-              <VueTabItem name="tab3">Tab3</VueTabItem>
+            <VueTabNav class="custom-class">
+              <VueTabItem tabName="tab1">Item1</VueTabItem>
+              <VueTabItem tabName="tab2" disabled>Item2</VueTabItem>
+              <VueTabItem tabName="tab3">Item3</VueTabItem>
             </VueTabNav>
             <VueTabContent>
-              <VueTabPane name="tab1">Tab1 Content</VueTabPane>
-              <VueTabPane name="tab2">Tab2 Content</VueTabPane>
-              <VueTabPane name="tab3">Tab3 Content</VueTabPane>
+              <VueTabPane paneName="tab1">Pane1</VueTabPane>
+              <VueTabPane paneName="tab2">Pane2</VueTabPane>
+              <VueTabPane paneName="tab3">Pane3</VueTabPane>
+            </VueTabContent>
+          </VueTab>
+        </details>
+      </fieldset>
+    </form>
+    <br>
+    <form>
+      <fieldset>
+        <legend>Tabs 可被禁用、被隐藏</legend>
+        <details open>
+          <summary>Primary</summary>
+          <VueTab :selected.sync="selectedTab">
+            <VueTabNav>
+              <VueTabItem tabName="tab1">Tab1</VueTabItem>
+              <VueTabItem tabName="tab2" disabled>Tab2</VueTabItem>
+              <VueTabItem tabName="tab3">Tab3</VueTabItem>
+            </VueTabNav>
+            <VueTabContent>
+              <VueTabPane paneName="tab1">Pane1</VueTabPane>
+              <VueTabPane paneName="tab2">Pane2</VueTabPane>
+              <VueTabPane paneName="tab3">Pane3</VueTabPane>
             </VueTabContent>
           </VueTab>
         </details>
@@ -34,29 +52,107 @@
               <template slot="actions">
                 <VueButton>额外的按钮</VueButton>
               </template>
-              <VueTabItem name="tab1">
-                <VueIcon name="settings"></VueIcon>
-                Tab1
-              </VueTabItem>
-              <VueTabItem name="tab2" disabled>Tab2</VueTabItem>
-              <VueTabItem name="tab3">Tab3</VueTabItem>
+              <VueTabItem tabName="tab1">Tab1</VueTabItem>
+              <VueTabItem tabName="tab2" disabled>Tab2</VueTabItem>
+              <VueTabItem tabName="tab3">Tab3</VueTabItem>
             </VueTabNav>
             <VueTabContent>
-              <VueTabPane name="tab1">Tab1 Content</VueTabPane>
-              <VueTabPane name="tab2">Tab2 Content</VueTabPane>
-              <VueTabPane name="tab3">Tab3 Content</VueTabPane>
+              <VueTabPane paneName="tab1">Pane1</VueTabPane>
+              <VueTabPane paneName="tab2">Pane2</VueTabPane>
+              <VueTabPane paneName="tab3">Pane3</VueTabPane>
             </VueTabContent>
           </VueTab>
         </details>
       </fieldset>
     </form>
     <br>
-    <!-- 可被禁用、被隐藏-->
-    <!-- 可添加icon-->
-    <!-- 可配置方向-->
-    <!-- 可实现卡片式页签，即样式与Tab内容视觉一体化-->
-    <!-- 可添加、删除Tab页-->
-    <!-- 可被禁用、被隐藏-->
+    <form>
+      <fieldset>
+        <legend>Tabs 可添加icon</legend>
+        <details open>
+          <summary>Primary</summary>
+          <VueTab :selected.sync="selectedTab">
+            <VueTabNav>
+              <VueTabItem tabName="tab1">
+                <VueIcon iconName="settings"></VueIcon>
+                Tab1
+              </VueTabItem>
+              <VueTabItem tabName="tab2" disabled>Tab2</VueTabItem>
+              <VueTabItem tabName="tab3">Tab3</VueTabItem>
+            </VueTabNav>
+            <VueTabContent>
+              <VueTabPane paneName="tab1">Pane1</VueTabPane>
+              <VueTabPane paneName="tab2">Pane2</VueTabPane>
+              <VueTabPane paneName="tab3">Pane3</VueTabPane>
+            </VueTabContent>
+          </VueTab>
+        </details>
+      </fieldset>
+    </form>
+    <br>
+    <form>
+      <fieldset>
+        <legend>Tabs 可配置方向</legend>
+        <details open>
+          <summary>Primary</summary>
+          <VueTab :selected.sync="selectedTab">
+            <VueTabNav>
+              <VueTabItem tabName="tab1">Tab1</VueTabItem>
+              <VueTabItem tabName="tab2" disabled>Tab2</VueTabItem>
+              <VueTabItem tabName="tab3">Tab3</VueTabItem>
+            </VueTabNav>
+            <VueTabContent>
+              <VueTabPane paneName="tab1">Pane1</VueTabPane>
+              <VueTabPane paneName="tab2">Pane2</VueTabPane>
+              <VueTabPane paneName="tab3">Pane3</VueTabPane>
+            </VueTabContent>
+          </VueTab>
+        </details>
+      </fieldset>
+    </form>
+    <br>
+    <form>
+      <fieldset>
+        <legend>Tabs 可实现卡片式页签，即样式与Tab内容视觉一体化</legend>
+        <details open>
+          <summary>Primary</summary>
+          <VueTab :selected.sync="selectedTab">
+            <VueTabNav>
+              <VueTabItem tabName="tab1">Tab1</VueTabItem>
+              <VueTabItem tabName="tab2" disabled>Tab2</VueTabItem>
+              <VueTabItem tabName="tab3">Tab3</VueTabItem>
+            </VueTabNav>
+            <VueTabContent>
+              <VueTabPane paneName="tab1">Pane1</VueTabPane>
+              <VueTabPane paneName="tab2">Pane2</VueTabPane>
+              <VueTabPane paneName="tab3">Pane3</VueTabPane>
+            </VueTabContent>
+          </VueTab>
+        </details>
+      </fieldset>
+    </form>
+    <br>
+    <form>
+      <fieldset>
+        <legend>Tabs 可添加、删除Tab页</legend>
+        <details open>
+          <summary>Primary</summary>
+          <VueTab :selected.sync="selectedTab">
+            <VueTabNav>
+              <VueTabItem tabName="tab1">Tab1</VueTabItem>
+              <VueTabItem tabName="tab2" disabled>Tab2</VueTabItem>
+              <VueTabItem tabName="tab3">Tab3</VueTabItem>
+            </VueTabNav>
+            <VueTabContent>
+              <VueTabPane paneName="tab1">Pane1</VueTabPane>
+              <VueTabPane paneName="tab2">Pane2</VueTabPane>
+              <VueTabPane paneName="tab3">Pane3</VueTabPane>
+            </VueTabContent>
+          </VueTab>
+        </details>
+      </fieldset>
+    </form>
+    <br>
   </div>
 </template>
 
@@ -75,10 +171,11 @@ import VueButton from '@/components/button/VueButton.vue';
 })
 export default class Tabs extends Vue {
   name = 'Tabs';
-  selectedTab = 'tab1';
+  selectedTab = 'item1';
 }
 </script>
 
 <style lang="scss" scoped>
-
+.custom-class {
+}
 </style>

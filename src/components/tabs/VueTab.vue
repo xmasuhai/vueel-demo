@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue} from 'vue-property-decorator';
+import {Component, Prop, Provide, Vue} from 'vue-property-decorator';
 
 @Component
 export default class VueTab extends Vue {
@@ -19,8 +19,11 @@ export default class VueTab extends Vue {
     }
   }) direction!: string;
 
-  created() {
-    // this.$emit('update:selected', 'xxx');
+  eventBus = new Vue;
+  @Provide('eventBus') eBus = this.eventBus;
+
+  mounted() {
+    this.eventBus.$emit('update:selected', this.selected);
   }
 
 }

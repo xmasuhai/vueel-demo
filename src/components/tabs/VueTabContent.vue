@@ -5,11 +5,12 @@
 </template>
 
 <script lang="ts">
-import {Component, Vue} from 'vue-property-decorator';
+import {Component, Inject, Vue} from 'vue-property-decorator';
 
 @Component
 export default class VueTabContent extends Vue {
   name = 'VueTabContent.vue';
+  @Inject('eventBus') readonly eventBus!: Vue;
 }
 </script>
 
