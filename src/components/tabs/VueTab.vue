@@ -29,9 +29,9 @@ export default class VueTab extends Vue {
     // 发布 选中的实例 到 事件总线
     this.$children.forEach((vm: VueTabNav | VueTabContent) => {
       if (vm.$options.name === 'VueTabNav') {
-        (vm.$children as VueTabItem[]).forEach((item: VueTabItem) => {
-          if (item.$options.name === 'VueTabItem' && item.tabName === this.selected) {
-            this.eventBus.$emit('update:selected', this.selected, item);
+        (vm.$children as VueTabItem[]).forEach((childVM: VueTabItem) => {
+          if (childVM.$options.name === 'VueTabItem' && childVM.tabName === this.selected) {
+            this.eventBus.$emit('update:selected', this.selected, childVM);
           }
         });
       }

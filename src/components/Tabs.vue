@@ -8,8 +8,8 @@
           <VueTab :selected.sync="selectedTab">
             <VueTabNav class="custom-class">
               <VueTabItem tabName="tab1">Item1</VueTabItem>
-              <VueTabItem tabName="tab2" disabled>Item2</VueTabItem>
-              <VueTabItem tabName="tab3">Item3</VueTabItem>
+              <VueTabItem tabName="tab2" disabled>Item2Item2</VueTabItem>
+              <VueTabItem tabName="tab3">Item3Item3Item3</VueTabItem>
             </VueTabNav>
             <VueTabContent>
               <VueTabPane paneName="tab1">Pane1</VueTabPane>
