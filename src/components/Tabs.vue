@@ -7,14 +7,14 @@
           <summary>Primary</summary>
           <VueTab :selected.sync="selectedTab">
             <VueTabNav class="custom-class">
-              <VueTabItem tabName="tab1">Item1</VueTabItem>
-              <VueTabItem tabName="tab2">Item2Item2</VueTabItem>
-              <VueTabItem tabName="tab3">Item3Item3Item3</VueTabItem>
+              <VueTabItem tab-name="tab1">Item1</VueTabItem>
+              <VueTabItem tab-name="tab2">Item2Item2</VueTabItem>
+              <VueTabItem tab-name="tab3">Item3Item3Item3</VueTabItem>
             </VueTabNav>
             <VueTabContent>
-              <VueTabPane paneName="tab1">Pane1</VueTabPane>
-              <VueTabPane paneName="tab2">Pane2</VueTabPane>
-              <VueTabPane paneName="tab3">Pane3</VueTabPane>
+              <VueTabPane pane-name="tab1">Pane1</VueTabPane>
+              <VueTabPane pane-name="tab2">Pane2</VueTabPane>
+              <VueTabPane pane-name="tab3">Pane3</VueTabPane>
             </VueTabContent>
           </VueTab>
         </details>

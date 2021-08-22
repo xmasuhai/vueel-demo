@@ -38,7 +38,14 @@ export default class VueTab extends Vue {
     });
   }
 
+  checkSon() {
+    if (this.$children.length === 0) {
+      throw new Error('VueTab屋子组件，子组件必须是 VueTabNav 和 VueTabContent');
+    }
+  }
+
   mounted() {
+    this.checkSon();
     this.emitSelectedVMtoEventBus();
   }
 
