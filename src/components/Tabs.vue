@@ -165,7 +165,7 @@ import VueTabItem from './tabs/VueTabItem.vue';
 import VueTabContent from './tabs/VueTabContent.vue';
 import VueTabPane from './tabs/VueTabPane.vue';
 import VueIcon from './icon/VueIcon.vue';
-import VueButton from '@/components/button/VueButton.vue';
+import VueButton from './button/VueButton.vue';
 
 @Component({
   components: {VueButton, VueIcon, VueTab, VueTabNav, VueTabPane, VueTabContent, VueTabItem}

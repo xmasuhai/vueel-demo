@@ -25,6 +25,7 @@ import VueTabNav from './components/tabs/VueTabNav.vue';
 import VueTabItem from './components/tabs/VueTabItem.vue';
 import VueTabContent from './components/tabs/VueTabContent.vue';
 import VueTabPane from './components/tabs/VueTabPane.vue';
+import VuePopover from './components/popover/VuePopover.vue';
 
 // export const bus = new Vue();
 
@@ -46,6 +47,8 @@ Vue.component('v-tab-nav', VueTabNav);
 Vue.component('v-tab-item', VueTabItem);
 Vue.component('v-tab-content', VueTabContent);
 Vue.component('v-tab-pane', VueTabPane);
+Vue.component('v-tab-pane', VueTabPane);
+Vue.component('v-popover', VuePopover);
 Vue.use(toastPlugin);
 
 const components = [
@@ -66,6 +69,7 @@ const components = [
   VueTabItem,
   VueTabContent,
   VueTabPane,
+  VuePopover,
 ];
 
 const install = (Vue: any, opts = {}) => {
@@ -97,7 +101,8 @@ export default {
   VueTabNav,
   VueTabItem,
   VueTabContent,
-  VueTabPane
+  VueTabPane,
+  VuePopover
 };
 
 Vue.config.productionTip = false;

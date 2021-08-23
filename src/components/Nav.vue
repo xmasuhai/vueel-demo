@@ -17,14 +17,15 @@ import {Component, Vue} from 'vue-property-decorator';
 @Component
 export default class Nav extends Vue {
   name = 'Nav';
-  currentTabText = 'Tabs';
+  currentTabText = 'Popovers';
   tabs = [
     'Buttons',
     'Inputs',
     'GridSystems',
     'LayoutGroups',
     'ToastsTips',
-    'Tabs'
+    'Tabs',
+    'Popovers'
   ];
 
   showTab(tab: string) {
