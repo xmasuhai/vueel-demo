@@ -9,7 +9,7 @@ import {Component, Inject, Vue} from 'vue-property-decorator';
 
 @Component
 export default class VueTabContent extends Vue {
-  name = 'VueTabContent.vue';
+  name = 'VueTabContent';
   @Inject('eventBus') readonly eventBus!: Vue;
 }
 </script>

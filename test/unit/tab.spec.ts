@@ -22,6 +22,56 @@ describe('VueTab', () => {
     expect(VueTab).to.exist;
   });
 
+  /*
+  describe('props', () => {
+    afterEach(() => {
+      destroyVM(vm);
+    });
+
+    it('VueTab可以接受selected', () => {
+      const vmTabItem = createTestVM(VueTabItem, {
+        propsData: {
+          tabName: 'tab1'
+        }
+      }, false);
+      const vmTabPane = createTestVM(VueTabPane, {
+        propsData: {
+          paneName: 'tab1'
+        }
+      }, false);
+      const vmTabNav = createTestVM(VueTabNav, {
+        data: {
+          name: 'VueTabNav'
+        },
+        slot: {
+          default: [vmTabItem.$vnode]
+        }
+      }, false);
+      const vmTabContent = createTestVM(VueTabContent, {
+        data: {
+          name: 'VueTabContent'
+        },
+        slot: {
+          default: [vmTabPane.$vnode]
+        }
+      }, false);
+      const vmTab = createTestVM(VueTab, {
+        propsData: {
+          selected: 'tab1'
+        },
+        slot: {
+          default: [vmTabNav.$vnode, vmTabContent.$vnode]
+        }
+      }, true);
+
+      console.log('vmTab.$el', vmTab.$el);
+      console.log('vmTabItem.$el', vmTabItem.$el);
+      console.log('vmTabNav.$el', vmTabNav.$el);
+
+    });
+
+  });
+  */
 
   /*
   describe('props', () => {

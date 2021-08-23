@@ -78,6 +78,7 @@ describe('VueButton', () => {
       expect(getComputedStyle(icon as SVGSVGElement).order).to.eq('2');
     });
 
+    /*
     [
       {'': 'rgb(248, 248, 255)'},
       {'primary': 'rgb(13, 110, 253)'},
@@ -104,6 +105,7 @@ describe('VueButton', () => {
         });
 
       });
+    */
 
   });
 

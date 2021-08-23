@@ -43,6 +43,8 @@ describe('VueCol', () => {
 
     }
 
+/*
+
     // O(n^2) x 6
     ['mobile', 'pad', 'laptop', 'pc', 'pcw', 'pcx']
       .forEach((mediaType) => {
@@ -63,6 +65,8 @@ describe('VueCol', () => {
         }
 
       });
+*/
+
 
   });
 

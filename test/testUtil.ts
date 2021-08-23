@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import Vue, {VNode} from 'vue';
 
 let id = 0;
 
@@ -52,8 +52,11 @@ export const createVueVM = (Template: string | { 'template': string },
  */
 
 interface PartOptions {
-  propsData: {} | undefined;
-  data?: (() => ({})) | undefined | null;
+  propsData?: {} | undefined;
+  data?: (() => ({})) | {} | undefined | null;
+  slot?: {
+    default: VNode[] | string[];
+  };
 }
 
 export const createTestVM = (Compo: Vue.Component,
