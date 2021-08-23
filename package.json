@@ -20,7 +20,7 @@
     "fsevents": "*"
   },
   "alias": {
-    "vue2": "./node_modules/vue/dist/vue.common.js"
+    "vue2": "./node_modules/vue/dist/vue.esm.js"
   },
   "dependencies": {
     "@babel/preset-env": "^7.12.1",

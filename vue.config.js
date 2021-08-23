@@ -2,7 +2,19 @@
 /* eslint-disable */
 const path = require('path')
 
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+
 module.exports = {
+  configureWebpack: {
+    resolve: {
+      alias: {
+        'vue2': resolve('./node_modules/vue/dist/vue.esm.js'),
+        'vue.2': './node_modules/vue/dist/vue.esm.js',
+      },
+    },
+  },
   publicPath: process.env.NODE_ENV === 'production'
     ? '/vueel-website/'
     : '/',

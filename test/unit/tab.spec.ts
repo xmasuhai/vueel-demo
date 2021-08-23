@@ -1,4 +1,6 @@
-import Vue from 'vue';
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+import Vue from '../../node_modules/vue/dist/vue.esm.js';
 import chai from 'chai';
 // import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
