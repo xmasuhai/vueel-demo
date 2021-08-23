@@ -1,8 +1,16 @@
 <template>
   <div class="tab-nav-wrapper">
     <nav class="tab-nav">
-      <slot></slot>
-      <div class="line" ref="line" v-if="showLine"></div>
+      <slot>
+        <VueTabItem v-for="(item, index) in itemsData"
+                    :label="item.label"
+                    :value="item.value"
+                    :icon="item.icon"
+                    :tab-name="item.tabName"
+                    :key="index">
+        </VueTabItem>
+      </slot>
+      <div class="line" ref="line" v-if="showUnderscore"></div>
     </nav>
     <div class="actions-wrapper">
       <slot name="actions"></slot>
@@ -11,14 +19,18 @@
 </template>
 
 <script lang="ts">
-import {Component, Inject, Vue} from 'vue-property-decorator';
-import {VueTabItem} from '@/types/VueTabItem';
+import {Component, Inject, Prop, Vue} from 'vue-property-decorator';
+import VueTabItem from './VueTabItem.vue';
 
-@Component
+@Component({
+  components: {VueTabItem}
+})
 export default class VueTabNav extends Vue {
   name = 'VueTabNav';
-  showLine = false;
+  showUnderscore = false;
   @Inject('eventBus') readonly eventBus!: Vue;
+
+  @Prop({type: Array, default() {return [];}}) itemsData!: [];
 
   initSelectedTabItem() {
     this.eventBus.$emit('update:selected',
@@ -36,13 +48,21 @@ export default class VueTabNav extends Vue {
     });
   }
 
+  checkSon() {
+    if (this.$children.length === 0) {
+      throw new Error('VueTab无子组件，子组件必须是 VueTabNav 和 VueTabContent');
+    }
+  }
+
   mounted() {
-    this.showLine = true;
+    this.checkSon();
+    this.showUnderscore = true;
     this.$nextTick(() => {
       this.moveTab();
       this.initSelectedTabItem();
     });
   }
+
 }
 </script>
 
@@ -52,6 +72,7 @@ $waterBlue: #3ba0e9;
 $hrLine-color: #ddd;
 .tab-nav-wrapper {
   display: flex;
+
   .tab-nav {
     display: flex;
     height: $tab-nav-height;
