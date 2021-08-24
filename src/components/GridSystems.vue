@@ -6,6 +6,19 @@
         <legend>Grid</legend>
         <details open>
           <summary>Average Span</summary>
+          <VueRow :colData="colData"></VueRow>
+        </details>
+      </fieldset>
+    </form>
+    <br>
+
+<!--
+
+    <form>
+      <fieldset>
+        <legend>Grid</legend>
+        <details open>
+          <summary>Average Span</summary>
           <VueRow>
             <VueCol>100%</VueCol>
           </VueRow>
@@ -232,6 +245,7 @@
       </fieldset>
     </form>
     <br>
+-->
 
   </div>
 </template>
@@ -252,12 +266,17 @@ export default class GridSystems extends Vue {
   name = 'GridSystems';
   clientWidth = document.body.clientWidth.toString();
   mediaText = '';
+
   getDymClientWidth(value: string) {
     this.clientWidth = value;
   }
+
   @Watch('clientWidth')
-  onClientWidthChange(val: string,){
+  onClientWidthChange(val: string,) {
     this.mediaText = val;
   }
+
+  colData = [{span: 12}];
+
 }
 </script>

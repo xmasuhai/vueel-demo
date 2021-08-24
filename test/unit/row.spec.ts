@@ -1,6 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-// @ts-ignore
-import Vue from 'vue2';
+// import Vue from 'vue2';
+import Vue from 'vue';
 import chai from 'chai';
 // import sinon from 'sinon';
 // import sinonChai from 'sinon-chai';
@@ -8,28 +7,28 @@ import chai from 'chai';
 const expect = chai.expect;
 import {createTestVM, /*createVueVM,*/ destroyVM} from '../testUtil';
 import VueRow from '../../src/components/grid/VueRow.vue';
-import VueCol from '../../src/components/grid/VueCol.vue';
+// import VueCol from '../../src/components/grid/VueCol.vue';
 
 Vue.config.productionTip = false;
 Vue.config.devtools = false;
 
 describe('VueRow', () => {
   let vm: Vue;
-  it('存在.', () => {
-    expect(VueRow).to.exist;
-    expect(VueCol).to.exist;
-  });
+  /*
 
-  it('classList row', () => {
-    vm = createTestVM(VueRow, undefined, true);
-    const rowElm = vm.$el;
-    expect(rowElm.classList.contains('row')).to.be.true;
-  });
+    it('存在.', () => {
+      expect(VueRow).to.exist;
+      expect(VueCol).to.exist;
+    });
+
+    it('classList row', () => {
+      vm = createTestVM(VueRow, undefined, true);
+      const rowElm = vm.$el;
+      expect(rowElm.classList.contains('row')).to.be.true;
+    });
+  */
 
   describe('测试属性 props', () => {
-
-    const div = document.createElement('div');
-    document.body.appendChild(div);
 
     afterEach(() => {
       destroyVM(vm);
@@ -38,7 +37,7 @@ describe('VueRow', () => {
     it('接收 align 属性', () => {
       vm = createTestVM(VueRow, {
         propsData: {
-          gutter: 20
+          align: 'center',
         }
       }, true);
       /*
@@ -54,37 +53,46 @@ describe('VueRow', () => {
 
     });
 
-    it('接收  gutter 属性', () => {
+    it('接收  gutter 属性', (done) => {
       vm = createTestVM(VueRow, {
         propsData: {
-          gutter: 20
-        }
+          gutter: 20,
+          colData: [
+            {
+              span: 12
+            }
+          ]
+        },
       }, true);
-      const rowElm = vm.$el;
-      expect(rowElm.style.marginLeft).to.be.equal('-10px');
-      expect(rowElm.style.marginRight).to.be.equal('-10px');
+
+      setTimeout(() => {
+        expect((vm.$el as HTMLElement).style.marginLeft).to.be.equal('-10px');
+        expect((vm.$el as HTMLElement).style.marginRight).to.be.equal('-10px');
+        done();
+      }, 300);
+
     });
 
+/*
     it('传递 gutter 属性给 VueCol', (done) => {
-      Vue.component('v-row', VueRow);
-      Vue.component('v-col', VueCol);
+      vm = createTestVM(VueRow, {
+        propsData: {
+          gutter: 20,
+          colData: [
+            {
+              span: 24,
+            }
+          ]
+        },
+      }, true);
 
-      div.innerHTML = `
-        <v-row :gutter="20">
-          <v-col :span="12" ref="col1"></v-col>
-          <v-col :span="12" ref="col2"></v-col>
-        </v-row>
-        `;
-      vm = new Vue({
-        el: div
-      });
-      document.body.appendChild(div);
+      console.log('vm.$el: ', (vm.$el));
+      const row = vm.$el.querySelector('.row');
+      console.log('row: ', row);
+      expect(getComputedStyle(row).marginLeft).to.eq('-10px');
+      expect(getComputedStyle(row).marginRight).to.eq('-10px');
+
       setTimeout(() => {
-        const row = vm.$el.querySelector('.row');
-        // console.log('row: ', row);
-        expect(getComputedStyle(row).marginLeft).to.eq('-10px');
-        expect(getComputedStyle(row).marginRight).to.eq('-10px');
-
         // const colElm1 = vm.$refs.col1.$el;
         // const colElm2 = vm.$refs.col2.$el;
         // console.log('colElm1: ', colElm1);
@@ -96,11 +104,11 @@ describe('VueRow', () => {
         // console.log('cols: ', cols);
         // expect(getComputedStyle(cols[0]).marginRight).to.eq('10px');
         // expect(getComputedStyle(cols[1]).marginLeft).to.eq('10px');
-
         done();
       }, 500);
 
     });
+    */
 
   });
 

@@ -2,17 +2,36 @@
   <div class="row"
        :style="rowStyle"
        :class="rowClass">
-    <slot></slot>
+    <slot>
+      <VueCol v-for="(item, index) in colData"
+              :span="item.span"
+              :offset="item.offset"
+              :mobile="item.mobile"
+              :pad="item.pad"
+              :laptop="item.laptop"
+              :pc="item.pc"
+              :pcw="item.pcw"
+              :pcx="item.pcx"
+              :key="index">
+      </VueCol>
+    </slot>
   </div>
 </template>
 
 <script lang="ts">
 import {Component, Prop, /*Provide,*/ Vue} from 'vue-property-decorator';
+import VueCol from './VueCol.vue';
 
-@Component
+@Component({
+  components: {VueCol}
+})
 export default class VueRow extends Vue {
   name = 'VueRow';
   // componentName = 'VueRow';
+
+  // mock
+  @Prop({type: Array, default() {return [];}}) colData!: [];
+
   @Prop({
     type: [Number, String],
   }) gutter!: number | string;
@@ -46,9 +65,8 @@ export default class VueRow extends Vue {
 
   // Provide 传递 gutter 属性
   // @Provide('gutterToSon') gutterToSon = this.gutter;
-
   // 传递 gutter 属性
-  mounted() {
+  gutterToCol() {
     const {$children, gutter} = this;
     // console.log('$children in VueRow', $children);
     if ($children && gutter) {
@@ -65,6 +83,11 @@ export default class VueRow extends Vue {
         // this.$set(vm, 'gutter', gutter);
       });
     }
+  }
+
+  mounted() {
+    this.gutterToCol();
+    // console.log('this.colData: ', this.colData);
   }
 
 }

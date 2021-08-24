@@ -2,7 +2,8 @@
   <div class="col"
        :class="colClass"
        :style="colStyle">
-    <slot></slot>
+    <slot>
+    </slot>
   </div>
 </template>
 
@@ -10,11 +11,16 @@
 import {Component, Emit, Prop, /*Inject,*/ Vue} from 'vue-property-decorator';
 import objKeyValidator from '../../utils/objKeyValidator';
 import _ from 'lodash';
+import VueRow from './VueRow.vue';
 
 // const validator = (value: mediaQuery) => objKeyValidator(value, ['span', 'offset']);
 const validator = (value: mediaQuery) => { return objKeyValidator(value, ['span', 'offset']); };
 
-@Component
+@Component({
+  components: {
+    VueRow
+  }
+})
 export default class VueCol extends Vue {
   name = 'VueCol';
   screenWidth = document.body.clientWidth;
@@ -82,6 +88,7 @@ export default class VueCol extends Vue {
   // Inject 注入 属性 代替 data 数据 gutter = 0;
   // @Inject({from: 'gutterToSon'}) gutter!: number;
   gutter = 0;
+
   get colStyle() {
     const {gutter} = this;
 

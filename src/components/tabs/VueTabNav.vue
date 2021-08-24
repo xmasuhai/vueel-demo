@@ -3,10 +3,8 @@
     <nav class="tab-nav">
       <slot>
         <VueTabItem v-for="(item, index) in itemsData"
-                    :label="item.label"
-                    :value="item.value"
-                    :icon="item.icon"
                     :tab-name="item.tabName"
+                    :disabled="item.disabled"
                     :key="index">
         </VueTabItem>
       </slot>
