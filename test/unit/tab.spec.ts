@@ -1,6 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-// @ts-ignore
-import Vue from '../../node_modules/vue/dist/vue.esm.js';
+import Vue from 'vue';
 import chai from 'chai';
 // import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
@@ -9,7 +7,7 @@ import VueTab from '../../src/components/tabs/VueTab.vue';
 // import VueTabContent from '../../src/components/tabs/VueTabContent.vue';
 // import VueTabItem from '../../src/components/tabs/VueTabItem.vue';
 // import VueTabPane from '../../src/components/tabs/VueTabPane.vue';
-// import {createTestVM, destroyVM} from '../testUtil';
+import {/*createTestVM,*/ destroyVM} from '../testUtil';
 
 chai.use(sinonChai);
 const expect = chai.expect;
@@ -18,103 +16,40 @@ Vue.config.productionTip = false;
 Vue.config.devtools = false;
 
 describe('VueTab', () => {
-  // let vm: Vue;
+  let vm: Vue;
 
   it('VueTab存在.', () => {
     expect(VueTab).to.exist;
   });
 
-  /*
   describe('props', () => {
     afterEach(() => {
       destroyVM(vm);
     });
 
-    it('VueTab可以接受selected', () => {
-      const vmTabItem = createTestVM(VueTabItem, {
+    /*
+    it('VueTab可以接受selected', (done) => {
+      vm = createTestVM(VueTab, {
         propsData: {
-          tabName: 'tab1'
-        }
-      }, false);
-      const vmTabPane = createTestVM(VueTabPane, {
-        propsData: {
-          paneName: 'tab1'
-        }
-      }, false);
-      const vmTabNav = createTestVM(VueTabNav, {
-        data: {
-          name: 'VueTabNav'
+          selected: 'tab2',
+          propsToNav: [
+            {tabName: 'tab1'}
+          ],
+          propsToContent: [
+            {paneName: 'pane1'}
+          ]
         },
-        slot: {
-          default: [vmTabItem.$vnode]
-        }
-      }, false);
-      const vmTabContent = createTestVM(VueTabContent, {
-        data: {
-          name: 'VueTabContent'
-        },
-        slot: {
-          default: [vmTabPane.$vnode]
-        }
-      }, false);
-      const vmTab = createTestVM(VueTab, {
-        propsData: {
-          selected: 'tab1'
-        },
-        slot: {
-          default: [vmTabNav.$vnode, vmTabContent.$vnode]
-        }
       }, true);
 
-      console.log('vmTab.$el', vmTab.$el);
-      console.log('vmTabItem.$el', vmTabItem.$el);
-      console.log('vmTabNav.$el', vmTabNav.$el);
+      setTimeout(() => {
+        // console.log('vm.$el: ', vm.$el);
+        done();
+      }, 300);
 
     });
-
-  });
-  */
-
-  /*
-  describe('props', () => {
-    afterEach(() => {
-      destroyVM(vm);
-    });
-
-    it('VueTab可以接受selected', (done) => {
-      Vue.component('v-tab', VueTab);
-      Vue.component('v-tab-nav', VueTabNav);
-      Vue.component('v-tab-item', VueTabItem);
-      Vue.component('v-tab-content', VueTabContent);
-      Vue.component('v-tab-pane', VueTabPane);
-
-      const div = document.createElement('div');
-      div.innerHTML = `
-        <v-tab selected="2">
-          <v-tab-nav>
-            <v-tab-item tab-name="1">1</v-tab-item>
-            <v-tab-item tab-name="2">2</v-tab-item>
-            <v-tab-item tab-name="3">3</v-tab-item>
-          </v-tab-nav>
-          <v-tab-content>
-            <v-tab-pane pane-name="1">1</v-tab-pane>
-            <v-tab-pane pane-name="2">2</v-tab-pane>
-            <v-tab-pane pane-name="3">3</v-tab-pane>
-          </v-tab-content>
-        </v-tab>
-      `;
-      vm = new Vue({
-        el: div
-      });
-      vm.$nextTick(() => {
-        console.log(vm.$el.outerHTML);
-        done()
-      });
-
-    });
-
-  });
 */
+
+  });
 
 
   /*

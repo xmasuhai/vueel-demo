@@ -11,7 +11,7 @@ import {Component, Inject, Prop, Vue} from 'vue-property-decorator';
 export default class VueTabPane extends Vue {
   name = 'VueTabPane';
   active = false;
-  @Prop({type: String, required: true}) paneName!: string;
+  @Prop({type: String, required: false, default: ''}) paneName!: string;
   @Inject('eventBus') readonly eventBus!: Vue;
 
   get classes() {
@@ -25,13 +25,20 @@ export default class VueTabPane extends Vue {
       this.active = (name === this.paneName);
     });
   }
-
+/*
+  mounted() {
+    this.$nextTick(() => {
+      // console.log('this.$attrs pane: ', this.$attrs);
+    });
+  }
+  */
 }
 </script>
 
 <style lang="scss" scoped>
 .tab-pane {
   padding: 1em;
+
   &.active {
   }
 }

@@ -1,8 +1,8 @@
 <template>
   <div class="vue-tab">
     <slot>
-      <VueTabNav></VueTabNav>
-      <VueTabContent></VueTabContent>
+      <VueTabNav :propsToNav="propsToNav"></VueTabNav>
+      <VueTabContent :propsToContent="propsToContent"></VueTabContent>
     </slot>
   </div>
 </template>
@@ -19,6 +19,8 @@ import {VueTabItem} from '@/types/VueTabItem';
 export default class VueTab extends Vue {
   name = 'VueTab';
   @Prop({type: String, required: true}) selected!: string;
+  @Prop({type: Array, default() {return [];}}) propsToNav!: [];
+  @Prop({type: Array, default() {return [];}}) propsToContent!: [];
   @Prop({
     type: String,
     default: 'horizontal',
@@ -44,7 +46,9 @@ export default class VueTab extends Vue {
     });
   }
 
+  // 检查是否存在子组件
   checkSon() {
+    // $children 只能获取到子组件 而非子元素
     if (this.$children.length === 0) {
       throw new Error('VueTab无子组件，子组件必须是 VueTabNav 和 VueTabContent');
     }
@@ -53,7 +57,6 @@ export default class VueTab extends Vue {
   mounted() {
     this.checkSon();
     this.emitSelectedVMtoEventBus();
-    // console.log('this: ', this);
   }
 
 }

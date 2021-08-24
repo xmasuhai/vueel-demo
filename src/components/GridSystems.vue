@@ -1,19 +1,5 @@
 <template>
   <div>
-
-    <form>
-      <fieldset>
-        <legend>Grid</legend>
-        <details open>
-          <summary>Average Span</summary>
-          <VueRow :colData="colData"></VueRow>
-        </details>
-      </fieldset>
-    </form>
-    <br>
-
-<!--
-
     <form>
       <fieldset>
         <legend>Grid</legend>
@@ -245,20 +231,29 @@
       </fieldset>
     </form>
     <br>
--->
 
+    <form>
+      <fieldset>
+        <legend>Grid</legend>
+        <details open>
+          <summary>使用默认slot 并传递外部数据 colData</summary>
+          <VueRow :colData="colData"></VueRow>
+        </details>
+      </fieldset>
+    </form>
+    <br>
   </div>
 </template>
 
 <script lang="ts">
 import {Component, Vue, Watch} from 'vue-property-decorator';
-// import VueRow from './grid/VueRow.vue';
+import VueRow from './grid/VueRow.vue';
 import VueCol from './grid/VueCol.vue';
 
 @Component({
   components: {
-    // VueRow,
-    'VueRow': () => import('./grid/VueRow.vue'),
+    VueRow,
+    // 'VueRow': () => import('./grid/VueRow.vue'),
     VueCol
   }
 })
@@ -266,6 +261,7 @@ export default class GridSystems extends Vue {
   name = 'GridSystems';
   clientWidth = document.body.clientWidth.toString();
   mediaText = '';
+  colData = [{span: 12}, {span: 12}];
 
   getDymClientWidth(value: string) {
     this.clientWidth = value;
@@ -276,7 +272,6 @@ export default class GridSystems extends Vue {
     this.mediaText = val;
   }
 
-  colData = [{span: 12}];
 
 }
 </script>

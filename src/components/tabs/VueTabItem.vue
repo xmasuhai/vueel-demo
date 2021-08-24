@@ -12,9 +12,10 @@ export default class VueTabItem extends Vue {
   name = 'VueTabItem';
   active = false;
   @Prop({type: Boolean, default: false}) disabled!: boolean;
+
   @Inject('eventBus') readonly eventBus!: Vue;
 
-  @Prop({type: String, required: true}) tabName!: string;
+  @Prop({type: String, required: false, default: ''}) tabName!: string;
 
   emitSelectedVMtoEventBus() {
     if (this.disabled) {return;}
@@ -33,6 +34,14 @@ export default class VueTabItem extends Vue {
       this.active = (name === this.tabName);
     });
   }
+
+  /*
+  mounted() {
+    this.$nextTick(() => {
+      console.log('this.$attrs item: ', this.$attrs);
+    });
+  }
+  */
 
 }
 </script>

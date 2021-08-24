@@ -1,5 +1,18 @@
 <template>
   <div>
+    <!--    <form>
+          <fieldset>
+            <legend>Tabs 的基本结构</legend>
+            <details open>
+              <summary>Primary</summary>
+              <VueTab :selected.sync="selectedTab"
+                      :propsToNav="propsToNav"
+                      :propsToContent="propsToContent">
+              </VueTab>
+            </details>
+          </fieldset>
+        </form>
+        <br>-->
     <form>
       <fieldset>
         <legend>Tabs 的基本结构</legend>
@@ -173,6 +186,12 @@ import VueButton from './button/VueButton.vue';
 export default class Tabs extends Vue {
   name = 'Tabs';
   selectedTab = 'tab1';
+  propsToNav = [
+    {tabName: 'tab1'}
+  ];
+  propsToContent = [
+    {paneName: 'pane1'}
+  ];
 }
 </script>
 

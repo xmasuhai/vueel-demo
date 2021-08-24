@@ -1,6 +1,6 @@
 <template>
   <div class="tab-nav-wrapper">
-    <nav class="tab-nav">
+    <nav class="tab-nav" v-bind="$attrs">
       <slot>
         <VueTabItem v-for="(item, index) in itemsData"
                     :tab-name="item.tabName"
@@ -30,13 +30,15 @@ export default class VueTabNav extends Vue {
 
   @Prop({type: Array, default() {return [];}}) itemsData!: [];
 
+
+  // 初始选中第一 tab
   initSelectedTabItem() {
     this.eventBus.$emit('update:selected',
       (this.$children[0] as VueTabItem).tabName, this.$children[0]);
   }
 
   // 监听到选择的实例 取得实例元素的尺寸 移动位置
-  moveTab() {
+  moveUnderscoreToVueTab() {
     this.eventBus.$on('update:selected', (tabName: string, vm: VueTabItem) => {
       const {width, left} = vm.$el.getBoundingClientRect();
       const parentLeft = vm.$parent.$el.getBoundingClientRect().left;
@@ -48,15 +50,15 @@ export default class VueTabNav extends Vue {
 
   checkSon() {
     if (this.$children.length === 0) {
-      throw new Error('VueTab无子组件，子组件必须是 VueTabNav 和 VueTabContent');
+      throw new Error('VueTab无子组件，子组件必须是 VueTabItem');
     }
   }
 
   mounted() {
-    this.checkSon();
+    // this.checkSon();
     this.showUnderscore = true;
     this.$nextTick(() => {
-      this.moveTab();
+      this.moveUnderscoreToVueTab();
       this.initSelectedTabItem();
     });
   }
