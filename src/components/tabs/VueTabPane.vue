@@ -25,6 +25,7 @@ export default class VueTabPane extends Vue {
       this.active = (name === this.paneName);
     });
   }
+
 /*
   mounted() {
     this.$nextTick(() => {

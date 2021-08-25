@@ -30,7 +30,6 @@ export default class VueTabNav extends Vue {
 
   @Prop({type: Array, default() {return [];}}) itemsData!: [];
 
-
   // 初始选中第一 tab
   initSelectedTabItem() {
     this.eventBus.$emit('update:selected',
@@ -55,9 +54,14 @@ export default class VueTabNav extends Vue {
   }
 
   mounted() {
-    // this.checkSon();
+    if (this.itemsData.length === 0) {
+      this.$emit('update:itemsData', this.$attrs.propsToNav);
+    }
+
     this.showUnderscore = true;
+
     this.$nextTick(() => {
+      // this.checkSon();
       this.moveUnderscoreToVueTab();
       this.initSelectedTabItem();
     });

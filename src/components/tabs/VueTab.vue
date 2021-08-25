@@ -1,8 +1,14 @@
 <template>
   <div class="vue-tab">
     <slot>
-      <VueTabNav :propsToNav="propsToNav"></VueTabNav>
-      <VueTabContent :propsToContent="propsToContent"></VueTabContent>
+      <VueTabNav
+        :itemsData.sync="itemsData"
+        :propsToNav="propsToNav">
+      </VueTabNav>
+      <VueTabContent
+        :panesData.sync="panesData"
+        :propsToContent="propsToContent">
+      </VueTabContent>
     </slot>
   </div>
 </template>
@@ -18,6 +24,9 @@ import {VueTabItem} from '@/types/VueTabItem';
 })
 export default class VueTab extends Vue {
   name = 'VueTab';
+  itemsData = [];
+  panesData = [];
+
   @Prop({type: String, required: true}) selected!: string;
   @Prop({type: Array, default() {return [];}}) propsToNav!: [];
   @Prop({type: Array, default() {return [];}}) propsToContent!: [];
@@ -29,6 +38,7 @@ export default class VueTab extends Vue {
     }
   }) direction!: string;
 
+  // 提供 存储 选中tab属性 的数据总线
   eventBus = new Vue;
   @Provide('eventBus') eBus = this.eventBus;
 

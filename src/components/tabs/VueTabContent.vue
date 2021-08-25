@@ -30,6 +30,11 @@ export default class VueTabContent extends Vue {
   }
 
   mounted() {
+    if (this.panesData.length === 0) {
+      this.$emit('update:panesData', this.$attrs.propsToContent);
+      // this.panesData = this.$attrs.propsToContent;
+    }
+
     // this.checkSon();
   }
 
