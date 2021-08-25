@@ -1,9 +1,8 @@
 <template>
-  <div class="popover" @click="togglePop">
+  <div class="popover" @click.stop="togglePop">
     <div class="content-wrapper" v-if="visible">
       <slot name="content"></slot>
     </div>
-
     <slot></slot>
   </div>
 </template>
@@ -18,7 +17,17 @@ export default class VuePopover extends Vue {
 
   togglePop() {
     this.visible = !this.visible;
+    if (this.visible) {
+      this.$nextTick(() => {
+        const closer = () => {
+          this.visible = false;
+          document.removeEventListener('click', closer);
+        };
+        document.addEventListener('click', closer);
+      });
+    }
   }
+
 }
 </script>
 
