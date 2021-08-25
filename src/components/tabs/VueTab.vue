@@ -42,13 +42,14 @@ export default class VueTab extends Vue {
   eventBus = new Vue;
   @Provide('eventBus') eBus = this.eventBus;
 
-  // 发布 选中的实例 到 事件总线
+  // 发布 选中的实例 到 事件总线 以供其他组件监听
   emitSelectedVMtoEventBus() {
     this.$children.forEach((vm) => {
       if (vm.$options.name === 'VueTabNav') {
         (vm.$children as VueTabItem[]).forEach((childVM: VueTabItem) => {
           // VueTabItem 中判断出 选中的 tab 实例，发布这个实例
-          if (childVM.$options.name === 'VueTabItem' && childVM.tabName === this.selected) {
+          if (childVM.$options.name === 'VueTabItem'
+            && childVM.tabName === this.selected) {
             this.eventBus.$emit('update:selected', this.selected, childVM);
           }
         });

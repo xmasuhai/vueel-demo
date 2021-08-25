@@ -18,6 +18,7 @@
 
 <script lang="ts">
 import {Component, Inject, Prop, Vue} from 'vue-property-decorator';
+import VueTab from './VueTab.vue';
 import VueTabItem from './VueTabItem.vue';
 
 @Component({
@@ -30,10 +31,17 @@ export default class VueTabNav extends Vue {
 
   @Prop({type: Array, default() {return [];}}) itemsData!: [];
 
-  // 初始选中第一 tab
+  // 初始选中 第一个 或者有tabName的tab
   initSelectedTabItem() {
-    this.eventBus.$emit('update:selected',
-      (this.$children[0] as VueTabItem).tabName, this.$children[0]);
+    ((this.$parent as VueTab).selected === '')
+      ? this.eventBus.$emit('update:selected',
+        (this.$children[0] as VueTabItem).tabName, this.$children[0])
+      : this.eventBus.$emit('update:selected',
+        (this.$parent as VueTab).selected, (this.$children as VueTabItem[])
+          .filter((childVM) => {
+            return childVM.tabName === (this.$parent as VueTab).selected;
+          })[0]);
+
   }
 
   // 监听到选择的实例 取得实例元素的尺寸 移动位置

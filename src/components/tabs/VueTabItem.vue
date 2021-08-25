@@ -1,5 +1,9 @@
 <template>
-  <section class="tab-item" @click="emitSelectedVMtoEventBus" :class="classes">
+  <section
+    class="tab-item"
+    @click="emitSelectedVMtoEventBus"
+    :class="classes"
+    :data-name="tabName">
     <slot></slot>
   </section>
 </template>
@@ -19,7 +23,8 @@ export default class VueTabItem extends Vue {
 
   emitSelectedVMtoEventBus() {
     if (this.disabled) {return;}
-    this.eventBus.$emit('update:selected', this.tabName, this);
+    this?.eventBus?.$emit('update:selected', this.tabName, this);
+    this.$emit('click', this);
   }
 
   get classes() {
