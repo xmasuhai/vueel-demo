@@ -49,19 +49,21 @@ export default class VueTabNav extends Vue {
 
   checkSon() {
     if (this.$children.length === 0) {
-      throw new Error('VueTab无子组件，子组件必须是 VueTabItem');
+      throw new Error('VueTabNav无子组件，子组件必须是 VueTabItem');
+    }
+  }
+
+  checkItemData() {
+    if (this.itemsData.length === 0) {
+      this.$emit('update:itemsData', this.$attrs.propsToNav);
     }
   }
 
   mounted() {
-    if (this.itemsData.length === 0) {
-      this.$emit('update:itemsData', this.$attrs.propsToNav);
-    }
-
+    this.checkItemData();
     this.showUnderscore = true;
-
     this.$nextTick(() => {
-      // this.checkSon();
+      this.checkSon();
       this.moveUnderscoreToVueTab();
       this.initSelectedTabItem();
     });

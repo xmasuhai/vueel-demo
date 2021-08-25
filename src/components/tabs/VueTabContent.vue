@@ -25,17 +25,22 @@ export default class VueTabContent extends Vue {
 
   checkSon() {
     if (this.$children.length === 0) {
-      throw new Error('VueTab无子组件，子组件必须是 VueTabPane');
+      throw new Error('VueTabContent无子组件，子组件必须是 VueTabPane');
     }
   }
 
-  mounted() {
+  checkPanesData() {
     if (this.panesData.length === 0) {
       this.$emit('update:panesData', this.$attrs.propsToContent);
       // this.panesData = this.$attrs.propsToContent;
     }
+  }
 
-    // this.checkSon();
+  mounted() {
+    this.checkPanesData();
+    this.$nextTick(() => {
+      this.checkSon();
+    });
   }
 
 }

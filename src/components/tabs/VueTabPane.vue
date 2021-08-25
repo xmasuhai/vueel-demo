@@ -20,19 +20,16 @@ export default class VueTabPane extends Vue {
     };
   }
 
-  created() {
+  onChangeActiveTagPane() {
     this.eventBus.$on('update:selected', (name: string) => {
       this.active = (name === this.paneName);
     });
   }
 
-/*
-  mounted() {
-    this.$nextTick(() => {
-      // console.log('this.$attrs pane: ', this.$attrs);
-    });
+  created() {
+    this.onChangeActiveTagPane();
   }
-  */
+
 }
 </script>
 

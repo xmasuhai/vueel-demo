@@ -29,19 +29,16 @@ export default class VueTabItem extends Vue {
     };
   }
 
-  created() {
+  onChangeActiveTag() {
     this?.eventBus?.$on('update:selected', (name: string) => {
       this.active = (name === this.tabName);
     });
   }
 
-  /*
-  mounted() {
-    this.$nextTick(() => {
-      console.log('this.$attrs item: ', this.$attrs);
-    });
+  created() {
+    this.onChangeActiveTag();
   }
-  */
+
 
 }
 </script>
