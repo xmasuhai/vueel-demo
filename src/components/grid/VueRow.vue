@@ -87,7 +87,6 @@ export default class VueRow extends Vue {
 
   mounted() {
     this.gutterToCol();
-    // console.log('this.colData: ', this.colData);
   }
 
 }

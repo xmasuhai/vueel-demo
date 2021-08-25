@@ -58,7 +58,7 @@ export default class VueCol extends Vue {
     validator
   }) pcx!: mediaQuery;
 
-  // 拼装class名的 中缀 后缀; 返回 类样式的数组
+  // 拼装各个媒体查询额class名的 中缀 后缀; 返回 类样式的数组
   createMediaClasses(mediaObj: { span: number; offset: number }, infix = '') {
     if (!mediaObj) {return [];}
     const array = [];
@@ -103,6 +103,7 @@ export default class VueCol extends Vue {
     };
   }
 
+  // 防抖处理
   @Emit('update:ClientWidth')
   listenResize() {
     _.debounce(() => {
@@ -111,11 +112,16 @@ export default class VueCol extends Vue {
     return this.screenWidth;
   }
 
-  mounted() {
+  // 监听 resize 事件 相关 回调
+  callResizeHandler() {
     window.addEventListener('resize', this.listenResize, true);
     this.$once('hook:beforeDestroy', () => {
       window.removeEventListener('resize', this.listenResize, true);
     });
+  }
+
+  mounted() {
+    this.callResizeHandler();
   }
 
 }
