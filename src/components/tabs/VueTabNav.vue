@@ -89,6 +89,7 @@ $hrLine-color: #ddd;
 
   .tab-nav {
     display: flex;
+    max-width: 100%;
     height: $tab-nav-height;
     justify-content: flex-start;
     align-items: center;
@@ -98,8 +99,9 @@ $hrLine-color: #ddd;
     > .line {
       position: absolute;
       bottom: 0;
-      height: 0;
-      border-bottom: 1px solid $waterBlue;
+      height: 1px;
+      //outline: 1px solid $waterBlue;
+      box-shadow: 0 1px 0 0 $waterBlue;
       transition: all .3s;
     }
 
