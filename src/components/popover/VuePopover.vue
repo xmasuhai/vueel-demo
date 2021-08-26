@@ -1,9 +1,11 @@
 <template>
   <div class="popover" @click.stop="togglePop">
-    <div class="content-wrapper" v-if="visible">
+    <div ref="contentWrapper" class="content-wrapper" v-if="visible" @click.stop>
       <slot name="content"></slot>
     </div>
-    <slot></slot>
+    <span class="trigger" ref="trigger">
+      <slot></slot>
+    </span>
   </div>
 </template>
 
@@ -17,13 +19,14 @@ export default class VuePopover extends Vue {
 
   togglePop() {
     this.visible = !this.visible;
+
     if (this.visible) {
       this.$nextTick(() => {
-        const closer = () => {
-          this.visible = false;
-          document.removeEventListener('click', closer);
-        };
-        document.addEventListener('click', closer);
+        document.body.appendChild(this.$refs.contentWrapper as Node);
+        const {top, left}
+          = (this.$refs.trigger as Element).getBoundingClientRect();
+        (this.$refs.contentWrapper as any).style.left = `${left + window.scrollX}px`;
+        (this.$refs.contentWrapper as any).style.top = `${top + window.scrollY}px`;
       });
     }
   }
@@ -36,13 +39,12 @@ export default class VuePopover extends Vue {
   display: inline-block;
   vertical-align: top;
   position: relative;
+}
 
-  .content-wrapper {
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-    padding: 2px;
-  }
+.content-wrapper {
+  position: absolute;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  padding: 2px;
+  transform: translateY(-100%);
 }
 </style>
