@@ -2,7 +2,7 @@ import Vue from 'vue';
 import chai from 'chai';
 import sinonChai from 'sinon-chai';
 import VueIcon from '../../src/components/icon/VueIcon.vue';
-import {/*createTestVM, */destroyVM} from '../testUtil';
+import {createTestVM, destroyVM} from '../testUtil';
 
 chai.use(sinonChai);
 const expect = chai.expect;
@@ -24,8 +24,7 @@ describe('VueIcon', () => {
       destroyVM(vm);
     });
 
-    // (O)^n * N
-    /*
+    // (O)^n**2
     [
       'settings',
       'loading',
@@ -53,7 +52,6 @@ describe('VueIcon', () => {
             .to.equal(`#i-${iconName}`);
         });
       });
-*/
 
   });
 

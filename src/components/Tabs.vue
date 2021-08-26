@@ -74,12 +74,22 @@
           <summary>Primary</summary>
           <VueTab :selected.sync="selectedTab">
             <VueTabNav>
-              <VueTabItem tabName="tab1">
-                <VueIcon iconName="settings"></VueIcon>
+              <VueTabItem
+                tabName="tab1"
+                :useIcon="true"
+                iconName="settings">
                 Tab1
               </VueTabItem>
-              <VueTabItem tabName="tab2">Tab2</VueTabItem>
-              <VueTabItem tabName="tab3">Tab3</VueTabItem>
+              <VueTabItem tabName="tab2"
+                          :useIcon="true"
+                          iconName="download">
+                Tab2
+              </VueTabItem>
+              <VueTabItem tabName="tab3"
+                          :useIcon="true"
+                          iconName="thumbs-up">
+                Tab3
+              </VueTabItem>
             </VueTabNav>
             <VueTabContent>
               <VueTabPane paneName="tab1">Pane1</VueTabPane>
