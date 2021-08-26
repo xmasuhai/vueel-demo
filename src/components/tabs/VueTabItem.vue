@@ -98,7 +98,7 @@ $disabled-text-color: lightgrey;
   > .icon {
     width: 1em;
     height: 1em;
-    margin: 0 .3em 0 auto;
+    margin: 0 .3em .1em auto;
     fill: currentColor;
     overflow: hidden;
     order: 1;

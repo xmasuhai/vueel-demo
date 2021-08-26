@@ -9,10 +9,10 @@
         </VueTabItem>
       </slot>
       <div class="line" ref="line" v-if="showUnderscore"></div>
+      <div class="actions-wrapper">
+        <slot name="actions"></slot>
+      </div>
     </nav>
-    <div class="actions-wrapper">
-      <slot name="actions"></slot>
-    </div>
   </div>
 </template>
 
@@ -84,6 +84,7 @@ export default class VueTabNav extends Vue {
 $tab-nav-height: 40px;
 $waterBlue: #3ba0e9;
 $hrLine-color: #ddd;
+
 .tab-nav-wrapper {
   display: flex;
 
@@ -95,8 +96,9 @@ $hrLine-color: #ddd;
     align-items: center;
     position: relative;
     border-bottom: 1px solid $hrLine-color;
+    width: 100%;
 
-    > .line {
+    .line {
       position: absolute;
       bottom: 0;
       height: 1px;
@@ -105,14 +107,15 @@ $hrLine-color: #ddd;
       transition: all .3s;
     }
 
+    > .actions-wrapper {
+      margin-left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1em;
+    }
+
   }
 
-  .actions-wrapper {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 1em;
-  }
 }
 </style>
