@@ -11,12 +11,14 @@
             </template>
             <VueButton>点击</VueButton>
           </VuePopover>
-          <VuePopover>
-            <template slot="content">
-              <div>popover内容</div>
-            </template>
-            <VueButton>点击</VueButton>
-          </VuePopover>
+          <div style="overflow: hidden;border: 1px solid green; padding-left: 5px">
+            <VuePopover>
+              <template slot="content">
+                <div>popover内容</div>
+              </template>
+              <VueButton>点击</VueButton>
+            </VuePopover>
+          </div>
         </details>
       </fieldset>
     </form>
