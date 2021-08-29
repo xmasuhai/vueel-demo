@@ -1,5 +1,7 @@
 <template>
-  <div class="popover" @click="togglePop">
+  <div class="popover"
+       ref="popover"
+       @click="togglePop">
     <div
       ref="contentWrapper"
       class="content-wrapper"
@@ -23,7 +25,7 @@ export default class VuePopover extends Vue {
   // 定位 popover 显示位置
   positionPop() {
     // 获取 弹出消息框节点 的引用，放到 body 子节点的最后
-    document.body.appendChild(this.$refs.contentWrapper as Node);
+    document.body.appendChild(this.$refs?.contentWrapper as Node);
 
     // 获取 按钮元素 左上顶点的位置坐标 top, left
     const {top, left}
@@ -35,10 +37,18 @@ export default class VuePopover extends Vue {
 
   }
 
+  listenToDocument() {
+    document.addEventListener('click', this.closeHandler);
+  }
+
+  rmListenerToDocument() {
+    document.removeEventListener('click', this.closeHandler);
+  }
+
   // 关闭 弹出框 销毁事件监听
   closeEvent() {
     this.visible = false;
-    document.removeEventListener('click', this.closeHandler);
+    this.rmListenerToDocument();
   }
 
   // 定义一个点击事件的回调函数
@@ -48,12 +58,10 @@ export default class VuePopover extends Vue {
     // 如果 点击的目标对象 不存在于 包裹弹出框的div中
     if (!hasPopover) {
       this.closeEvent();
+    } else if (this.$refs.popover &&
+      (hasPopover || this.$refs.popover === e.target)) {
+      return;
     }
-  }
-
-  listenToDocument() {
-    // 在文档上 添加 点击事件 的监听
-    document.addEventListener('click', this.closeHandler);
   }
 
   // 点击按钮 执行的方法：切换显示/隐藏 popover
@@ -63,29 +71,33 @@ export default class VuePopover extends Vue {
       ?.contains(event.target as Node)) {
       // 切换显示/隐藏 popover
       this.visible = !this.visible;
+
     } else {
       // 点击popover部分 执行的逻辑
     }
 
   }
 
-  // 监听 this.visible 状态变化 执行逻辑
+  onShowPopover() {
+    this.$nextTick(() => {
+      // 显示 弹出框，将弹出框节点放到 body 子节点的最后
+      // 改变弹出框样式，使其出现在相对按钮合适的位置
+      this.positionPop();
+
+      // 使 添加监听在 点击事件冒泡 之后 执行
+      setTimeout(() => {
+        // 给 document 添加 click 事件监听
+        this.listenToDocument();
+      });
+    });
+  }
+
+  // 监听 this.visible 状态变化 执行对应的逻辑
   @Watch('visible')
   onVisibleChange(newValue: boolean) {
-    // 当 popover 显示时 执行的逻辑
-    // 显示 弹出框，将弹出框节点放到 body 子节点的最后
-    // 改变弹出框样式，使其出现在相对按钮合适的位置
     if (newValue) {
-      this.$nextTick(() => {
-        // 将 弹出框 放到body 里
-        this.positionPop();
-
-        // 使 添加监听在 点击事件冒泡 之后 执行
-        setTimeout(() => {
-          // 给 document 添加 click 事件监听
-          this.listenToDocument();
-        });
-      });
+      // 当 popover 显示时 执行的逻辑
+      this.onShowPopover();
     } else {
       // 当 popover 隐藏时 执行的逻辑
     }
