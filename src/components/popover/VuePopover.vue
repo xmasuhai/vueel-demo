@@ -7,9 +7,9 @@
          v-if="isVisible">
       <slot name="content"></slot>
     </div>
-    <span class="triggerWrapper" ref="triggerWrapper">
+    <div class="triggerWrapper" ref="triggerWrapper">
       <slot>button</slot>
-    </span>
+    </div>
   </div>
 </template>
 
