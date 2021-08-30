@@ -28,6 +28,30 @@
         <legend>Popover</legend>
         <details open>
           <summary>Popover方向</summary>
+          <VuePopover>
+            <template slot="content">
+              <div>popover上</div>
+            </template>
+            <VueButton>点击</VueButton>
+          </VuePopover>
+          <VuePopover position="bottom">
+            <template slot="content">
+              <div>popover下</div>
+            </template>
+            <VueButton>点击</VueButton>
+          </VuePopover>
+          <VuePopover position="left">
+            <template slot="content">
+              <div>popover左</div>
+            </template>
+            <VueButton>点击</VueButton>
+          </VuePopover>
+          <VuePopover position="right">
+            <template slot="content">
+              <div>popover右</div>
+            </template>
+            <VueButton>点击</VueButton>
+          </VuePopover>
         </details>
       </fieldset>
     </form>

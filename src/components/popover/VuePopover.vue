@@ -4,7 +4,8 @@
        @click="togglePop">
     <div ref="contentWrapper"
          class="content-wrapper"
-         v-if="isVisible">
+         v-if="isVisible"
+         :class="{[`position-${position}`]: true}">
       <slot name="content"></slot>
     </div>
     <span class="triggerWrapper" ref="triggerWrapper">
@@ -14,25 +15,55 @@
 </template>
 
 <script lang="ts">
-import {Component, Vue, Watch} from 'vue-property-decorator';
+import {Component, Prop, Vue, Watch} from 'vue-property-decorator';
 
 @Component
 export default class VuePopover extends Vue {
   name = 'VuePopover';
   isVisible = false;
 
+  @Prop({
+    type: String,
+    default: 'top',
+    validator(value: string): boolean {
+      return ['top', 'bottom', 'left', 'right'].includes(value);
+    }
+  }) position!: string;
+
   // 定位 popover 显示位置
+  // 'top', 'bottom', 'left', 'right'
   positionPop() {
     // 获取 弹出消息框节点 的引用，放到 body 子节点的最后
-    document.body.appendChild(this.$refs?.contentWrapper as Node);
+    document.body.appendChild(this.$refs.contentWrapper as Node);
 
+    const {contentWrapper, triggerWrapper} = this.$refs;
     // 获取 按钮元素 左上顶点的位置坐标 top, left
-    const {top, left}
-      = (this.$refs.triggerWrapper as Element)
+    const {width, height, top, left}
+      = (triggerWrapper as HTMLElement)
       .getBoundingClientRect();
-    // 设置 弹出消息框节点 的行内样式，使其定位到 按钮元素 上方
-    (this.$refs.contentWrapper as any).style.top = `${top + window.scrollY}px`;
-    (this.$refs.contentWrapper as any).style.left = `${left + window.scrollX}px`;
+    const {height: popHeight} = (contentWrapper as HTMLElement)
+      .getBoundingClientRect();
+
+    if (this.position === 'top') {
+      // 设置 弹出消息框节点 的行内样式，使其定位到 按钮元素 上方
+      (contentWrapper as HTMLElement).style.top = `${top + window.scrollY}px`;
+      (contentWrapper as HTMLElement).style.left = `${left + window.scrollX}px`;
+    } else if (this.position === 'bottom') {
+      // 设置 弹出消息框节点 的行内样式，使其定位到 按钮元素 下方
+      (contentWrapper as HTMLElement).style.top = `${top + height + window.scrollY}px`;
+      (contentWrapper as HTMLElement).style.left = `${left + window.scrollX}px`;
+    } else if (this.position === 'left') {
+      // 设置 弹出消息框节点 的行内样式，使其定位到 按钮元素 左侧
+      (contentWrapper as HTMLElement).style.left = `${left + window.scrollX}px`;
+      // popover高度居中 对齐于 按钮高度，按钮于popover高度差值的1/2
+      (contentWrapper as HTMLElement).style.top =
+        `${top + Math.abs(height - popHeight) / 2 + window.scrollY}px`;
+    } else if (this.position === 'right') {
+      // 设置 弹出消息框节点 的行内样式，使其定位到 按钮元素 右侧
+      (contentWrapper as HTMLElement).style.left = `${left + width + window.scrollX}px`;
+      (contentWrapper as HTMLElement).style.top =
+        `${top + Math.abs(height - popHeight) / 2 + window.scrollY}px`;
+    }
 
   }
 
@@ -129,7 +160,6 @@ $border-radius: 4px;
   //box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
   padding: 0.5em 1em;
-  transform: translateY(-100%);
   background-color: white;
   margin-top: -10px;
   max-width: 20em;
@@ -139,20 +169,87 @@ $border-radius: 4px;
     content: '';
     display: block;
     position: absolute;
-    top: 100%;
-    left: .5em;
     width: 0;
     height: 0;
     border: 10px solid transparent;
   }
 
-  &::before {
-    border-top-color: #333;
+  &.position-top {
+    transform: translateY(-100%);
+    margin-top: -10px;
+
+    &::before, &::after {
+      left: 10px;
+    }
+
+    &::before {
+      top: 100%;
+      border-top-color: #333;
+    }
+
+    &::after {
+      top: calc(100% - 1px);
+      border-top-color: white;
+    }
   }
 
-  &::after {
-    top: calc(100% - 1px);
-    border-top-color: white;
+  &.position-bottom {
+    margin-top: 10px;
+
+    &::before, &::after {
+      left: 10px;
+    }
+
+    &::before {
+      bottom: 100%;
+      border-bottom-color: #333;
+    }
+
+    &::after {
+      bottom: calc(100% - 1px);
+      border-bottom-color: white;
+    }
   }
+
+  &.position-left {
+    transform: translateX(-100%);
+    margin-left: -10px;
+
+    &::before, &::after {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &::before {
+      left: 100%;
+      border-left-color: #333;
+    }
+
+    &::after {
+      left: calc(100% - 1px);
+      border-left-color: white;
+    }
+
+  }
+
+  &.position-right {
+    margin-left: 10px;
+
+    &::before, &::after {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &::before {
+      right: 100%;
+      border-right-color: #333;
+    }
+
+    &::after {
+      right: calc(100% - 1px);
+      border-right-color: white;
+    }
+  }
+
 }
 </style>
