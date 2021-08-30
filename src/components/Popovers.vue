@@ -23,6 +23,24 @@
       </fieldset>
     </form>
     <br>
+    <form>
+      <fieldset>
+        <legend>Popover</legend>
+        <details open>
+          <summary>Popover方向</summary>
+        </details>
+      </fieldset>
+    </form>
+    <br>
+    <form>
+      <fieldset>
+        <legend>Popover</legend>
+        <details open>
+          <summary>Popover 可click/hover</summary>
+        </details>
+      </fieldset>
+    </form>
+    <br>
   </div>
 </template>
 

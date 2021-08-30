@@ -1,11 +1,10 @@
 <template>
-  <div class="popover"
-       ref="popover"
+  <div ref="popover"
+       class="popover"
        @click="togglePop">
-    <div
-      ref="contentWrapper"
-      class="content-wrapper"
-      v-if="visible">
+    <div ref="contentWrapper"
+         class="content-wrapper"
+         v-if="visible">
       <slot name="content"></slot>
     </div>
     <span class="triggerWrapper" ref="triggerWrapper">
@@ -71,7 +70,6 @@ export default class VuePopover extends Vue {
       ?.contains(event.target as Node)) {
       // 切换显示/隐藏 popover
       this.visible = !this.visible;
-
     } else {
       // 点击popover部分 执行的逻辑
     }
@@ -84,7 +82,7 @@ export default class VuePopover extends Vue {
       // 改变弹出框样式，使其出现在相对按钮合适的位置
       this.positionPop();
 
-      // 使 添加监听在 点击事件冒泡 之后 执行
+      // 使 添加监听在 点击事件冒泡 之后 异步执行
       setTimeout(() => {
         // 给 document 添加 click 事件监听
         this.listenToDocument();
