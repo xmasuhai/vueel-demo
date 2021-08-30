@@ -4,7 +4,7 @@
        @click="togglePop">
     <div ref="contentWrapper"
          class="content-wrapper"
-         v-if="visible">
+         v-if="isVisible">
       <slot name="content"></slot>
     </div>
     <span class="triggerWrapper" ref="triggerWrapper">
@@ -19,7 +19,7 @@ import {Component, Vue, Watch} from 'vue-property-decorator';
 @Component
 export default class VuePopover extends Vue {
   name = 'VuePopover';
-  visible = false;
+  isVisible = false;
 
   // 定位 popover 显示位置
   positionPop() {
@@ -46,7 +46,7 @@ export default class VuePopover extends Vue {
 
   // 关闭 弹出框 销毁事件监听
   closeEvent() {
-    this.visible = false;
+    this.isVisible = false;
     this.rmListenerToDocument();
   }
 
@@ -69,7 +69,7 @@ export default class VuePopover extends Vue {
     if ((this.$refs.triggerWrapper as HTMLElement)
       ?.contains(event.target as Node)) {
       // 切换显示/隐藏 popover
-      this.visible = !this.visible;
+      this.isVisible = !this.isVisible;
     } else {
       // 点击popover部分 执行的逻辑
     }
@@ -90,7 +90,7 @@ export default class VuePopover extends Vue {
     });
   }
 
-  // 监听 this.visible 状态变化 执行对应的逻辑
+  // 监听 this.isVisible 状态变化 执行对应的逻辑
   @Watch('visible')
   onVisibleChange(newValue: boolean) {
     if (newValue) {
