@@ -28,7 +28,7 @@ export default class VuePopover extends Vue {
     validator(value: string): boolean {
       return ['top', 'bottom', 'left', 'right'].includes(value);
     }
-  }) position!: string;
+  }) position!: 'top' | 'bottom' | 'left' | 'right';
 
   // 定位 popover 显示位置
   // 'top', 'bottom', 'left', 'right'
@@ -44,26 +44,31 @@ export default class VuePopover extends Vue {
     const {height: popHeight} = (contentWrapper as HTMLElement)
       .getBoundingClientRect();
 
-    if (this.position === 'top') {
-      // 设置 弹出消息框节点 的行内样式，使其定位到 按钮元素 上方
-      (contentWrapper as HTMLElement).style.top = `${top + window.scrollY}px`;
-      (contentWrapper as HTMLElement).style.left = `${left + window.scrollX}px`;
-    } else if (this.position === 'bottom') {
-      // 设置 弹出消息框节点 的行内样式，使其定位到 按钮元素 下方
-      (contentWrapper as HTMLElement).style.top = `${top + height + window.scrollY}px`;
-      (contentWrapper as HTMLElement).style.left = `${left + window.scrollX}px`;
-    } else if (this.position === 'left') {
-      // 设置 弹出消息框节点 的行内样式，使其定位到 按钮元素 左侧
-      (contentWrapper as HTMLElement).style.left = `${left + window.scrollX}px`;
-      // popover高度居中 对齐于 按钮高度，按钮于popover高度差值的1/2
-      (contentWrapper as HTMLElement).style.top =
-        `${top + Math.abs(height - popHeight) / 2 + window.scrollY}px`;
-    } else if (this.position === 'right') {
-      // 设置 弹出消息框节点 的行内样式，使其定位到 按钮元素 右侧
-      (contentWrapper as HTMLElement).style.left = `${left + width + window.scrollX}px`;
-      (contentWrapper as HTMLElement).style.top =
-        `${top + Math.abs(height - popHeight) / 2 + window.scrollY}px`;
-    }
+    // 表驱动编程
+    const positionList = {
+      'position-top': {
+        top: top + window.scrollY,
+        left: left + window.scrollX
+      },
+      'position-bottom': {
+        top: top + height + window.scrollY,
+        left: left + window.scrollX
+      },
+      'position-left': {
+        // popover高度居中 对齐于 按钮高度，按钮于popover高度差值的1/2
+        top: top + Math.abs(height - popHeight) / 2 + window.scrollY,
+        left: left + window.scrollX
+      },
+      'position-right': {
+        top: top + Math.abs(height - popHeight) / 2 + window.scrollY,
+        left: left + width + window.scrollX
+      },
+    };
+
+    (contentWrapper as HTMLElement).style.top =
+      positionList[`position-${this.position}` as positionListString].top + `px`;
+    (contentWrapper as HTMLElement).style.left =
+      positionList[`position-${this.position}` as positionListString].left + `px`;
 
   }
 
