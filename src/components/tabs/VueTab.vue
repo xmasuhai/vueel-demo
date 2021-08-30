@@ -42,6 +42,14 @@ export default class VueTab extends Vue {
   eventBus = new Vue;
   @Provide('eventBus') eBus = this.eventBus;
 
+  // 检查是否存在子组件
+  checkSon() {
+    // $children 只能获取到子组件 而非子元素
+    if (this.$children.length === 0) {
+      throw new Error('VueTab无子组件，子组件必须是 VueTabNav 和 VueTabContent');
+    }
+  }
+
   // 发布 选中的实例 到 事件总线 以供其他组件监听
   emitSelectedVMtoEventBus() {
     this.$children.forEach((vm) => {
@@ -55,14 +63,6 @@ export default class VueTab extends Vue {
         });
       }
     });
-  }
-
-  // 检查是否存在子组件
-  checkSon() {
-    // $children 只能获取到子组件 而非子元素
-    if (this.$children.length === 0) {
-      throw new Error('VueTab无子组件，子组件必须是 VueTabNav 和 VueTabContent');
-    }
   }
 
   mounted() {

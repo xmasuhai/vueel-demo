@@ -36,6 +36,18 @@ export default class VuePopover extends Vue {
 
   }
 
+  // 定义一个点击事件的回调函数
+  closeHandler(e: Event) {
+    // 点击的目标对象 是否存在于 popover 包裹div中
+    const hasPopover = ((this.$refs.contentWrapper as Element)
+      ?.contains(e.target as Node));
+    // 如果 点击的目标对象 不存在于 包裹弹出框的div中 即 点击了document
+    if (!hasPopover) {
+      this.closeEvent();
+    } else if (this.$refs.popover &&
+      (hasPopover || this.$refs.popover === e.target)) {return;}
+  }
+
   listenToDocument() {
     document.addEventListener('click', this.closeHandler);
   }
@@ -50,17 +62,9 @@ export default class VuePopover extends Vue {
     this.rmListenerToDocument();
   }
 
-  // 定义一个点击事件的回调函数
-  closeHandler(e: Event) {
-    const hasPopover = ((this.$refs.contentWrapper as Element)
-      ?.contains(e.target as Node));
-    // 如果 点击的目标对象 不存在于 包裹弹出框的div中
-    if (!hasPopover) {
-      this.closeEvent();
-    } else if (this.$refs.popover &&
-      (hasPopover || this.$refs.popover === e.target)) {
-      return;
-    }
+  openEvent() {
+    this.isVisible = true;
+    this.onShowPopover();
   }
 
   // 点击按钮 执行的方法：切换显示/隐藏 popover
@@ -98,6 +102,7 @@ export default class VuePopover extends Vue {
       this.onShowPopover();
     } else {
       // 当 popover 隐藏时 执行的逻辑
+      return;
     }
   }
 
