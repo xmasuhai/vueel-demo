@@ -7,9 +7,9 @@
          v-if="isVisible">
       <slot name="content"></slot>
     </div>
-    <div class="triggerWrapper" ref="triggerWrapper">
+    <span class="triggerWrapper" ref="triggerWrapper">
       <slot>button</slot>
-    </div>
+    </span>
   </div>
 </template>
 
@@ -44,8 +44,7 @@ export default class VuePopover extends Vue {
     // 如果 点击的目标对象 不存在于 包裹弹出框的div中 即 点击了document
     if (!hasPopover) {
       this.closeEvent();
-    } else if (this.$refs.popover &&
-      (hasPopover || this.$refs.popover === e.target)) {return;}
+    } else {return;}
   }
 
   listenToDocument() {
@@ -110,21 +109,50 @@ export default class VuePopover extends Vue {
 </script>
 
 <style lang="scss" scoped>
+$border-color: #333;
+$border-radius: 4px;
 .popover {
   display: inline-block;
   vertical-align: top;
   position: relative;
 
   .triggerWrapper {
+    display: inline-block;
   }
 }
 
 .content-wrapper {
   display: block;
   position: absolute;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-  padding: 2px;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  //box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+  padding: 0.5em 1em;
   transform: translateY(-100%);
   background-color: white;
+  margin-top: -10px;
+  max-width: 20em;
+  word-break: break-all;
+
+  &::before, &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: .5em;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+  }
+
+  &::before {
+    border-top-color: #333;
+  }
+
+  &::after {
+    top: calc(100% - 1px);
+    border-top-color: white;
+  }
 }
 </style>

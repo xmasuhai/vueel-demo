@@ -14,7 +14,7 @@
           <div style="margin-top: 30px;;overflow: hidden;border: 1px solid green; padding-left: 5px">
             <VuePopover style="margin-top: 0;">
               <template slot="content">
-                <div>popover内容</div>
+                <div>popover多行文字内容popover多行文字内容popover多行文字内容popover多行文字内容popover多行文字内容</div>
               </template>
               <VueButton>点击</VueButton>
             </VuePopover>
