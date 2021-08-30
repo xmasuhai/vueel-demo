@@ -36,11 +36,13 @@ export default class VuePopover extends Vue {
     // 获取 弹出消息框节点 的引用，放到 body 子节点的最后
     document.body.appendChild(this.$refs.contentWrapper as Node);
 
+    // 获取 popover元素 按钮元素
     const {contentWrapper, triggerWrapper} = this.$refs;
-    // 获取 按钮元素 左上顶点的位置坐标 top, left
+    // 获取 按钮元素 左上顶点的位置坐标 width, height, top, left
     const {width, height, top, left}
       = (triggerWrapper as HTMLElement)
       .getBoundingClientRect();
+    // 获取 popover元素 height
     const {height: popHeight} = (contentWrapper as HTMLElement)
       .getBoundingClientRect();
 
@@ -190,11 +192,15 @@ $border-radius: 4px;
     &::before {
       top: 100%;
       border-top-color: #333;
+      // 防止popover的border 遮盖button 导致hover重复触发
+      border-bottom: none;
     }
 
     &::after {
       top: calc(100% - 1px);
       border-top-color: white;
+      // 防止popover的border 遮盖button 导致hover重复触发
+      border-bottom: none;
     }
   }
 
@@ -208,11 +214,13 @@ $border-radius: 4px;
     &::before {
       bottom: 100%;
       border-bottom-color: #333;
+      border-top: none;
     }
 
     &::after {
       bottom: calc(100% - 1px);
       border-bottom-color: white;
+      border-top: none;
     }
   }
 
@@ -228,11 +236,13 @@ $border-radius: 4px;
     &::before {
       left: 100%;
       border-left-color: #333;
+      border-right: none;
     }
 
     &::after {
       left: calc(100% - 1px);
       border-left-color: white;
+      border-right: none;
     }
 
   }
@@ -248,11 +258,13 @@ $border-radius: 4px;
     &::before {
       right: 100%;
       border-right-color: #333;
+      border-left: none;
     }
 
     &::after {
       right: calc(100% - 1px);
       border-right-color: white;
+      border-left: none;
     }
   }
 
