@@ -91,7 +91,7 @@ export default class VuePopover extends Vue {
   }
 
   // 监听 this.isVisible 状态变化 执行对应的逻辑
-  @Watch('visible')
+  @Watch('isVisible')
   onVisibleChange(newValue: boolean) {
     if (newValue) {
       // 当 popover 显示时 执行的逻辑
