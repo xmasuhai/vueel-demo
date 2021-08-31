@@ -4,21 +4,19 @@
       <fieldset>
         <legend>Popover</legend>
         <details open>
-          <summary>组件包裹按钮</summary>
-          <VuePopover>
+          <summary>Popover 可click/hover</summary>
+          <VuePopover trigger="click">
             <template slot="content">
               <div>popover内容</div>
             </template>
-            <VueButton>点击</VueButton>
+            <VueButton>鼠标点击触发popover</VueButton>
           </VuePopover>
-          <div style="margin-top: 30px;;overflow: hidden;border: 1px solid green; padding-left: 5px">
-            <VuePopover style="margin-top: 0;">
-              <template slot="content">
-                <div>popover多行文字内容popover多行文字内容popover多行文字内容popover多行文字内容popover多行文字内容</div>
-              </template>
-              <VueButton>点击</VueButton>
-            </VuePopover>
-          </div>
+          <VuePopover trigger="hover">
+            <template slot="content">
+              <div>popover内容</div>
+            </template>
+            <VueButton>鼠标悬停触发popover</VueButton>
+          </VuePopover>
         </details>
       </fieldset>
     </form>
@@ -58,9 +56,17 @@
     <br>
     <form>
       <fieldset>
-        <legend>Popover</legend>
+        <legend>Popover 多行文字内容</legend>
         <details open>
-          <summary>Popover 可click/hover</summary>
+          <summary>Popover 不被overflow遮挡</summary>
+          <div style="margin-top: 30px;overflow: hidden;border: 1px solid #ccc; padding-left: 5px">
+            <VuePopover style="margin-top: 0;">
+              <template slot="content">
+                <div>popover多行文字内容popover多行文字内容popover多行文字内容popover多行文字内容popover多行文字内容</div>
+              </template>
+              <VueButton>显示多行文字提示</VueButton>
+            </VuePopover>
+          </div>
         </details>
       </fieldset>
     </form>

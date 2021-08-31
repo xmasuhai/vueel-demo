@@ -92,6 +92,8 @@ export default class VueToast extends Vue {
     };
   }
 
+  //
+
   // 监听 closed 的状态 决定visible是否变化
   @Watch('isClosed')
   onClosedChange(newVal: boolean) {
