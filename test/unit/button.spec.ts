@@ -76,32 +76,46 @@ describe('VueButton', () => {
       expect(getComputedStyle(icon as SVGSVGElement).order).to.eq('2');
     });
 
-    // (O)^ n * n
-    /*
-        [
-          {'': 'rgb(248, 248, 255)'},
-          {'primary': 'rgb(13, 110, 253)'},
-          {'danger': 'rgb(255, 65, 54)'},
-          {'warning': 'rgb(255, 193, 7)'},
-          {'success': 'rgb(25, 135, 84)'},
-          {'info': 'rgb(13, 202, 240)'},
-          {'attention': 'rgb(253, 126, 20)'}
-        ]
-          .forEach((typeObj) => {
-            const colorType = Object.keys(typeObj)[0];
-            const colorString = Object.values(typeObj)[0];
-            it(`设置 color 可以改变${colorType}按钮种类`, () => {
-              vm = createTestVM(VueButton, {
-                propsData: {
-                  colorType
-                }
-              }, true);
-              const buttonElement = vm.$el;
-              expect(getComputedStyle(buttonElement as HTMLButtonElement).backgroundColor)
-                .to.eq(colorString);
-            });
+    // (O)^ n * n 测试颜色
+    [
+      {'': 'rgb(248, 248, 255)'},
+      {'primary': 'rgb(13, 110, 253)'},
+      {'danger': 'rgb(255, 65, 54)'},
+      {'warning': 'rgb(255, 193, 7)'},
+      {'success': 'rgb(25, 135, 84)'},
+      {'info': 'rgb(13, 202, 240)'},
+      {'attention': 'rgb(253, 126, 20)'}
+    ].forEach((typeObj) => {
+      const colorType = Object.keys(typeObj)[0];
+      const colorString = Object.values(typeObj)[0];
+      it(`设置 color 可以改变${colorType}按钮种类`, () => {
+        vm = createTestVM(VueButton, {
+          propsData: {
+            colorType
+          }
+        }, true);
+        const buttonElement = vm.$el;
+        expect(getComputedStyle(buttonElement as HTMLButtonElement).backgroundColor)
+          .to.eq(colorString);
+      });
 
-          });*/
+    });
+
+    // (O)^ n * n 尺寸
+    ['small', 'normal', 'big'].forEach((sizeString) => {
+      it(`设置 color 可以改变${sizeString}按钮种类`, () => {
+        vm = createTestVM(VueButton, {
+          propsData: {
+            size: sizeString
+          }
+        }, true);
+        const buttonElement = vm.$el;
+        expect((buttonElement as HTMLButtonElement)
+          .classList.contains(`vue-button-size-${sizeString}`))
+          .to.eq(true);
+      });
+
+    });
 
   });
 

@@ -1,5 +1,7 @@
 $button-height: 32px;
 $font-size: 14px;
+$font-size-small: 10px;
+$font-size-big: 18px;
 $border-radius: 4px;
 $button-bg: #f8f8ff;
 $button-active-bg: #eee;
@@ -16,7 +18,7 @@ $warning: #ffc107;
 $success: #198754;
 $info: #0dcaf0;
 $attention: #fd7e14;
-$box-shadow-color: rgb(0, 0, 0, .5);
+$box-shadow-color: rgba(0, 0, 0, .5);
 
 // Transform
 $--pressed-scale: scale(.95) !default;

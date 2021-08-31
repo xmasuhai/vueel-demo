@@ -13,6 +13,15 @@
         </details>
         <details open>
           <summary>Size</summary>
+          <VueButton size="small" icon="download">
+            小尺寸按钮
+          </VueButton>
+          <VueButton icon="settings">
+            正常尺寸按钮
+          </VueButton>
+          <VueButton size="big" icon="thumbs-up">
+            大尺寸按钮
+          </VueButton>
         </details>
         <details open>
           <summary>Event</summary>

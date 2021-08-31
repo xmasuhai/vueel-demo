@@ -6,7 +6,10 @@
     <VueIcon v-if="loadingStatus"
              :icon-name="loadingName"
              class="icon"
-             :class="{loading: isLoading}"/>
+             :class="{
+               loading: isLoading,
+               [`vue-button-size-${this.size}`]: true
+             }"/>
     <div class="content">
       <slot></slot>
     </div>
@@ -25,8 +28,9 @@ import VueIcon from '../icon/VueIcon.vue';
 export default class VueButton extends Vue {
   name = 'VueButton';
 
-  @Prop() icon!: 'settings' | 'loading' | 'right' |
-    'left' | 'download' | 'arrow-down' | 'thumbs-up';
+  @Prop({type: String, default: ''}) icon!: 'settings' | 'loading' | 'right' |
+    'left' | 'download' | 'arrow-down' | 'thumbs-up' | '';
+  @Prop({type: String, default: 'normal'}) size!: 'small' | 'normal' | 'big';
   @Prop({type: Boolean, default: false}) isLoading!: boolean;
   @Prop({
     type: String,
@@ -57,7 +61,8 @@ export default class VueButton extends Vue {
     return {
       'vue-button': 'vue-button',
       [`icon-${this.iconPosition}`]: true,
-      [`vue-button-${this.colorType}`]: true
+      [`vue-button-${this.colorType}`]: true,
+      [`vue-button-size-${this.size}`]: true
     };
   }
 
@@ -69,6 +74,7 @@ export default class VueButton extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@use "sass:map";
 @import '../../style/global.scss';
 
 @keyframes spin {
@@ -126,7 +132,7 @@ export default class VueButton extends Vue {
     outline: none;
   }
 
-  // Colors
+  // button colors
   $color-types: (
     'primary': $primary,
     'danger': $danger,
@@ -138,6 +144,19 @@ export default class VueButton extends Vue {
   @each $name, $type in $color-types {
     &-#{$name} {
       @include setColorType($type);
+    }
+  }
+
+  // button sizes
+  $font-sizes: (
+    'small': (font-size: $font-size-small, button-size: 24px),
+    'normal': (font-size: $font-size, button-size: 32px),
+    'big': (font-size: $font-size-big, button-size: 48px),
+  );
+  @each $name, $types in $font-sizes {
+    &-size-#{$name} {
+      font-size: map.get($types, font-size);
+      height: map.get($types, button-size);
     }
   }
 
