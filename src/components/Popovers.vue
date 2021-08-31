@@ -6,7 +6,7 @@
         <details open>
           <summary>Popover 可click/hover</summary>
           <VuePopover trigger="click">
-            <template slot="content">
+            <template #content>
               <div>popover内容</div>
             </template>
             <VueButton>鼠标点击触发popover</VueButton>
@@ -67,6 +67,22 @@
               <VueButton>显示多行文字提示</VueButton>
             </VuePopover>
           </div>
+        </details>
+      </fieldset>
+    </form>
+    <br>
+    <form>
+      <fieldset>
+        <legend>Popover</legend>
+        <details open>
+          <summary>Popover 带关闭按钮</summary>
+          <VuePopover trigger="hover">
+            <template #content="{closeEvent}">
+              <div>popover使用 slotScope 传参给slot</div>
+              <VueButton @click="closeEvent">关闭</VueButton>
+            </template>
+            <VueButton>提供slot事件回调closeEvent</VueButton>
+          </VuePopover>
         </details>
       </fieldset>
     </form>

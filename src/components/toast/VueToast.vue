@@ -6,8 +6,7 @@
       <div class="toast"
            :style="positionOffsetStyle"
            ref="toast"
-           @mouseenter="clearTimer"
-           @mouseleave="startTimer">
+           v-on="{mouseenter: clearTimer, mouseleave: startTimer}">
         <div class="message">
           <slot v-if="!enableUnsafeHTML">{{ message }}</slot>
           <div v-else v-html="ifSlots/*$slots.default[0]*/"></div>

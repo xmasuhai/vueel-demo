@@ -6,10 +6,9 @@
     <div ref="contentWrapper"
          class="content-wrapper"
          v-if="isVisible"
-         @mouseover="clearTimer"
-         @mouseout="startTimer"
+         v-on="{mouseover: clearTimer, mouseout: startTimer}"
          :class="{[`position-${position}`]: true}">
-      <slot name="content"></slot>
+      <slot name="content" :closeEvent="closeEvent"></slot>
     </div>
     <span class="triggerWrapper" ref="triggerWrapper">
       <slot>button</slot>
