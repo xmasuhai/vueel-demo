@@ -1,0 +1,83 @@
+$border-color: #333;
+$border-radius: 4px;
+
+%position-top-default {
+  transform: translateY(-100%);
+  margin-top: -10px;
+}
+
+%position-top-common {
+  left: 10px;
+  // 防止popover的border 遮盖button 导致hover重复触发
+  border-bottom: none;
+}
+
+%position-top-before {
+  top: 100%;
+  border-top-color: #333;
+}
+
+%position-top-after {
+  top: calc(100% - 1px);
+  border-top-color: white;
+}
+
+%position-bottom-default {
+  margin-top: 10px;
+}
+
+%position-bottom-common {
+  left: 10px;
+  border-top: none;
+}
+
+%position-bottom-before {
+  bottom: 100%;
+  border-bottom-color: #333;
+}
+
+%position-bottom-after {
+  bottom: calc(100% - 1px);
+  border-bottom-color: white;
+}
+
+%position-left-default {
+  transform: translateX(-100%);
+  margin-left: -10px;
+}
+
+%position-left-common {
+  top: 50%;
+  transform: translateY(-50%);
+  border-right: none;
+}
+
+%position-left-before {
+  left: 100%;
+  border-left-color: #333;
+}
+
+%position-left-after {
+  left: calc(100% - 1px);
+  border-left-color: white;
+}
+
+%position-right-default {
+  margin-left: 10px;
+}
+
+%position-right-common {
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: none;
+}
+
+%position-right-before {
+  right: 100%;
+  border-right-color: #333;
+}
+
+%position-right-after {
+  right: calc(100% - 1px);
+  border-right-color: white;
+}
