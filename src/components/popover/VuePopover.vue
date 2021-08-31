@@ -149,6 +149,88 @@ export default class VuePopover extends Vue {
 <style lang="scss" scoped>
 $border-color: #333;
 $border-radius: 4px;
+
+%position-top-default {
+  transform: translateY(-100%);
+  margin-top: -10px;
+}
+
+%position-top-common {
+  left: 10px;
+  // 防止popover的border 遮盖button 导致hover重复触发
+  border-bottom: none;
+}
+
+%position-top-before {
+  top: 100%;
+  border-top-color: #333;
+}
+
+%position-top-after {
+  top: calc(100% - 1px);
+  border-top-color: white;
+}
+
+%position-bottom-default {
+  margin-top: 10px;
+}
+
+%position-bottom-common {
+  left: 10px;
+  border-top: none;
+}
+
+%position-bottom-before {
+  bottom: 100%;
+  border-bottom-color: #333;
+}
+
+%position-bottom-after {
+  bottom: calc(100% - 1px);
+  border-bottom-color: white;
+}
+
+%position-left-default {
+  transform: translateX(-100%);
+  margin-left: -10px;
+}
+
+%position-left-common {
+  top: 50%;
+  transform: translateY(-50%);
+  border-right: none;
+}
+
+%position-left-before {
+  left: 100%;
+  border-left-color: #333;
+}
+
+%position-left-after {
+  left: calc(100% - 1px);
+  border-left-color: white;
+}
+
+%position-right-default {
+  margin-left: 10px;
+}
+
+%position-right-common {
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: none;
+}
+
+%position-right-before {
+  right: 100%;
+  border-right-color: #333;
+}
+
+%position-right-after {
+  right: calc(100% - 1px);
+  border-right-color: white;
+}
+
 .popover {
   display: inline-block;
   vertical-align: top;
@@ -157,6 +239,7 @@ $border-radius: 4px;
   .triggerWrapper {
     display: inline-block;
   }
+
 }
 
 .content-wrapper {
@@ -172,101 +255,43 @@ $border-radius: 4px;
   max-width: 20em;
   word-break: break-all;
 
+  // 方向指向尖角基础样式
   &::before, &::after {
     content: '';
     display: block;
     position: absolute;
     width: 0;
     height: 0;
-    border: 10px solid transparent;
+    border: .65em solid transparent;
   }
 
-  &.position-top {
-    transform: translateY(-100%);
-    margin-top: -10px;
+  // 方向指向尖角样式
+  $position-list: 'top', 'bottom', 'left', 'right';
+  @each $name in $position-list {
+    &.position-#{$name} {
+      //noinspection SassScssUnresolvedPlaceholderSelector
+      @extend %position-#{$name}-default;
 
-    &::before, &::after {
-      left: 10px;
-    }
+      &::before, &::after {
+        //noinspection SassScssUnresolvedPlaceholderSelector
+        @extend %position-#{$name}-common;
+      }
 
-    &::before {
-      top: 100%;
-      border-top-color: #333;
-      // 防止popover的border 遮盖button 导致hover重复触发
-      border-bottom: none;
-    }
+      &::before {
+        //noinspection SassScssUnresolvedPlaceholderSelector
+        @extend %position-#{$name}-before;
+      }
 
-    &::after {
-      top: calc(100% - 1px);
-      border-top-color: white;
-      // 防止popover的border 遮盖button 导致hover重复触发
-      border-bottom: none;
-    }
-  }
+      &::after {
+        //noinspection SassScssUnresolvedPlaceholderSelector
+        @extend %position-#{$name}-after;
+      }
 
-  &.position-bottom {
-    margin-top: 10px;
-
-    &::before, &::after {
-      left: 10px;
-    }
-
-    &::before {
-      bottom: 100%;
-      border-bottom-color: #333;
-      border-top: none;
-    }
-
-    &::after {
-      bottom: calc(100% - 1px);
-      border-bottom-color: white;
-      border-top: none;
-    }
-  }
-
-  &.position-left {
-    transform: translateX(-100%);
-    margin-left: -10px;
-
-    &::before, &::after {
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    &::before {
-      left: 100%;
-      border-left-color: #333;
-      border-right: none;
-    }
-
-    &::after {
-      left: calc(100% - 1px);
-      border-left-color: white;
-      border-right: none;
     }
 
   }
 
-  &.position-right {
-    margin-left: 10px;
-
-    &::before, &::after {
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    &::before {
-      right: 100%;
-      border-right-color: #333;
-      border-left: none;
-    }
-
-    &::after {
-      right: calc(100% - 1px);
-      border-right-color: white;
-      border-left: none;
-    }
-  }
 
 }
+
 </style>
