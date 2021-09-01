@@ -29,7 +29,7 @@ export default class VuePopover extends Vue {
 
   // prop: [autoCloseDelay, position, trigger]
   @Prop({
-    type: [Number, Boolean], default: 800, validator(value: false | number): boolean {
+    type: [Number, Boolean], default: 580, validator(value: false | number): boolean {
       return (value === false) || (value > 0);
     }
   }) autoCloseDelay!: false | number;
@@ -123,7 +123,7 @@ export default class VuePopover extends Vue {
 
   }
 
-  // 定义一个点击事件的回调函数
+  // 定义一个点击关闭事件的回调函数
   closeHandler(e: Event) {
     // 点击的目标对象 是否存在于 popover 包裹div中
     const hasPopover = ((this.$refs.contentWrapper as Element)
