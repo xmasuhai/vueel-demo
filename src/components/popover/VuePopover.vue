@@ -1,7 +1,7 @@
 <template>
   <div ref="popover"
        class="popover"
-       v-on="{[popUp]: [openEvent,clearTimer], [popDown]: startTimer}"
+       v-on="{[popUp]: [openEvent, clearTimer], [popDown]: startTimer}"
        @click="togglePop">
     <div ref="contentWrapper"
          class="content-wrapper"
@@ -23,26 +23,14 @@ import {Component, Prop, Vue, Watch} from 'vue-property-decorator';
 export default class VuePopover extends Vue {
   name = 'VuePopover';
   isVisible = false;
-
   timer: number | null = null;
+
+  // prop: [autoCloseDelay, position, trigger]
   @Prop({
-    type: [Number, Boolean], default: 1800, validator(value: false | number): boolean {
+    type: [Number, Boolean], default: 800, validator(value: false | number): boolean {
       return (value === false) || (value > 0);
     }
   }) autoCloseDelay!: false | number;
-
-  clearTimer() {
-    clearTimeout(this.timer || undefined);
-  }
-
-  startTimer() {
-    if (this.autoCloseDelay) {
-      this.timer = setTimeout(() => {
-        this.closeEvent();
-      }, this.autoCloseDelay);
-    }
-  }
-
   @Prop({
     type: String,
     default: 'top',
@@ -58,6 +46,18 @@ export default class VuePopover extends Vue {
     }
   }) trigger!: 'hover' | 'click';
 
+  clearTimer() {
+    clearTimeout(this.timer || undefined);
+  }
+
+  startTimer() {
+    if (this.autoCloseDelay) {
+      this.timer = setTimeout(() => {
+        this.closeEvent();
+      }, this.autoCloseDelay);
+    }
+  }
+
   get popUp() {
     return this.trigger === 'hover'
       ? 'mouseenter'
@@ -71,7 +71,6 @@ export default class VuePopover extends Vue {
   }
 
   // 定位 popover 显示位置
-  // 'top', 'bottom', 'left', 'right'
   positionPop() {
     // 获取 弹出消息框节点 的引用，放到 body 子节点的最后
     document.body.appendChild(this.$refs.contentWrapper as Node);
@@ -79,8 +78,12 @@ export default class VuePopover extends Vue {
     // 获取 popover元素 按钮元素
     const {contentWrapper, triggerWrapper} = this.$refs;
     // 获取 按钮元素 左上顶点的位置坐标 width, height, top, left
-    const {width: buttonWidth, height: buttonHeight, top: buttonTop, left: buttonLeft}
-      = (triggerWrapper as HTMLElement)
+    const {
+      width: buttonWidth,
+      height: buttonHeight,
+      top: buttonTop,
+      left: buttonLeft
+    } = (triggerWrapper as HTMLElement)
       .getBoundingClientRect();
     // 获取 popover元素 height
     const {height: popHeight} = (contentWrapper as HTMLElement)
