@@ -64,43 +64,49 @@ describe('VuePopover', () => {
         done();
       });
 
-      /*      const useElements = vm.$el.querySelectorAll('use');
-            expect(useElements.length).to.equal(1);
-            expect(useElements[0].getAttribute('xlink:href'))
-              .to.equal('#i-loading');*/
-
-
     });
 
-    /*
-    it('可以设置trigger', () => {
+    it('可以设置trigger', (done) => {
+      vm = createTestVM(VuePopover, {
+        propsData: {
+          trigger: 'hover'
+        }
+      }, true);
+      const hoverEvent = new Event('mouseenter');
+      vm.$el.dispatchEvent(hoverEvent);
+
+      setTimeout(() => {
+        const popover = vm.$refs.contentWrapper;
+        expect(popover).to.exist;
+        done();
+      });
+
     });
-    */
 
   });
 
   // event: [click, mouseenter, mouseleave]
-  describe('测试事件', () => {
+  /*
+    describe('测试事件', () => {
+          const Constructor = Vue.extend(VuePopover);
+          afterEach(() => {
+            destroyVM(vm);
+          });
 
-    /*
-        const Constructor = Vue.extend(VueButton);
-        afterEach(() => {
-          destroyVM(vm);
-        });
+          it('点击 button 触发 click 事件', () => {
+            vm = new Constructor({
+              propsData: {
+                icon: 'settings',
+              }
+            }).$mount();
+            const callback = sinon.fake();
+            vm.$on('click', callback);
+            (vm.$el as HTMLElement).click();
+            expect(callback).to.have.been.called;
+          });
 
-        it('点击 button 触发 click 事件', () => {
-          vm = new Constructor({
-            propsData: {
-              icon: 'settings',
-            }
-          }).$mount();
-          const callback = sinon.fake();
-          vm.$on('click', callback);
-          (vm.$el as HTMLElement).click();
-          expect(callback).to.have.been.called;
-        });
-        */
+    });
+  */
 
-  });
 
 });
