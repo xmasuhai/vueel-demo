@@ -1,18 +1,18 @@
 <template>
   <div ref="popover"
        class="popover"
-       v-on="{[popUp]: [openEvent, clearTimer], [popDown]: startTimer}"
+       v-on="{[popUp]: [openEvent, clearTimer], mouseleave: startTimer}"
        @click="togglePop">
     <div ref="contentWrapper"
          class="content-wrapper"
          v-if="isVisible"
-         v-on="multiEvent"
+         v-on="multiEventOnContent"
          :class="{[`position-${position}`]: true}">
       <slot name="content" :closeEvent="closeEvent"></slot>
     </div>
     <span class="triggerWrapper"
           ref="triggerWrapper"
-          v-on="multiEvent">
+          v-on="multiEventOnTrigger">
       <slot>button</slot>
     </span>
   </div>
@@ -60,19 +60,26 @@ export default class VuePopover extends Vue {
     }
   }
 
-  get multiEvent() {
-    return {mouseover: this.clearTimer, mouseout: this.startTimer};
+  get multiEventOnTrigger() {
+    return (this.trigger === 'click'
+      ? {
+        mouseover: this.clearTimer,
+        mouseenter: this.clearTimer
+      }
+      : {});
+  }
+
+  get multiEventOnContent() {
+    return {
+      mouseover: this.clearTimer,
+      mouseleave: this.startTimer,
+      mouseenter: this.clearTimer
+    };
   }
 
   get popUp() {
     return this.trigger === 'hover'
       ? 'mouseenter'
-      : '';
-  }
-
-  get popDown() {
-    return this.trigger === 'hover'
-      ? 'mouseleave'
       : '';
   }
 
