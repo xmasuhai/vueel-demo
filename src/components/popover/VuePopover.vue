@@ -6,11 +6,13 @@
     <div ref="contentWrapper"
          class="content-wrapper"
          v-if="isVisible"
-         v-on="{mouseover: clearTimer, mouseout: startTimer}"
+         v-on="multiEvent"
          :class="{[`position-${position}`]: true}">
       <slot name="content" :closeEvent="closeEvent"></slot>
     </div>
-    <span class="triggerWrapper" ref="triggerWrapper">
+    <span class="triggerWrapper"
+          ref="triggerWrapper"
+          v-on="multiEvent">
       <slot>button</slot>
     </span>
   </div>
@@ -56,6 +58,10 @@ export default class VuePopover extends Vue {
         this.closeEvent();
       }, this.autoCloseDelay);
     }
+  }
+
+  get multiEvent() {
+    return {mouseover: this.clearTimer, mouseout: this.startTimer};
   }
 
   get popUp() {
