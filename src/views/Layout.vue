@@ -23,6 +23,7 @@ import LayoutGroups from '../components/LayoutGroups.vue';
 import ToastsTips from '../components/ToastsTips.vue';
 import Tabs from '../components/Tabs.vue';
 import Popovers from '../components/Popovers.vue';
+import Collapses from '../components/Collapses.vue';
 
 @Component({
   components: {
@@ -33,12 +34,13 @@ import Popovers from '../components/Popovers.vue';
     ToastsTips,
     Nav,
     Tabs,
-    Popovers
+    Popovers,
+    Collapses
   }
 })
 export default class Layout extends Vue {
   name = 'Layout';
-  currentTabText = 'Popovers';
+  currentTabText = 'Collapses';
   layoutType = '';
 
   // 由动态外部参数 获取 类样式
