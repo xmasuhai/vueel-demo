@@ -72,8 +72,8 @@ describe('VuePopover', () => {
           trigger: 'hover'
         }
       }, true);
-      const hoverEvent = new Event('mouseenter');
-      vm.$el.dispatchEvent(hoverEvent);
+      const mouseenterEvent = new Event('mouseenter');
+      vm.$el.dispatchEvent(mouseenterEvent);
 
       setTimeout(() => {
         const popover = vm.$refs.contentWrapper;
@@ -106,7 +106,7 @@ describe('VuePopover', () => {
       expect(callback).to.have.been.called;
       vm.$on('hooks:destroy', () => {
         (button as HTMLElement).removeEventListener('click', callback);
-      })
+      });
 
       setTimeout(() => {
         const popover = vm.$refs.contentWrapper;
@@ -123,37 +123,53 @@ describe('VuePopover', () => {
     });
 
     // hover, mouseenter, mouseleave
-    /*
-    it('点击 button 触发 click 事件', (done) => {
+
+    it('点击 button 触发 hover 事件', () => {
       vm = createTestVM(VuePopover, {
         propsData: {
-          trigger: 'click'
+          trigger: 'hover'
         }
       }, false);
 
       const button = vm.$refs.triggerWrapper;
-      const callback = sinon.fake();
-      (button as HTMLElement).addEventListener('click', callback);
-      (button as HTMLElement).click();
-      expect(callback).to.have.been.called;
-      vm.$on('hooks:destroy', () => {
-        (button as HTMLElement).removeEventListener('click', callback);
-      })
+      const callbackEnter = sinon.fake();
+      const callbackLeave = sinon.fake();
 
-      setTimeout(() => {
-        const popover = vm.$refs.contentWrapper;
-        expect(popover).to.exist;
-        done();
-      });
+      (button as HTMLElement).addEventListener('mouseenter', callbackEnter);
+      (button as HTMLElement).addEventListener('mouseleave', callbackLeave);
 
-      setTimeout(() => {
-        const popover = vm.$refs.contentWrapper;
-        expect(popover).to.not.exist;
-        done();
-      }, 1000);
+      const mouseenterEvent = new Event('mouseenter');
+      // const mouseleaveEvent = new Event('mouseleave');
+
+      (button as HTMLElement).dispatchEvent(mouseenterEvent);
+      expect(callbackEnter).to.have.been.called;
+
+      // (button as HTMLElement).dispatchEvent(mouseleaveEvent);
+      // expect(mouseleaveEvent).to.have.been.called;
+
+      /*
+            vm.$on('hooks:destroy', () => {
+              (button as HTMLElement).removeEventListener('click', callbackEnter);
+              (button as HTMLElement).removeEventListener('click', callbackLeave);
+            });
+      */
+
+      /*
+            setTimeout(() => {
+              const popover = vm.$refs.contentWrapper;
+              expect(popover).to.exist;
+              done();
+            });
+
+            setTimeout(() => {
+              const popover = vm.$refs.contentWrapper;
+              expect(popover).to.not.exist;
+              done();
+            }, 1000);
+      */
+
 
     });
-    */
 
   });
 
