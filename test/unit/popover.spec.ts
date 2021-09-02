@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import chai from 'chai';
-// import sinon from 'sinon';
+import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import VuePopover from '../../src/components/popover/VuePopover.vue';
 import {createTestVM, destroyVM} from '../testUtil';
@@ -85,28 +85,77 @@ describe('VuePopover', () => {
 
   });
 
-  // event: [click, mouseenter, mouseleave]
-  /*
-    describe('测试事件', () => {
-          const Constructor = Vue.extend(VuePopover);
-          afterEach(() => {
-            destroyVM(vm);
-          });
+  // event: [click, hover, mouseenter, mouseleave]
+  describe('测试事件', () => {
+    afterEach(() => {
+      destroyVM(vm);
+    });
 
-          it('点击 button 触发 click 事件', () => {
-            vm = new Constructor({
-              propsData: {
-                icon: 'settings',
-              }
-            }).$mount();
-            const callback = sinon.fake();
-            vm.$on('click', callback);
-            (vm.$el as HTMLElement).click();
-            expect(callback).to.have.been.called;
-          });
+    // click
+    it('点击 button 触发 click 事件', (done) => {
+      vm = createTestVM(VuePopover, {
+        propsData: {
+          trigger: 'click'
+        }
+      }, false);
+
+      const button = vm.$refs.triggerWrapper;
+      const callback = sinon.fake();
+      (button as HTMLElement).addEventListener('click', callback);
+      (button as HTMLElement).click();
+      expect(callback).to.have.been.called;
+      vm.$on('hooks:destroy', () => {
+        (button as HTMLElement).removeEventListener('click', callback);
+      })
+
+      setTimeout(() => {
+        const popover = vm.$refs.contentWrapper;
+        expect(popover).to.exist;
+        done();
+      });
+
+      setTimeout(() => {
+        const popover = vm.$refs.contentWrapper;
+        expect(popover).to.not.exist;
+        done();
+      }, 1000);
 
     });
-  */
+
+    // hover, mouseenter, mouseleave
+    /*
+    it('点击 button 触发 click 事件', (done) => {
+      vm = createTestVM(VuePopover, {
+        propsData: {
+          trigger: 'click'
+        }
+      }, false);
+
+      const button = vm.$refs.triggerWrapper;
+      const callback = sinon.fake();
+      (button as HTMLElement).addEventListener('click', callback);
+      (button as HTMLElement).click();
+      expect(callback).to.have.been.called;
+      vm.$on('hooks:destroy', () => {
+        (button as HTMLElement).removeEventListener('click', callback);
+      })
+
+      setTimeout(() => {
+        const popover = vm.$refs.contentWrapper;
+        expect(popover).to.exist;
+        done();
+      });
+
+      setTimeout(() => {
+        const popover = vm.$refs.contentWrapper;
+        expect(popover).to.not.exist;
+        done();
+      }, 1000);
+
+    });
+    */
+
+  });
 
 
 });

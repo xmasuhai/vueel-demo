@@ -113,7 +113,7 @@ describe('Toast Component', () => {
       destroyVM(vm);
     });
 
-    it('接受 enableEscapeKey 触发beforeClose事件', (done) => {
+    it('键盘事件：接受 enableEscapeKey 触发beforeClose事件', (done) => {
       const vm = createTestVM(VueToast, {
         propsData: {
           autoCloseDelay: 300
