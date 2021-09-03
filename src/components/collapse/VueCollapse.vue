@@ -33,8 +33,7 @@ export default class VueCollapse extends Vue {
 $grey: #ddd;
 $border-radius: 4px;
 .collapse {
-  border-left: 1px solid $grey;
-  border-right: 1px solid $grey;
+  border: 1px solid $grey;
   border-radius: $border-radius;
   display: flex;
   align-items: center;

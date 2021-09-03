@@ -36,14 +36,25 @@ export default class VueCollapseItem extends Vue {
 $grey: #ddd;
 $border-radius: 4px;
 
+%margin-top-bottom {
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
+
+@mixin border-bottom-radius($radius: 0px) {
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
 .collapse-item {
-  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   width: 100%;
-  margin-left: -1px;
+  border-bottom: 1px solid $grey;
 
   > .title {
-    margin-right: -2px;
-    border: 1px solid $grey;
+    width: 100%;
     min-height: 32px;
     display: flex;
     align-items: center;
@@ -51,51 +62,43 @@ $border-radius: 4px;
   }
 
   > .content {
-    margin-right: -2px;
-    border: 1px solid $grey;
+    width: 100%;
     padding: 2px 8px 1px;
   }
 
+  // .collapse-item
   &:first-child {
     > .title {
-      border-top-left-radius: $border-radius;
-      border-top-right-radius: $border-radius;
-    }
-
-    > .content {
-      margin-top: -1px;
+      box-shadow: 0 0 0 1px $grey;
+      border-top-right-radius: 3px;
+      border-top-left-radius: 3px;
     }
   }
 
+  // .collapse-item
   &:not(:first-child):not(:last-child) {
     > .title {
-      margin-top: -1px;
-      margin-bottom: -1px;
-    }
-
-    > .content {
-      margin-top: -1px;
-      margin-bottom: -1px;
+      box-shadow: 0 0 0 1px $grey;
     }
   }
 
+  // .collapse-item
   &:last-child {
-    // v-show
+    border-bottom: none;
+
+    // v-show = false
     > .title:nth-last-child(2) {
-      border-bottom-right-radius: $border-radius;
-      border-bottom-left-radius: $border-radius;
+      box-shadow: 0 0 0 1px $grey;
+      @include border-bottom-radius(3px);
     }
 
+    // v-show = true
     > .title.title-show {
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
+      @include border-bottom-radius;
     }
 
     > .content {
-      border-top: none;
-      border-bottom-right-radius: $border-radius;
-      border-bottom-left-radius: $border-radius;
-      margin-top: -1px;
+      @include border-bottom-radius($border-radius);
     }
   }
 

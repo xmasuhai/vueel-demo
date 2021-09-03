@@ -23,6 +23,8 @@
             <VueCollapseItem title="标题1">内容1</VueCollapseItem>
             <VueCollapseItem title="标题2">内容2</VueCollapseItem>
             <VueCollapseItem title="标题3">内容3</VueCollapseItem>
+            <VueCollapseItem title="标题4">内容4</VueCollapseItem>
+            <VueCollapseItem title="标题5">内容5</VueCollapseItem>
           </VueCollapse>
         </details>
       </fieldset>
