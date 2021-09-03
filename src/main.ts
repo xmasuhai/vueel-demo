@@ -5,6 +5,9 @@ import store from './store';
 import './style/normalize.scss';
 import './style/reset.scss';
 import './style/global.scss';
+import VueCompositionAPI from '@vue/composition-api';
+
+Vue.use(VueCompositionAPI);
 
 // 组件
 import VueButton from './components/button/VueButton.vue';
