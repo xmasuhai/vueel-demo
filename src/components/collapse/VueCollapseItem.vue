@@ -1,9 +1,14 @@
 <template>
   <div class="collapse-item">
-    <header class="title" @click="isOpen=!isOpen">
+    <header
+      class="title"
+      :class="{'title-show': isOpen}"
+      @click="isOpen=!isOpen">
       {{ title }}
     </header>
-    <article class="content" v-show="isOpen">
+    <article
+      class="content"
+      v-show="isOpen">
       <slot>
         VueCollapseItem
       </slot>
@@ -77,6 +82,13 @@ $border-radius: 4px;
   &:last-child {
     // v-show
     > .title:nth-last-child(2) {
+      border-bottom-right-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+    }
+
+    > .title.title-show {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
     }
 
     > .content {
@@ -86,5 +98,6 @@ $border-radius: 4px;
       margin-top: -1px;
     }
   }
+
 }
 </style>
