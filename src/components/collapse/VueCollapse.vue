@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue} from 'vue-property-decorator';
+import {Component, Prop, Provide, Vue} from 'vue-property-decorator';
 import VueCollapseItem from './VueCollapseItem.vue';
 
 @Component({
@@ -26,11 +26,13 @@ export default class VueCollapse extends Vue {
     default() {return [];}
   }) itemsData!: [];
 
+  @Provide() eventBus = new Vue();
+
 }
 </script>
 
 <style lang="scss" scoped>
-$grey: #ddd;
+$grey: #999;
 $border-radius: 4px;
 .collapse {
   border: 1px solid $grey;

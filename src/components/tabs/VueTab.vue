@@ -39,8 +39,7 @@ export default class VueTab extends Vue {
   }) direction!: string;
 
   // 提供 存储 选中tab属性 的数据总线
-  eventBus = new Vue;
-  @Provide('eventBus') eBus = this.eventBus;
+  @Provide() eventBus = new Vue;
 
   // 检查是否存在子组件
   checkSon() {

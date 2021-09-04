@@ -21,9 +21,9 @@
           <summary>可禁用</summary>
           <VueCollapse>
             <VueCollapseItem title="标题1">内容1</VueCollapseItem>
-            <VueCollapseItem title="标题2">内容2</VueCollapseItem>
+            <VueCollapseItem title="标题2" :isDisabled="true">内容2</VueCollapseItem>
             <VueCollapseItem title="标题3">内容3</VueCollapseItem>
-            <VueCollapseItem title="标题4">内容4</VueCollapseItem>
+            <VueCollapseItem title="标题4" :isDisabled="true">内容4</VueCollapseItem>
             <VueCollapseItem title="标题5">内容5</VueCollapseItem>
           </VueCollapse>
         </details>
@@ -34,7 +34,7 @@
       <fieldset>
         <legend>Collapse 折叠面板</legend>
         <details open>
-          <summary>允许单独展开面板</summary>
+          <summary>允许一次展开单独一个面板</summary>
           <VueCollapse>
             <VueCollapseItem title="标题1">内容1</VueCollapseItem>
             <VueCollapseItem title="标题2">内容2</VueCollapseItem>
