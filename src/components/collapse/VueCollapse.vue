@@ -40,6 +40,9 @@ export default class VueCollapse extends Vue {
 
   mounted() {
     this.eventBus.$emit('update:selected', this.selected);
+    this.eventBus.$on('update:selected', () => {
+      this.$emit('update:selected', this.selected);
+    });
   }
 }
 </script>

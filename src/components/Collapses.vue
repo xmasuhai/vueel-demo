@@ -5,7 +5,7 @@
         <legend>Collapse 折叠面板</legend>
         <details open>
           <summary>基本样式</summary>
-          <VueCollapse selected="标题3">
+          <VueCollapse :selected.sync="selectedTitle">
             <VueCollapseItem title="标题1">内容1</VueCollapseItem>
             <VueCollapseItem title="标题2">内容2</VueCollapseItem>
             <VueCollapseItem title="标题3">内容3</VueCollapseItem>
@@ -60,6 +60,7 @@ import VueCollapseItem from './collapse/VueCollapseItem.vue';
 })
 export default class Collapses extends Vue {
   name = 'Collapses';
+  selectedTitle = '标题3';
 }
 </script>
 

@@ -63,10 +63,12 @@ export default class VueCollapseItem extends Vue {
     this.isAllShowSingle
     && this.keepSingle
     && this.eventBus.$on('update:selected', (title: string) => {
-      if (title !== this.title) {
-        this.close();
-      } else {
+      if (title === this.title) {
         this.show();
+      } else {
+        (this.isAllShowSingle && this.keepSingle)
+          ? this.close()
+          : null;
       }
     });
 
