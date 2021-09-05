@@ -5,7 +5,7 @@
       class="title"
       :class="{ 'title-show': isOpen && !isDisabled,
                 'disabled': isDisabled}"
-      @click="isOpen=!isOpen">
+      @click="toggle">
       {{ title }}
     </header>
     <article
@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue} from 'vue-property-decorator';
+import {Component, Inject, Prop, Vue} from 'vue-property-decorator';
 
 @Component
 export default class VueCollapseItem extends Vue {
@@ -35,6 +35,34 @@ export default class VueCollapseItem extends Vue {
     type: Boolean,
     default: false
   }) isDisabled!: boolean;
+
+  @Inject() readonly eventBus!: Vue;
+
+  toggle() {
+    if (this.isOpen) {
+      this.isOpen = false;
+    } else {
+      this.isOpen = true;
+      this.eventBus.$emit('update:selected', this);
+    }
+  }
+
+  close() {
+    this.isOpen = false;
+  }
+
+  addBusListener() {
+    this.eventBus.$on('update:selected', (vm: Vue) => {
+      if (vm !== this) {
+        this.close();
+      }
+    });
+
+  }
+
+  mounted() {
+    this.addBusListener();
+  }
 }
 </script>
 
