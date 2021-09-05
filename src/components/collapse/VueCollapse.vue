@@ -4,6 +4,7 @@
       <VueCollapseItem v-for="(item, index) in itemsData"
                        :title="item.title"
                        :disabled="item.disabled"
+                       keepSingle="item.isSingle"
                        :key="index">
       </VueCollapseItem>
       占位
@@ -25,9 +26,21 @@ export default class VueCollapse extends Vue {
     type: Array,
     default() {return [];}
   }) itemsData!: [];
+  @Prop({
+    type: String,
+    default: ''
+  }) selected!: string;
+  @Prop({
+    type: Boolean,
+    default: false
+  }) onlyShowSingle!: boolean;
 
   @Provide() eventBus = new Vue();
+  @Provide() isAllShowSingle = this.onlyShowSingle;
 
+  mounted() {
+    this.eventBus.$emit('update:selected', this.selected);
+  }
 }
 </script>
 

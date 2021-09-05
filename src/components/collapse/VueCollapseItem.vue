@@ -1,6 +1,5 @@
 <template>
-  <div class="collapse-item"
-       :class="{ 'title-show': isOpen && !isDisabled}">
+  <div class="collapse-item">
     <header
       class="title"
       :class="{ 'title-show': isOpen && !isDisabled,
@@ -35,16 +34,25 @@ export default class VueCollapseItem extends Vue {
     type: Boolean,
     default: false
   }) isDisabled!: boolean;
+  @Prop({
+    type: Boolean,
+    default: true
+  }) keepSingle!: boolean;
 
   @Inject() readonly eventBus!: Vue;
+  @Inject() readonly isAllShowSingle!: boolean;
 
   toggle() {
     if (this.isOpen) {
       this.isOpen = false;
     } else {
       this.isOpen = true;
-      this.eventBus.$emit('update:selected', this);
+      this.eventBus.$emit('update:selected', this.title);
     }
+  }
+
+  show() {
+    this.isOpen = true;
   }
 
   close() {
@@ -52,15 +60,28 @@ export default class VueCollapseItem extends Vue {
   }
 
   addBusListener() {
-    this.eventBus.$on('update:selected', (vm: Vue) => {
-      if (vm !== this) {
+    this.isAllShowSingle
+    && this.keepSingle
+    && this.eventBus.$on('update:selected', (title: string) => {
+      if (title !== this.title) {
         this.close();
+      } else {
+        this.show();
       }
     });
 
   }
 
+  initShow() {
+    this.eventBus.$once('update:selected', (title: string) => {
+      if (title === this.title) {
+        this.show();
+      }
+    });
+  }
+
   mounted() {
+    this.initShow();
     this.addBusListener();
   }
 }
@@ -71,8 +92,8 @@ $grey: #999;
 $border-radius: 4px;
 
 @mixin border-bottom-radius($radius: 0px) {
-  border-bottom-right-radius: $radius;
   border-bottom-left-radius: $radius;
+  border-bottom-right-radius: $radius;
 }
 
 .collapse-item {
@@ -81,10 +102,6 @@ $border-radius: 4px;
   flex-wrap: wrap;
   width: 100%;
   border-bottom: 1px solid $grey;
-
-  // collapse-item
-  &.title-show {
-  }
 
   > .title {
     width: 100%;
@@ -113,35 +130,18 @@ $border-radius: 4px;
   // .collapse-item
   &:first-child {
 
-    &.title-show {
-    }
-
     > .title {
       border-top-right-radius: 3px;
       border-top-left-radius: 3px;
     }
-
-    > .title.title-show {
-    }
   }
 
   // .collapse-item
-  &:not(:first-child):not(:last-child) {
-
-    &.title-show {
-    }
-
-    > .title {
-    }
-
-  }
+  //&:not(:first-child):not(:last-child) { }
 
   // .collapse-item
   &:last-child {
     border-bottom: none; //  覆盖 border-bottom: 1px solid $grey;
-
-    &.title-show {
-    }
 
     // v-show = false
     > .title:nth-last-child(2) {
