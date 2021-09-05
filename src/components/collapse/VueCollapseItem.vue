@@ -9,6 +9,7 @@
     </header>
     <article
       class="content"
+      :class="{ 'content-show': isOpen && !isDisabled}"
       v-show="isOpen && !isDisabled">
       <slot>
         VueCollapseItem
@@ -34,34 +35,24 @@ export default class VueCollapseItem extends Vue {
     type: Boolean,
     default: false
   }) isDisabled!: boolean;
-  @Prop({
-    type: Boolean,
-    default: true
-  }) keepSingle!: boolean;
 
   @Inject() readonly eventBus!: Vue;
-  @Inject() readonly isAllShowSingle!: boolean;
 
   toggle() {
     if (this.isOpen) {
-      this.isOpen = false;
       this.eventBus.$emit('remove:selected', this.title);
     } else {
-      this.isOpen = true;
       this.eventBus.$emit('add:selected', this.title);
     }
   }
 
+  // listen to parent
   addBusListener() {
-    this.isAllShowSingle
-    && this.keepSingle
-    && this.eventBus.$on('update:selected', (titleList: Array<string>) => {
+    this.eventBus?.$on('update:selected', (titleList: Array<string>) => {
       if (titleList.includes(this.title)) {
         this.isOpen = true;
       } else {
-        (this.isAllShowSingle && this.keepSingle)
-          ? this.isOpen = false
-          : null;
+        this.isOpen = false;
       }
     });
 
@@ -76,7 +67,9 @@ export default class VueCollapseItem extends Vue {
   }
 
   mounted() {
+    // listen to parent once
     this.initShow();
+    // listen to parent
     this.addBusListener();
   }
 }
@@ -112,40 +105,37 @@ $border-radius: 4px;
     }
   }
 
-  // v-show = true
-  > .title.title-show {
-    box-shadow: 0 .9px 0 0 $grey;
-  }
-
   > .content {
     width: 100%;
     padding: 18px;
+
+    &.content-show {
+      border-top: 1px solid $grey;
+    }
   }
 
   // .collapse-item
   &:first-child {
 
     > .title {
-      border-top-right-radius: 3px;
-      border-top-left-radius: 3px;
+
+      // v-show = true
+      &.title-show {
+        border-top: none;
+      }
     }
   }
-
-  // .collapse-item
-  //&:not(:first-child):not(:last-child) { }
 
   // .collapse-item
   &:last-child {
     border-bottom: none; //  覆盖 border-bottom: 1px solid $grey;
 
-    // v-show = false
-    > .title:nth-last-child(2) {
-      @include border-bottom-radius(3px);
-    }
+    > .title {
 
-    // v-show = true
-    > .title.title-show {
-      @include border-bottom-radius;
+      // v-show = true
+      &.title-show {
+        @include border-bottom-radius;
+      }
     }
 
     > .content {

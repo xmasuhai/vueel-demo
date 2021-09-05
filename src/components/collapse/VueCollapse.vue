@@ -3,8 +3,8 @@
     <slot>
       <VueCollapseItem v-for="(item, index) in itemsData"
                        :title="item.title"
+                       :isOpen="item.isOpen"
                        :disabled="item.disabled"
-                       keepSingle="item.isSingle"
                        :key="index">
       </VueCollapseItem>
       占位
@@ -36,29 +36,40 @@ export default class VueCollapse extends Vue {
   }) onlyShowSingle!: boolean;
 
   @Provide() eventBus = new Vue();
-  @Provide() isAllShowSingle = this.onlyShowSingle;
 
-  mounted() {
-    this.eventBus.$emit('update:selected', this.selectedArray);
+  // to son by eventBus
+  giveSelectedArrayToSon(selectedArray: Array<string>) {
+    this.eventBus.$emit('update:selected', selectedArray);
+  }
+
+  updateSelectedArrayToAll(selectedArray: Array<string>) {
+    // to parent
+    this.$emit('update:selectedArray', selectedArray);
+    // to son by eventBus
+    this.giveSelectedArrayToSon(selectedArray);
+  }
+
+  monitorSelectedArray() {
+    let selectedArrayCopy = JSON.parse(JSON.stringify(this.selectedArray));
 
     this.eventBus.$on('add:selected', (title: string) => {
-      let selectedArrayCopy = JSON.parse(JSON.stringify(this.selectedArray));
-      if (this.isAllShowSingle) {
-        selectedArrayCopy = [title];
-      } else {
-        selectedArrayCopy.push(title);
-      }
-      this.$emit('update:selected', selectedArrayCopy);
-      this.eventBus.$emit('update:selected', selectedArrayCopy);
+      this.onlyShowSingle
+        ? selectedArrayCopy = [title]
+        : selectedArrayCopy.push(title);
+      this.updateSelectedArrayToAll(selectedArrayCopy);
     });
 
     this.eventBus.$on('remove:selected', (title: string) => {
-      const selectedArrayCopy = JSON.parse(JSON.stringify(this.selectedArray));
       const index = selectedArrayCopy.indexOf(title);
       selectedArrayCopy.splice(index, 1);
-      this.$emit('update:selected', selectedArrayCopy);
-      this.eventBus.$emit('update:selected', selectedArrayCopy);
+      this.updateSelectedArrayToAll(selectedArrayCopy);
     });
+
+  }
+
+  mounted() {
+    this.giveSelectedArrayToSon(this.selectedArray);
+    this.monitorSelectedArray();
   }
 }
 </script>
