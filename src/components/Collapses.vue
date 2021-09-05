@@ -5,7 +5,7 @@
         <legend>Collapse 折叠面板</legend>
         <details open>
           <summary>基本样式</summary>
-          <VueCollapse :selected.sync="selectedTitle">
+          <VueCollapse :selectedArray.sync="selectedTitleList">
             <VueCollapseItem title="标题1">内容1</VueCollapseItem>
             <VueCollapseItem title="标题2">内容2</VueCollapseItem>
             <VueCollapseItem title="标题3">内容3</VueCollapseItem>
@@ -19,7 +19,7 @@
         <legend>Collapse 折叠面板</legend>
         <details open>
           <summary>可禁用</summary>
-          <VueCollapse selected="标题3">
+          <VueCollapse :selectedArray="['标题3']">
             <VueCollapseItem title="标题1">内容1</VueCollapseItem>
             <VueCollapseItem title="标题2" :isDisabled="true">内容2</VueCollapseItem>
             <VueCollapseItem title="标题3">内容3</VueCollapseItem>
@@ -36,7 +36,7 @@
         <details open>
           <summary>允许一次展开单独一个面板</summary>
           <VueCollapse :onlyShowSingle="true"
-                       selected="标题2">
+                       :selectedArray="['标题2']">
             <VueCollapseItem title="标题1">内容1</VueCollapseItem>
             <VueCollapseItem title="标题2">内容2</VueCollapseItem>
             <VueCollapseItem title="标题3">内容3</VueCollapseItem>
@@ -60,7 +60,7 @@ import VueCollapseItem from './collapse/VueCollapseItem.vue';
 })
 export default class Collapses extends Vue {
   name = 'Collapses';
-  selectedTitle = '标题3';
+  selectedTitleList = ['标题1', '标题3'];
 }
 </script>
 

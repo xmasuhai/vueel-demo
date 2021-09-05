@@ -45,29 +45,22 @@ export default class VueCollapseItem extends Vue {
   toggle() {
     if (this.isOpen) {
       this.isOpen = false;
+      this.eventBus.$emit('remove:selected', this.title);
     } else {
       this.isOpen = true;
-      this.eventBus.$emit('update:selected', this.title);
+      this.eventBus.$emit('add:selected', this.title);
     }
-  }
-
-  show() {
-    this.isOpen = true;
-  }
-
-  close() {
-    this.isOpen = false;
   }
 
   addBusListener() {
     this.isAllShowSingle
     && this.keepSingle
-    && this.eventBus.$on('update:selected', (title: string) => {
-      if (title === this.title) {
-        this.show();
+    && this.eventBus.$on('update:selected', (titleList: Array<string>) => {
+      if (titleList.includes(this.title)) {
+        this.isOpen = true;
       } else {
         (this.isAllShowSingle && this.keepSingle)
-          ? this.close()
+          ? this.isOpen = false
           : null;
       }
     });
@@ -75,9 +68,9 @@ export default class VueCollapseItem extends Vue {
   }
 
   initShow() {
-    this.eventBus.$once('update:selected', (title: string) => {
-      if (title === this.title) {
-        this.show();
+    this.eventBus.$once('update:selected', (titleList: Array<string>) => {
+      if (titleList.includes(this.title)) {
+        this.isOpen = true;
       }
     });
   }

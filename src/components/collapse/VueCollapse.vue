@@ -27,9 +27,9 @@ export default class VueCollapse extends Vue {
     default() {return [];}
   }) itemsData!: [];
   @Prop({
-    type: String,
-    default: ''
-  }) selected!: string;
+    type: Array,
+    default: () => ['']
+  }) selectedArray!: Array<string>;
   @Prop({
     type: Boolean,
     default: false
@@ -39,9 +39,25 @@ export default class VueCollapse extends Vue {
   @Provide() isAllShowSingle = this.onlyShowSingle;
 
   mounted() {
-    this.eventBus.$emit('update:selected', this.selected);
-    this.eventBus.$on('update:selected', () => {
-      this.$emit('update:selected', this.selected);
+    this.eventBus.$emit('update:selected', this.selectedArray);
+
+    this.eventBus.$on('add:selected', (title: string) => {
+      let selectedArrayCopy = JSON.parse(JSON.stringify(this.selectedArray));
+      if (this.isAllShowSingle) {
+        selectedArrayCopy = [title];
+      } else {
+        selectedArrayCopy.push(title);
+      }
+      this.$emit('update:selected', selectedArrayCopy);
+      this.eventBus.$emit('update:selected', selectedArrayCopy);
+    });
+
+    this.eventBus.$on('remove:selected', (title: string) => {
+      const selectedArrayCopy = JSON.parse(JSON.stringify(this.selectedArray));
+      const index = selectedArrayCopy.indexOf(title);
+      selectedArrayCopy.splice(index, 1);
+      this.$emit('update:selected', selectedArrayCopy);
+      this.eventBus.$emit('update:selected', selectedArrayCopy);
     });
   }
 }
