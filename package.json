@@ -5,6 +5,8 @@
   "description": "一个基于 Vue 2 的UI框架",
   "main": "dist/index.js",
   "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
@@ -24,14 +26,18 @@
   },
   "dependencies": {
     "@babel/preset-env": "^7.12.1",
+    "@vssue/api-github-v4": "^1.4.7",
+    "@vssue/vuepress-plugin-vssue": "^1.4.8",
     "@vue/cli-plugin-babel": "^4.5.8",
     "@vue/composition-api": "^1.1.4",
+    "@vuepress/plugin-back-to-top": "^1.8.2",
     "autoprefixer": "^10.0.2",
     "lodash": "^4.17.21",
+    "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.6",
     "vue-cli": "^2.9.6",
-    "vue-property-decorator": "^8.4.2",
+    "vue-property-decorator": "^9.1.2",
     "vue-router": "^3.2.0",
     "vue2": "^1.0.0",
     "vuex": "^3.4.0"
@@ -44,6 +50,7 @@
     "@types/sinon": "^10.0.2",
     "@types/sinon-chai": "^3.2.5",
     "@types/vue": "^2.0.0",
+    "@types/webpack-env": "^1.16.0",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
@@ -76,8 +83,12 @@
     "sinon": "^9.2.1",
     "sinon-chai": "^3.5.0",
     "svg-sprite-loader": "^6.0.9",
-    "typescript": "~3.9.3",
-    "vue-template-compiler": "^2.6.11"
+    "svgo-loader": "2.2.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.2",
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.8.2",
+    "vuepress-plugin-typescript": "^0.3.1"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
