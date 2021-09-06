@@ -1,18 +1,20 @@
 ---
+
 home: true
 heroImage: /images/Logo.jpg
-heroText: 我的主页
-tagline: My homepage
-actionText: 技术文档 →
+heroText: Vueel UI
+tagline: 一个基于Vue2.6的UI组件库
+actionText: 查看使用文档 →
 actionLink: /hierarchy/
 features:
-- title: 简洁、清晰，内容详实
-  details: 以 Markdown 为中心的项目结构，清晰地显示文章的主旨、结构，快速定位
-- title: 直观地展示demo与源码
+- title: 包含常用组件
+  details: 小巧，五脏俱全，可按需导入
+- title: 下拉按钮，直观地展示demo与源码
   details: 在 Markdown 中使用 Vue 组件，配合 codepen 演示 demo
-- title: 记录前端学习、踩坑与技术成长
-  details: 这只是开始...
-  footer: Vue Demo
+- title: 记录Vue学习、踩坑与技术成长
+  details: 通过封装各种通用组件，了解Vue.js特性，并且分享给其他开发者
+  footer: Vue UI
+
 ---
 
 <Vssue title="First Issue"/>

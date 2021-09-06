@@ -1,15 +1,11 @@
-# vueel-demo
+---
+
+title: 快速上手
+
+---
 
 [![CI](https://github.com/xmasuhai/vueel-demo/actions/workflows/unit-test-actions.yml/badge.svg)](https://github.com/xmasuhai/vueel-demo/actions/workflows/unit-test-actions.yml)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/xmasuhai/vueel-demo)
-
-## 介绍
-
-> Vueel UI 是一个基于Vue 2.6.11 和 TypeScript 的 UI 组件库
-
-- 这是我在学习 Vue.js 过程中做的一个 UI 框架
-
-作者：徐某人
 
 ## 技术栈
 
@@ -59,7 +55,9 @@ export default {
 yarn serve
 ```
 
-#### 生产构建 Compiles and minifies for production
+#### 生产构建
+
+> Compiles and minifies for production
 
 ```
 yarn build
