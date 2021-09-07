@@ -1,18 +1,18 @@
-const { fs, path } = require('@vuepress/shared-utils')
+const {fs, path} = require('@vuepress/shared-utils')
 module.exports = ctx => ({
   title: 'Vueel UI',
   description: '基于 Vue2.6 的UI',
   head: [
     // 注入到当前页面的 HTML <head> 中的标签
     ['link', {rel: 'icon', href: '/images/favicon.png'}],
-    ['link', { rel: 'manifest', href: '/manifest.json' }],
-    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
-    ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
-    ['link', { rel: 'apple-touch-icon', href: `/icons/apple-touch-icon-152x152.png` }],
-    ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
-    ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
-    ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
+    ['link', {rel: 'manifest', href: '/manifest.json'}],
+    ['meta', {name: 'theme-color', content: '#3eaf7c'}],
+    ['meta', {name: 'apple-mobile-web-app-capable', content: 'yes'}],
+    ['meta', {name: 'apple-mobile-web-app-status-bar-style', content: 'black'}],
+    ['link', {rel: 'apple-touch-icon', href: `/icons/apple-touch-icon-152x152.png`}],
+    ['link', {rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c'}],
+    ['meta', {name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png'}],
+    ['meta', {name: 'msapplication-TileColor', content: '#000000'}]
   ],
   dest: './dist',
   base: '/vueel-demo-website/',
@@ -43,11 +43,28 @@ module.exports = ctx => ({
       },
       {
         title: '组件',
-        path: '/components-docs/',
+        path: '/components-docs/button.md',
         collapsable: false,
-        sidebarDepth: 3,
         initialOpenGroupIndex: -1,
-        children: [],
+        children: [
+          {
+            title: 'Button',
+            path: '/components-docs/button.md',
+          },
+          {
+            title: 'Icon',
+            path: '/components-docs/icon.md',
+          },
+          {
+            title: 'Input',
+            path: '/components-docs/input.md',
+          },
+          {
+            title: 'Collapse',
+            path: '/components-docs/collapse.md',
+          }
+        ]
+        ,
       },
       {
         title: '技术栈',
