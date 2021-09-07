@@ -5,7 +5,7 @@ heroImage: /images/Logo.jpg
 heroText: Vueel UI
 tagline: 一个基于Vue2.6的UI组件库
 actionText: 查看使用文档 →
-actionLink: /hierarchy/
+actionLink: /introduction/
 features:
 - title: 包含常用组件
   details: 小巧，五脏俱全，可按需导入

@@ -3,7 +3,7 @@ module.exports = {
   description: '基于 Vue2.6 的UI',
   head: [
     // 注入到当前页面的 HTML <head> 中的标签
-    ['link', { rel: 'icon', href: '/images/favicon.png' }]
+    ['link', {rel: 'icon', href: '/images/favicon.png'}]
   ],
   dest: './dist',
   base: '/vueel-website/',
@@ -16,14 +16,21 @@ module.exports = {
     logo: '/images/Logo.jpg',
     // 导航栏配置
     nav: [
-      { text: '首页', link: '/' },
-      { text: '起步', link: '/hierarchy/' },
+      {text: '首页', link: '/'},
+      {text: '起步', link: '/introduction/'},
     ],
     // 侧边栏配置
-    sidebar: 'auto',
-    sidebarDepth: 6,
+    sidebar: {
+      '/': [
+        '/introduction/',
+        '/installation/',
+        '/components-docs/'
+      ],
+    },
     // 文档更新时间：每个文件git最后提交的时间
     lastUpdated: 'Last Updated',
+    displayAllHeaders: true,
+    searchMaxSuggestions: 10
   },
   plugins: [
     [
