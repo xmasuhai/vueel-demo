@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Prop, Emit, Vue} from 'vue-property-decorator';
+import {Component, Emit, Prop, Vue} from 'vue-property-decorator';
 import VueIcon from '../icon/VueIcon.vue';
 
 @Component({
@@ -107,23 +107,23 @@ export default class VueButton extends Vue {
   justify-content: center;
   align-items: center;
   vertical-align: middle;
-  font-size: var(--font-size);
-  height: var(--button-height);
+  font-size: $font-size;
+  height: $button-height;
   padding: 0 0.73em;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
   background: $button-bg;
   color: #000;
 
   &:hover {
-    border: 1px solid var(--border-color-hover);
-    box-shadow: 0 0 0 1px var(--border-color-hover),
+    border: 1px solid $border-color-hover;
+    box-shadow: 0 0 0 1px $border-color-hover,
     0 0 2px 3px rgba(255, 255, 255, 1);
     background-color: lighten($button-bg, 5%);
   }
 
   &:active {
-    background-color: var(--button-active-bg);
+    background-color: var($button-active-bg);
     backface-visibility: hidden;
     transform: $--pressed-scale;
   }
