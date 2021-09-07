@@ -23,7 +23,6 @@ yarn install
 
 ```js
 import {VueButton, VueButtonGroup, VueIcon} from 'vueel-demo'
-
 export default {
   components: {
     VueButton, VueButtonGroup, VueIcon

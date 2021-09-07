@@ -5,8 +5,8 @@ module.exports = {
     // 注入到当前页面的 HTML <head> 中的标签
     ['link', {rel: 'icon', href: '/images/favicon.png'}]
   ],
-  dest: 'dist',
-  base: '/vueel-website/',
+  dest: './dist',
+  base: '/vueel-demo-website/',
   // 代码块显示行号
   markdown: {
     lineNumbers: true
