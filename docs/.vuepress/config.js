@@ -6,7 +6,7 @@ module.exports = {
     ['link', {rel: 'icon', href: '/images/favicon.png'}]
   ],
   dest: './dist',
-  base: '/vueel-website/',
+  base: './vueel-website/',
   // 代码块显示行号
   markdown: {
     lineNumbers: true
