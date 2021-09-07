@@ -1,7 +1,6 @@
 ---
 
 title: 技术栈
-sidebarDepth: 1
 
 ---
 

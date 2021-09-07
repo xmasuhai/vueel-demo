@@ -14,22 +14,38 @@ module.exports = {
   themeConfig: {
     // 左上角logo
     logo: '/images/Logo.jpg',
+    sidebarDepth: 0,
     // 导航栏配置
     nav: [
       {text: '首页', link: '/'},
       {text: '起步', link: '/introduction/'},
     ],
     // 侧边栏配置
-    sidebar: {
-      '/': [
-        '/introduction/',
-        '/installation/',
-        '/components-docs/'
-      ],
-    },
+    sidebar: [
+      {
+        title: 'UI 介绍',
+        path: '/introduction/',
+      },
+      {
+        title: '安装使用',
+        path: '/installation/',
+      },
+      {
+        title: '组件',
+        path: '/components-docs/',
+        collapsable: false,
+        sidebarDepth: 3,
+        initialOpenGroupIndex: -1,
+        children: [],
+      },
+      {
+        title: '技术栈',
+        path: '/tech/',
+      },
+    ],
     // 文档更新时间：每个文件git最后提交的时间
     lastUpdated: 'Last Updated',
-    displayAllHeaders: true,
+    displayAllHeaders: false,
     searchMaxSuggestions: 10
   },
   plugins: [
@@ -55,6 +71,7 @@ module.exports = {
       }
     ]
   ],
-  smoothScroll: true
+  smoothScroll: true,
   // serviceWorker: true,
+  evergreen: true, // 不支持IE
 }

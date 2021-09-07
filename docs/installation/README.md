@@ -1,7 +1,6 @@
 ---
 
 title: 安装与使用
-sidebarDepth: 1
 
 ---
 
