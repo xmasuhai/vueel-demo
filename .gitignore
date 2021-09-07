@@ -2,6 +2,7 @@
 node_modules/
 dist/
 .cache/
+.temp/
 .yarn/
 .sass-cache/
 # local env files

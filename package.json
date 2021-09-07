@@ -5,6 +5,8 @@
   "description": "一个基于 Vue 2 的UI框架",
   "main": "dist/index.js",
   "scripts": {
+    "vdd": "vuepress dev docs",
+    "vdb": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "serve": "vue-cli-service serve",
@@ -61,6 +63,7 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-typescript": "^5.0.2",
     "@vue/test-utils": "^1.1.1",
+    "@vuepress/shared-utils": "^1.8.2",
     "browserslist": "^4.14.7",
     "chai": "^4.3.4",
     "chai-spies": "^1.0.0",
