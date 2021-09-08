@@ -2,9 +2,8 @@
   <div>
     <VueCodePresentation legendName="Button Types">
       <VueDetail summaryString="Normal Button">
-        <VueButton>
-          按钮
-        </VueButton>
+        <VueButton>按钮</VueButton>
+        <VueButton isDisabled="true">按钮</VueButton>
       </VueDetail>
       <VueDetail summaryString="Buttons with icons">
         <VueButton :isLoading="isLoading1"

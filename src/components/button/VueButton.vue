@@ -32,6 +32,7 @@ export default class VueButton extends Vue {
     'left' | 'download' | 'arrow-down' | 'thumbs-up' | '';
   @Prop({type: String, default: 'normal'}) size!: 'small' | 'normal' | 'big';
   @Prop({type: Boolean, default: false}) isLoading!: boolean;
+  @Prop({type: Boolean, default: false}) isDisabled!: boolean;
   @Prop({
     type: String,
     default: 'left',
@@ -62,7 +63,8 @@ export default class VueButton extends Vue {
       'vue-button': 'vue-button',
       [`icon-${this.iconPosition}`]: true,
       [`vue-button-${this.colorType}`]: true,
-      [`vue-button-size-${this.size}`]: true
+      [`vue-button-size-${this.size}`]: true,
+      'is-disabled': this.isDisabled,
     };
   }
 
@@ -115,6 +117,13 @@ export default class VueButton extends Vue {
   background: $button-bg;
   color: #000;
 
+  &.is-disabled {
+    color: #DDD;
+    background-color: mix($button-bg, #FFF);
+    border-color: mix($border-color, #FFF);
+    cursor: not-allowed;
+  }
+
   &:hover {
     border: 1px solid $border-color-hover;
     box-shadow: 0 0 0 1px $border-color-hover,
@@ -145,6 +154,7 @@ export default class VueButton extends Vue {
     &-#{$name} {
       @include setColorType($type);
     }
+
   }
 
   // button sizes
