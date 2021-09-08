@@ -1,8 +1,8 @@
 <template>
   <details class="details"
-           :isOpen="isOpen? open : undefined">
-    <summary>
-      <span class="summary">
+           :open="isOpen">
+    <summary class="summary">
+      <span class="summary-string">
         {{ summaryString }}
       </span>
     </summary>
@@ -26,5 +26,20 @@ export default class VueDetail extends Vue {
 </script>
 
 <style lang="scss" scoped>
+.details {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  margin-bottom: 20px;
 
+  &[open] {
+    & summary {
+      border-bottom: 1px solid #aaa;
+      margin-bottom: 1em;
+    }
+  }
+
+  .summary {
+  }
+
+}
 </style>

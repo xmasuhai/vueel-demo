@@ -1,91 +1,56 @@
 <template>
   <div>
-<!--
-    <VueCodePresentation legendName="Button Types"
-                         class="colorDiff">
-      <VueDetail :isOpen="true"
-                 summaryString="Buttons with Color">
+    <VueCodePresentation legendName="Button Types">
+      <VueDetail summaryString="Normal Button">
+        <VueButton>
+          按钮
+        </VueButton>
+      </VueDetail>
+      <VueDetail summaryString="Buttons with icons">
+        <VueButton :isLoading="isLoading1"
+                   @click="isLoading1 = !isLoading1"
+                   icon="settings">设置
+        </VueButton>
+        <VueButton :is-loading="isLoading2"
+                   @click="isLoading2 = !isLoading2"
+                   icon="settings" icon-position="right">设置
+        </VueButton>
+        <VueButton :is-loading="isLoading3"
+                   @click="isLoading3 = !isLoading3"
+                   icon="download" icon-position="right">下载
+        </VueButton>
+      </VueDetail>
+      <VueDetail summaryString="Buttons with Color"
+                 class="rainbow">
         <VueButton v-for="type of colorTypeStringList"
                    :colorType="type"
                    :key="type">
           {{ type }}
         </VueButton>
       </VueDetail>
+      <VueDetail summaryString="Size">
+        <VueButton size="small" icon="download">
+          小尺寸按钮
+        </VueButton>
+        <VueButton icon="settings">
+          正常尺寸按钮
+        </VueButton>
+        <VueButton size="big" icon="thumbs-up">
+          大尺寸按钮
+        </VueButton>
+      </VueDetail>
+      <VueDetail summaryString="Button Group">
+        <vue-button-group>
+          <VueButton icon="left">上一页</VueButton>
+          <VueButton icon="settings">更多</VueButton>
+          <VueButton icon="right"
+                     icon-position="right">下一页
+          </VueButton>
+        </vue-button-group>
+      </VueDetail>
     </VueCodePresentation>
-    -->
-    <br>
-    <form>
-      <fieldset>
-        <legend>Button Types</legend>
-        <details open>
-          <summary><span class="rainbow-text">Buttons with Color</span></summary>
-          <VueButton v-for="type of colorTypeStringList"
-                     :colorType="type"
-                     :key="type">
-            {{ type }}
-          </VueButton>
-        </details>
-        <details open>
-          <summary>Size</summary>
-          <VueButton size="small" icon="download">
-            小尺寸按钮
-          </VueButton>
-          <VueButton icon="settings">
-            正常尺寸按钮
-          </VueButton>
-          <VueButton size="big" icon="thumbs-up">
-            大尺寸按钮
-          </VueButton>
-        </details>
-        <details open>
-          <summary>Event</summary>
-        </details>
-        <details open>
-          <summary>Button Group</summary>
-        </details>
-      </fieldset>
-    </form>
-    <br>
-    <form>
-      <fieldset>
-        <legend>Button with Icons</legend>
-        <details open>
-          <summary>Primary</summary>
-        </details>
-        <details open>
-          <summary>Primary</summary>
-        </details>
-        <details open>
-          <summary>Primary</summary>
-        </details>
-        <details open>
-          <summary>Primary</summary>
-        </details>
-      </fieldset>
-    </form>
-    <br>
-    <VueButton>
-      按钮
-    </VueButton>
-    <VueButton :isLoading="isLoading1"
-               @click="isLoading1 = !isLoading1"
-               icon="settings">设置
-    </VueButton>
-    <VueButton :is-loading="isLoading2"
-               @click="isLoading2 = !isLoading2"
-               icon="settings" icon-position="right">设置
-    </VueButton>
-    <VueButton :is-loading="isLoading3"
-               @click="isLoading3 = !isLoading3"
-               icon="download" icon-position="right">下载
-    </VueButton>
-    <vue-button-group>
-      <VueButton icon="left">上一页</VueButton>
-      <VueButton icon="settings">更多</VueButton>
-      <VueButton icon="right"
-                 icon-position="right">下一页
-      </VueButton>
-    </vue-button-group>
+    <VueCodePresentation legendName="Button Events">
+    </VueCodePresentation>
   </div>
 </template>
 
@@ -94,8 +59,8 @@ import {Component, Vue} from 'vue-property-decorator';
 import VueButton from './button/VueButton.vue';
 import VueButtonGroup from './button/VueButtonGroup.vue';
 import VueIcon from './icon/VueIcon.vue';
-import VueDetail from './VueDetail.vue';
-import VueCodePresentation from './VueCodePresentation.vue';
+import VueDetail from './code-presentation/VueDetail.vue';
+import VueCodePresentation from './code-presentation/VueCodePresentation.vue';
 
 @Component({
   components: {
@@ -126,35 +91,23 @@ export default class Buttons extends Vue {
 ::v-deep {
   margin-right: 10px;
 
+}
 
-  .colorDiff {
-    > details {
-      > summary {
-        .rainbow-text {
-          background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
-          -webkit-background-clip: text;
-          color: transparent;
+.rainbow::v-deep {
+  > .summary {
+    > .summary-string {
+      background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+      -webkit-background-clip: text;
+      color: transparent;
 
-          &::selection {
-            color: #000;
-            background-color: #fff;
-          }
-        }
+      &::selection {
+        color: #000;
+        background-color: #fff;
       }
     }
+
   }
+
 }
 
-summary {
-  .rainbow-text {
-    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
-    -webkit-background-clip: text;
-    color: transparent;
-
-    &::selection {
-      color: #000;
-      background-color: #fff;
-    }
-  }
-}
 </style>

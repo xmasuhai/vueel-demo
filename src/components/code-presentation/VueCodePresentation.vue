@@ -1,12 +1,12 @@
 <template>
   <div>
     <form>
-      <fieldset>
+      <fieldset class="fieldset">
         <legend>{{ legendName }}</legend>
         <slot>
           <VueDetail v-for="item in detailsDataList"
                      :summaryString="item.summaryString"
-                     :isOpen="item.isOpen"
+                     :open="item.isOpen"
                      :key="item.id">
           </VueDetail>
         </slot>
@@ -30,12 +30,15 @@ export default class VueCodePresentation extends Vue {
   @Prop() legendName!: string;
   @Prop({
     type: Array,
-    default: []
+    default: () => ([])
   }) detailsDataList!: detailsDataList;
 
 }
 </script>
 
 <style lang="scss" scoped>
-
+.fieldset {
+  padding: 18px;
+  margin-bottom: 20px;
+}
 </style>
