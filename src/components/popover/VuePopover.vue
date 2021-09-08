@@ -54,7 +54,7 @@ export default class VuePopover extends Vue {
 
   startTimer() {
     if (this.autoCloseDelay) {
-      this.timer = setTimeout(() => {
+      this.timer = window.setTimeout(() => {
         this.closeEvent();
       }, this.autoCloseDelay);
     }

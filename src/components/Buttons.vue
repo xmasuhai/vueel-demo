@@ -1,5 +1,19 @@
 <template>
   <div>
+<!--
+    <VueCodePresentation legendName="Button Types"
+                         class="colorDiff">
+      <VueDetail :isOpen="true"
+                 summaryString="Buttons with Color">
+        <VueButton v-for="type of colorTypeStringList"
+                   :colorType="type"
+                   :key="type">
+          {{ type }}
+        </VueButton>
+      </VueDetail>
+    </VueCodePresentation>
+    -->
+    <br>
     <form>
       <fieldset>
         <legend>Button Types</legend>
@@ -80,12 +94,16 @@ import {Component, Vue} from 'vue-property-decorator';
 import VueButton from './button/VueButton.vue';
 import VueButtonGroup from './button/VueButtonGroup.vue';
 import VueIcon from './icon/VueIcon.vue';
+import VueDetail from './VueDetail.vue';
+import VueCodePresentation from './VueCodePresentation.vue';
 
 @Component({
   components: {
     VueButton,
     VueButtonGroup,
-    VueIcon
+    VueIcon,
+    VueDetail,
+    VueCodePresentation
   }
 })
 export default class Buttons extends Vue {
@@ -107,6 +125,24 @@ export default class Buttons extends Vue {
 <style lang="scss" scoped>
 ::v-deep {
   margin-right: 10px;
+
+
+  .colorDiff {
+    > details {
+      > summary {
+        .rainbow-text {
+          background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+          -webkit-background-clip: text;
+          color: transparent;
+
+          &::selection {
+            color: #000;
+            background-color: #fff;
+          }
+        }
+      }
+    }
+  }
 }
 
 summary {

@@ -132,7 +132,7 @@ export default class VueToast extends Vue {
 
   startTimer() {
     if (this.autoCloseDelay) {
-      this.timer = setTimeout(() => {
+      this.timer = window.setTimeout(() => {
         if (!this.isClosed) {
           this.close();
         }

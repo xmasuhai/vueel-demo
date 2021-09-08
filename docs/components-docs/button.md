@@ -14,7 +14,11 @@ title: Button
 
 ## 使用方法
 
-<buttonDemos>FFFF</buttonDemos>
+
+<button1>HAhaha</button1>
+<button1>HAhaha</button1>
+
+---
 
 ## 参数列表
 
