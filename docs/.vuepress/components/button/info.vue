@@ -1,0 +1,16 @@
+<template>
+  <VueButton colorType="info">
+    <slot></slot>
+  </VueButton>
+</template>
+
+<script>
+import VueButton from '../../../../src/components/button/VueButton.vue'
+
+export default {
+  name: 'info',
+  components: {
+    VueButton
+  }
+}
+</script>

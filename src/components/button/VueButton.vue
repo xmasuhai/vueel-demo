@@ -29,18 +29,8 @@ import VueIcon from '../icon/VueIcon.vue';
 export default class VueButton extends Vue {
   name = 'VueButton';
 
-  @Prop({type: String, default: ''}) icon!: 'settings' | 'loading' | 'right' |
-    'left' | 'download' | 'arrow-down' | 'thumbs-up' | '';
-  @Prop({type: String, default: 'normal'}) size!: 'small' | 'normal' | 'big';
-  @Prop({type: Boolean, default: false}) isLoading!: boolean;
   @Prop({type: Boolean, default: false}) isDisabled!: boolean;
-  @Prop({
-    type: String,
-    default: 'left',
-    validator(userValue) {
-      return userValue === 'left' || userValue === 'right';
-    }
-  }) iconPosition!: string;
+  @Prop({type: Boolean, default: false}) isLoading!: boolean;
   @Prop({
     type: String,
     default: '',
@@ -49,6 +39,16 @@ export default class VueButton extends Vue {
         .indexOf(colorType) > -1;
     }
   }) colorType!: string;
+  @Prop({type: String, default: 'normal'}) size!: 'small' | 'normal' | 'big';
+  @Prop({type: String, default: ''}) icon!: 'settings' | 'loading' | 'right' |
+    'left' | 'download' | 'arrow-down' | 'thumbs-up' | '';
+  @Prop({
+    type: String,
+    default: 'left',
+    validator(userValue) {
+      return userValue === 'left' || userValue === 'right';
+    }
+  }) iconPosition!: string;
 
   get loadingStatus() {
     // return this.isLoading ? this.isLoading : (!!this.icon && !this.isLoading);

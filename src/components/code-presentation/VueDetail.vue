@@ -6,7 +6,9 @@
         {{ summaryString }}
       </span>
     </summary>
-    <slot></slot>
+    <div class="details-content">
+      <slot></slot>
+    </div>
   </details>
 </template>
 
@@ -38,7 +40,8 @@ export default class VueDetail extends Vue {
     }
   }
 
-  .summary {
+  .summary, .details-content {
+    margin-left: 1em;
   }
 
 }

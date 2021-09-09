@@ -1,0 +1,16 @@
+<template>
+  <VueButton>
+    <slot></slot>
+  </VueButton>
+</template>
+
+<script>
+import VueButton from '../../../../src/components/button/VueButton.vue'
+
+export default {
+  name: 'icon1',
+  components: {
+    VueButton
+  }
+}
+</script>
