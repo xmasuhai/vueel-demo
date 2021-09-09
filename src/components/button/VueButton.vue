@@ -1,15 +1,16 @@
 <template>
+  <!--suppress HtmlUnknownAttribute -->
   <button :class="classes"
           :colorType="colorType"
+          :disabled="isDisabled"
           @click="clickLoading"
           type="button">
     <VueIcon v-if="loadingStatus"
              :icon-name="loadingName"
              class="icon"
              :class="{
-               loading: isLoading,
-               [`vue-button-size-${this.size}`]: true
-             }"/>
+               loading: isLoading && !isDisabled,
+               [`vue-button-size-${this.size}`]: true}"/>
     <div class="content">
       <slot></slot>
     </div>
@@ -61,10 +62,11 @@ export default class VueButton extends Vue {
   get classes() {
     return {
       'vue-button': 'vue-button',
+      'is-disabled': this.isDisabled,
+      'activeHover': !this.isDisabled,
       [`icon-${this.iconPosition}`]: true,
       [`vue-button-${this.colorType}`]: true,
       [`vue-button-size-${this.size}`]: true,
-      'is-disabled': this.isDisabled,
     };
   }
 
@@ -93,14 +95,16 @@ export default class VueButton extends Vue {
   color: #fff;
   background: $background;
   border: 0 solid transparent;
-  &:hover {
-    background: lighten($background, 10%);
-    border: 0 solid transparent;
-    box-shadow: 0 0 0 1px $background,
-    0 0 1px 1px $background;
-  }
-  &:active {
-    background: darken($background, 3%);
+  &.activeHover {
+    &:hover {
+      background: lighten($background, 10%);
+      border: 0 solid transparent;
+      box-shadow: 0 0 0 1px $background,
+      0 0 1px 1px $background;
+    }
+    &:active {
+      background: darken($background, 3%);
+    }
   }
 }
 
@@ -124,17 +128,19 @@ export default class VueButton extends Vue {
     cursor: not-allowed;
   }
 
-  &:hover {
-    border: 1px solid $border-color-hover;
-    box-shadow: 0 0 0 1px $border-color-hover,
-    0 0 2px 3px rgba(255, 255, 255, 1);
-    background-color: lighten($button-bg, 5%);
-  }
+  &.activeHover {
+    &:hover {
+      border: 1px solid $border-color-hover;
+      box-shadow: 0 0 0 1px $border-color-hover,
+      0 0 2px 3px rgba(255, 255, 255, 1);
+      background-color: lighten($button-bg, 5%);
+    }
 
-  &:active {
-    background-color: var($button-active-bg);
-    backface-visibility: hidden;
-    transform: $--pressed-scale;
+    &:active {
+      background-color: var($button-active-bg);
+      backface-visibility: hidden;
+      transform: $--pressed-scale;
+    }
   }
 
   &:focus {
@@ -206,4 +212,5 @@ export default class VueButton extends Vue {
     animation: spin 1s infinite linear;
   }
 }
+
 </style>

@@ -3,6 +3,7 @@
 home: true
 heroImage: /images/Logo.jpg
 heroText: Vueel UI
+pageClass: custom-homepage-class
 tagline: 一个基于Vue2.6的UI组件库
 actionText: 少啰嗦，先看组件 →
 actionLink: /components-docs/button.md

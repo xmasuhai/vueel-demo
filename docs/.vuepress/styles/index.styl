@@ -1,0 +1,36 @@
+$colorMain = #c0c0c0;
+$brShadow = -6px 6px 15px rgba(0, 0, 0, 0.5);
+$tlShadow = 6px -6px 15px rgba(255, 255, 255, 0.8);
+
+.theme-container.custom-page-class
+  background-color: red;
+
+  .text
+    color: $colorMain;
+    font-size: 8em;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    text-shadow: $brShadow, $tlShadow;
+    position: relative;
+
+    &::before, &::after
+      position: absolute;
+      background: $colorMain;
+      content: '';
+      border-radius: 10%;
+
+    &::before
+      left: 0;
+      width: 100px;
+      height: 100px;
+      top: -150px;
+      z-index: 10;
+      box-shadow: inset $brShadow, inset $tlShadow;
+
+    &::after
+      left: -50px;
+      width: 200px;
+      height: 200px;
+      top: -200px;
+      box-shadow: $brShadow, $tlShadow;

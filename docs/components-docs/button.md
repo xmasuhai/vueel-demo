@@ -14,9 +14,12 @@ title: Button
 
 ## 使用方法
 
+<ClientOnly>
 
 <button1>HAhaha</button1>
 <button1>HAhaha</button1>
+
+</ClientOnly>
 
 ---
 

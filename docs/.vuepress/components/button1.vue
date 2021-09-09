@@ -4,10 +4,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import VueButton from '../../../src/components/button/VueButton.vue';
-import VueButtonGroup from '../../../src/components/button/VueButtonGroup.vue';
-import VueIcon from '../../../src/components/icon/VueIcon.vue';
+<script>
+import VueButton from '../../../src/components/button/VueButton.vue'
+import VueButtonGroup from '../../../src/components/button/VueButtonGroup.vue'
+import VueIcon from '../../../src/components/icon/VueIcon.vue'
+
 export default {
   name: 'button1',
   components: {
@@ -15,5 +16,5 @@ export default {
     VueButtonGroup,
     VueIcon
   }
-};
+}
 </script>

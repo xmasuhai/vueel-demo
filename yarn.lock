@@ -13625,10 +13625,10 @@ typedarray@^0.0.6:
   resolved "https://registry.nlark.com/typedarray/download/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@4.2.3:
-  version "4.2.3"
-  resolved "https://registry.nlark.com/typescript/download/typescript-4.2.3.tgz#39062d8019912d43726298f09493d598048c1ce3"
-  integrity sha1-OQYtgBmRLUNyYpjwlJPVmASMHOM=
+typescript@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.nlark.com/typescript/download/typescript-4.4.2.tgz#6d618640d430e3569a1dfb44f7d7e600ced3ee86"
+  integrity sha1-bWGGQNQw41aaHftE99fmAM7T7oY=
 
 ua-parser-js@0.7.22:
   version "0.7.22"

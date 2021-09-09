@@ -5,7 +5,6 @@ import store from './store';
 import './style/normalize.scss';
 import './style/reset.scss';
 import './style/global.scss';
-// import 'vuepress-types';
 import VueCompositionAPI from '@vue/composition-api';
 
 Vue.use(VueCompositionAPI);

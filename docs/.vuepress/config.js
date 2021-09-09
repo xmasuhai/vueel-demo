@@ -43,7 +43,6 @@ module.exports = ctx => ({
       },
       {
         title: '组件',
-        path: '/components-docs/button.md',
         collapsable: false,
         initialOpenGroupIndex: -1,
         children: [

@@ -15,7 +15,7 @@
     "types": [
       "webpack-env",
       "jest",
-      //"vuepress-types"
+      "vuepress-types"
     ],
     "paths": {
       "@/*": [
