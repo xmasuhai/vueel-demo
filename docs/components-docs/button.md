@@ -4,7 +4,7 @@ title: Button
 
 ---
 
-# 按钮
+# 按钮组件
 
 ---
 
@@ -16,8 +16,8 @@ title: Button
 
 <ClientOnly>
 
-<button1>HAhaha</button1>
-<button1>HAhaha</button1>
+<buttons>按钮</buttons>
+<buttons>按钮</buttons>
 
 </ClientOnly>
 

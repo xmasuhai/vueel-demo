@@ -61,6 +61,26 @@ module.exports = ctx => ({
           {
             title: 'Collapse',
             path: '/components-docs/collapse.md',
+          },
+          {
+            title: 'Popover',
+            path: '/components-docs/popover.md',
+          },
+          {
+            title: 'Grid',
+            path: '/components-docs/grid.md',
+          },
+          {
+            title: 'Layout',
+            path: '/components-docs/layout.md',
+          },
+          {
+            title: 'Tab',
+            path: '/components-docs/tab.md',
+          },
+          {
+            title: 'Toast',
+            path: '/components-docs/toast.md',
           }
         ]
         ,
