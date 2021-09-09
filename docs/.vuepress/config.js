@@ -29,7 +29,8 @@ module.exports = ctx => ({
     // 导航栏配置
     nav: [
       {text: '首页', link: '/'},
-      {text: '起步', link: '/introduction/'},
+      {text: '介绍', link: '/introduction/'},
+      {text: '起步', link: '/installation/'},
     ],
     // 侧边栏配置
     sidebar: [

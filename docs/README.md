@@ -10,7 +10,7 @@ actionLink: /components-docs/button.md
 features:
 - title: 包含常用组件
   details: 小巧，五脏俱全，可按需导入
-- title: 直观地展示demo与源码 下拉按钮
+- title: 直观地展示demo与源码
   details: 在 Markdown 中使用 Vue 组件，配合 codepen 演示 demo
 - title: 记录Vue学习、踩坑与技术成长
   details: 通过封装各种通用组件，了解Vue.js特性，并且分享给其他开发者
