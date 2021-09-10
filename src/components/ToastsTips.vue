@@ -1,88 +1,43 @@
 <template>
   <div>
-    <form>
-      <fieldset>
-        <legend>无关闭按钮 自动关闭</legend>
-        <details open>
-          <summary>ToastsTips</summary>
-          <div>
-            <VueButton @click="showToast0">点击出现提示框</VueButton>
-          </div>
-        </details>
-        <details open>
-          <summary>ToastsTips 默认只出现一个提示框</summary>
-          <div>
-            <VueButton @click="showToast11">点击出现提示框</VueButton>
-          </div>
-        </details>
-      </fieldset>
-    </form>
-    <br>
-    <form>
-      <fieldset>
-        <legend>有关闭按钮 手动关闭</legend>
-        <details open>
-          <summary>ToastsTips 点击关闭，无回调</summary>
-          <div>
-            <VueButton @click="showToast2">点击出现提示框</VueButton>
-          </div>
-        </details>
-        <br>
-        <details open>
-          <summary>ToastsTips 点击关闭，并执行回调</summary>
-          <div>
-            <VueButton @click="popUpToasts" ref="button">点击出现提示框</VueButton>
-          </div>
-        </details>
-        <br>
-        <details open>
-          <summary>ToastsTips 传递自定义HTML节点</summary>
-          <div>
-            <VueButton @click="popUpToasts2">点击出现提示框</VueButton>
-          </div>
-        </details>
-        <br>
-        <details open>
-          <summary>ToastsTips 传递自定义HTML节点</summary>
-          <div>
-            <VueButton @click="popUpToasts3">点击出现提示框</VueButton>
-          </div>
-        </details>
-        <br>
-        <details open>
-          <summary>ToastsTips 包含过长字符</summary>
-          <div>
-            <VueButton @click="showToast1">点击出现提示框</VueButton>
-          </div>
-        </details>
-      </fieldset>
-    </form>
-    <br>
-    <form>
-      <fieldset>
-        <legend>ToastsTips 出现的位置</legend>
-        <details open>
-          <summary>ToastsTips 出现在顶部</summary>
-          <div>
-            <VueButton @click="popUpToasts4('top')">点击出现提示框</VueButton>
-          </div>
-        </details>
-        <br>
-        <details open>
-          <summary>ToastsTips 出现在中部</summary>
-          <div>
-            <VueButton @click="popUpToasts4('middle')">点击出现提示框</VueButton>
-          </div>
-        </details>
-        <br>
-        <details open>
-          <summary>ToastsTips 出现在底部</summary>
-          <div>
-            <VueButton @click="popUpToasts4('bottom')">点击出现提示框</VueButton>
-          </div>
-        </details>
-      </fieldset>
-    </form>
+    <VueCodePresentation legendName="弹出提示组件">
+      <VueDetail summaryString="无关闭按钮 自动关闭">
+        <VueButton @click="showToast0">点击出现提示框</VueButton>
+      </VueDetail>
+      <VueDetail summaryString="ToastsTips 默认只出现一个提示框">
+        <VueButton @click="showToast11">点击出现提示框</VueButton>
+      </VueDetail>
+    </VueCodePresentation>
+    <VueCodePresentation legendName="弹出提示组件 提供关闭按钮 手动关闭">
+      <VueDetail summaryString="ToastsTips 点击关闭，无回调">
+        <VueButton @click="showToast2">点击出现提示框</VueButton>
+      </VueDetail>
+      <VueDetail summaryString="ToastsTips 点击关闭，并执行回调">
+        <VueButton @click="popUpToasts" ref="button">点击出现提示框</VueButton>
+      </VueDetail>
+    </VueCodePresentation>
+    <VueCodePresentation legendName="弹出提示组件 提供自定义HTML节点">
+      <VueDetail summaryString="ToastsTips 传递自定义HTML节点">
+        <VueButton @click="popUpToasts2">点击出现提示框</VueButton>
+      </VueDetail>
+      <VueDetail summaryString="ToastsTips 传递自定义HTML节点 设置样式">
+        <VueButton @click="popUpToasts3">点击出现提示框</VueButton>
+      </VueDetail>
+      <VueDetail summaryString="ToastsTips 包含过长字符">
+        <VueButton @click="showToast1">点击出现提示框</VueButton>
+      </VueDetail>
+    </VueCodePresentation>
+    <VueCodePresentation legendName="ToastsTips 出现的位置">
+      <VueDetail summaryString="ToastsTips 出现在顶部">
+        <VueButton @click="popUpToasts4('top')">点击出现提示框</VueButton>
+      </VueDetail>
+      <VueDetail summaryString="ToastsTips 出现在中部">
+        <VueButton @click="popUpToasts4('middle')">点击出现提示框</VueButton>
+      </VueDetail>
+      <VueDetail summaryString="ToastsTips 出现在底部">
+        <VueButton @click="popUpToasts4('bottom')">点击出现提示框</VueButton>
+      </VueDetail>
+    </VueCodePresentation>
   </div>
 </template>
 
@@ -92,12 +47,16 @@ import VueToast from './toast/VueToast.vue';
 import VueButton from './button/VueButton.vue';
 import toastPlugin from './toast/toastPlugin';
 import {ToastPosType} from '@/types/VueToast';
+import VueDetail from '@/components/code-presentation/VueDetail.vue';
+import VueCodePresentation from '@/components/code-presentation/VueCodePresentation.vue';
 
 Vue.use(toastPlugin);
 @Component({
   components: {
     VueToast,
-    VueButton
+    VueButton,
+    VueDetail,
+    VueCodePresentation
   }
 })
 export default class ToastsTips extends Vue {

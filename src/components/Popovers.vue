@@ -94,9 +94,16 @@
 import {Component, Vue} from 'vue-property-decorator';
 import VuePopover from './popover/VuePopover.vue';
 import VueButton from './button/VueButton.vue';
+import VueDetail from '@/components/code-presentation/VueDetail.vue';
+import VueCodePresentation from '@/components/code-presentation/VueCodePresentation.vue';
 
 @Component({
-  components: {VuePopover, VueButton}
+  components: {
+    VuePopover,
+    VueButton,
+    VueDetail,
+    VueCodePresentation
+  }
 })
 export default class Popovers extends Vue {
   name = 'Popovers';

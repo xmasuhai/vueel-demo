@@ -1,7 +1,7 @@
 <template>
   <div>
     <VueCodePresentation legendName="Button Types">
-      <VueDetail summaryString="Normal Button">
+      <VueDetail summaryString="Normal Button 基本样式">
         <VueButton>按钮</VueButton>
         <VueButton :isDisabled="true">按钮</VueButton>
       </VueDetail>

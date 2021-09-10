@@ -60,6 +60,8 @@ import VueContainer from './layout/VueContainer.vue';
 import VueAside from './layout/VueAside.vue';
 import VueHeader from './layout/VueHeader.vue';
 import VueFooter from './layout/VueFooter.vue';
+import VueDetail from '@/components/code-presentation/VueDetail.vue';
+import VueCodePresentation from '@/components/code-presentation/VueCodePresentation.vue';
 
 @Component({
   components: {
@@ -67,7 +69,9 @@ import VueFooter from './layout/VueFooter.vue';
     VueContainer,
     VueAside,
     VueHeader,
-    VueFooter
+    VueFooter,
+    VueDetail,
+    VueCodePresentation
   }
 })
 export default class extends Vue {

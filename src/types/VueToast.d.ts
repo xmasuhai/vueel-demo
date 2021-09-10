@@ -15,8 +15,8 @@ type closeButton = {
 
 interface ToastPosType {
   top: string;
-  middle: number;
   middle: string;
+  bottom: string;
 }
 
 /** Options used in Message */

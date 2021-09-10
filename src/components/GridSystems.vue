@@ -249,12 +249,16 @@
 import {Component, Vue, Watch} from 'vue-property-decorator';
 import VueRow from './grid/VueRow.vue';
 import VueCol from './grid/VueCol.vue';
+import VueDetail from '@/components/code-presentation/VueDetail.vue';
+import VueCodePresentation from '@/components/code-presentation/VueCodePresentation.vue';
 
 @Component({
   components: {
     VueRow,
     // 'VueRow': () => import('./grid/VueRow.vue'),
-    VueCol
+    VueCol,
+    VueDetail,
+    VueCodePresentation
   }
 })
 export default class GridSystems extends Vue {

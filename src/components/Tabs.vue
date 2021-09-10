@@ -189,25 +189,28 @@ import VueTabContent from './tabs/VueTabContent.vue';
 import VueTabPane from './tabs/VueTabPane.vue';
 import VueIcon from './icon/VueIcon.vue';
 import VueButton from './button/VueButton.vue';
+import VueDetail from '@/components/code-presentation/VueDetail.vue';
+import VueCodePresentation from '@/components/code-presentation/VueCodePresentation.vue';
 
 @Component({
-  components: {VueButton, VueIcon, VueTab, VueTabNav, VueTabPane, VueTabContent, VueTabItem}
+  components: {
+    VueButton,
+    VueIcon,
+    VueTab,
+    VueTabNav,
+    VueTabPane,
+    VueTabContent,
+    VueTabItem,
+    VueDetail,
+    VueCodePresentation
+  }
 })
 export default class Tabs extends Vue {
   name = 'Tabs';
   selectedTab = 'tab1';
 
   // data for unit test
-  propsToNav = [
-    {tabName: 'tab1'}
-  ];
-  propsToContent = [
-    {paneName: 'pane1'}
-  ];
+  propsToNav = [{tabName: 'tab1'}];
+  propsToContent = [{paneName: 'pane1'}];
 }
 </script>
-
-<style lang="scss" scoped>
-.custom-class {
-}
-</style>
