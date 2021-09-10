@@ -1,55 +1,45 @@
 <template>
   <div class="basic">
-    <form>
-      <fieldset>
-        <legend>经典布局</legend>
-        <details open>
-          <summary>三栏布局</summary>
-          <vue-main style="height: 20vh;">
+    <VueCodePresentation legendName="经典布局">
+      <VueDetail summaryString="三栏布局">
+        <vue-main style="height: 20vh;">
+          <vue-header class="demo">Header</vue-header>
+          <vue-container class="demo">Content</vue-container>
+          <vue-footer class="demo">Footer</vue-footer>
+        </vue-main>
+      </VueDetail>
+      <VueDetail summaryString="三栏布局 中栏 左侧菜单栏">
+        <vue-main style="height: 20vh;">
+          <vue-header class="demo">Header</vue-header>
+          <vue-container class="demo">
+            <vue-aside class="demo" :width="50">Aside</vue-aside>
+            <vue-container>Content</vue-container>
+          </vue-container>
+          <vue-footer class="demo">Footer</vue-footer>
+        </vue-main>
+      </VueDetail>
+      <VueDetail summaryString="三栏布局 中栏 有侧菜单栏">
+        <vue-main style="height: 20vh;">
+          <vue-header class="demo">Header</vue-header>
+          <vue-container class="demo">
+            <vue-container>Content</vue-container>
+            <vue-aside class="demo" :width="50">Aside</vue-aside>
+          </vue-container>
+          <vue-footer class="demo">Footer</vue-footer>
+        </vue-main>
+      </VueDetail>
+      <VueDetail summaryString="左右两栏布局 左侧菜单栏">
+        <vue-main style="height: 20vh;">
+          <vue-aside class="demo" :width="200">Aside</vue-aside>
+          <vue-container class="demo">
             <vue-header class="demo">Header</vue-header>
             <vue-container class="demo">Content</vue-container>
             <vue-footer class="demo">Footer</vue-footer>
-          </vue-main>
-        </details>
-        <br>
-        <details open>
-          <summary>三栏布局 中栏 左侧菜单栏</summary>
-          <vue-main style="height: 20vh;">
-            <vue-header class="demo">Header</vue-header>
-            <vue-container class="demo">
-              <vue-aside class="demo" :width="50">Aside</vue-aside>
-              <vue-container>Content</vue-container>
-            </vue-container>
-            <vue-footer class="demo">Footer</vue-footer>
-          </vue-main>
-        </details>
-        <br>
-        <details open>
-          <summary>三栏布局 中栏 有侧菜单栏</summary>
-          <vue-main style="height: 20vh;">
-            <vue-header class="demo">Header</vue-header>
-            <vue-container class="demo">
-              <vue-container>Content</vue-container>
-              <vue-aside class="demo" :width="50">Aside</vue-aside>
-            </vue-container>
-            <vue-footer class="demo">Footer</vue-footer>
-          </vue-main>
-        </details>
-        <br>
-        <details open>
-          <summary>左右两栏布局 左侧菜单栏</summary>
-          <vue-main style="height: 20vh;">
-            <vue-aside class="demo" :width="200">Aside</vue-aside>
-            <vue-container class="demo">
-              <vue-header class="demo">Header</vue-header>
-              <vue-container class="demo">Content</vue-container>
-              <vue-footer class="demo">Footer</vue-footer>
-            </vue-container>
-          </vue-main>
-        </details>
-        <br>
-      </fieldset>
-    </form>
+          </vue-container>
+        </vue-main>
+      </VueDetail>
+    </VueCodePresentation>
+
   </div>
 </template>
 
