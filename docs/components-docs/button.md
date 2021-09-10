@@ -14,7 +14,7 @@ title: Button
 
 ## 使用方法
 
-### 颜色样式
+### 设置颜色样式
 
 ---
 
@@ -36,7 +36,13 @@ title: Button
 
 ---
 
-### 禁用状态
+### 设置尺寸
+
+
+### 设置图标与图标位置
+
+
+### 设置禁用状态
 
 ---
 
@@ -49,6 +55,8 @@ title: Button
 ```vue
 <VueButton isDisabled="true"> </VueButton>
 ```
+
+### 设置加载中状态
 
 ---
 
