@@ -1,5 +1,5 @@
 <template>
-  <VueButton isDisabled="true">
+  <VueButton :isDisabled="true">
     <slot></slot>
   </VueButton>
 </template>
