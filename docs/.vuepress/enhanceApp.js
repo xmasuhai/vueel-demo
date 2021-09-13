@@ -2,6 +2,7 @@
 // import {Component} from 'vue-property-decorator';
 // import VueHighlightJS from 'vue-highlight.js';
 // import 'highlight.js/styles/dark.css';
+import './styles/index.scss'
 
 export default ({
                   Vue, // VuePress 正在使用的 Vue 构造函数

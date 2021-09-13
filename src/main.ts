@@ -5,9 +5,6 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import VueCompositionAPI from '@vue/composition-api';
-
-Vue.use(VueCompositionAPI);
-
 // 组件
 import VueButton from './components/button/VueButton.vue';
 import VueButtonGroup from './components/button/VueButtonGroup.vue';
@@ -30,7 +27,9 @@ import VueTabPane from './components/tabs/VueTabPane.vue';
 import VuePopover from './components/popover/VuePopover.vue';
 import VueCollapse from './components/collapse/VueCollapse.vue';
 import VueCodePresentation from './components/code-presentation/VueCodePresentation.vue';
-import VueDetail from './components/code-presentation/VueDetail.vue'
+import VueDetail from './components/code-presentation/VueDetail.vue';
+
+Vue.use(VueCompositionAPI);
 
 // export const bus = new Vue();
 
@@ -59,7 +58,6 @@ Vue.component('v-code-presentation', VueCodePresentation);
 
 Vue.use(toastPlugin);
 
-/*
 const components = [
   VueButton,
   VueButtonGroup,
@@ -83,9 +81,7 @@ const components = [
   VueCodePresentation,
   VueDetail
 ];
-*/
 
-/*
 const install = (Vue: any, opts = {}) => {
   components.forEach(component => {
     Vue.component(component.name, component);
@@ -121,7 +117,6 @@ export default {
   VueCodePresentation,
   VueDetail
 };
-*/
 
 Vue.config.productionTip = false;
 

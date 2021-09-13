@@ -1,5 +1,4 @@
-// --no-ignore;
-// const {fs, path} = require('@vuepress/shared-utils');
+const {fs, path} = require('@vuepress/shared-utils');
 module.exports = (/*ctx*/) => ({
   title: 'Vueel UI',
   description: '基于 Vue2.6 的UI',
