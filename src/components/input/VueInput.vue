@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="vue-toast-wrapper">
     <label class="form-item" :for="labelName">
       <template>
         <span class="name">{{ labelName }}</span>
@@ -71,9 +71,9 @@ export default class VueInput extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '../../style/global.scss';
+@import '../../styles/global.scss';
 
-.wrapper {
+.vue-toast-wrapper {
   font-size: $font-size;
   padding: 5px;
   overflow: hidden;

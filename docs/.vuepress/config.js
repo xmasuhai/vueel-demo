@@ -1,5 +1,6 @@
-const {fs, path} = require('@vuepress/shared-utils')
-module.exports = ctx => ({
+// --no-ignore;
+// const {fs, path} = require('@vuepress/shared-utils');
+module.exports = (/*ctx*/) => ({
   title: 'Vueel UI',
   description: '基于 Vue2.6 的UI',
   head: [
@@ -8,7 +9,7 @@ module.exports = ctx => ({
     ['link', {rel: 'manifest', href: '/manifest.json'}],
     ['meta', {name: 'theme-color', content: '#3eaf7c'}],
     ['meta', {name: 'apple-mobile-web-app-capable', content: 'yes'}],
-    ['meta', {name: 'apple-mobile-web-app-status-bar-style', content: 'black'}],
+    ['meta', {name: 'apple-mobile-web-app-status-bar-styles', content: 'black'}],
     ['link', {rel: 'apple-touch-icon', href: `/icons/apple-touch-icon-152x152.png`}],
     ['link', {rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c'}],
     ['meta', {name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png'}],

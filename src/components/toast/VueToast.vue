@@ -1,19 +1,19 @@
 <template>
   <transition :name="fadeAnimationName" @after-leave="handleAfterLeave">
-    <div class="wrapper"
+    <div class="vue-toast-wrapper"
          :class="toastPosition"
          v-show="visible">
-      <div class="toast"
+      <div class="vue-toast"
            :style="positionOffsetStyle"
            ref="toast"
            v-on="{mouseenter: clearTimer, mouseleave: startTimer}">
-        <div class="message">
+        <div class="vue-message">
           <slot v-if="!enableUnsafeHTML">{{ message }}</slot>
           <div v-else v-html="ifSlots/*$slots.default[0]*/"></div>
         </div>
         <template v-if="closeButton">
           <div ref="line" class="line"></div>
-          <span class="closeButton" @click="onClickCloseButton">
+          <span class="vue-close-button" @click="onClickCloseButton">
             {{ closeButton.text }}
         </span>
         </template>
@@ -236,7 +236,7 @@ $toast-min-height: 40px;
   animation: slide-up .5s reverse;
 }
 
-.wrapper {
+.vue-toast-wrapper {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
@@ -245,7 +245,7 @@ $toast-min-height: 40px;
   &.position-top {
     top: 0;
 
-    .toast {
+    .vue-toast {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
@@ -259,14 +259,14 @@ $toast-min-height: 40px;
   &.position-bottom {
     bottom: 0;
 
-    .toast {
+    .vue-toast {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
   }
 }
 
-.toast {
+.vue-toast {
   font-size: $font-size;
   min-height: $toast-min-height;
   max-width: 288px;
@@ -278,7 +278,7 @@ $toast-min-height: 40px;
   display: flex;
   align-items: center;
 
-  .message {
+  .vue-message {
     padding: 8px 0;
   }
 
@@ -288,7 +288,7 @@ $toast-min-height: 40px;
     margin-left: 16px;
   }
 
-  .closeButton {
+  .vue-close-button {
     padding-left: 16px;
     min-width: 40px;
     flex-shrink: 0;

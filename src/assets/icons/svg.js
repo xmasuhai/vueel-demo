@@ -8,7 +8,7 @@
   if (n && !t.__iconfont__svg__cssinject__) {
     // eslint-disable-next-line @typescript-eslint/camelcase
     t.__iconfont__svg__cssinject__ = !0
-    try {document.write('<style>.svgfont {display: inline-block;width: 1em;height: 1em;fill: currentColor;vertical-align: -0.1em;font-size:16px;}</style>')} catch (t) {console && console.log(t)}
+    try {document.write('<styles>.svgfont {display: inline-block;width: 1em;height: 1em;fill: currentColor;vertical-align: -0.1em;font-size:16px;}</styles>')} catch (t) {console && console.log(t)}
   }
 
   function s() {i || (i = !0, l())}

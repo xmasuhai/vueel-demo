@@ -52,7 +52,7 @@ describe('Toast Component', () => {
         }
       }, true);
 
-      const closeButton = vm.$el.querySelector('.closeButton');
+      const closeButton = vm.$el.querySelector('.vue-close-button');
       expect((closeButton as HTMLElement).textContent?.trim()).to.eq('测试关闭');
       setTimeout(() => {
         (closeButton as HTMLElement).click();

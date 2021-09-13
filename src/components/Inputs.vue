@@ -71,7 +71,7 @@ export default class Inputs extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '../style/global.scss';
+@import '../styles/global.scss';
 
 details {
   cursor: pointer;

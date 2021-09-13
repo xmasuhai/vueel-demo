@@ -379,8 +379,8 @@ input {
 /**
  * Address inconsistent `text-transform` inheritance for `button` and `select`.
  * All other form control elements do not inherit `text-transform` values.
- * Correct `button` style inheritance in Chrome, Safari 5+, and IE 6+.
- * Correct `select` style inheritance in Firefox 4+ and Opera.
+ * Correct `button` styles inheritance in Chrome, Safari 5+, and IE 6+.
+ * Correct `select` styles inheritance in Firefox 4+ and Opera.
  */
 
 button,
@@ -391,8 +391,8 @@ select {
 /**
  * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
  *    and `video` controls.
- * 2. Correct inability to style clickable `input` types in iOS.
- * 3. Improve usability and consistency of cursor style between image-type
+ * 2. Correct inability to styles clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor styles between image-type
  *    `input` and others.
  * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
  *    Known issue: inner spacing remains in IE 6.
@@ -497,7 +497,7 @@ input::-moz-focus-inner {
 }
 
 /**
- * Correct the inability to style clickable types in iOS and Safari.
+ * Correct the inability to styles clickable types in iOS and Safari.
  */
 
 button,
@@ -635,7 +635,7 @@ progress {
 }
 
 /**
- * Correct the cursor style of increment and decrement buttons in Chrome.
+ * Correct the cursor styles of increment and decrement buttons in Chrome.
  */
 
 [type="number"]::-webkit-inner-spin-button,
@@ -645,7 +645,7 @@ progress {
 
 /**
  * 1. Correct the odd appearance in Chrome and Safari.
- * 2. Correct the outline style in Safari.
+ * 2. Correct the outline styles in Safari.
  */
 
 [type="search"] {
@@ -656,7 +656,7 @@ progress {
 }
 
 /**
- * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 1. Correct the inability to styles clickable types in iOS and Safari.
  * 2. Change font properties to `inherit` in Safari.
  */
 

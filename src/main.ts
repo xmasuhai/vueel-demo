@@ -1,10 +1,9 @@
+import './styles/normalize.scss';
+import './styles/index.scss';
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import './style/normalize.scss';
-import './style/reset.scss';
-import './style/global.scss';
 import VueCompositionAPI from '@vue/composition-api';
 
 Vue.use(VueCompositionAPI);
@@ -57,8 +56,10 @@ Vue.component('v-popover', VuePopover);
 Vue.component('v-collapse', VueCollapse);
 Vue.component('v-detail', VueDetail);
 Vue.component('v-code-presentation', VueCodePresentation);
+
 Vue.use(toastPlugin);
 
+/*
 const components = [
   VueButton,
   VueButtonGroup,
@@ -82,7 +83,9 @@ const components = [
   VueCodePresentation,
   VueDetail
 ];
+*/
 
+/*
 const install = (Vue: any, opts = {}) => {
   components.forEach(component => {
     Vue.component(component.name, component);
@@ -118,6 +121,7 @@ export default {
   VueCodePresentation,
   VueDetail
 };
+*/
 
 Vue.config.productionTip = false;
 

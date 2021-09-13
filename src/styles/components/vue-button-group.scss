@@ -1,0 +1,52 @@
+@import '../global.scss';
+.vue-button-group {
+  display: inline-flex;
+  vertical-align: middle;
+
+  > .vue-button-wrapper {
+    margin-right: 0;
+    border-radius: 0;
+
+    > .vue-button {
+      margin-right: 0;
+      border-radius: 0;
+    }
+
+    &:first-child {
+      > .vue-button {
+        border-top-left-radius: $border-radius ;
+        border-bottom-left-radius: $border-radius ;
+      }
+    }
+
+    &:last-child {
+      > .vue-button {
+        border-top-right-radius: $border-radius ;
+        border-bottom-right-radius: $border-radius ;
+      }
+    }
+
+    /*
+    * 错误地显示 border 三边显示 一边被遮盖
+    &:not(:first-child) {
+      border-left: none;
+      }
+    */
+    &:not(:first-child) {
+      > .vue-button {
+        margin-left: -2px;
+      }
+    }
+
+    // 解决border被后面的遮挡掉一边
+    &:hover {
+      > .vue-button {
+        position: relative;
+        z-index: 1;
+
+      }
+    }
+
+  }
+
+}
