@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import chai from 'chai';
 import sinon from 'sinon';
+import '../../src/styles/index.scss';
 import sinonChai from 'sinon-chai';
 import VueButton from '../../src/components/button/VueButton.vue';
 import {createTestVM, destroyVM} from '../testUtil';
@@ -21,10 +22,6 @@ describe('VueButton', () => {
 
   describe('测试props', () => {
     afterEach(() => {
-      /*
-      vm.$el.remove();
-      vm.$destroy();
-      */
       destroyVM(vm);
     });
 
@@ -61,8 +58,9 @@ describe('VueButton', () => {
           icon: 'settings',
         }
       }, true);
-      const icon = vm.$el.querySelector('svg');
-      expect(getComputedStyle(icon as SVGSVGElement).order).to.eq('1');
+      const buttonElement = vm.$el.querySelector('.vue-button');
+      expect(buttonElement!.classList.contains('icon-left')).to.eq(true);
+
     });
 
     it('设置 iconPosition 可以改变 order', () => {
@@ -72,31 +70,33 @@ describe('VueButton', () => {
           iconPosition: 'right'
         }
       }, true);
-      const icon = vm.$el.querySelector('svg');
-      expect(getComputedStyle(icon as SVGSVGElement).order).to.eq('2');
+      const buttonElement = vm.$el.querySelector('.vue-button');
+      expect((buttonElement as HTMLButtonElement)
+        .classList.contains('icon-right')).to.eq(true);
+
     });
 
     // (O)^ n * n 测试颜色
     [
-      {'': 'rgb(248, 248, 255)'},
-      {'primary': 'rgb(13, 110, 253)'},
-      {'danger': 'rgb(255, 65, 54)'},
-      {'warning': 'rgb(255, 193, 7)'},
-      {'success': 'rgb(25, 135, 84)'},
-      {'info': 'rgb(13, 202, 240)'},
-      {'attention': 'rgb(253, 126, 20)'}
-    ].forEach((typeObj) => {
-      const colorType = Object.keys(typeObj)[0];
-      const colorString = Object.values(typeObj)[0];
-      it(`设置 color 可以改变${colorType}按钮种类`, () => {
+      'normal',
+      'primary',
+      'danger',
+      'warning',
+      'success',
+      'info',
+      'attention'
+    ].forEach((typeString) => {
+      // const colorString = Object.values(typeObj)[0];
+      it(`设置 color 可以改变${typeString}按钮种类`, () => {
         vm = createTestVM(VueButton, {
           propsData: {
-            colorType
+            colorType: typeString
           }
         }, true);
-        const buttonElement = vm.$el;
-        expect(getComputedStyle(buttonElement as HTMLButtonElement).backgroundColor)
-          .to.eq(colorString);
+        const buttonElement = vm.$el.querySelector('.vue-button');
+        expect((buttonElement as HTMLButtonElement)
+          .classList.contains(`vue-button-${typeString}`)).to.eq(true);
+
       });
 
     });
@@ -109,7 +109,7 @@ describe('VueButton', () => {
             size: sizeString
           }
         }, true);
-        const buttonElement = vm.$el;
+        const buttonElement = vm.$el.querySelector('.vue-button');
         expect((buttonElement as HTMLButtonElement)
           .classList.contains(`vue-button-size-${sizeString}`))
           .to.eq(true);
@@ -132,9 +132,12 @@ describe('VueButton', () => {
         }
       }).$mount();
       const callback = sinon.fake();
-      vm.$on('click', callback);
-      (vm.$el as HTMLElement).click();
+      const buttonElement = vm.$el.children[0];
+      // buttonVM.$on('click', callback);
+      buttonElement.addEventListener('click', callback);
+      (buttonElement as HTMLElement).click();
       expect(callback).to.have.been.called;
+      buttonElement.removeEventListener('click', callback);
     });
   });
 

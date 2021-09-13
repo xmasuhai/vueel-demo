@@ -35,9 +35,9 @@ export default class VueButton extends Vue {
   @Prop({type: Boolean, default: false}) isLoading!: boolean;
   @Prop({
     type: String,
-    default: '',
+    default: 'normal',
     validator(colorType) {
-      return ['', 'primary', 'warning', 'danger', 'info', 'success', 'attention']
+      return ['normal', 'primary', 'warning', 'danger', 'info', 'success', 'attention']
         .indexOf(colorType) > -1;
     }
   }) colorType!: string;
