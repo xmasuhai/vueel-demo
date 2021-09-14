@@ -1,12 +1,11 @@
 <template>
-  <section
-    class="tab-item"
-    @click="emitSelectedVMtoEventBus"
-    :class="classes"
-    :data-name="tabName">
+  <section class="vue-tab-item"
+           @click="emitSelectedVMtoEventBus"
+           :class="classes"
+           :data-name="tabName">
     <VueIcon v-if="useIcon"
              :icon-name="iconName"
-             class="icon"/>
+             class="vue-icon"/>
     <div class="text">
       <slot></slot>
     </div>
@@ -71,55 +70,3 @@ export default class VueTabItem extends Vue {
 
 }
 </script>
-
-<style lang="scss" scoped>
-$waterBlue: #3ba0e9;
-$disabled-text-color: lightgrey;
-.tab-item {
-  flex-shrink: 0;
-  padding: 0 1em;
-  cursor: pointer;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &.active {
-    color: $waterBlue;
-  }
-
-  &.disabled {
-    color: $disabled-text-color;
-    cursor: not-allowed;
-  }
-
-  // Icon
-  /* ali iconfont common css */
-  > .icon {
-    width: 1em;
-    height: 1em;
-    margin: 0 .3em .1em auto;
-    fill: currentColor;
-    overflow: hidden;
-    order: 1;
-
-    &.-right {
-      > .icon {
-        order: 2;
-        margin-left: 0.3em;
-        margin-right: 0;
-        margin-top: 0.1em;
-      }
-
-      > .content {
-        order: 1;
-      }
-    }
-  }
-
-  > .text {
-    order: 2;
-  }
-
-}
-</style>

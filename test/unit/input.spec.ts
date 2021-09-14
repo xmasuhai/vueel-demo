@@ -66,7 +66,7 @@ describe('VueInput', () => {
       const useElement = vm.$el.querySelector('use');
       expect((useElement as SVGUseElement).getAttribute('xlink:href'))
         .to.equal('#i-error-solid');
-      const errorMessage = vm.$el.querySelector('.errorMessage');
+      const errorMessage = vm.$el.querySelector('.vue-error-message');
       expect((errorMessage as HTMLElement).innerText).to.equal('你错了');
     });
 

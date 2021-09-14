@@ -1,6 +1,6 @@
 <template>
-  <div class="tab-nav-wrapper">
-    <nav class="tab-nav" v-bind="$attrs">
+  <div class="vue-tab-nav-wrapper">
+    <nav class="vue-tab-nav" v-bind="$attrs">
       <slot>
         <VueTabItem v-for="(item, index) in itemsData"
                     :tab-name="item.tabName"
@@ -8,9 +8,9 @@
                     :key="index">
         </VueTabItem>
       </slot>
-      <div class="line" ref="line" v-if="showUnderscore"></div>
-      <div class="actions-wrapper">
-        <slot name="actions"></slot>
+      <div class="vue-tab-line" ref="line" v-if="showUnderscore"></div>
+      <div class="vue-tab-actions-wrapper">
+        <slot name="vue-actions"></slot>
       </div>
     </nav>
   </div>
@@ -27,9 +27,10 @@ import VueTabItem from './VueTabItem.vue';
 export default class VueTabNav extends Vue {
   name = 'VueTabNav';
   showUnderscore = false;
+  @Prop({type: Array, default() {return [];}}) itemsData!: string[];
+
   @Inject('eventBus') readonly eventBus!: Vue;
 
-  @Prop({type: Array, default() {return [];}}) itemsData!: [];
 
   // 初始选中 第一个 或者有tabName的tab
   initSelectedTabItem() {
@@ -79,43 +80,3 @@ export default class VueTabNav extends Vue {
 
 }
 </script>
-
-<style lang="scss" scoped>
-$tab-nav-height: 40px;
-$waterBlue: #3ba0e9;
-$hrLine-color: #ddd;
-
-.tab-nav-wrapper {
-  display: flex;
-
-  .tab-nav {
-    display: flex;
-    max-width: 100%;
-    height: $tab-nav-height;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
-    border-bottom: 1px solid $hrLine-color;
-    width: 100%;
-
-    .line {
-      position: absolute;
-      bottom: 0;
-      height: 1px;
-      //outline: 1px solid $waterBlue;
-      box-shadow: 0 1px 0 0 $waterBlue;
-      transition: all .3s;
-    }
-
-    > .actions-wrapper {
-      margin-left: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 1em;
-    }
-
-  }
-
-}
-</style>

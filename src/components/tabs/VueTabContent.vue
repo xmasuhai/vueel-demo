@@ -19,7 +19,7 @@ import VueTabPane from './VueTabPane.vue';
 export default class VueTabContent extends Vue {
   name = 'VueTabContent';
 
-  @Prop({type: Array, default() {return [];}}) panesData!: [];
+  @Prop({type: Array, default() {return [];}}) panesData!: string[];
 
   @Inject('eventBus') readonly eventBus!: Vue;
 
@@ -45,8 +45,3 @@ export default class VueTabContent extends Vue {
 
 }
 </script>
-
-<style lang="scss" scoped>
-.tab-content {
-}
-</style>

@@ -12,7 +12,7 @@
           <div v-else v-html="ifSlots/*$slots.default[0]*/"></div>
         </div>
         <template v-if="closeButton">
-          <div ref="line" class="line"></div>
+          <div ref="line" class="vue-tab-line"></div>
           <span class="vue-close-button" @click="onClickCloseButton">
             {{ closeButton.text }}
         </span>

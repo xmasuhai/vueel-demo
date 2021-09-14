@@ -1,13 +1,11 @@
 <template>
   <div class="vue-tab">
     <slot>
-      <VueTabNav
-        :itemsData.sync="itemsData"
-        :propsToNav="propsToNav">
+      <VueTabNav :itemsData.sync="itemsData"
+                 :propsToNav="propsToNav">
       </VueTabNav>
-      <VueTabContent
-        :panesData.sync="panesData"
-        :propsToContent="propsToContent">
+      <VueTabContent :panesData.sync="panesData"
+                     :propsToContent="propsToContent">
       </VueTabContent>
     </slot>
   </div>
@@ -24,12 +22,13 @@ import {VueTabItem} from '@/types/VueTabItem';
 })
 export default class VueTab extends Vue {
   name = 'VueTab';
-  itemsData = [];
-  panesData = [];
+
+  itemsData: string[] = [];
+  panesData: string[] = [];
 
   @Prop({type: String, required: true}) selected!: string;
-  @Prop({type: Array, default() {return [];}}) propsToNav!: [];
-  @Prop({type: Array, default() {return [];}}) propsToContent!: [];
+  @Prop({type: Array, default() {return [];}}) propsToNav!: string[];
+  @Prop({type: Array, default() {return [];}}) propsToContent!: string[];
   @Prop({
     type: String,
     default: 'horizontal',
@@ -71,8 +70,3 @@ export default class VueTab extends Vue {
 
 }
 </script>
-
-<style lang="scss" scoped>
-.vue-tab {
-}
-</style>
