@@ -15,6 +15,7 @@
 
 - `Vue.js 2.x`全家桶
   - 尝试`Vue Composition API`写法
+  - 尝试`vue-property-decorator`装饰器`@`写法
 - `TypeScript`
   - `@` 装饰器写法 配合 `vue-class-component`
 - `SCSS`
