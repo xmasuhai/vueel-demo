@@ -85,7 +85,7 @@ export default class Popovers extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.popover {
+.vue-popover {
   margin-top: 50px;
   margin-right: 20px;
 }

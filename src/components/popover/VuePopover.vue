@@ -1,16 +1,16 @@
 <template>
   <div ref="popover"
-       class="popover"
+       class="vue-popover"
        v-on="{[popUp]: [openEvent, clearTimer], mouseleave: startTimer}"
        @click="togglePop">
     <div ref="contentWrapper"
-         class="content-wrapper"
+         class="vue-content-wrapper"
          v-if="isVisible"
          v-on="multiEventOnContent"
          :class="{[`position-${position}`]: true}">
       <slot name="content" :closeEvent="closeEvent"></slot>
     </div>
-    <span class="triggerWrapper"
+    <span class="vue-trigger-wrapper"
           ref="triggerWrapper"
           v-on="multiEventOnTrigger">
       <slot>button</slot>
@@ -201,71 +201,3 @@ export default class VuePopover extends Vue {
 
 }
 </script>
-
-<style lang="scss" scoped>
-@import './VuePopover.scss';
-
-.popover {
-  display: inline-block;
-  vertical-align: top;
-  position: relative;
-
-  .triggerWrapper {
-    display: inline-block;
-  }
-
-}
-
-.content-wrapper {
-  display: block;
-  position: absolute;
-  border: 1px solid $border-color;
-  border-radius: $border-radius;
-  //box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
-  padding: 0.5em 1em;
-  background-color: white;
-  margin-top: -10px;
-  max-width: 20em;
-  word-break: break-all;
-
-  // 方向指向尖角基础样式
-  &::before, &::after {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 0;
-    height: 0;
-    border: .65em solid transparent;
-  }
-
-  // 方向指向尖角样式
-  $position-list: 'top', 'bottom', 'left', 'right';
-  @each $name in $position-list {
-    &.position-#{$name} {
-      //noinspection SassScssUnresolvedPlaceholderSelector
-      @extend %position-#{$name}-default;
-
-      &::before, &::after {
-        //noinspection SassScssUnresolvedPlaceholderSelector
-        @extend %position-#{$name}-common;
-      }
-
-      &::before {
-        //noinspection SassScssUnresolvedPlaceholderSelector
-        @extend %position-#{$name}-before;
-      }
-
-      &::after {
-        //noinspection SassScssUnresolvedPlaceholderSelector
-        @extend %position-#{$name}-after;
-      }
-
-    }
-
-  }
-
-
-}
-
-</style>

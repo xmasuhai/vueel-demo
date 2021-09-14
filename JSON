@@ -1,72 +1,62 @@
-@keyframes slide-up {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, 100%); }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, 0%); } }
-@keyframes slide-down {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -100%); }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, 0%); } }
-.eat-toast-fade-enter-active,
-.eat-toast-fade-leave-active {
-  opacity: 0; }
-
-.eat-toast-from-top-enter-active {
-  animation: slide-down .5s; }
-
-.eat-toast-from-top-leave-active {
-  animation: slide-down .5s reverse; }
-
-.eat-toast-from-bottom-enter-active {
-  animation: slide-up .5s; }
-
-.eat-toast-from-bottom-leave-active {
-  animation: slide-up .5s reverse; }
-
-.vue-toast-wrapper {
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: opacity 0.3s ease, transform .4s ease, top 0.4s ease; }
-  .vue-toast-wrapper.position-top {
-    top: 0; }
-    .vue-toast-wrapper.position-top .vue-toast {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0; }
-  .vue-toast-wrapper.position-middle {
-    transform: translate(-50%, -50%);
-    top: 50%; }
-  .vue-toast-wrapper.position-bottom {
-    bottom: 0; }
-    .vue-toast-wrapper.position-bottom .vue-toast {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0; }
-
-.vue-toast {
+.vue-input-wrapper {
   font-size: 14px;
-  min-height: 40px;
-  max-width: 288px;
-  background-color: rgba(0, 0, 0, 0.74);
-  border-radius: 4px;
-  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
-  color: ghostwhite;
-  padding: 0 16px;
-  display: flex;
+  padding: 5px;
+  overflow: hidden;
+  display: inline-flex;
   align-items: center; }
-  .vue-toast .vue-message {
-    padding: 8px 0; }
-  .vue-toast .vue-tab-line {
-    height: 100%;
-    border-left: 1px solid #666;
-    margin-left: 16px; }
-  .vue-toast .vue-close-button {
-    padding-left: 16px;
-    min-width: 40px;
-    flex-shrink: 0; }
+  .vue-input-wrapper > :not(last-child) {
+    margin-right: .5em; }
+  .vue-input-wrapper .vue-label-item {
+    display: inline-block; }
+    .vue-input-wrapper .vue-label-item > input {
+      height: 32px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      padding: 0 8px;
+      font-size: inherit; }
+      .vue-input-wrapper .vue-label-item > input:read-write {
+        background-color: #fff; }
+      .vue-input-wrapper .vue-label-item > input:hover, .vue-input-wrapper .vue-label-item > input.fake-hover {
+        border: 1px solid #666;
+        border-radius: 4px;
+        box-shadow: 0 0 0 1px var(--border-color-hover);
+        background-color: #f5f5f5; }
+      .vue-input-wrapper .vue-label-item > input:focus, .vue-input-wrapper .vue-label-item > input.fake-focus {
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+        border-radius: 4px;
+        background-color: #f5f5f5; }
+      .vue-input-wrapper .vue-label-item > input:focus-visible {
+        outline: none; }
+      .vue-input-wrapper .vue-label-item > input[disabled], .vue-input-wrapper .vue-label-item > input:read-only {
+        border-color: #bbb;
+        color: #bbb; }
+      .vue-input-wrapper .vue-label-item > input[disabled] {
+        cursor: not-allowed;
+        background-color: #f5f5f5; }
+      .vue-input-wrapper .vue-label-item > input.error {
+        border-color: #ff4136;
+        border-width: 1px; }
+        .vue-input-wrapper .vue-label-item > input.error::-webkit-input-placeholder {
+          color: #ff4136; }
+        .vue-input-wrapper .vue-label-item > input.error:hover, .vue-input-wrapper .vue-label-item > input.error.fake-hover-error {
+          border: 1px solid #f1453d;
+          box-shadow: 0 0 0 1px #f1453d;
+          background-color: #f5f5f5; }
+        .vue-input-wrapper .vue-label-item > input.error:focus, .vue-input-wrapper .vue-label-item > input.error.fake-focus {
+          border: 1px solid #f1453d;
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 0 0 1px #f1453d; }
+    .vue-input-wrapper .vue-label-item .vue-input-info {
+      vertical-align: middle;
+      display: inline-block;
+      color: #ff4136;
+      overflow: hidden; }
+      .vue-input-wrapper .vue-label-item .vue-input-info .vue-icon-error {
+        fill: #ff4136; }
+      .vue-input-wrapper .vue-label-item .vue-input-info ::v-deep > .v-icon {
+        width: 1.35em;
+        height: 1.35em;
+        vertical-align: -20%;
+        margin-right: 0.2em;
+        margin-left: 0.5em; }
 
 /*# sourceMappingURL=JSON.map */
