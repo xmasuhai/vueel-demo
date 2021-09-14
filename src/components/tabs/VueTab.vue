@@ -27,8 +27,8 @@ export default class VueTab extends Vue {
   panesData: string[] = [];
 
   @Prop({type: String, required: true}) selected!: string;
-  @Prop({type: Array, default() {return [];}}) propsToNav!: string[];
-  @Prop({type: Array, default() {return [];}}) propsToContent!: string[];
+  @Prop({type: Array, default() {return [];}}) propsToNav!:  Record<string, any>;
+  @Prop({type: Array, default() {return [];}}) propsToContent!:  Record<string, any>;
   @Prop({
     type: String,
     default: 'horizontal',

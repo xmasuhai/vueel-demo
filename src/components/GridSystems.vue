@@ -236,9 +236,9 @@ export default class GridSystems extends Vue {
 
 <style lang="scss" scoped>
 ::v-deep {
-  .fieldset {
-    .details-content {
-      > .row {
+  .vue-fieldset {
+    .vue-details-content {
+      > .vue-row {
         margin-bottom: 10px;
       }
     }

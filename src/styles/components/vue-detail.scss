@@ -1,0 +1,17 @@
+.vue-details {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  margin-bottom: 20px;
+
+  &[open] {
+    & summary {
+      border-bottom: 1px solid #aaa;
+      margin-bottom: 1em;
+    }
+  }
+
+  .vue-summary, .vue-details-content {
+    margin-left: 1em;
+  }
+
+}

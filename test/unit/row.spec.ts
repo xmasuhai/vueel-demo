@@ -20,7 +20,7 @@ describe('VueRow', () => {
   it('classList row', () => {
     vm = createTestVM(VueRow, undefined, true);
     const rowElm = vm.$el;
-    expect(rowElm.classList.contains('row')).to.be.true;
+    expect(rowElm.classList.contains('vue-row')).to.be.true;
   });
 
   describe('测试属性 props', () => {
@@ -80,7 +80,7 @@ describe('VueRow', () => {
       setTimeout(() => {
         expect(getComputedStyle(vm.$el).marginLeft).to.eq('-10px');
         expect(getComputedStyle(vm.$el).marginRight).to.eq('-10px');
-        const cols = vm.$el.querySelectorAll('.col');
+        const cols = vm.$el.querySelectorAll('.vue-col');
         expect(getComputedStyle(cols[0]).marginRight).to.eq('10px');
         expect(getComputedStyle(cols[1]).marginLeft).to.eq('10px');
         done();

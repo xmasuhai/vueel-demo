@@ -1,5 +1,7 @@
 <template>
-  <header class="v-header" :class="flexCToR" :style="headerStyle">
+  <header class="vue-header"
+          :class="flexCToR"
+          :style="headerStyle">
     <slot></slot>
   </header>
 </template>
@@ -20,12 +22,3 @@ export default class VueHeader extends mixins(AsideColToRow) {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.v-header {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  width: 100%;
-}
-</style>

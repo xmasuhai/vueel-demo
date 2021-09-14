@@ -1,5 +1,7 @@
 <template>
-  <aside class="v-aside" :class="flexCToR" :style="asideStyle">
+  <aside class="vue-aside"
+         :class="flexCToR"
+         :style="asideStyle">
     <slot></slot>
   </aside>
 </template>
@@ -19,12 +21,3 @@ export default class VueAside extends mixins(AsideColToRow) {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.v-aside {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  height: 100%;
-}
-</style>

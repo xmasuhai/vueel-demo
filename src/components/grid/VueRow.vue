@@ -1,5 +1,5 @@
 <template>
-  <div class="row"
+  <div class="vue-row"
        :style="rowStyle"
        :class="rowClass">
     <slot>
@@ -27,11 +27,7 @@ import VueCol from './VueCol.vue';
 })
 export default class VueRow extends Vue {
   name = 'VueRow';
-  // componentName = 'VueRow';
-
-  // mock
-  @Prop({type: Array, default() {return [];}}) colData!: [];
-
+  @Prop({type: Array, default() {return [];}}) colData!: Record<string, any>;
   @Prop({
     type: [Number, String],
   }) gutter!: number | string;
@@ -91,32 +87,3 @@ export default class VueRow extends Vue {
 
 }
 </script>
-
-<style lang="scss" scoped>
-.row {
-  display: flex;
-  flex: auto;
-
-  // Align
-  $align-types: (
-    'left': flex-start,
-    'right': flex-end,
-    'center': center,
-    'space-between': space-between,
-    'space-around': space-around
-  );
-  @each $name, $type in $align-types {
-    &.align-#{$name} {
-      justify-content: $type;
-    }
-  }
-
-  // mobile~pcx
-  @media (max-width: 993px) {
-    .row {
-      flex-wrap: wrap;
-    }
-  }
-
-}
-</style>

@@ -1,5 +1,5 @@
 <template>
-  <main class="v-main" :class="flexCToR" :style="colToRowStyle">
+  <main class="vue-main" :class="flexCToR" :style="colToRowStyle">
     <slot></slot>
   </main>
 </template>
@@ -15,11 +15,3 @@ export default class VueMain extends mixins(AsideColToRow) {
   componentName = 'VueMain';
 }
 </script>
-
-<style lang="scss" scoped>
-.v-main {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-</style>

@@ -1,0 +1,10 @@
+@import '../global.scss';
+
+.vue-collapse {
+  border: 1px solid $collapse-grey;
+  border-radius: $border-radius;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}

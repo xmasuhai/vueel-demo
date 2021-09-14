@@ -92,16 +92,16 @@ export default class extends Vue {
         background-color: #7CB8FF;
       }
 
-      &.v-aside {
+      &.vue-aside {
         background-color: #3ba0e9;
       }
 
-      &.container {
+      &.vue-container {
         flex-grow: 2;
         background-color: #108ee9;
       }
 
-      &.v-header, &.footer {
+      &.vue-header, &.vue-footer {
         background-color: #7dbcea;
       }
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <form>
-      <fieldset class="fieldset">
+      <fieldset class="vue-fieldset">
         <legend>{{ legendName }}</legend>
         <slot>
           <VueDetail v-for="item in detailsDataList"
@@ -35,10 +35,3 @@ export default class VueCodePresentation extends Vue {
 
 }
 </script>
-
-<style lang="scss" scoped>
-.fieldset {
-  padding: 18px;
-  margin-bottom: 20px;
-}
-</style>

@@ -1,12 +1,12 @@
 <template>
-  <details class="details"
+  <details class="vue-details"
            :open="isOpen">
-    <summary class="summary">
-      <span class="summary-string">
+    <summary class="vue-summary">
+      <span class="vue-summary-string">
         {{ summaryString }}
       </span>
     </summary>
-    <div class="details-content">
+    <div class="vue-details-content">
       <slot></slot>
     </div>
   </details>
@@ -26,23 +26,3 @@ export default class VueDetail extends Vue {
 
 }
 </script>
-
-<style lang="scss" scoped>
-.details {
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  margin-bottom: 20px;
-
-  &[open] {
-    & summary {
-      border-bottom: 1px solid #aaa;
-      margin-bottom: 1em;
-    }
-  }
-
-  .summary, .details-content {
-    margin-left: 1em;
-  }
-
-}
-</style>

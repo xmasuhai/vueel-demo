@@ -27,7 +27,7 @@ import VueTabItem from './VueTabItem.vue';
 export default class VueTabNav extends Vue {
   name = 'VueTabNav';
   showUnderscore = false;
-  @Prop({type: Array, default() {return [];}}) itemsData!: string[];
+  @Prop({type: Array, default() {return [];}}) itemsData!: Record<string, any>;
 
   @Inject('eventBus') readonly eventBus!: Vue;
 

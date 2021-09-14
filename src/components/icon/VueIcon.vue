@@ -1,5 +1,5 @@
 <template>
-  <svg class="v-icon">
+  <svg class="vue-icon">
     <use :xlink:href="`#i-${iconName}`"></use>
   </svg>
 </template>
@@ -17,7 +17,7 @@ export default class VueIcon extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.v-icon {
+.vue-icon {
   width: 1em;
   height: 1em;
   margin: 0 1em;

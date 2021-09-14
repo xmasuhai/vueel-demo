@@ -1,0 +1,26 @@
+.vue-row {
+  display: flex;
+  flex: auto;
+
+  // Align
+  $align-types: (
+    'left': flex-start,
+    'right': flex-end,
+    'center': center,
+    'space-between': space-between,
+    'space-around': space-around
+  );
+  @each $name, $type in $align-types {
+    &.align-#{$name} {
+      justify-content: $type;
+    }
+  }
+
+  // mobile~pcx
+  @media (max-width: 993px) {
+    .vue-row {
+      flex-wrap: wrap;
+    }
+  }
+
+}

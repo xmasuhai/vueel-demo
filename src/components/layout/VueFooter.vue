@@ -1,5 +1,7 @@
 <template>
-  <footer class="footer" :class="flexCToR" :style="footerStyle">
+  <footer class="vue-footer"
+          :class="flexCToR"
+          :style="footerStyle">
     <slot></slot>
   </footer>
 </template>
@@ -19,12 +21,3 @@ export default class VueFooter extends mixins(AsideColToRow) {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.footer {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  width: 100%;
-}
-</style>

@@ -1,5 +1,7 @@
 <template>
-  <section class="tab-pane" :class="classes" v-if="active">
+  <section class="vue-tab-pane"
+           :class="classes"
+           v-if="active">
     <slot></slot>
   </section>
 </template>
@@ -32,12 +34,3 @@ export default class VueTabPane extends Vue {
 
 }
 </script>
-
-<style lang="scss" scoped>
-.tab-pane {
-  padding: 1em;
-
-  &.active {
-  }
-}
-</style>

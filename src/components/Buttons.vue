@@ -93,8 +93,8 @@ export default class Buttons extends Vue {
 }
 
 .rainbow::v-deep {
-  > .summary {
-    > .summary-string {
+  > .vue-summary {
+    > .vue-summary-string {
       background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
       -webkit-background-clip: text;
       color: transparent;

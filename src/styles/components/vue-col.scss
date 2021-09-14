@@ -1,0 +1,67 @@
+@use "sass:math";
+@use "sass:list";
+
+.vue-col {
+  min-height: 45px;
+  flex: auto;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 45px;
+  color: #fff;
+
+  &:nth-child(odd) {
+    background-color: #3D8FEE;
+  }
+
+  &:nth-child(even) {
+    background-color: #7CB8FF;
+  }
+
+  // .col.col-1 ~ .col.col-24
+  $class-prefix: col-;
+  @for $n from 1 through 24 {
+    &.#{$class-prefix}#{$n} {
+      width: (math.div($n, 24)) * 100%;
+    }
+  }
+
+  // .col.offset-2 ~ .col.offset-24
+  $class-prefix: offset-;
+  @for $i from 0 through 24 {
+    &.#{$class-prefix}#{$i} {
+      margin-left: (math.div($i, 24)) * 100%;
+    }
+  }
+
+  // media loops
+  // $media-types: ($type, $size)
+  $media-types: (
+    'mobile': 372px,
+    'pad': 577px,
+    'laptop': 769px,
+    'pc': 993px,
+    'pcw': 1201px,
+    'pcx': 1601px,
+  );
+  @each $type, $size in $media-types {
+    @media (min-width: $size) {
+      // .col.col-1 ~ .col.col-24
+      $class-prefix: col-#{$type}-;
+      @for $n from 1 through 24 {
+        &.#{$class-prefix}#{$n} {
+          width: (math.div($n, 24)) * 100%;
+        }
+      }
+
+      // .col.offset-2 ~ .col.offset-24
+      $class-prefix: offset-#{$type}-;
+      @for $i from 0 through 24 {
+        &.#{$class-prefix}#{$i} {
+          margin-left: (math.div($i, 24)) * 100%;
+        }
+      }
+    }
+  }
+
+}

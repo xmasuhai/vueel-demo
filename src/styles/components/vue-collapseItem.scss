@@ -1,0 +1,67 @@
+@import '../global.scss';
+
+@mixin border-bottom-radius($radius: 0px) {
+  border-bottom-left-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+.vue-collapse-item {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  border-bottom: 1px solid $collapse-grey;
+
+  > .vue-title {
+    width: 100%;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+
+    &.disabled {
+      color: lighten(#000, 80%);
+      background-color: lighten($collapse-grey, 80%);
+      cursor: not-allowed;
+    }
+  }
+
+  > .vue-content {
+    width: 100%;
+    padding: 18px;
+
+    &.content-show {
+      border-top: 1px solid $collapse-grey;
+    }
+  }
+
+  // .collapse-item
+  &:first-child {
+
+    > .vue-title {
+
+      // v-show = true
+      &.title-show {
+        border-top: none;
+      }
+    }
+  }
+
+  // .collapse-item
+  &:last-child {
+    border-bottom: none; //  覆盖 border-bottom: 1px solid $collapse-grey;
+
+    > .vue-title {
+
+      // v-show = true
+      &.title-show {
+        @include border-bottom-radius;
+      }
+    }
+
+    > .vue-content {
+      @include border-bottom-radius($border-radius);
+    }
+  }
+
+}

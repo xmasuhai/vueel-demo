@@ -19,7 +19,7 @@ import VueTabPane from './VueTabPane.vue';
 export default class VueTabContent extends Vue {
   name = 'VueTabContent';
 
-  @Prop({type: Array, default() {return [];}}) panesData!: string[];
+  @Prop({type: Array, default() {return [];}}) panesData!:  Record<string, any>;
 
   @Inject('eventBus') readonly eventBus!: Vue;
 

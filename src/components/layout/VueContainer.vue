@@ -1,5 +1,7 @@
 <template>
-  <section class="container" :class="flexCToR" :style="colToRowStyle">
+  <section class="vue-container"
+           :class="flexCToR"
+           :style="colToRowStyle">
     <slot></slot>
   </section>
 </template>
@@ -14,12 +16,3 @@ export default class VueContainer extends mixins(AsideColToRow) {
   name = 'VueContainer';
 }
 </script>
-
-<style lang="scss" scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 2;
-}
-
-</style>
