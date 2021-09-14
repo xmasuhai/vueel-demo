@@ -38,7 +38,7 @@ describe('VueTabItem', () => {
       }, true);
       setTimeout(() => {
         const targetTab = vm?.$children[0]?.$el
-          ?.querySelector(`.tab-item[data-name="tabX"]`)
+          ?.querySelector(`.vue-tab-item[data-name="tabX"]`)
           ?.getAttribute('data-name');
         expect(targetTab).to.eq('tabX');
         done();

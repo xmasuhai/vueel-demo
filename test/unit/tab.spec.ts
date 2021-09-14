@@ -42,7 +42,7 @@ describe('VueTab', () => {
         },
       }, true);
       setTimeout(() => {
-        const selectedTab = vm.$el.querySelector(`.tab-item[data-name="tab2"]`);
+        const selectedTab = vm.$el.querySelector(`.vue-tab-item[data-name="tab2"]`);
         // expect(selectedTab!.classList.contains('active')).to.eq(true);
         expect(selectedTab?.classList.contains('active')).to.be.true;
         done();
