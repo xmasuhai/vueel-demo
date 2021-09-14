@@ -11,7 +11,3 @@ export default class VueCascaderItem extends Vue {
   name = 'VueCascaderItem';
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
