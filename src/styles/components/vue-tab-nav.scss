@@ -1,0 +1,35 @@
+@import '../global.scss';
+
+.vue-tab-nav-wrapper {
+  display: flex;
+
+  .vue-tab-nav {
+    display: flex;
+    max-width: 100%;
+    height: $tab-nav-height;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    border-bottom: 1px solid $hrLine-color;
+    width: 100%;
+
+    .vue-tab-line {
+      position: absolute;
+      bottom: 0;
+      height: 1px;
+      //outline: 1px solid $waterBlue;
+      box-shadow: 0 1px 0 0 $waterBlue;
+      transition: all .3s;
+    }
+
+    > .vue-tab-actions-wrapper {
+      margin-left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1em;
+    }
+
+  }
+
+}

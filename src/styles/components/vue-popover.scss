@@ -1,0 +1,146 @@
+@import '../global.scss';
+
+%position-top-default {
+  transform: translateY(-100%);
+  margin-top: -10px;
+}
+
+%position-top-common {
+  left: 10px;
+  // 防止popover的border 遮盖button 导致hover重复触发
+  border-bottom: none;
+}
+
+%position-top-before {
+  top: 100%;
+  border-top-color: #333;
+}
+
+%position-top-after {
+  top: calc(100% - 1px);
+  border-top-color: white;
+}
+
+%position-bottom-default {
+  margin-top: 10px;
+}
+
+%position-bottom-common {
+  left: 10px;
+  border-top: none;
+}
+
+%position-bottom-before {
+  bottom: 100%;
+  border-bottom-color: #333;
+}
+
+%position-bottom-after {
+  bottom: calc(100% - 1px);
+  border-bottom-color: white;
+}
+
+%position-left-default {
+  transform: translateX(-100%);
+  margin-left: -10px;
+}
+
+%position-left-common {
+  top: 50%;
+  transform: translateY(-50%);
+  border-right: none;
+}
+
+%position-left-before {
+  left: 100%;
+  border-left-color: #333;
+}
+
+%position-left-after {
+  left: calc(100% - 1px);
+  border-left-color: white;
+}
+
+%position-right-default {
+  margin-left: 10px;
+}
+
+%position-right-common {
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: none;
+}
+
+%position-right-before {
+  right: 100%;
+  border-right-color: #333;
+}
+
+%position-right-after {
+  right: calc(100% - 1px);
+  border-right-color: white;
+}
+
+
+.vue-popover {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+
+  .vue-trigger-wrapper {
+    display: inline-block;
+  }
+
+}
+
+.vue-content-wrapper {
+  display: block;
+  position: absolute;
+  border: 1px solid $pop-border-color;
+  border-radius: $border-radius;
+  //box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+  padding: 0.5em 1em;
+  background-color: white;
+  margin-top: -10px;
+  max-width: 20em;
+  word-break: break-all;
+
+  // 方向指向尖角基础样式
+  &::before, &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: .65em solid transparent;
+  }
+
+  // 方向指向尖角样式
+  $position-list: 'top', 'bottom', 'left', 'right';
+  @each $name in $position-list {
+    &.position-#{$name} {
+      //noinspection SassScssUnresolvedPlaceholderSelector
+      @extend %position-#{$name}-default;
+
+      &::before, &::after {
+        //noinspection SassScssUnresolvedPlaceholderSelector
+        @extend %position-#{$name}-common;
+      }
+
+      &::before {
+        //noinspection SassScssUnresolvedPlaceholderSelector
+        @extend %position-#{$name}-before;
+      }
+
+      &::after {
+        //noinspection SassScssUnresolvedPlaceholderSelector
+        @extend %position-#{$name}-after;
+      }
+
+    }
+
+  }
+
+
+}
