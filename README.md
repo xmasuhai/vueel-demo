@@ -23,7 +23,7 @@
 - `VuePress 1.x` 编写组件文档
 - `GitHub Actions` [查看此项目`CI/CD`持续集成](https://github.com/xmasuhai/vueel-demo/actions)
   - 自动化单元测试
-  - 自动化部署`Git Pages`
+  - 自动化部署`GitHub Pages`
 
 ## 开始使用
 
@@ -65,6 +65,7 @@ export default {
 - Ant Design Vue
 - Vant UI
 - iView UI
+- Bulma UI
 - 饥人谷的 [Gulu UI](https://github.com/FrankFang/frank-test-1)
 - [轱辘 UI源码](https://github.com/FrankFang/gulu)
 - [Gulu UI for Vue 3](https://github.com/FrankFang/gulu-for-vue3)
@@ -73,6 +74,7 @@ export default {
 
 ## 变更记录
 
+- 添加 图标组件
 - 添加 按钮组件
 - 添加 输入框组件
 - 添加 栅栏组件
@@ -80,6 +82,7 @@ export default {
 - 添加 标签栏组件
 - 添加 弹出框组件
 - 添加 浮动消息组件
+- 添加 手风琴组件
 
 ## 使用 GitHub Actions 测试通过
 
