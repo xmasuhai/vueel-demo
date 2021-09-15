@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAA,aAAc;EACZ,OAAO,EAAE,GAAG",
-"sources": ["src/styles/components/vue-tab-pane.scss"],
+"mappings": "AAAA,YAAa;EACX,MAAM,EAAE,cAAc;EACtB,aAAa,EAAE,GAAG;EAClB,aAAa,EAAE,IAAI;EAGjB,0BAAU;IACR,aAAa,EAAE,cAAc;IAC7B,aAAa,EAAE,GAAG;EAItB,4DAAmC;IACjC,WAAW,EAAE,GAAG;IAChB,YAAY,EAAE,GAAG",
+"sources": ["src/styles/components/vue-detail.scss"],
 "names": [],
 "file": "JSON"
 }

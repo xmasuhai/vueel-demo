@@ -5,7 +5,8 @@
     <section class="content"
              :class="getLayoutClass('content')">
       <keep-alive>
-        <component :is="currentTabComponent"
+        <component :is="currentTabComponentText"
+                   :key="currentTabComponentText"
                    class="vue-tab">
         </component>
       </keep-alive>
@@ -50,7 +51,7 @@ export default class Layout extends Vue {
     this.currentTabText = tabName;
   }
 
-  get currentTabComponent() {
+  get currentTabComponentText() {
     return this.currentTabText;
   }
 

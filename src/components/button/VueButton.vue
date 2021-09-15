@@ -74,7 +74,7 @@ export default class VueButton extends Vue {
     };
   }
 
-  @Watch('isLoading')
+  @Watch('isLoading', {immediate: true})
   onIsLoadingChange(val: boolean) {
     this.isDisabledFake = val;
   }
