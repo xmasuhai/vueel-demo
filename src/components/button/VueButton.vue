@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Emit, Prop, Vue} from 'vue-property-decorator';
+import {Component, Emit, Prop, Vue, Watch} from 'vue-property-decorator';
 import VueIcon from '../icon/VueIcon.vue';
 
 @Component({
@@ -30,6 +30,7 @@ import VueIcon from '../icon/VueIcon.vue';
 })
 export default class VueButton extends Vue {
   name = 'VueButton';
+  isDisabledFake = false;
 
   @Prop({type: Boolean, default: false}) isDisabled!: boolean;
   @Prop({type: Boolean, default: false}) isLoading!: boolean;
@@ -65,11 +66,17 @@ export default class VueButton extends Vue {
     return {
       'vue-button': 'vue-button',
       'is-disabled': this.isDisabled,
+      'is-disabled-fake': this.isDisabledFake,
       'activeHover': !this.isDisabled,
       [`icon-${this.iconPosition}`]: true,
       [`vue-button-${this.colorType}`]: true,
       [`vue-button-size-${this.size}`]: true,
     };
+  }
+
+  @Watch('isLoading')
+  onIsLoadingChange(val: boolean) {
+    this.isDisabledFake = val;
   }
 
   @Emit('click')

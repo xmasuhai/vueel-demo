@@ -1,5 +1,5 @@
 <template>
-  <VueButton>
+  <VueButton size="big" icon="thumbs-up">
     <slot></slot>
   </VueButton>
 </template>

@@ -227,7 +227,7 @@ export default class GridSystems extends Vue {
   }
 
   @Watch('clientWidth')
-  onClientWidthChange(val: string,) {
+  onClientWidthChange(val: string) {
     this.mediaText = val;
   }
 

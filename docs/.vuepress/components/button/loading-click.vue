@@ -1,5 +1,5 @@
 <template>
-  <VueButton size="small" icon="download">
+  <VueButton :isLoading="isLoading" icon="download" @click="isLoading = !isLoading">
     <slot></slot>
   </VueButton>
 </template>
@@ -8,9 +8,14 @@
 import VueButton from '../../../../src/components/button/VueButton.vue'
 
 export default {
-  name: 'small-icon',
+  name: 'loading-click',
   components: {
     VueButton
+  },
+  data() {
+    return {
+      isLoading: false
+    }
   }
 }
 </script>

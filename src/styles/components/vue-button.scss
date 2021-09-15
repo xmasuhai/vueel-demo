@@ -71,6 +71,13 @@
     background: $button-bg;
     color: #000;
 
+    &.is-disabled-fake {
+      color: mix(#000, #FFF);
+      background-color: mix($button-bg, #FFF);
+      border-color: mix($border-color, #FFF);
+      cursor: not-allowed;
+    }
+
     &.is-disabled {
       color: #DDD;
       background-color: mix($button-bg, #FFF);

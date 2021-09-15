@@ -1,5 +1,5 @@
 <template>
-  <VueButton size="small" icon="download">
+  <VueButton :isLoading="true" icon="loading">
     <slot></slot>
   </VueButton>
 </template>
@@ -8,7 +8,7 @@
 import VueButton from '../../../../src/components/button/VueButton.vue'
 
 export default {
-  name: 'small-icon',
+  name: 'loading',
   components: {
     VueButton
   }
