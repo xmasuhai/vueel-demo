@@ -14,20 +14,20 @@
 ## 技术栈
 
 - `Vue.js 2.x`全家桶
-  - 尝试`Vue Composition API`写法
-  - 尝试`vue-property-decorator`装饰器`@`写法
+  - 常规组件使用`vue-property-decorator`装饰器`@`写法
+  - 后续组件使用`Vue Composition API`改写
 - `TypeScript`
   - `@` 装饰器写法 配合 `vue-class-component`
 - `SCSS`
 - `parcel`
 - `VuePress 1.x` 编写组件文档
-- `GitHub Actions` [查看此项目的`CI/CD`持续集成](https://github.com/xmasuhai/vueel-demo/actions)
+- `GitHub Actions` [查看此项目`CI/CD`持续集成](https://github.com/xmasuhai/vueel-demo/actions)
   - 自动化单元测试
   - 自动化部署`Git Pages`
 
 ## 开始使用
 
-### 1.安装
+### 1.安装组件
 
 ```sh
 yarn add vueel-demo
@@ -59,37 +59,13 @@ export default {
 <script src="//at.alicdn.com/t/font_2138557_fmq5zqg2y0j.js"></script>
 ```
 
-## 启动服务 Compiles and hot-reloads for development
+## UI参考
 
-```
-yarn serve
-```
-
-#### 生产构建 Compiles and minifies for production
-
-```
-yarn build
-```
-
-#### 运行测试 Run your unit tests
-
-```
-yarn test:unit
-```
-
-#### 格式化代码 Lints and fixes files
-
-```
-yarn lint
-```
-
-#### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-## 文档
-
-- 本 UI 组件库参考了 饥人谷的 [轱辘 UI](https://github.com/FrankFang/frank-test-1)
+- Eleme UI
+- Ant Design Vue
+- Vant UI
+- iView UI
+- 饥人谷的 [Gulu UI](https://github.com/FrankFang/frank-test-1)
 - [轱辘 UI源码](https://github.com/FrankFang/gulu)
 - [Gulu UI for Vue 3](https://github.com/FrankFang/gulu-for-vue3)
 
@@ -100,6 +76,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - 添加 按钮组件
 - 添加 输入框组件
 - 添加 栅栏组件
+- 添加 布局组件
+- 添加 标签栏组件
+- 添加 弹出框组件
+- 添加 浮动消息组件
 
 ## 使用 GitHub Actions 测试通过
 
