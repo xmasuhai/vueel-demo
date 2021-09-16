@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <span class="center">
     点赞：
     <VueIcon iconName="thumbs-up"></VueIcon>
-  </div>
+  </span>
 </template>
 
 <script>
@@ -13,3 +13,7 @@ export default {
   components: {VueIcon}
 }
 </script>
+
+<style lang="scss" scoped>
+@import './icons.scss';
+</style>

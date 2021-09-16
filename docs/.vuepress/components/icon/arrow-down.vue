@@ -1,8 +1,8 @@
 <template>
-  <div>
-    点赞：
+  <span class="center">
+    下箭头：
     <VueIcon iconName="arrow-down"></VueIcon>
-  </div>
+  </span>
 </template>
 
 <script>
@@ -13,3 +13,7 @@ export default {
   components: {VueIcon}
 }
 </script>
+
+<style lang="scss" scoped>
+@import './icons.scss';
+</style>

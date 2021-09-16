@@ -77,22 +77,16 @@
     }
 
     .vue-input-info {
-      vertical-align: middle;
-      display: inline-block;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       color: $danger;
-      overflow: hidden;
 
       .vue-icon-error {
         fill: $danger;
+        padding: 0 1.2em 0 .5em;
       }
 
-      ::v-deep > .vue-svg {
-        width: 1.35em;
-        height: 1.35em;
-        vertical-align: -20%;
-        margin-right: 0.2em;
-        margin-left: 0.5em;
-      }
     }
   }
 }
