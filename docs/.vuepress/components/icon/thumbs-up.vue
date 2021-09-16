@@ -1,7 +1,8 @@
 <template>
-  <span>
+  <div>
+    点赞：
     <VueIcon iconName="thumbs-up"></VueIcon>
-  </span>
+  </div>
 </template>
 
 <script>

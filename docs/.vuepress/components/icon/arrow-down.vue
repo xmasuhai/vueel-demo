@@ -1,5 +1,6 @@
 <template>
   <div>
+    点赞：
     <VueIcon iconName="arrow-down"></VueIcon>
   </div>
 </template>

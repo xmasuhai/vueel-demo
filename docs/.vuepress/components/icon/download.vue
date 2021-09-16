@@ -1,7 +1,8 @@
 <template>
-  <span>
+  <div>
+    下载：
     <VueIcon iconName="download"></VueIcon>
-  </span>
+  </div>
 </template>
 
 <script>

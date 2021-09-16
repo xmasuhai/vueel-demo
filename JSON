@@ -1,12 +1,32 @@
-.vue-details {
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  margin-bottom: 20px; }
-  .vue-details[open] summary {
-    border-bottom: 1px solid #aaa;
-    margin-bottom: 1em; }
-  .vue-details .vue-summary, .vue-details .vue-details-content {
-    margin-left: 1em;
-    margin-right: 1em; }
+.vue-tab-item {
+  flex-shrink: 0;
+  padding: 0 1em;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* ali iconfont common css */ }
+  .vue-tab-item.active {
+    color: #3ba0e9; }
+  .vue-tab-item.disabled {
+    color: lightgrey;
+    cursor: not-allowed; }
+  .vue-tab-item > .vue-svg {
+    width: 1em;
+    height: 1em;
+    margin: 0 .3em .1em auto;
+    fill: currentColor;
+    overflow: hidden;
+    order: 1; }
+    .vue-tab-item > .vue-svg.-right > .vue-svg {
+      order: 2;
+      margin-left: 0.3em;
+      margin-right: 0;
+      margin-top: 0.1em; }
+    .vue-tab-item > .vue-svg.-right > .content {
+      order: 1; }
+  .vue-tab-item > .text {
+    order: 2; }
 
 /*# sourceMappingURL=JSON.map */

@@ -23,12 +23,12 @@ title: Icon
 图标集：
 
 <icon-settings></icon-settings>
-下载：<icon-download></icon-download>
-加载：<icon-loading></icon-loading>
-右箭头：<icon-right></icon-right>
-左箭头：<icon-left></icon-left>
-下箭头：<icon-arrow-down></icon-arrow-down>
-点赞：<icon-thumbs-up></icon-thumbs-up>
+<icon-download></icon-download>
+<icon-loading></icon-loading>
+<icon-right></icon-right>
+<icon-left></icon-left>
+<icon-arrow-down></icon-arrow-down>
+<icon-thumbs-up></icon-thumbs-up>
 
 </ClientOnly>
 

@@ -1,7 +1,8 @@
 <template>
-  <span>
+  <div>
+    加载：
     <VueIcon iconName="loading"></VueIcon>
-  </span>
+  </div>
 </template>
 
 <script>

@@ -5,7 +5,7 @@
            :data-name="tabName">
     <VueIcon v-if="useIcon"
              :icon-name="iconName"
-             class="vue-icon"/>
+             class="vue-svg"/>
     <div class="text">
       <slot></slot>
     </div>

@@ -19,7 +19,7 @@
 
   // Icon
   /* ali iconfont common css */
-  > .vue-icon {
+  > .vue-svg {
     width: 1em;
     height: 1em;
     margin: 0 .3em .1em auto;
@@ -28,7 +28,7 @@
     order: 1;
 
     &.-right {
-      > .vue-icon {
+      > .vue-svg {
         order: 2;
         margin-left: 0.3em;
         margin-right: 0;

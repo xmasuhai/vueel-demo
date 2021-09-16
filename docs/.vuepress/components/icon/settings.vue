@@ -1,5 +1,5 @@
 <template>
-  <div class="settings">
+  <div>
     设置：
     <VueIcon iconName="settings"></VueIcon>
   </div>
@@ -13,10 +13,3 @@ export default {
   components: {VueIcon}
 }
 </script>
-
-<style lang="scss" scoped>
-.settings {
-  display: inline;
-  line-height: 1em;
-}
-</style>

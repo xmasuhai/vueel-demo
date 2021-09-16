@@ -1,7 +1,8 @@
 <template>
-  <span>
+  <div>
+    右箭头：
     <VueIcon iconName="right"></VueIcon>
-  </span>
+  </div>
 </template>
 
 <script>
