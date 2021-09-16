@@ -6,7 +6,7 @@ heroText: Vueel UI
 pageClass: custom-homepage-class
 tagline: 一个基于Vue2.6的UI组件库
 actionText: 少啰嗦，先看组件 →
-actionLink: /components-docs/button.md
+actionLink: /components-docs/icon.md
 features:
 - title: 包含常用组件
   details: 小巧，五脏俱全，可按需导入

@@ -1,4 +1,4 @@
-const {fs, path} = require('@vuepress/shared-utils');
+const {fs, path} = require('@vuepress/shared-utils')
 module.exports = (/*ctx*/) => ({
   title: 'Vueel UI',
   description: '基于 Vue2.6 的UI',
@@ -48,12 +48,12 @@ module.exports = (/*ctx*/) => ({
         initialOpenGroupIndex: -1,
         children: [
           {
-            title: 'Button',
-            path: '/components-docs/button.md',
-          },
-          {
             title: 'Icon',
             path: '/components-docs/icon.md',
+          },
+          {
+            title: 'Button',
+            path: '/components-docs/button.md',
           },
           {
             title: 'Input',
