@@ -107,6 +107,7 @@ export default {
   VueFooter,
   VueHeader,
   VueToast,
+  toastPlugin,
   VueTab,
   VueTabNav,
   VueTabItem,

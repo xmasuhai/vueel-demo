@@ -1,6 +1,6 @@
 import Toast from './VueToast.vue';
 import {VNode} from 'vue';
-import {VueToast, VueToastOptions} from '@/types/VueToast';
+import {VueToast, VueToastOptions} from '../../types/VueToast.d';
 
 let currentToast: VueToast | null;
 let opt: {};
