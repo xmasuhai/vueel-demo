@@ -20,8 +20,8 @@ title: Icon
 
 <ClientOnly>
 
-图标集：
-
+<h4>图标集：</h4>
+<hr>
 <icon-settings></icon-settings>
 <icon-download></icon-download>
 <icon-loading></icon-loading>
@@ -41,6 +41,10 @@ title: Icon
 <VueIcon iconName="thumbs-up"></VueIcon>
 ```
 
-## 参数列表
+## 属性列表
+
+| 参数       |  说明   | 类型 | 可选值 | 默认值 |
+| --------- |:----------:|:------:|:-----:|-----:|
+| iconName      |  图标种类 | string  |  settings/download/loading/right/left/arrow-down/thumbs-up | `''` |
 
 ## 示例应用 Demo Combo
