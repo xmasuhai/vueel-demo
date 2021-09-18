@@ -5,7 +5,7 @@
         <span class="vue-label-name">{{ labelName }}</span>
         <input type="text"
                :name="labelName"
-               :value="value"
+               :value="readonly ? placeholder : value"
                :placeholder="placeholder"
                :disabled="disabled"
                :readonly="readonly"

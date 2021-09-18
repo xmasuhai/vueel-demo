@@ -1,4 +1,4 @@
-.grid::v-deep > .vue-row {
-  margin-bottom: 10px; }
+.input::v-deep .vue-input-wrapper {
+  display: flex; }
 
 /*# sourceMappingURL=JSON.map */
