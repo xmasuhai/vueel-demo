@@ -21,7 +21,7 @@
           <VueCol>25%</VueCol>
         </VueRow>
       </VueDetail>
-      <VueDetail summaryString="Different Span">
+      <VueDetail summaryString="Uneven Span">
         <VueRow>
           <VueCol :span="2">1/12</VueCol>
           <VueCol :span="22">11/12</VueCol>
@@ -39,7 +39,7 @@
           <VueCol :span="16">2/3</VueCol>
         </VueRow>
       </VueDetail>
-      <VueDetail summaryString="gutter 间隔">
+      <VueDetail summaryString="With Gutter 间隔">
         <summary>gutter</summary>
         <VueRow :gutter="20">
           <VueCol :span="4">1/12</VueCol>
@@ -61,7 +61,7 @@
           <VueCol>1/4</VueCol>
         </VueRow>
       </VueDetail>
-      <VueDetail summaryString="align 对齐">
+      <VueDetail summaryString="Align 对齐">
         <VueRow :gutter="20">
           <VueCol :span="9">
             <VueRow align="left">
@@ -93,7 +93,7 @@
           <VueCol :span="6">Aside</VueCol>
         </VueRow>
       </VueDetail>
-      <VueDetail summaryString="offset 偏移">
+      <VueDetail summaryString="Offset 偏移">
         <VueRow>
           <VueCol :span="2">1/12</VueCol>
           <VueCol :span="20" :offset="2">5/6 offset_2</VueCol>

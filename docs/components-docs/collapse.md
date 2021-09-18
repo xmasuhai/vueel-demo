@@ -92,5 +92,6 @@ title: Collapse
 | isDisabled |  是否禁用 | boolean  |  true/false | false |
 | title      |  项目标题 | string  |  任意字符串 | '' |
 
+---
 
 ## 示例应用 Demo Combo

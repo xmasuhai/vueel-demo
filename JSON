@@ -1,8 +1,4 @@
-.center {
-  display: inline-flex;
-  align-items: center; }
-  .center::v-deep .vue-icon-wrapper {
-    padding-top: .1em;
-    margin-right: 1em; }
+.grid::v-deep > .vue-row {
+  margin-bottom: 10px; }
 
 /*# sourceMappingURL=JSON.map */

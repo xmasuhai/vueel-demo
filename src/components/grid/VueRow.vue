@@ -27,7 +27,8 @@ import VueCol from './VueCol.vue';
 })
 export default class VueRow extends Vue {
   name = 'VueRow';
-  @Prop({type: Array, default() {return [];}}) colData!: Record<string, any>;
+
+  @Prop({type: Array, default() {return [];}}) colData!: Record<string, unknown>;
   @Prop({
     type: [Number, String],
   }) gutter!: number | string;

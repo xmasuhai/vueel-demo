@@ -1,0 +1,5 @@
+.grid::v-deep {
+  > .vue-row {
+    margin-bottom: 10px;
+  }
+}
