@@ -28,6 +28,7 @@ import VuePopover from './components/popover/VuePopover.vue';
 import VueCollapse from './components/collapse/VueCollapse.vue';
 import VueCodePresentation from './components/code-presentation/VueCodePresentation.vue';
 import VueDetail from './components/code-presentation/VueDetail.vue';
+import VueSwitch from './components/switch/VueSwitch.vue';
 
 Vue.use(VueCompositionAPI);
 
@@ -53,6 +54,7 @@ Vue.component('v-tab-content', VueTabContent);
 Vue.component('v-tab-pane', VueTabPane);
 Vue.component('v-popover', VuePopover);
 Vue.component('v-collapse', VueCollapse);
+Vue.component('v-switch', VueSwitch);
 Vue.component('v-detail', VueDetail);
 Vue.component('v-code-presentation', VueCodePresentation);
 
@@ -79,16 +81,21 @@ const components = [
   VuePopover,
   VueCollapse,
   VueCodePresentation,
-  VueDetail
+  VueDetail,
+  VueSwitch
 ];
 
-const install = (Vue: any, opts = {}) => {
+const install = (Vue: Vue, /*opts = {}*/) => {
   components.forEach(component => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
     Vue.component(component.name, component);
   });
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
   install(window.Vue);
 }
 
@@ -116,7 +123,8 @@ export default {
   VuePopover,
   VueCollapse,
   VueCodePresentation,
-  VueDetail
+  VueDetail,
+  VueSwitch
 };
 
 Vue.config.productionTip = false;

@@ -25,6 +25,7 @@ import ToastsTips from '../components/ToastsTips.vue';
 import Tabs from '../components/Tabs.vue';
 import Popovers from '../components/Popovers.vue';
 import Collapses from '../components/Collapses.vue';
+import Switches from '../components/Switches.vue';
 
 @Component({
   components: {
@@ -36,12 +37,13 @@ import Collapses from '../components/Collapses.vue';
     Nav,
     Tabs,
     Popovers,
-    Collapses
+    Collapses,
+    Switches
   }
 })
 export default class Layout extends Vue {
   name = 'Layout';
-  currentTabText = 'Collapses';
+  currentTabText = 'Switches';
   layoutType = '';
 
   // 由动态外部参数 获取 类样式
