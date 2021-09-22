@@ -32,7 +32,7 @@
       <VueDetail summaryString="Tabs 提供 可选的 右侧附带按钮">
         <VueTab :selected.sync="selectedTab">
           <VueTabNav>
-            <template slot="actions">
+            <template v-slot:vue-actions>
               <VueButton>额外的按钮</VueButton>
             </template>
             <VueTabItem tabName="tab1">Tab1</VueTabItem>
