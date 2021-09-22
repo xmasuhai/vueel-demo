@@ -101,7 +101,7 @@ export default class VuePopover extends Vue {
     // 获取 popover元素 height
     const {height: popHeight} = (contentWrapper as HTMLElement)
       .getBoundingClientRect();
-
+    (contentWrapper as HTMLElement).style.zIndex = '999';
     // 表驱动编程
     const positionList = {
       'position-top': {
