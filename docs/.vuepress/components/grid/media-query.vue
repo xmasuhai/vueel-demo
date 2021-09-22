@@ -66,10 +66,28 @@ import VueCol from '../../../../src/components/grid/VueCol.vue'
 
 export default {
   name: 'media-query',
+  data() {
+    return {
+      clientWidth: document.body.clientWidth.toString(),
+      mediaText: '',
+      colData: [{span: 12}, {span: 12}]
+    }
+  },
   components: {
     VueRow,
     VueCol
+  },
+  watch: {
+    clientWidth(val) {
+      this.mediaText = val
+    }
+  },
+  methods: {
+    getDymClientWidth(value) {
+      this.clientWidth = value
+    }
   }
+
 }
 </script>
 

@@ -1,0 +1,32 @@
+.demo {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  flex-grow: 1;
+  color: #fff;
+  width: 100%;
+
+  &:nth-child(odd) {
+    background-color: #3D8FEE;
+  }
+
+  &:nth-child(even) {
+    background-color: #7CB8FF;
+  }
+
+  &.vue-aside {
+    background-color: #3ba0e9;
+  }
+
+  &.vue-container {
+    flex-grow: 2;
+    background-color: #108ee9;
+  }
+
+  &.vue-header, &.vue-footer {
+    background-color: #7dbcea;
+  }
+
+}

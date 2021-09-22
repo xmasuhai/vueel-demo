@@ -1,5 +1,7 @@
 <template>
-  <main class="vue-main" :class="flexCToR" :style="colToRowStyle">
+  <main class="vue-main"
+        :class="flexCToR"
+        :style="colToRowStyle">
     <slot></slot>
   </main>
 </template>
@@ -12,6 +14,5 @@ import AsideColToRow from '../../mixins/AsideColToRow';
 @Component
 export default class VueMain extends mixins(AsideColToRow) {
   name = 'VueMain';
-  componentName = 'VueMain';
 }
 </script>
