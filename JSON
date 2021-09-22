@@ -1,22 +1,5 @@
-.demo {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  vertical-align: middle;
-  flex-grow: 1;
-  color: #fff;
-  width: 100%; }
-  .demo:nth-child(odd) {
-    background-color: #3D8FEE; }
-  .demo:nth-child(even) {
-    background-color: #7CB8FF; }
-  .demo.vue-aside {
-    background-color: #3ba0e9; }
-  .demo.vue-container {
-    flex-grow: 2;
-    background-color: #108ee9; }
-  .demo.vue-header, .demo.vue-footer {
-    background-color: #7dbcea; }
+::v-deep .vue-popover {
+  margin-top: 50px;
+  margin-right: 20px; }
 
 /*# sourceMappingURL=JSON.map */
