@@ -1,5 +1,6 @@
-const {fs, path} = require('@vuepress/shared-utils')
-module.exports = (/*ctx*/) => ({
+// const {fs, path} = require('@vuepress/shared-utils')
+const path = require('path')
+module.exports = (/*options, context*/) => ({
   title: 'Vueel UI',
   description: '基于 Vue2.6 的UI',
   head: [
@@ -121,4 +122,12 @@ module.exports = (/*ctx*/) => ({
   ],
   // serviceWorker: true,
   evergreen: true, // 不支持IE
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '../../src/'),
+        '@comp': path.resolve(__dirname, '../../src/components/'),
+      }
+    }
+  }
 })

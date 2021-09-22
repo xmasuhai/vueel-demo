@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import VueInput from '../../../../src/components/input/VueInput.vue';
+import VueInput from '@/components/input/VueInput.vue';
 
 export default {
   name: 'normal',

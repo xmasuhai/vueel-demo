@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import VuePopover from '../../../../src/components/popover/VuePopover.vue'
-import VueButton from '../../../../src/components/button/VueButton.vue'
+import VuePopover from '@/components/popover/VuePopover.vue'
+import VueButton from '@/components/button/VueButton.vue'
 export default {
   name: 'right',
   components: {

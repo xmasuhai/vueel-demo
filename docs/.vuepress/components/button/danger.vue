@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import VueButton from '../../../../src/components/button/VueButton.vue';
+import VueButton from '@/components/button/VueButton.vue';
 
 export default {
   name: 'danger',

@@ -14,11 +14,11 @@
 </template>
 
 <script>
-import VueTab from '../../../../src/components/tabs/VueTab.vue';
-import VueTabNav from '../../../../src/components/tabs/VueTabNav.vue';
-import VueTabItem from '../../../../src/components/tabs/VueTabItem.vue';
-import VueTabContent from '../../../../src/components/tabs/VueTabContent.vue';
-import VueTabPane from '../../../../src/components/tabs/VueTabPane.vue';
+import VueTab from '@/components/tabs/VueTab.vue';
+import VueTabNav from '@/components/tabs/VueTabNav.vue';
+import VueTabItem from '@/components/tabs/VueTabItem.vue';
+import VueTabContent from '@/components/tabs/VueTabContent.vue';
+import VueTabPane from '@/components/tabs/VueTabPane.vue';
 
 export default {
   name: 'disable',

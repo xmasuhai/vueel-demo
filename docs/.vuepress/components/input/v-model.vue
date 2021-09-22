@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import VueInput from '../../../../src/components/input/VueInput.vue'
-import VueButton from '../../../../src/components/button/VueButton.vue'
+import VueInput from '@/components/input/VueInput.vue'
+import VueButton from '@/components/button/VueButton.vue'
 
 export default {
   name: 'v-model',

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import VueIcon from '../../../../src/components/icon/VueIcon.vue'
+import VueIcon from '@/components/icon/VueIcon.vue'
 
 export default {
   name: 'arrow-down',

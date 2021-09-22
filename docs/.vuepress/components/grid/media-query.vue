@@ -61,8 +61,8 @@
 </template>
 
 <script>
-import VueRow from '../../../../src/components/grid/VueRow.vue'
-import VueCol from '../../../../src/components/grid/VueCol.vue'
+import VueRow from '@/components/grid/VueRow.vue'
+import VueCol from '@/components/grid/VueCol.vue'
 
 export default {
   name: 'media-query',

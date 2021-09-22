@@ -18,7 +18,7 @@
           <vue-footer class="demo">Footer</vue-footer>
         </vue-main>
       </VueDetail>
-      <VueDetail summaryString="三栏布局 中栏 有侧菜单栏">
+      <VueDetail summaryString="三栏布局 中栏 右侧菜单栏">
         <vue-main style="height: 20vh;">
           <vue-header class="demo">Header</vue-header>
           <vue-container class="demo">

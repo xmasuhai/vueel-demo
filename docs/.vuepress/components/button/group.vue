@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import VueButton from '../../../../src/components/button/VueButton.vue'
-import VueButtonGroup from '../../../../src/components/button/VueButtonGroup'
+import VueButton from '@/components/button/VueButton.vue'
+import VueButtonGroup from '@/components/button/VueButtonGroup'
 
 export default {
   name: 'group',
