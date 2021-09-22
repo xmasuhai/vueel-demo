@@ -112,6 +112,24 @@ title: Button
 </VueButton>
 ```
 
+### 按钮组
+
+---
+
+<ClientOnly>
+
+<button-group></button-group>
+
+</ClientOnly>
+
+```vue
+<VueButtonGroup>
+  <VueButton>1</VueButton>
+  <VueButton>2</VueButton>
+  <VueButton>3</VueButton>
+</VueButtonGroup>
+```
+
 ---
 
 ## 属性列表 Attributes Props

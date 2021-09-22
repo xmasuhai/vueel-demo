@@ -1,6 +1,10 @@
 <template>
   <VueButtonGroup>
-    <VueButton>
+    <VueButton>1
+    </VueButton>
+    <VueButton>2
+    </VueButton>
+    <VueButton>3
     </VueButton>
   </VueButtonGroup>
 </template>
