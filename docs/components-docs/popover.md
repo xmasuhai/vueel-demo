@@ -56,13 +56,16 @@ title: Popover
 
 ---
 
-### popover上浮
+### popover弹出方向
 
 ---
 
 <ClientOnly>
 
 <popover-up></popover-up>
+<popover-down></popover-down>
+<popover-left></popover-left>
+<popover-right></popover-right>
 
 </ClientOnly>
 
@@ -73,68 +76,26 @@ title: Popover
   </template>
   <VueButton>上浮</VueButton>
 </VuePopover>
-```
 
----
-
-### popover下浮
-
----
-
-<ClientOnly>
-
-<popover-down></popover-down>
-
-</ClientOnly>
-
-```vue
 <VuePopover position="bottom">
-  <template #content>
-    <div>popover下</div>
-  </template>
-  <VueButton>下浮</VueButton>
-</VuePopover>
-```
+<template #content>
+  <div>popover下</div>
+</template>
+<VueButton>下浮</VueButton>
+</VuePopover>.
 
----
-
-### popover左浮
-
----
-
-<ClientOnly>
-
-<popover-left></popover-left>
-
-</ClientOnly>
-
-```vue
 <VuePopover position="left">
-  <template #content>
-    <div>popover左</div>
-  </template>
-  <VueButton>左浮</VueButton>
+<template #content>
+  <div>popover左</div>
+</template>
+<VueButton>左浮</VueButton>
 </VuePopover>
-```
 
----
-
-### popover右浮
-
----
-
-<ClientOnly>
-
-<popover-right></popover-right>
-
-</ClientOnly>
-
-```vue
 <VuePopover position="right">
-  <template #content>
-    <div>popover右</div>
-  </template>
-  <VueButton>右浮</VueButton>
+<template #content>
+  <div>popover右</div>
+</template>
+<VueButton>右浮</VueButton>
 </VuePopover>
 ```
 
@@ -187,6 +148,8 @@ title: Popover
 
 | 参数       |  说明   | 类型 | 可选值 | 默认值 |
 | --------- |:----------:|:------:|:-----:|-----:|
-| isLoading      |  加载中状态 | boolean  |  true/false | false |
+| autoCloseDelay |  自动关闭延迟 | false/number  |  false/- | 580 |
+| position       |  位置 | string  |  top/bottom/left/right | top |
+| trigger        |  事件触发类型 | string  |  hover/click | hover |
 
 ## 示例应用 Demo Combo
