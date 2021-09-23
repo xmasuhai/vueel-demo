@@ -4,7 +4,7 @@
   </VueButton>
 </template>
 
-<script>
+<script lang="ts">
 import VueButton from '@/components/button/VueButton.vue'
 
 export default {
