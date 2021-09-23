@@ -47,6 +47,11 @@ export default class VuePopover extends Vue {
       return ['hover', 'click'].includes(value);
     }
   }) trigger!: 'hover' | 'click';
+  @Prop({
+    type: Number,
+    default: 999,
+    required: false
+  }) zIndex!: number;
 
   clearTimer() {
     clearTimeout(this.timer || undefined);
@@ -101,7 +106,7 @@ export default class VuePopover extends Vue {
     // 获取 popover元素 height
     const {height: popHeight} = (contentWrapper as HTMLElement)
       .getBoundingClientRect();
-    (contentWrapper as HTMLElement).style.zIndex = '999';
+    (contentWrapper as HTMLElement).style.zIndex = `${this.zIndex}`;
     // 表驱动编程
     const positionList = {
       'position-top': {
