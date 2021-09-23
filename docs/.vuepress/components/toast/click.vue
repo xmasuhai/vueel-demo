@@ -1,24 +1,25 @@
 <template>
-  <VueButton @click="kakka">点击出现提示框</VueButton>
+  <VueButton @click="showToast">点击出现提示框</VueButton>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import toastPlugin from '../../../../src/components/toast/toastPlugin';
+import toastPlugin from '@/components/toast/toastPlugin';
 import VueButton from '@/components/button/VueButton.vue';
-import {kaKa} from './kaka';
-Vue.use(toastPlugin)
+import VueToast from '@/components/toast/VueToast.vue';
+
+Vue.use(toastPlugin);
+const vv = new Vue();
 
 export default {
   name: 'click',
-  components: {VueButton},
+  components: {VueButton, VueToast},
   methods: {
-    kakka() {
-      kaKa()
-    },
     showToast() {
-      // this.$toast('我是一个VueToast组件');
+      console.log('-> toastPlugin', toastPlugin);
+      console.log('-> vv.$toast', vv.$toast);
+      vv.$toast('我有消息');
     }
   }
-}
+};
 </script>

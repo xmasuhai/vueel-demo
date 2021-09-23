@@ -2,7 +2,8 @@
   <transition :name="fadeAnimationName" @after-leave="handleAfterLeave">
     <div class="vue-toast-wrapper"
          :class="toastPosition"
-         v-show="visible">
+         v-show="visible"
+         ref="toastWrapper">
       <div class="vue-toast"
            :style="positionOffsetStyle"
            ref="toast"
@@ -58,6 +59,11 @@ export default class VueToast extends Vue {
       return undefined;
     }
   }) closeButton: closeButton | undefined;
+  @Prop({
+    type: Number,
+    default: 999,
+    required: false
+  }) zIndex!: number;
 
   onClickCloseButton() {
     this.isClosed = true;
@@ -141,6 +147,7 @@ export default class VueToast extends Vue {
   // 异步 得到渲染后的父元素高度
   @Ref() readonly line!: HTMLElement;
   @Ref() readonly toast!: HTMLElement;
+  @Ref() readonly toastWrapper!: HTMLElement;
 
   getRenderedHeight() {
     this.$nextTick(() => {
@@ -148,6 +155,8 @@ export default class VueToast extends Vue {
         this.toast.style.height =
           `${this.toast.getBoundingClientRect().height}px`;
       }
+      console.log(this.toastWrapper);
+      this.toastWrapper.style.zIndex = this.zIndex.toString();
     });
   }
 
