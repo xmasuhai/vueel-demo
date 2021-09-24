@@ -16,7 +16,14 @@ export default {
   components: {VueButton, VueToast},
   methods: {
     showToast() {
-      this.$toast('我有消息');
+      this.$toast('我是一个VueToast组件', {
+        propsData: {
+          autoCloseDelay: false,
+          closeButton: {
+            text: '手动关闭'
+          }
+        }
+      });
     }
   }
 };

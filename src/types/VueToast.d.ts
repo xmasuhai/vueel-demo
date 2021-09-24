@@ -4,7 +4,8 @@ import Vue from 'vue';
 export declare class VueToast extends Vue {
   /** Close the Loading instance */
   close(): void;
-  $toast: ToastCallBack
+
+  $toast: ToastCallBack;
   // popUpToast(): void;
 }
 
@@ -19,23 +20,6 @@ interface ToastPosType {
   bottom: string;
 }
 
-/** Options used in Message */
-export interface VueToastOptions {
-  /** Callback function when closed with the message instance as the parameter */
-  onClose?: CloseEventHandler;
-  data?: {} | (() => ({}));
-  propsData: {
-    enableEscapeKey?: boolean;
-    enableUnsafeHTML?: boolean;
-    autoCloseDelay?: false | number;
-    position?: keyof ToastPosType;
-    closeButton?: {
-      text: string;
-      callback?: ((toast: VueToast) => void) | undefined;
-    };
-  };
-}
-
 export interface CloseEventHandler {
   /**
    * Triggers when a message is being closed
@@ -45,8 +29,25 @@ export interface CloseEventHandler {
   (instance: VueToast): void;
 }
 
+/** Options used in Message */
+export interface VueToastOptions {
+  /** Callback function when closed with the message instance as the parameter */
+  onClose?: CloseEventHandler;
+  data?: {} | (() => ({}));
+  propsData: {
+    autoCloseDelay?: false | number;
+    enableEscapeKey?: boolean;
+    enableUnsafeHTML?: boolean;
+    position?: keyof ToastPosType;
+    closeButton?: {
+      text: string;
+      callback?: ((toast: VueToast) => void) | undefined;
+    };
+  };
+}
+
 export interface ToastCallBack {
-  (text: string, options?: VueToastOptions): void;
+  (text: string, options?: Record<VueToastOptions>): void;
 
 }
 

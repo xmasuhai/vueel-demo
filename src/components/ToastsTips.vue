@@ -72,7 +72,7 @@ export default class ToastsTips extends Vue {
   }
 
   showToast1() {
-    this.$toast('我是一个VueToast组件我是一个VueToast组件我是一个VueToast组件我是一个VueToast组件我是一个VueToast组件', {
+    this.$toast('我是一个VueToast组件我是一个VueToast组件', {
       propsData: {
         autoCloseDelay: false,
         closeButton: {

@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <VueButton @click="showToast">点击出现提示框</VueButton>
 </template>
 
 <script lang="ts">
@@ -12,7 +12,12 @@ import '@/types/VueToast.d';
 Vue.use(toastPlugin);
 
 export default {
-  name: 'normal'
+  name: 'normal',
+  methods: {
+    showToast() {
+      this.$toast('我是一个VueToast组件');
+    }
+  }
 }
 </script>
 

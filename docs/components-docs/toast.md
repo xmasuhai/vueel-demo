@@ -52,6 +52,8 @@ title: Toast
 
 <ClientOnly>
 
+<toast-callback></toast-callback>
+
 </ClientOnly>
 
 ```vue

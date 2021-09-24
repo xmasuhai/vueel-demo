@@ -2,7 +2,6 @@
   <VueButton @click="showToast">点击出现提示框</VueButton>
 </template>
 
-
 <script lang="ts">
 import Vue from 'vue';
 import toastPlugin from '@/components/toast/toastPlugin';
@@ -13,10 +12,10 @@ import '@/types/VueToast.d';
 Vue.use(toastPlugin);
 
 export default {
-  name: 'long-string',
+  name: 'unique',
   methods: {
     showToast() {
-      this.$toast('我是一个VueToast组件');
+      this.$toast(`你的智商目前为 ${Math.round(Math.random() * 100)}， 需要充值`);
     }
   }
 }
