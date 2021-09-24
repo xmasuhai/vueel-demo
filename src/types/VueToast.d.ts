@@ -47,8 +47,7 @@ export interface CloseEventHandler {
 }
 
 export interface ToastCallBack {
-  fn: (text: string) => void;
-  fn: (text: string, options: VueToastOptions) => void;
+  (text: string, options?: VueToastOptions): void;
 
 }
 
@@ -60,6 +59,6 @@ declare module 'vue/types/vue' {
      * is that the latter is often
      * used to show a system level passive notification.
      * */
-    $toast: ToastCallBack.fn;
+    $toast: ToastCallBack;
   }
 }

@@ -7,18 +7,16 @@ import Vue from 'vue';
 import toastPlugin from '@/components/toast/toastPlugin';
 import VueButton from '@/components/button/VueButton.vue';
 import VueToast from '@/components/toast/VueToast.vue';
+import '@/types/VueToast.d';
 
 Vue.use(toastPlugin);
-const vv = new Vue();
 
 export default {
   name: 'click',
   components: {VueButton, VueToast},
   methods: {
     showToast() {
-      console.log('-> toastPlugin', toastPlugin);
-      console.log('-> vv.$toast', vv.$toast);
-      vv.$toast('我有消息');
+      this.$toast('我有消息');
     }
   }
 };
