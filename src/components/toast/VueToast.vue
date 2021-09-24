@@ -1,5 +1,6 @@
 <template>
-  <transition :name="fadeAnimationName" @after-leave="handleAfterLeave">
+  <transition :name="fadeAnimationName"
+              @after-leave="handleAfterLeave">
     <div class="vue-toast-wrapper"
          :class="toastPosition"
          v-show="visible"
@@ -10,13 +11,14 @@
            v-on="{mouseenter: clearTimer, mouseleave: startTimer}">
         <div class="vue-message">
           <slot v-if="!enableUnsafeHTML">{{ message }}</slot>
-          <div v-else v-html="ifSlots/*$slots.default[0]*/"></div>
+          <div v-else v-html="ifSlots"></div>
         </div>
         <template v-if="closeButton">
           <div ref="line" class="vue-tab-line"></div>
-          <span class="vue-close-button" @click="onClickCloseButton">
+          <div class="vue-close-button"
+               @click="onClickCloseButton">
             {{ closeButton.text }}
-        </span>
+          </div>
         </template>
       </div>
     </div>
@@ -155,7 +157,6 @@ export default class VueToast extends Vue {
         this.toast.style.height =
           `${this.toast.getBoundingClientRect().height}px`;
       }
-      console.log(this.toastWrapper);
       this.toastWrapper.style.zIndex = this.zIndex.toString();
     });
   }
@@ -169,6 +170,7 @@ export default class VueToast extends Vue {
     }
   }
 
+  // 计算HTML节点
   get ifSlots() {
     return (this.$slots.default ? this.$slots.default[0] : this.message);
   }

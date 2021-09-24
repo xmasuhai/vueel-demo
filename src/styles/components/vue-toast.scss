@@ -96,6 +96,10 @@
   }
 
   .vue-close-button {
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
     padding-left: 16px;
     min-width: 40px;
     flex-shrink: 0;
