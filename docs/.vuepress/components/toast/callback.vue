@@ -1,20 +1,20 @@
 <template>
-  <VueButton @click="popUpToasts" ref="button">点击出现提示框</VueButton>
+  <div>
+    <VueButton @click="popUpToasts" ref="button">点击出现提示框</VueButton>
+  </div>
 </template>
-
 
 <script lang="ts">
 import Vue from 'vue';
 import toastPlugin from '@/components/toast/toastPlugin';
 import VueButton from '@/components/button/VueButton.vue';
-import VueToast from '@/components/toast/VueToast.vue';
-import '@/types/VueToast.d';
 import {VueToast as VueToastType} from '../../../../src/types/VueToast';
 
 Vue.use(toastPlugin);
 
 export default {
   name: 'callback',
+  components: {VueButton},
   methods: {
     popUpToasts() {
       this.$toast('我是一个VueToast组件，关闭我就执行一个回调', {
@@ -36,5 +36,5 @@ export default {
       });
     }
   }
-}
+};
 </script>
