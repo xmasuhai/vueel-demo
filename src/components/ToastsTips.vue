@@ -46,11 +46,12 @@ import {Component, Vue} from 'vue-property-decorator';
 import VueToast from './toast/VueToast.vue';
 import VueButton from './button/VueButton.vue';
 import toastPlugin from './toast/toastPlugin';
-import {ToastPosType} from '@/types/VueToast';
+import {ToastPosType, VueToast as VueToastType} from '@/types/VueToast';
 import VueDetail from '@/components/code-presentation/VueDetail.vue';
 import VueCodePresentation from '@/components/code-presentation/VueCodePresentation.vue';
 
 Vue.use(toastPlugin);
+
 @Component({
   components: {
     VueToast,
@@ -98,7 +99,7 @@ export default class ToastsTips extends Vue {
         autoCloseDelay: false,
         closeButton: {
           text: '手动关闭',
-          callback(toast: VueToast) {
+          callback(toast: VueToastType) {
             toast.close();
             toast.$toast('关闭后，执行了一个回调', {
               propsData: {
@@ -122,7 +123,7 @@ export default class ToastsTips extends Vue {
         enableUnsafeHTML: true,
         closeButton: {
           text: '手动关闭',
-          callback(toast: VueToast) {
+          callback(toast: VueToastType) {
             toast.close();
           }
         }
@@ -140,7 +141,7 @@ export default class ToastsTips extends Vue {
         enableUnsafeHTML: true,
         closeButton: {
           text: '手动关闭',
-          callback(toast: VueToast) {
+          callback(toast: VueToastType) {
             toast.close();
           }
         }
@@ -161,7 +162,7 @@ export default class ToastsTips extends Vue {
         enableUnsafeHTML: true,
         closeButton: {
           text: '已充值',
-          callback(toast: VueToast) {
+          callback(toast: VueToastType) {
             toast.close();
           }
         }

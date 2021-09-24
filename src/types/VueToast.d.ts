@@ -4,7 +4,7 @@ import Vue from 'vue';
 export declare class VueToast extends Vue {
   /** Close the Loading instance */
   close(): void;
-
+  $toast: ToastCallBack
   // popUpToast(): void;
 }
 
@@ -25,16 +25,15 @@ export interface VueToastOptions {
   onClose?: CloseEventHandler;
   data?: {} | (() => ({}));
   propsData: {
-    enableEscapeKey: boolean;
-    enableUnsafeHTML: boolean;
-    autoCloseDelay: false | number;
-    position: keyof ToastPosType;
-    closeButton: {
+    enableEscapeKey?: boolean;
+    enableUnsafeHTML?: boolean;
+    autoCloseDelay?: false | number;
+    position?: keyof ToastPosType;
+    closeButton?: {
       text: string;
-      callback: ((toast: VueToast) => void) | undefined;
+      callback?: ((toast: VueToast) => void) | undefined;
     };
   };
-
 }
 
 export interface CloseEventHandler {

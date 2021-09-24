@@ -20,7 +20,7 @@ title: Toast
 
 <ClientOnly>
 
-<toast-click></toast-click>
+<toast-normal></toast-normal>
 
 </ClientOnly>
 
@@ -35,6 +35,8 @@ title: Toast
 ---
 
 <ClientOnly>
+
+<toast-click></toast-click>
 
 </ClientOnly>
 
