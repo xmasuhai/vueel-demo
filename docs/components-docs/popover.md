@@ -24,6 +24,7 @@ title: Popover
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VuePopover trigger="click">
   <template #content>
@@ -32,6 +33,7 @@ title: Popover
   <VueButton>鼠标点击触发popover</VueButton>
 </VuePopover>
 ```
+:::
 
 ---
 
@@ -45,6 +47,7 @@ title: Popover
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VuePopover trigger="hover">
   <template #content>
@@ -53,6 +56,7 @@ title: Popover
   <VueButton>鼠标悬停触发popover</VueButton>
 </VuePopover>
 ```
+:::
 
 ---
 
@@ -69,6 +73,7 @@ title: Popover
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VuePopover>
   <template #content>
@@ -98,6 +103,7 @@ title: Popover
 <VueButton>右浮</VueButton>
 </VuePopover>
 ```
+:::
 
 ---
 
@@ -111,6 +117,7 @@ title: Popover
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VuePopover style="margin-top: 0;">
   <template #content>
@@ -119,6 +126,7 @@ title: Popover
   <VueButton>显示多行文字提示</VueButton>
 </VuePopover>
 ```
+:::
 
 ---
 
@@ -132,6 +140,7 @@ title: Popover
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VuePopover trigger="hover">
   <template #content="{closeEvent}">
@@ -141,6 +150,7 @@ title: Popover
   <VueButton>提供slot事件回调closeEvent</VueButton>
 </VuePopover>
 ```
+:::
 
 ---
 

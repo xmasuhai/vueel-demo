@@ -1,10 +1,9 @@
 <template>
   <VueButtonGroup>
-    <VueButton>1
-    </VueButton>
-    <VueButton>2
-    </VueButton>
-    <VueButton>3
+    <VueButton icon="left">上一页</VueButton>
+    <VueButton icon="settings">更多</VueButton>
+    <VueButton icon="right"
+               icon-position="right">下一页
     </VueButton>
   </VueButtonGroup>
 </template>

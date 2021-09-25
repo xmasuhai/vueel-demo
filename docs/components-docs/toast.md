@@ -24,6 +24,7 @@ title: Toast
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <template>
   <VueButton @click="showToast">点击出现提示框</VueButton>
@@ -48,6 +49,7 @@ export default {
 </script>
 
 ```
+:::
 
 ---
 
@@ -61,6 +63,7 @@ export default {
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <template>
   <VueButton @click="showToast">点击出现提示框</VueButton>
@@ -89,6 +92,7 @@ export default {
 </script>
 
 ```
+:::
 
 ---
 
@@ -102,6 +106,7 @@ export default {
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <template>
   <VueButton @click="popUpToasts" ref="button">点击出现提示框</VueButton>
@@ -138,6 +143,7 @@ export default {
 </script>
 
 ```
+:::
 
 ---
 
@@ -151,6 +157,7 @@ export default {
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <template>
   <VueButton @click="showToast">点击出现提示框</VueButton>
@@ -205,6 +212,7 @@ export default {
 </script>
 
 ```
+:::
 
 ---
 
@@ -218,6 +226,7 @@ export default {
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <template>
   <VueButton @click="showToast">点击出现提示框</VueButton>
@@ -244,6 +253,7 @@ export default {
 </script>
 
 ```
+:::
 
 ---
 
@@ -257,6 +267,7 @@ export default {
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <template>
   <VueButton @click="popUpToasts('top')">点击出现提示框</VueButton>
@@ -300,6 +311,7 @@ export default {
 </script>
 
 ```
+:::
 
 ---
 

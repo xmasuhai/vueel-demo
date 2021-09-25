@@ -24,6 +24,7 @@ title: Tab
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueTab :selected.sync="selectedTab">
   <VueTabNav class="custom-class">
@@ -38,6 +39,7 @@ title: Tab
   </VueTabContent>
 </VueTab>
 ```
+:::
 
 ---
 
@@ -51,6 +53,7 @@ title: Tab
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueTab :selected.sync="selectedTab">
   <VueTabNav>
@@ -65,6 +68,7 @@ title: Tab
   </VueTabContent>
 </VueTab>
 ```
+:::
 
 ---
 
@@ -78,6 +82,7 @@ title: Tab
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueTab :selected.sync="selectedTab">
   <VueTabNav>
@@ -104,6 +109,7 @@ title: Tab
   </VueTabContent>
 </VueTab>
 ```
+:::
 
 ---
 
@@ -117,6 +123,7 @@ title: Tab
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueTab :selected.sync="selectedTab">
   <VueTabNav>  
@@ -143,6 +150,7 @@ title: Tab
   </VueTabContent>
 </VueTab>
 ```
+:::
 
 ---
 

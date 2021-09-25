@@ -24,6 +24,7 @@ title: Grid
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueRow>
   <VueCol>100%</VueCol>
@@ -44,6 +45,7 @@ title: Grid
   <VueCol>25%</VueCol>
 </VueRow>
 ```
+:::
 
 ---
 
@@ -57,6 +59,7 @@ title: Grid
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueRow>
   <VueCol :span="2">1/12</VueCol>
@@ -75,6 +78,7 @@ title: Grid
   <VueCol :span="16">2/3</VueCol>
 </VueRow>
 ```
+:::
 
 ---
 
@@ -88,6 +92,7 @@ title: Grid
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueRow :gutter="20">
   <VueCol :span="4">1/12</VueCol>
@@ -109,6 +114,7 @@ title: Grid
   <VueCol>1/4</VueCol>
 </VueRow>
 ```
+:::
 
 ---
 
@@ -122,6 +128,7 @@ title: Grid
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueRow :gutter="20">
   <VueCol :span="9">
@@ -154,6 +161,8 @@ title: Grid
   <VueCol :span="6">Aside</VueCol>
 </VueRow>
 ```
+:::
+
 
 ---
 
@@ -167,6 +176,7 @@ title: Grid
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueRow>
   <VueCol :span="2">1/12</VueCol>
@@ -187,6 +197,8 @@ title: Grid
   <VueCol :span="8" :offset="2">1/3 offset_2</VueCol>
 </VueRow>
 ```
+:::
+
 
 ---
 
@@ -200,6 +212,7 @@ title: Grid
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueRow>
   <VueCol :span="2"
@@ -259,6 +272,8 @@ title: Grid
   </VueRow>
 </VueRow>
 ```
+:::
+
 
 ---
 

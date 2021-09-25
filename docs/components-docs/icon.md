@@ -32,6 +32,7 @@ title: Icon
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueIcon iconName="settings"></VueIcon>
 <VueIcon iconName="loading"></VueIcon>
@@ -40,6 +41,7 @@ title: Icon
 <VueIcon iconName="arrow-down"></VueIcon>
 <VueIcon iconName="thumbs-up"></VueIcon>
 ```
+:::
 
 ## 属性列表
 

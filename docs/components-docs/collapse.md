@@ -24,6 +24,7 @@ title: Collapse
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <vue-collapse :selectedArray="['第三项']">
   <vue-collapse-item title="第一项">第一项</vue-collapse-item>
@@ -31,6 +32,8 @@ title: Collapse
   <vue-collapse-item title="第三项">第三项</vue-collapse-item>
 </vue-collapse>
 ```
+:::
+
 
 ---
 
@@ -44,6 +47,7 @@ title: Collapse
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <vue-collapse :selectedArray="['第二项','第三项']">
   <vue-collapse-item title="第一项">第一项</vue-collapse-item>
@@ -51,6 +55,8 @@ title: Collapse
   <vue-collapse-item title="第三项" :isDisabled="true">第三项</vue-collapse-item>
 </vue-collapse>
 ```
+:::
+
 
 ---
 
@@ -64,6 +70,7 @@ title: Collapse
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <vue-collapse :onlyShowSingle="true"
               :selectedArray="['第二项']">
@@ -72,6 +79,8 @@ title: Collapse
   <vue-collapse-item title="第三项">内容三</vue-collapse-item>
 </vue-collapse>
 ```
+:::
+
 
 ---
 

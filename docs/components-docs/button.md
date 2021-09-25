@@ -30,6 +30,7 @@ title: Button
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueButton>普通按钮</VueButton>
 <VueButton color-type="primary">主色</VueButton>
@@ -39,6 +40,7 @@ title: Button
 <VueButton color-type="warning">警告</VueButton>
 <VueButton color-type="attention">注意</VueButton>
 ```
+:::
 
 ---
 
@@ -53,10 +55,12 @@ title: Button
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueButton icon="left">默认左侧图标按钮</VueButton>
 <VueButton icon="right" iconPosition="right">右侧图标按钮</VueButton>
 ```
+:::
 
 ---
 
@@ -72,11 +76,13 @@ title: Button
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueButton size="small" icon="download">小尺寸按钮</VueButton>
 <VueButton>普通按钮</VueButton>
 <VueButton size="big" icon="thumbs-up">大尺寸按钮</VueButton>
 ```
+:::
 
 ### 设置禁用状态
 
@@ -88,9 +94,11 @@ title: Button
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueButton isDisabled="true"> </VueButton>
 ```
+:::
 
 ### 设置加载中状态
 
@@ -103,6 +111,7 @@ title: Button
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueButton :isLoading="true" icon="loading"></VueButton>
 <VueButton :isLoading="isLoading"
@@ -111,6 +120,8 @@ title: Button
   点击后显示加载中
 </VueButton>
 ```
+:::
+
 
 ### 按钮组
 
@@ -122,6 +133,7 @@ title: Button
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueButtonGroup>
   <VueButton>1</VueButton>
@@ -129,6 +141,8 @@ title: Button
   <VueButton>3</VueButton>
 </VueButtonGroup>
 ```
+:::
+
 
 ---
 

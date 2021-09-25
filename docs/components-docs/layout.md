@@ -24,6 +24,7 @@ title: layout
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <vue-main style="height: 20vh;">
   <vue-aside class="demo" :width="200">Aside</vue-aside>
@@ -34,6 +35,7 @@ title: layout
   </vue-container>
 </vue-main>
 ```
+:::
 
 ---
 
@@ -47,6 +49,7 @@ title: layout
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <vue-main style="height: 20vh;">
   <vue-header class="demo">Header</vue-header>
@@ -57,6 +60,7 @@ title: layout
   <vue-footer class="demo">Footer</vue-footer>
 </vue-main>
 ```
+:::
 
 ---
 
@@ -70,6 +74,7 @@ title: layout
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <vue-main style="height: 20vh;">
   <vue-header class="demo">Header</vue-header>
@@ -78,9 +83,8 @@ title: layout
     <vue-container>Content</vue-container>
   </vue-container>
   <vue-footer class="demo">Footer</vue-footer>
-</vue-main>
-```
-
+</vue-main>```
+:::
 
 ---
 
@@ -94,6 +98,7 @@ title: layout
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <vue-main style="height: 20vh;">
   <vue-aside class="demo" :width="200">Aside</vue-aside>
@@ -104,7 +109,7 @@ title: layout
   </vue-container>
 </vue-main>
 ```
-
+:::
 
 ---
 

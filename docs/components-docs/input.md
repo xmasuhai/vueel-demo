@@ -24,12 +24,14 @@ title: Input
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueInput placeholder="默认样式"></VueInput>
 <VueInput :readonly="true"
           placeholder="只读状态"></VueInput>
 <VueInput placeholder="禁用状态" :disabled="true"></VueInput>
 ```
+:::
 
 ---
 
@@ -43,6 +45,7 @@ title: Input
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueInput placeholder="Error Enable"
           error="姓名不能少于2个字">
@@ -57,6 +60,7 @@ title: Input
           error="姓名不能少于2个字">
 </VueInput>
 ```
+:::
 
 ---
 
@@ -70,6 +74,7 @@ title: Input
 
 </ClientOnly>
 
+::: details 点击查看代码
 ```vue
 <VueInput placeholder="Enable"
           v-model="message">
@@ -77,6 +82,7 @@ title: Input
 <VueButton @click="message += 1">+1</VueButton>
 <span>{{ message }}</span>
 ```
+:::
 
 ---
 
