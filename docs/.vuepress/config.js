@@ -116,49 +116,7 @@ module.exports = (/*options, context*/) => ({
       'vuepress-plugin-typescript',
       {
         // ts-loader 的所有配置项
-        tsLoaderOptions: {
-          "compilerOptions": {
-            "target": "es5",
-            "module": "esnext",
-            "strict": true,
-            "jsx": "preserve",
-            "importHelpers": true,
-            "moduleResolution": "node",
-            "experimentalDecorators": true,
-            "skipLibCheck": true,
-            "esModuleInterop": true,
-            "allowSyntheticDefaultImports": true,
-            "sourceMap": true,
-            "baseUrl": ".",
-            "types": [
-              "webpack-env",
-              "jest",
-              "vuepress-types"
-            ],
-            "paths": {
-              "@/*": [
-                "src/*"
-              ]
-            },
-            "lib": [
-              "esnext",
-              "dom",
-              "dom.iterable",
-              "scripthost"
-            ]
-          },
-          "include": [
-            "src/**/*.ts",
-            "src/**/*.tsx",
-            "src/**/*.vue",
-            "tests/**/*.ts",
-            "tests/**/*.tsx",
-            "docs/.vuepress/enhanceApp.js"
-          ],
-          "exclude": [
-            "node_modules"
-          ]
-        }
+        tsLoaderOptions: {}
       }
     ]
   ],

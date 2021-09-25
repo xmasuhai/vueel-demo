@@ -1,6 +1,7 @@
-import Vue from 'vue';
+import {ToastCallBack} from './VueToast.d.ts';
+
 declare module 'vue/types/vue' {
   interface Vue {
-    $toast: (message: string) => void;
+    $toast: ToastCallBack;
   }
 }

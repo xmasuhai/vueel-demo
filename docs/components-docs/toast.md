@@ -147,7 +147,7 @@ export default {
 
 <ClientOnly>
 
-<toast-html></toast-html>
+<toast-dom-node></toast-dom-node>
 
 </ClientOnly>
 

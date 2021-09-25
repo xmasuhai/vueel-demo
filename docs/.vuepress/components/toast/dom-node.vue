@@ -5,16 +5,16 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-import toastPlugin from '@/components/toast/toastPlugin';
-import VueButton from '@/components/button/VueButton.vue';
-import {VueToast as VueToastType} from '@/types/VueToast';
+<script>
+import Vue from 'vue'
+import toastPlugin from '@/components/toast/toastPlugin'
+import VueButton from '@/components/button/VueButton.vue'
+// import {VueToast as VueToastType} from '@/types/VueToast';
 
 Vue.use(toastPlugin);
 
 export default {
-  name: 'html',
+  name: 'dom-node',
   components: {VueButton},
   methods: {
     showToast() {
@@ -27,7 +27,7 @@ export default {
           enableUnsafeHTML: true,
           closeButton: {
             text: '手动关闭',
-            callback(toast: VueToastType) {
+            callback(toast) {
               toast.close();
             }
           }
@@ -44,7 +44,7 @@ export default {
           enableUnsafeHTML: true,
           closeButton: {
             text: '手动关闭',
-            callback(toast: VueToastType) {
+            callback(toast) {
               toast.close();
             }
           }

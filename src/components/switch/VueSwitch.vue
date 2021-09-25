@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <button :class="{checked}"
+  <div class="vue-switch-button-wrapper">
+    <button class="vue-switch-button"
+            :class="{checked}"
             @click="toggle">
-      <span></span>
+      <span class="vue-switch-toggle"></span>
     </button>
   </div>
 </template>
@@ -24,39 +25,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-@use "sass:math";
-
-$h: 22px;
-$h2: $h - 4px;
-
-button {
-  height: $h;
-  width: $h*2;
-  border: none;
-  background: grey;
-  border-radius: math.div($h, 2);
-  position: relative;
-
-  span {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    height: $h2;
-    width: $h2;
-    background: white;
-    border-radius: math.div($h2, 2);
-    transition: left .25s;
-  }
-
-  &.checked {
-    background-color: dodgerblue;
-
-    & > span {
-      left: calc(100% - #{$h2} - 2px);
-    }
-  }
-
-}
-</style>

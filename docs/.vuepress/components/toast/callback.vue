@@ -4,11 +4,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-import toastPlugin from '@/components/toast/toastPlugin';
-import VueButton from '@/components/button/VueButton.vue';
-import {VueToast as VueToastType} from '../../../../src/types/VueToast';
+<script>
+import Vue from 'vue'
+import toastPlugin from '@/components/toast/toastPlugin'
+import VueButton from '@/components/button/VueButton.vue'
+// import {VueToast as VueToastType} from '@/types/VueToast';
 
 Vue.use(toastPlugin);
 
@@ -22,7 +22,7 @@ export default {
           autoCloseDelay: false,
           closeButton: {
             text: '手动关闭',
-            callback(toast: VueToastType) {
+            callback(toast) {
               toast.close();
               toast.$toast('关闭后，执行了一个回调', {
                 propsData: {

@@ -6,11 +6,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-import toastPlugin from '@/components/toast/toastPlugin';
-import VueButton from '@/components/button/VueButton.vue';
-import {ToastPosType, VueToast as VueToastType} from '@/types/VueToast';
+<script>
+import Vue from 'vue'
+import toastPlugin from '@/components/toast/toastPlugin'
+import VueButton from '@/components/button/VueButton.vue'
+// import {ToastPosType, VueToast as VueToastType} from '@/types/VueToast';
 
 Vue.use(toastPlugin);
 
@@ -27,7 +27,7 @@ export default {
     };
   },
   methods: {
-    showToast(position: keyof ToastPosType) {
+    showToast(position) {
       this.$toast(`智商需要充值 出现在${this.positionMap[position]}`, {
         propsData: {
           position,
@@ -35,7 +35,7 @@ export default {
           enableUnsafeHTML: true,
           closeButton: {
             text: '已充值',
-            callback(toast: VueToastType) {
+            callback(toast) {
               toast.close();
             }
           }

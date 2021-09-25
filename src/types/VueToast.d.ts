@@ -42,6 +42,7 @@ export interface VueToastOptions {
     closeButton?: {
       text: string;
       callback?: ((toast: VueToast) => void) | undefined;
+
     };
   };
 }
@@ -59,6 +60,6 @@ declare module 'vue/types/vue' {
      * is that the latter is often
      * used to show a system level passive notification.
      * */
-    $toast: ToastCallBack;
+    $toast: (text: string, options?: Record<VueToastOptions>) => void;
   }
 }
