@@ -1,52 +1,6 @@
-/*
-Error: Invalid CSS after "...er-radius: math": expected ";", was ".div($h, 2);"
-        on line 12 of src\styles\components\vue-switch.scss
+.vue-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2; }
 
-7:   .vue-switch-button {
-8:     height: $h;
-9:     width: $h*2;
-10:     border: none;
-11:     background: #bfbfbf;
-12:     border-radius: math.div($h, 2);
-13:     position: relative;
-14: 
-15:     .vue-switch-toggle {
-16:       position: absolute;
-17:       top: 2px;
-
-Backtrace:
-src\styles\components\vue-switch.scss:12
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1308:in `expected'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1238:in `expected'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1233:in `tok!'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:815:in `block in try_declaration'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1284:in `rethrow'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:820:in `try_declaration'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:743:in `declaration_or_ruleset'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:708:in `block_child'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:700:in `block_contents'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:689:in `block'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:758:in `declaration_or_ruleset'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:708:in `block_child'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:697:in `block_contents'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:689:in `block'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:681:in `ruleset'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:707:in `block_child'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:700:in `block_contents'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:137:in `stylesheet'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:41:in `parse'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/engine.rb:414:in `_to_tree'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/engine.rb:389:in `_render_with_sourcemap'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/engine.rb:307:in `render_with_sourcemap'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:387:in `run'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:63:in `process_result'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/exec/base.rb:50:in `parse'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/exec/base.rb:18:in `parse!'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/bin/scss:13:in `<top (required)>'
-C:/Ruby26-x64/bin/scss:23:in `load'
-C:/Ruby26-x64/bin/scss:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"...er-radius: math\": expected \";\", was \".div($h, 2);\"\A         on line 12 of src\styles\components\vue-switch.scss\A \A 7:   .vue-switch-button {\A 8:     height: $h;\A 9:     width: $h*2;\A 10:     border: none;\A 11:     background: #bfbfbf;\A 12:     border-radius: math.div($h, 2);\A 13:     position: relative;\A 14: \A 15:     .vue-switch-toggle {\A 16:       position: absolute;\A 17:       top: 2px;"; }
+/*# sourceMappingURL=JSON.map */

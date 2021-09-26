@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAA,UAAW;EACT,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,SAAS,EAAE,CAAC;EACZ,MAAM,EAAE,IAAI",
-"sources": ["src/styles/components/vue-aside.scss"],
+"mappings": "AAAA,cAAe;EACb,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,SAAS,EAAE,CAAC",
+"sources": ["src/styles/components/vue-container.scss"],
 "names": [],
 "file": "JSON"
 }

@@ -70,8 +70,6 @@ export default class extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/global.scss';
-
 .basic {
   & details {
     .demo {
