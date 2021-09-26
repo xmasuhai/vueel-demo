@@ -57,6 +57,7 @@
 
 .vue-button-wrapper {
   display: inline-block;
+  white-space: nowrap;
 
   .vue-button {
     display: inline-flex;
@@ -70,6 +71,10 @@
     border: 1px solid $border-color;
     background: $button-bg;
     color: #000;
+
+    &.content {
+      white-space: nowrap;
+    }
 
     &.is-disabled-fake {
       color: mix(#000, #FFF);

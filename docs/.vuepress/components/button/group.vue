@@ -8,9 +8,9 @@
   </VueButtonGroup>
 </template>
 
-<script>
-import VueButton from '@/components/button/VueButton.vue'
-import VueButtonGroup from '@/components/button/VueButtonGroup'
+<script lang="ts">
+import VueButton from '@/components/button/VueButton.vue';
+import VueButtonGroup from '@/components/button/VueButtonGroup';
 
 export default {
   name: 'group',
@@ -18,5 +18,5 @@ export default {
     VueButton,
     VueButtonGroup
   }
-}
+};
 </script>

@@ -87,9 +87,8 @@ export default class Buttons extends Vue {
 </script>
 
 <style lang="scss" scoped>
-::v-deep {
-  margin-right: 10px;
-
+::v-deep:not(.vue-button-group) > button {
+  margin: 5px 5px;
 }
 
 .rainbow::v-deep {

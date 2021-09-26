@@ -57,8 +57,8 @@ title: Button
 
 ::: details 点击查看代码
 ```vue
-<VueButton icon="left">默认左侧图标按钮</VueButton>
-<VueButton icon="right" iconPosition="right">右侧图标按钮</VueButton>
+<VueButton icon="left">默认左侧图标</VueButton>
+<VueButton icon="right" iconPosition="right">设置图标在右侧</VueButton>
 ```
 :::
 
@@ -113,12 +113,29 @@ title: Button
 
 ::: details 点击查看代码
 ```vue
-<VueButton :isLoading="true" icon="loading"></VueButton>
-<VueButton :isLoading="isLoading"
-           icon="download"
-           @click="isLoading = !isLoading">
-  点击后显示加载中
-</VueButton>
+<template>
+  <VueButton :isLoading="true" icon="loading"></VueButton>
+  <VueButton :isLoading="isLoading"
+             icon="download"
+             @click="isLoading = !isLoading">
+    点击后显示加载中
+  </VueButton>
+</template>
+
+<script>
+import VueButton from '@/components/button/VueButton.vue';
+export default {
+  components: {
+    VueButton
+  },
+  data() {
+    return {
+      isLoading: false
+    }
+  }
+}
+</script>
+
 ```
 :::
 
@@ -136,9 +153,11 @@ title: Button
 ::: details 点击查看代码
 ```vue
 <VueButtonGroup>
-  <VueButton>1</VueButton>
-  <VueButton>2</VueButton>
-  <VueButton>3</VueButton>
+  <VueButton icon="left">上一页</VueButton>
+  <VueButton icon="settings">更多</VueButton>
+  <VueButton icon="right"
+             icon-position="right">下一页
+  </VueButton>
 </VueButtonGroup>
 ```
 :::
