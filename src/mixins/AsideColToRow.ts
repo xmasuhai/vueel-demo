@@ -14,10 +14,9 @@ export default class AsideColToRow extends Vue {
     }
     return {};
   }
+
   mounted() {
     this.$children.forEach((vm) => {
-      console.log("-> vm.$el.classList", vm.$el.classList);
-      console.log("-> vm.$el.classList.contains('vue-aside')", vm.$el.classList.contains('vue-aside'));
       if (vm.$el.classList.contains('vue-aside')) {
         this.flexCToR.hasAsider = true;
       }
