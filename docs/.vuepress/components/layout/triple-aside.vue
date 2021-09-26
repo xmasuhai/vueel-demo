@@ -9,7 +9,7 @@
   </vue-main>
 </template>
 
-<script>
+<script lang="ts">
 import VueMain from '@/components/layout/VueMain.vue'
 import VueContainer from '@/components/layout/VueContainer.vue'
 import VueHeader from '@/components/layout/VueHeader.vue'

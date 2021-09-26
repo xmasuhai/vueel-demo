@@ -7,30 +7,12 @@
 </template>
 
 <script lang="ts">
-import {Component, Vue} from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
+import {mixins} from 'vue-class-component';
+import AsideColToRow from '../../mixins/AsideColToRow';
+
 @Component
-export default class VueContainer extends Vue {
+export default class VueContainer extends mixins(AsideColToRow) {
   name = 'VueContainer';
-  flexCToR = {
-    hasAsider: false
-  };
-
-  get colToRowStyle() {
-    if (this.flexCToR.hasAsider) {
-      return {
-        'flex-direction': 'row'
-      };
-    }
-    return {};
-  }
-
-  mounted() {
-    this.$children.forEach((vm) => {
-      if (vm.$options.name === 'VueAside') {
-        this.flexCToR.hasAsider = true;
-      }
-    });
-  }
-
 }
 </script>
