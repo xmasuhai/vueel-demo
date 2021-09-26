@@ -17,7 +17,7 @@ export default class VueFooter extends mixins(AsideColToRow) {
   @Prop({type: Number, default: 40}) height!: number;
 
   get footerStyle() {
-    return Object.assign(this.colToRowStyle, {height: `${this.height}px`});
+    return Object.assign({}, {height: `${this.height}px`});
   }
 }
 </script>
