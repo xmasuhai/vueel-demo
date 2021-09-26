@@ -204,8 +204,8 @@
 import {Component, Vue, Watch} from 'vue-property-decorator';
 import VueRow from './grid/VueRow.vue';
 import VueCol from './grid/VueCol.vue';
-import VueDetail from '@/components/code-presentation/VueDetail.vue';
-import VueCodePresentation from '@/components/code-presentation/VueCodePresentation.vue';
+import VueDetail from './code-presentation/VueDetail.vue';
+import VueCodePresentation from './code-presentation/VueCodePresentation.vue';
 
 @Component({
   components: {

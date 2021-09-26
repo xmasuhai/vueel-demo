@@ -135,8 +135,8 @@ import VueTabContent from './tabs/VueTabContent.vue';
 import VueTabPane from './tabs/VueTabPane.vue';
 import VueIcon from './icon/VueIcon.vue';
 import VueButton from './button/VueButton.vue';
-import VueDetail from '@/components/code-presentation/VueDetail.vue';
-import VueCodePresentation from '@/components/code-presentation/VueCodePresentation.vue';
+import VueDetail from './code-presentation/VueDetail.vue';
+import VueCodePresentation from './code-presentation/VueCodePresentation.vue';
 
 @Component({
   components: {

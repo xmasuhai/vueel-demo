@@ -52,8 +52,8 @@
 import {Component, Vue} from 'vue-property-decorator';
 import VueInput from './input/VueInput.vue';
 import VueButton from './button/VueButton.vue';
-import VueDetail from '@/components/code-presentation/VueDetail.vue';
-import VueCodePresentation from '@/components/code-presentation/VueCodePresentation.vue';
+import VueDetail from './code-presentation/VueDetail.vue';
+import VueCodePresentation from './code-presentation/VueCodePresentation.vue';
 
 @Component({
   components: {
