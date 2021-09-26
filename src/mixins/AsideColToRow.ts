@@ -17,7 +17,6 @@ export default class AsideColToRow extends Vue {
 
   mounted() {
     this.$children.forEach((vm) => {
-      console.log('vm.$options.name: ', vm.$options.name);
       if (vm.$options.name === 'VueAside') {
         this.flexCToR.hasAsider = true;
       }
