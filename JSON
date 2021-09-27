@@ -1,84 +1,94 @@
-/*
-Error: Invalid CSS after "      width: (math": expected ")", was ".div($n, 24)) *..."
-        on line 25 of src\styles\components\vue-col.scss
+.vue-content-wrapper.position-top {
+  transform: translateY(-100%);
+  margin-top: -10px; }
 
-20: 
-21:   // .col.col-1 ~ .col.col-24
-22:   $class-prefix: col-;
-23:   @for $n from 1 through 24 {
-24:     &.#{$class-prefix}#{$n} {
-25:       width: (math.div($n, 24)) * 100%;
-26:     }
-27:   }
-28: 
-29:   // .col.offset-2 ~ .col.offset-24
-30:   $class-prefix: offset-;
+.vue-content-wrapper.position-top::before, .vue-content-wrapper.position-top::after {
+  left: 10px;
+  border-bottom: none; }
 
-Backtrace:
-src\styles\components\vue-col.scss:25
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1308:in `expected'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/lexer.rb:240:in `expected!'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:862:in `assert_tok'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:797:in `block in paren'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:904:in `without_stop_at'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:792:in `paren'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:746:in `square_list'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:733:in `special_fun'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:727:in `raw'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:642:in `funcall'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:531:in `css_min_max'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:507:in `ident'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:295:in `unary_not'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:295:in `unary_div'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:295:in `unary_minus'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:295:in `unary_plus'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `times_div_or_mod'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `plus_or_minus'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `relational'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `eq_or_neq'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `and_expr'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `or_expr'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:481:in `space'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:422:in `interpolation'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:343:in `expr'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:853:in `assert_expr'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:68:in `parse'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1164:in `sass_script'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1002:in `value!'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:807:in `block in try_declaration'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1284:in `rethrow'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:820:in `try_declaration'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:743:in `declaration_or_ruleset'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:708:in `block_child'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:697:in `block_contents'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:689:in `block'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:758:in `declaration_or_ruleset'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:708:in `block_child'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:697:in `block_contents'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:689:in `block'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:301:in `for_directive'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:234:in `special_directive'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:209:in `directive'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:708:in `block_child'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:700:in `block_contents'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:689:in `block'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:681:in `ruleset'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:707:in `block_child'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:700:in `block_contents'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:137:in `stylesheet'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:41:in `parse'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/engine.rb:414:in `_to_tree'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/engine.rb:389:in `_render_with_sourcemap'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/engine.rb:307:in `render_with_sourcemap'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:387:in `run'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:63:in `process_result'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/exec/base.rb:50:in `parse'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/exec/base.rb:18:in `parse!'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/bin/scss:13:in `<top (required)>'
-C:/Ruby30-x64/bin/scss:23:in `load'
-C:/Ruby30-x64/bin/scss:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"      width: (math\": expected \")\", was \".div($n, 24)) *...\"\A         on line 25 of src\styles\components\vue-col.scss\A \A 20: \A 21:   // .col.col-1 ~ .col.col-24\A 22:   $class-prefix: col-;\A 23:   @for $n from 1 through 24 {\A 24:     &.#{$class-prefix}#{$n} {\A 25:       width: (math.div($n, 24)) * 100%;\A 26:     }\A 27:   }\A 28: \A 29:   // .col.offset-2 ~ .col.offset-24\A 30:   $class-prefix: offset-;"; }
+.vue-content-wrapper.position-top::before {
+  top: 100%;
+  border-top-color: #333; }
+
+.vue-content-wrapper.position-top::after {
+  top: calc(100% - 1px);
+  border-top-color: white; }
+
+.vue-content-wrapper.position-bottom {
+  margin-top: 10px; }
+
+.vue-content-wrapper.position-bottom::before, .vue-content-wrapper.position-bottom::after {
+  left: 10px;
+  border-top: none; }
+
+.vue-content-wrapper.position-bottom::before {
+  bottom: 100%;
+  border-bottom-color: #333; }
+
+.vue-content-wrapper.position-bottom::after {
+  bottom: calc(100% - 1px);
+  border-bottom-color: white; }
+
+.vue-content-wrapper.position-left {
+  transform: translateX(-100%);
+  margin-left: -10px; }
+
+.vue-content-wrapper.position-left::before, .vue-content-wrapper.position-left::after {
+  top: 50%;
+  transform: translateY(-50%);
+  border-right: none; }
+
+.vue-content-wrapper.position-left::before {
+  left: 100%;
+  border-left-color: #333; }
+
+.vue-content-wrapper.position-left::after {
+  left: calc(100% - 1px);
+  border-left-color: white; }
+
+.vue-content-wrapper.position-right {
+  margin-left: 10px; }
+
+.vue-content-wrapper.position-right::before, .vue-content-wrapper.position-right::after {
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: none; }
+
+.vue-content-wrapper.position-right::before {
+  right: 100%;
+  border-right-color: #333; }
+
+.vue-content-wrapper.position-right::after {
+  right: calc(100% - 1px);
+  border-right-color: white; }
+
+.vue-popover {
+  display: inline-block;
+  vertical-align: top;
+  position: relative; }
+  .vue-popover .vue-trigger-wrapper {
+    display: inline-block;
+    /*    &.touchStopTrigger {
+          pointer-events: none;
+        }*/ }
+
+.vue-content-wrapper {
+  display: block;
+  position: absolute;
+  border: 1px solid #333;
+  border-radius: 4px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+  padding: 0.5em 1em;
+  background-color: white;
+  margin-top: -10px;
+  max-width: 20em;
+  word-break: break-all; }
+  .vue-content-wrapper::before, .vue-content-wrapper::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: .65em solid transparent; }
+
+/*# sourceMappingURL=JSON.map */

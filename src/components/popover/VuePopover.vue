@@ -30,9 +30,32 @@ export default class VuePopover extends Vue {
   name = 'VuePopover';
   isVisible = false;
   timer: number | null = null;
+
+
+  /*
+  // 点击穿透
   clientWidth = document.body.clientWidth;
+  get wrapperClass() {
+    if (this.clientWidth <= 500) {
+      return {
+        'touchStopWrapper': true
+      };
+    }
+    return {}
+  }
+
+  get triggerClass() {
+    if (this.clientWidth <= 500) {
+      return {
+        'touchStopTrigger': true
+      };
+    }
+    return {}
+  }
+*/
 
   // prop: [autoCloseDelay, position, trigger, zIndex]
+
   @Prop({
     type: [Number, Boolean], default: 580, validator(value: false | number): boolean {
       return (value === false) || (value > 0);
@@ -70,6 +93,7 @@ export default class VuePopover extends Vue {
     }
   }
 
+  // 触发器按钮绑定事件
   get multiEventOnTrigger() {
     return (this.trigger === 'click'
       ? {
@@ -83,6 +107,7 @@ export default class VuePopover extends Vue {
       });
   }
 
+  // 弹出框绑定事件
   get multiEventOnContent() {
     return {
       mouseover: this.clearTimer,
@@ -90,6 +115,7 @@ export default class VuePopover extends Vue {
       mouseleave: this.startTimer,
     };
   }
+
 
   get ifHover() {
     return this.trigger === 'hover'
@@ -104,11 +130,13 @@ export default class VuePopover extends Vue {
   }
 
   // 定位 popover 显示位置
+  // 计算触发按钮元素位置
+  // 添加弹出框绝对定位的位置样式 top left
   positionPop() {
     // 获取 弹出消息框节点 的引用，放到 body 子节点的最后
     document.body.appendChild(this.$refs.contentWrapper as Node);
 
-    // 获取 popover元素 按钮元素
+    // 获取 popover 弹出框元素, 按钮元素
     const {contentWrapper, triggerWrapper} = this.$refs;
     // 获取 按钮元素 左上顶点的位置坐标 width, height, top, left
     const {
@@ -118,11 +146,12 @@ export default class VuePopover extends Vue {
       left: buttonLeft
     } = (triggerWrapper as HTMLElement)
       .getBoundingClientRect();
-    // 获取 popover元素 height
+    // 获取 弹出框元素 height: popHeight 别名防止命名冲突覆盖
     const {height: popHeight} = (contentWrapper as HTMLElement)
       .getBoundingClientRect();
     (contentWrapper as HTMLElement).style.zIndex = `${this.zIndex}`;
-    // 表驱动编程
+
+    // 表驱动编程 四方向绝对定位位置对应表
     const positionList = {
       'position-top': {
         top: buttonTop + window.scrollY,
@@ -143,6 +172,7 @@ export default class VuePopover extends Vue {
       },
     };
 
+    // 给弹出框元素添加绝对定位的位置样式 top left
     (contentWrapper as HTMLElement).style.top =
       positionList[`position-${this.position}` as positionListString].top + `px`;
     (contentWrapper as HTMLElement).style.left =
@@ -152,7 +182,7 @@ export default class VuePopover extends Vue {
 
   // 定义一个点击关闭事件的回调函数
   closeHandler(e: Event) {
-    // 点击的目标对象 是否存在于 popover 包裹div中
+    // 点击的目标对象 即触发按钮 是否存在于 popover组件 包裹的div中
     const hasPopover = ((this.$refs.contentWrapper as Element)
       ?.contains(e.target as Node));
     // 如果 点击的目标对象 不存在于 包裹弹出框的div中 即 点击了document
@@ -187,8 +217,9 @@ export default class VuePopover extends Vue {
     if ((this.$refs.triggerWrapper as HTMLElement)
       ?.contains(event.target as Node)) {
       // 切换显示/隐藏 popover
+      console.log('this.isVisible2: ', this.isVisible);
       this.isVisible = !this.isVisible;
-      console.log('toggle');
+      console.log('this.isVisible1: ', this.isVisible);
     } else {
       // 点击popover部分 执行的逻辑
       // 不执行任何逻辑
@@ -201,7 +232,6 @@ export default class VuePopover extends Vue {
       // 显示 弹出框，将弹出框节点放到 body 子节点的最后
       // 改变弹出框样式，使其出现在相对按钮合适的位置
       this.positionPop();
-
       // 使 添加监听在 点击事件冒泡 之后 异步执行
       setTimeout(() => {
         // 给 document 添加 click 事件监听
@@ -211,6 +241,8 @@ export default class VuePopover extends Vue {
   }
 
   // 监听 this.isVisible 状态变化 执行相应的逻辑
+  // 当 popover 显示时 执行onShowPopover
+  // 当 popover 隐藏时 执行的逻辑
   @Watch('isVisible')
   onVisibleChange(newValue: boolean) {
     if (newValue) {

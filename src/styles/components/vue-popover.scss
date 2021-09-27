@@ -81,7 +81,6 @@
   border-right-color: white;
 }
 
-
 .vue-popover {
   display: inline-block;
   vertical-align: top;
@@ -89,6 +88,11 @@
 
   .vue-trigger-wrapper {
     display: inline-block;
+
+    /*    &.touchStopTrigger {
+          pointer-events: none;
+        }*/
+
   }
 
 }
