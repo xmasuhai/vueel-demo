@@ -157,10 +157,16 @@ title: Popover
 ## 属性列表
 
 | 参数       |  说明   | 类型 | 可选值 | 默认值 |
-| --------- |:----------:|:------:|:-----:|-----:|
+| :-------- |:----------:|:------:|:-----:|:-----|
 | autoCloseDelay |  自动关闭延迟 | false/number  |  false/- | 580 |
 | position       |  位置 | string  |  top/bottom/left/right | top |
 | trigger        |  事件触发类型 | string  |  hover/click | hover |
 | zIndex        |  弹出框的z-index | number  |  - | 999 |
 
+---
+
 ## 示例应用 Demo Combo
+
+
+
+---

@@ -33,12 +33,12 @@ title: Button
 ::: details 点击查看代码
 ```vue
 <VueButton>普通按钮</VueButton>
-<VueButton color-type="primary">主色</VueButton>
-<VueButton color-type="danger">报错</VueButton>
-<VueButton color-type="info">信息</VueButton>
-<VueButton color-type="success">成功</VueButton>
-<VueButton color-type="warning">警告</VueButton>
-<VueButton color-type="attention">注意</VueButton>
+<VueButton colorType="primary">主色</VueButton>
+<VueButton colorType="danger">报错</VueButton>
+<VueButton colorType="info">信息</VueButton>
+<VueButton colorType="success">成功</VueButton>
+<VueButton colorType="warning">警告</VueButton>
+<VueButton colorType="attention">注意</VueButton>
 ```
 :::
 
@@ -139,7 +139,6 @@ export default {
 ```
 :::
 
-
 ### 按钮组
 
 ---
@@ -162,18 +161,27 @@ export default {
 ```
 :::
 
-
 ---
 
 ## 属性列表 Attributes Props
 
+---
+
 | 参数       |  说明   | 类型 | 可选值 | 默认值 |
-| --------- |:----------:|:------:|:-----:|-----:|
+| :-------- |:----------:|:------:|:-----:|:-----|
 | isLoading      |  加载中状态 | boolean  |  true/false | false |
 | isDisabled     |  禁用状态   | boolean  |  true/false | false  |
-| colorType      |  颜色类型   | string   |normal/primary/warning/danger/info/success/ attention|normal|
-| size           |  尺寸      | string   |  small/normal/big |  normal |
-| icon           |  图标类名   | string   |  settings/loading/right/left/download/arrow-down/thumbs-up/'' |  空字符串： ''  |
-| iconPosition   |  图标位置   | string   |  left/right |  left |
+| colorType      |  设置颜色 | string   |normal/primary/warning/danger/info/success/ attention|normal|
+| size           |  设置尺寸    | string   |  small/normal/big |  normal |
+| icon           |  设置图标 | string   | settings/loading/right/left/download/arrow-down/thumbs-up |  ""  |
+| iconPosition   |  设置图标位置 | string   |  left/right |  left |
+
+---
 
 ## 示例应用 Demo Combo
+
+### 配合 Toast 组件使用
+
+### 配合 Popover 组件使用
+
+---

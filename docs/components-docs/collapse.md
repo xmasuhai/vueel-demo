@@ -89,18 +89,22 @@ title: Collapse
 > 父组件 `<vue-collapse></vue-collapse>`
 
 | 参数       |  说明   | 类型 | 可选值 | 默认值 |
-| --------- |:----------:|:------:|:-----:|-----:|
+| :-------- |:----------:|:------:|:-----:|:-----|
 | onlyShowSingle |  仅展示一项 | boolean  |  true/false | false |
-| selectedArray  |  展开的项目 | `Array<string>`  |  子组件title `string[]` | `[]` |
-| itemsData      |  自定义项目数据 | `Record<string, any>[]`  |  `any[]` | `[]` |
+| selectedArray  |  展开的项目 | `Array<string>`  |     -      | `[]` |
+| itemsData      |  自定义项目数据 | `Record<string, any>[]`  | - | `[]` |
 
 > 子组件 `<vue-collapse-item></vue-collapse-item>`
 
 | 参数       |  说明   | 类型 | 可选值 | 默认值 |
-| --------- |:----------:|:------:|:-----:|-----:|
+| :-------- |:----------:|:------:|:-----:|:-----|
 | isDisabled |  是否禁用 | boolean  |  true/false | false |
 | title      |  项目标题 | string  |  任意字符串 | '' |
 
 ---
 
 ## 示例应用 Demo Combo
+
+
+
+---

@@ -1,7 +1,11 @@
 <template>
   <div ref="popover"
        class="vue-popover"
-       v-on="{[popUp]: [openEvent, clearTimer], mouseleave: startTimer}"
+       v-on="{
+            [keepPopUp]: [clearTimer],
+            [ifHover]: [openEvent],
+            mouseleave: startTimer
+            }"
        @click="togglePop">
     <div ref="contentWrapper"
          class="vue-content-wrapper"
@@ -26,8 +30,9 @@ export default class VuePopover extends Vue {
   name = 'VuePopover';
   isVisible = false;
   timer: number | null = null;
+  clientWidth = document.body.clientWidth;
 
-  // prop: [autoCloseDelay, position, trigger]
+  // prop: [autoCloseDelay, position, trigger, zIndex]
   @Prop({
     type: [Number, Boolean], default: 580, validator(value: false | number): boolean {
       return (value === false) || (value > 0);
@@ -69,23 +74,33 @@ export default class VuePopover extends Vue {
     return (this.trigger === 'click'
       ? {
         mouseover: this.clearTimer,
-        mouseenter: this.clearTimer
+        mouseenter: this.clearTimer,
+        touchstart: this.clearTimer,
       }
-      : {});
+      : {
+        // hover
+        // mouseover: this.clearTimer,
+      });
   }
 
   get multiEventOnContent() {
     return {
       mouseover: this.clearTimer,
+      mouseenter: this.clearTimer,
       mouseleave: this.startTimer,
-      mouseenter: this.clearTimer
     };
   }
 
-  get popUp() {
+  get ifHover() {
     return this.trigger === 'hover'
       ? 'mouseenter'
-      : '';
+      : /* click */ null;
+  }
+
+  get keepPopUp() {
+    return this.trigger === 'hover'
+      ? 'mouseenter'
+      : /* click */ 'touchstart';
   }
 
   // 定位 popover 显示位置
@@ -168,12 +183,15 @@ export default class VuePopover extends Vue {
   // 点击按钮 执行的方法：切换显示/隐藏 popover
   togglePop(event: Event) {
     // 点击按钮部分 执行的逻辑
+    // 判断 事件的目标节点在 中触发器节点 中
     if ((this.$refs.triggerWrapper as HTMLElement)
       ?.contains(event.target as Node)) {
       // 切换显示/隐藏 popover
       this.isVisible = !this.isVisible;
+      console.log('toggle');
     } else {
       // 点击popover部分 执行的逻辑
+      // 不执行任何逻辑
     }
 
   }
@@ -192,7 +210,7 @@ export default class VuePopover extends Vue {
     });
   }
 
-  // 监听 this.isVisible 状态变化 执行对应的逻辑
+  // 监听 this.isVisible 状态变化 执行相应的逻辑
   @Watch('isVisible')
   onVisibleChange(newValue: boolean) {
     if (newValue) {

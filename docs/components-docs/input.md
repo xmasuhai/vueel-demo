@@ -26,10 +26,17 @@ title: Input
 
 ::: details 点击查看代码
 ```vue
-<VueInput placeholder="默认样式"></VueInput>
+<VueInput placeholder="默认样式"
+          labelName="默认输入框：">
+</VueInput>
 <VueInput :readonly="true"
-          placeholder="只读状态"></VueInput>
-<VueInput placeholder="禁用状态" :disabled="true"></VueInput>
+          placeholder="只读状态"
+          labelName="默认输入框：">
+</VueInput>
+<VueInput placeholder="禁用状态"
+          :disabled="true"
+          labelName="默认输入框：">
+</VueInput>
 ```
 :::
 
@@ -76,11 +83,31 @@ title: Input
 
 ::: details 点击查看代码
 ```vue
-<VueInput placeholder="Enable"
-          v-model="message">
-</VueInput>
-<VueButton @click="message += 1">+1</VueButton>
-<span>{{ message }}</span>
+<template>
+  <div class="input">
+    <VueInput placeholder="Enable"
+              v-model="message"
+              :labelName="`v-model模拟数据双向绑定 ${message}：`">
+    </VueInput>
+    <VueButton @click="message += 1">+1</VueButton>
+    <span>{{ message }}</span>
+  </div>
+</template>
+
+<script>
+import VueInput from '@/components/input/VueInput.vue'
+import VueButton from '@/components/button/VueButton.vue'
+
+export default {
+  components: {VueInput, VueButton},
+  data() {
+    return {
+      message: ''
+    }
+  }
+}
+</script>
+
 ```
 :::
 
@@ -89,7 +116,19 @@ title: Input
 ## 属性列表
 
 | 参数       |  说明   | 类型 | 可选值 | 默认值 |
-| --------- |:----------:|:------:|:-----:|-----:|
-| isLoading      |  加载中状态 | boolean  |  true/false | false |
+| --------- |:----------:|:------:|:-----:|:-----|
+| labelName |  输入框标题 | string |  - | "" |
+| placeholder | 可替换内容 | string | - | "" |
+| value | 输入框内容 | string | - | "" |
+| readonly | 是否只读 | boolean | true/false | false |
+| disabled | 是否禁用 | boolean | true/false | false |
+| error | 错误状态提示文字 | string | - | "" |
+| v-model | 绑定输入信息 | string | - | - |
+
+---
 
 ## 示例应用 Demo Combo
+
+
+
+---

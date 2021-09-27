@@ -1,25 +1,51 @@
 /*
-Error: Invalid CSS after "... font-size: map": expected ";", was ".get($types, fo..."
-        on line 124 of src\styles\components\vue-button.scss
+Error: Invalid CSS after "      width: (math": expected ")", was ".div($n, 24)) *..."
+        on line 25 of src\styles\components\vue-col.scss
 
-119:       'normal': (font-size: $font-size, button-size: 32px),
-120:       'big': (font-size: $font-size-big, button-size: 48px),
-121:     );
-122:     @each $name, $types in $font-sizes {
-123:       &-size-#{$name} {
-124:         font-size: map.get($types, font-size);
-125:         height: map.get($types, button-size);
-126:       }
-127:     }
-128: 
-129:     // Icon
+20: 
+21:   // .col.col-1 ~ .col.col-24
+22:   $class-prefix: col-;
+23:   @for $n from 1 through 24 {
+24:     &.#{$class-prefix}#{$n} {
+25:       width: (math.div($n, 24)) * 100%;
+26:     }
+27:   }
+28: 
+29:   // .col.offset-2 ~ .col.offset-24
+30:   $class-prefix: offset-;
 
 Backtrace:
-src\styles\components\vue-button.scss:124
+src\styles\components\vue-col.scss:25
 C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1308:in `expected'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1238:in `expected'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1233:in `tok!'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:815:in `block in try_declaration'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/lexer.rb:240:in `expected!'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:862:in `assert_tok'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:797:in `block in paren'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:904:in `without_stop_at'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:792:in `paren'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:746:in `square_list'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:733:in `special_fun'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:727:in `raw'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:642:in `funcall'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:531:in `css_min_max'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:507:in `ident'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:295:in `unary_not'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:295:in `unary_div'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:295:in `unary_minus'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:295:in `unary_plus'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `times_div_or_mod'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `plus_or_minus'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `relational'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `eq_or_neq'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `and_expr'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:272:in `or_expr'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:481:in `space'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:422:in `interpolation'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:343:in `expr'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:853:in `assert_expr'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/script/parser.rb:68:in `parse'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1164:in `sass_script'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1002:in `value!'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:807:in `block in try_declaration'
 C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1284:in `rethrow'
 C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:820:in `try_declaration'
 C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:743:in `declaration_or_ruleset'
@@ -30,13 +56,9 @@ C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:758:in
 C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:708:in `block_child'
 C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:697:in `block_contents'
 C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:689:in `block'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:319:in `each_directive'
+C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:301:in `for_directive'
 C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:234:in `special_directive'
 C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:209:in `directive'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:708:in `block_child'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:700:in `block_contents'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:689:in `block'
-C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:758:in `declaration_or_ruleset'
 C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:708:in `block_child'
 C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:700:in `block_contents'
 C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:689:in `block'
@@ -59,4 +81,4 @@ C:/Ruby30-x64/bin/scss:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid CSS after \"... font-size: map\": expected \";\", was \".get($types, fo...\"\A         on line 124 of src\styles\components\vue-button.scss\A \A 119:       'normal': (font-size: $font-size, button-size: 32px),\A 120:       'big': (font-size: $font-size-big, button-size: 48px),\A 121:     );\A 122:     @each $name, $types in $font-sizes {\A 123:       &-size-#{$name} {\A 124:         font-size: map.get($types, font-size);\A 125:         height: map.get($types, button-size);\A 126:       }\A 127:     }\A 128: \A 129:     // Icon"; }
+  content: "Error: Invalid CSS after \"      width: (math\": expected \")\", was \".div($n, 24)) *...\"\A         on line 25 of src\styles\components\vue-col.scss\A \A 20: \A 21:   // .col.col-1 ~ .col.col-24\A 22:   $class-prefix: col-;\A 23:   @for $n from 1 through 24 {\A 24:     &.#{$class-prefix}#{$n} {\A 25:       width: (math.div($n, 24)) * 100%;\A 26:     }\A 27:   }\A 28: \A 29:   // .col.offset-2 ~ .col.offset-24\A 30:   $class-prefix: offset-;"; }

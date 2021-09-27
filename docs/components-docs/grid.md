@@ -282,17 +282,17 @@ title: Grid
 > 父组件 `<vue-row></vue-row>`
 
 | 参数       |  说明   | 类型 | 可选值 | 默认值 |
-| --------- |:----------:|:------:|:-----:|-----:|
-| align   |  对齐位置    | string  |  left/right/center/space-between/space-around | '' |
-| gutter  |  项目的间隔   | number/string  |  有意义的数字 | `0` |
+| --------- |:----------:|:------:|:-----:|------|
+| align   |  对齐位置    | string  |  left/right/center/space-between/space-around | - |
+| gutter  |  项目的间隔   | number/string  | - | `0` |
 | colData |  自定义项目数据 | `Record<string, any>[]`  |  `any[]` | `[]` |
 
 > 子组件 `<vue-col></vue-col>`
 
 | 参数       |  说明   | 类型 | 可选值 | 默认值 |
-| --------- |:----------:|:------:|:-----:|-----:|
-| span    |  跨度     | number  |  有意义的数字 | false |
-| offset  |  偏移距离  | number  |  有意义的数字 | 0 |
+| :-------- |:----------:|:------:|:-----:|:-----|
+| span    |  跨度     | number  | - | 0 |
+| offset  |  偏移距离  | number  |  - | 0 |
 | mobile  |  适配手机的跨度与偏移距离 | object  |  - | - |
 | pad     |  适配平板的跨度与偏移距离 | object  |  - | - |
 | laptop  |  适配笔记本的跨度与偏移距离 | object  |  - | - |
@@ -303,3 +303,8 @@ title: Grid
 ---
 
 ## 示例应用 Demo Combo
+
+
+
+---
+

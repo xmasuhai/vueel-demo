@@ -43,10 +43,20 @@ title: Icon
 ```
 :::
 
+---
+
 ## 属性列表
 
 | 参数       |  说明   | 类型 | 可选值 | 默认值 |
-| --------- |:----------:|:------:|:-----:|-----:|
-| iconName      |  图标种类 | string  |  settings/download/loading/right/left/arrow-down/thumbs-up | `''` |
+| --------- |:----------:|:------:|:-----:|:-----|
+| iconName      |  图标种类 | string  | ""/settings/download/loading/right/left/arrow-down/thumbs-up | "" |
+
+---
 
 ## 示例应用 Demo Combo
+
+### 配合 Button 组件使用
+
+### 配合 Tab 组件使用
+
+---
