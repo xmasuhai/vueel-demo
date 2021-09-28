@@ -6,7 +6,7 @@
             [ifHover]: [openEvent],
             mouseleave: startTimer
             }"
-       @click="togglePop">
+       @[switcher]="togglePop">
     <div ref="contentWrapper"
          class="vue-content-wrapper"
          v-if="isVisible"
@@ -31,10 +31,10 @@ export default class VuePopover extends Vue {
   isVisible = false;
   timer: number | null = null;
 
+  clientWidth = document.body.clientWidth;
 
   /*
   // 点击穿透
-  clientWidth = document.body.clientWidth;
   get wrapperClass() {
     if (this.clientWidth <= 500) {
       return {
@@ -55,7 +55,6 @@ export default class VuePopover extends Vue {
 */
 
   // prop: [autoCloseDelay, position, trigger, zIndex]
-
   @Prop({
     type: [Number, Boolean], default: 580, validator(value: false | number): boolean {
       return (value === false) || (value > 0);
@@ -115,7 +114,6 @@ export default class VuePopover extends Vue {
       mouseleave: this.startTimer,
     };
   }
-
 
   get ifHover() {
     return this.trigger === 'hover'
@@ -191,12 +189,18 @@ export default class VuePopover extends Vue {
     } else {return;}
   }
 
+  get switcher() {
+    return this.clientWidth >= 500 ? 'click' : 'touchstart';
+  }
+
   listenToDocument() {
-    document.addEventListener('click', this.closeHandler);
+    const trigger = this.clientWidth >= 500 ? 'click' : 'touchstart';
+    document.addEventListener(trigger, this.closeHandler);
   }
 
   rmListenerToDocument() {
-    document.removeEventListener('click', this.closeHandler);
+    const trigger = this.clientWidth >= 500 ? 'click' : 'touchstart';
+    document.removeEventListener(trigger, this.closeHandler);
   }
 
   // 关闭 弹出框 销毁事件监听
@@ -205,6 +209,7 @@ export default class VuePopover extends Vue {
     this.rmListenerToDocument();
   }
 
+  // 显示弹出框
   openEvent() {
     this.isVisible = true;
     this.onShowPopover();
@@ -217,9 +222,7 @@ export default class VuePopover extends Vue {
     if ((this.$refs.triggerWrapper as HTMLElement)
       ?.contains(event.target as Node)) {
       // 切换显示/隐藏 popover
-      console.log('this.isVisible2: ', this.isVisible);
       this.isVisible = !this.isVisible;
-      console.log('this.isVisible1: ', this.isVisible);
     } else {
       // 点击popover部分 执行的逻辑
       // 不执行任何逻辑
@@ -235,15 +238,16 @@ export default class VuePopover extends Vue {
       // 使 添加监听在 点击事件冒泡 之后 异步执行
       setTimeout(() => {
         // 给 document 添加 click 事件监听
+        // 移动端 300ms 点击延迟
         this.listenToDocument();
-      });
+      }, 350);
     });
   }
 
   // 监听 this.isVisible 状态变化 执行相应的逻辑
   // 当 popover 显示时 执行onShowPopover
   // 当 popover 隐藏时 执行的逻辑
-  @Watch('isVisible')
+  @Watch('isVisible', /*{immediate: true}*/)
   onVisibleChange(newValue: boolean) {
     if (newValue) {
       // 当 popover 显示时 执行的逻辑
