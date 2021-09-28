@@ -48,7 +48,8 @@ export default class VueCollapseItem extends Vue {
 
   // listen to parent
   addBusListener() {
-    this.eventBus?.$on('update:selected', (titleList: Array<string>) => {
+    // this.eventBus?.$on vuepress-plugin-typescript not support ?.
+    this.eventBus && this.eventBus.$on('update:selected', (titleList: Array<string>) => {
       this.isOpen = titleList.includes(this.title);
     });
 

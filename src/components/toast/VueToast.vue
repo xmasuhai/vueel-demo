@@ -69,7 +69,8 @@ export default class VueToast extends Vue {
 
   onClickCloseButton() {
     this.isClosed = true;
-    if (typeof (this?.closeButton?.callback) === 'function') {
+    // vuepress-plugin-typescript not support ?.
+    if (this.closeButton && (typeof (this.closeButton.callback) === 'function')) {
       this.closeButton.callback(this);
     }
   }

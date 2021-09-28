@@ -180,9 +180,11 @@ export default class VuePopover extends Vue {
 
   // 定义一个点击关闭事件的回调函数
   closeHandler(e: Event) {
+    const contentWrapperElement = this.$refs.contentWrapper as Element;
     // 点击的目标对象 即触发按钮 是否存在于 popover组件 包裹的div中
-    const hasPopover = ((this.$refs.contentWrapper as Element)
-      ?.contains(e.target as Node));
+    // contentWrapperElement?.contains() vuepress-plugin-typescript not support ?.
+    const hasPopover = contentWrapperElement &&
+      contentWrapperElement.contains(e.target as Node);
     // 如果 点击的目标对象 不存在于 包裹弹出框的div中 即 点击了document
     if (!hasPopover) {
       this.closeEvent();
@@ -219,8 +221,10 @@ export default class VuePopover extends Vue {
   togglePop(event: Event) {
     // 点击按钮部分 执行的逻辑
     // 判断 事件的目标节点在 中触发器节点 中
-    if ((this.$refs.triggerWrapper as HTMLElement)
-      ?.contains(event.target as Node)) {
+    const triggerWrapperElement = this.$refs.triggerWrapper as HTMLElement;
+    // triggerWrapperElement?.contains() vuepress-plugin-typescript not support ?.
+    if (triggerWrapperElement &&
+      triggerWrapperElement.contains(event.target as Node)) {
       // 切换显示/隐藏 popover
       this.isVisible = !this.isVisible;
     } else {

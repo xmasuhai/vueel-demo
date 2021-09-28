@@ -1,4 +1,5 @@
-.input::v-deep .vue-input-wrapper {
-  display: flex; }
+::v-deep .vue-popover {
+  margin-top: 50px;
+  margin-right: 20px; }
 
 /*# sourceMappingURL=JSON.map */

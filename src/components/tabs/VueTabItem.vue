@@ -46,7 +46,8 @@ export default class VueTabItem extends Vue {
 
   emitSelectedVMtoEventBus() {
     if (this.disabled) {return;}
-    this?.eventBus?.$emit('update:selected', this.tabName, this);
+    // vuepress-plugin-typescript not support ?.
+    this.eventBus && this.eventBus.$emit('update:selected', this.tabName, this);
     this.$emit('click', this);
   }
 
@@ -59,7 +60,8 @@ export default class VueTabItem extends Vue {
   }
 
   onChangeActiveTag() {
-    this?.eventBus?.$on('update:selected', (name: string) => {
+    // vuepress-plugin-typescript not support ?.
+    this.eventBus && this.eventBus.$on('update:selected', (name: string) => {
       this.active = (name === this.tabName);
     });
   }
