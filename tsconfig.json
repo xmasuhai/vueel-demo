@@ -26,15 +26,15 @@
       "esnext",
       "dom",
       "dom.iterable",
-      "scripthost",
-      "webworker"
+      "scripthost"
     ]
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "tests/**/*.ts"
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
   ],
   "exclude": [
     "node_modules"
