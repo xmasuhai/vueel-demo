@@ -293,12 +293,12 @@ title: Grid
 | :-------- |:----------:|:------:|:-----:|:-----|
 | span    |  跨度     | number  | - | 0 |
 | offset  |  偏移距离  | number  |  - | 0 |
-| mobile  |  适配手机的跨度与偏移距离 | object  |  - | - |
-| pad     |  适配平板的跨度与偏移距离 | object  |  - | - |
-| laptop  |  适配笔记本的跨度与偏移距离 | object  |  - | - |
-| pc      |  适配PC端跨度与偏移距离 | object  |  - | - |
-| pcw     |  适配宽屏PC跨度与偏移距离 | object  |  - | - |
-| pcx     |  适配带鱼屏PC跨度与偏移距离 | object  |  - | - |
+| mobile  |  适配手机的跨度与偏移距离 | ```Record<"span" | "offset", number>```  |  - | - |
+| pad     |  适配平板的跨度与偏移距离 | ```Record<"span" | "offset", number>```  |  - | - |
+| laptop  |  适配笔记本的跨度与偏移距离 | ```Record<"span" | "offset", number>```  |  - | - |
+| pc      |  适配PC端跨度与偏移距离 | ```Record<"span" | "offset", number>```  |  - | - |
+| pcw     |  适配宽屏PC跨度与偏移距离 | ```Record<"span" | "offset", number>```  |  - | - |
+| pcx     |  适配带鱼屏PC跨度与偏移距离 | ```Record<"span" | "offset", number>```  |  - | - |
 
 ---
 
@@ -307,4 +307,3 @@ title: Grid
 
 
 ---
-
