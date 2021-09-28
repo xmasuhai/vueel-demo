@@ -116,8 +116,16 @@ module.exports = (/*options, context*/) => ({
       'vuepress-plugin-typescript',
       {
         // ts-loader 的所有配置项
-        tsLoaderOptions: {}
+        tsLoaderOptions: {
+          // Vuepress compilation is ridiculously slow without this, type checking belongs in development not documentation anyway
+          transpileOnly: true,
+          compilerOptions: {
+            // Vuepress needs an older target (as opposed to esnext) to correctly transpile optional chaining and nullish coalescing
+            'target': 'ES2020'
+          }
+        }
       }
+
     ]
   ],
   // serviceWorker: true,
