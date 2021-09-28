@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
 import toastPlugin from '@/components/toast/toastPlugin'
 import VueButton from '@/components/button/VueButton.vue'

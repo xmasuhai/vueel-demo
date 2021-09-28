@@ -10,10 +10,10 @@
       <VueTabPane paneName="tab2">Pane2</VueTabPane>
       <VueTabPane paneName="tab3">Pane3</VueTabPane>
     </VueTabContent>
-</VueTab>
+  </VueTab>
 </template>
 
-<script>
+<script lang="ts">
 import VueTab from '@/components/tabs/VueTab.vue';
 import VueTabNav from '@/components/tabs/VueTabNav.vue';
 import VueTabItem from '@/components/tabs/VueTabItem.vue';
@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       selectedTab: 'tab1'
-    }
+    };
   }
-}
+};
 </script>

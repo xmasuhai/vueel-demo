@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import VueInput from '@/components/input/VueInput.vue';
 
 export default {

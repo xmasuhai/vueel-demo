@@ -10,11 +10,11 @@
 </template>
 
 <script lang="ts">
-import VueMain from '@/components/layout/VueMain.vue'
-import VueContainer from '@/components/layout/VueContainer.vue'
-import VueHeader from '@/components/layout/VueHeader.vue'
-import VueFooter from '@/components/layout/VueFooter.vue'
-import VueAside from '@/components/layout/VueAside.vue'
+import VueMain from '@/components/layout/VueMain.vue';
+import VueContainer from '@/components/layout/VueContainer.vue';
+import VueHeader from '@/components/layout/VueHeader.vue';
+import VueFooter from '@/components/layout/VueFooter.vue';
+import VueAside from '@/components/layout/VueAside.vue';
 
 export default {
   name: 'triple-row-side',
@@ -25,7 +25,7 @@ export default {
     VueHeader,
     VueFooter
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

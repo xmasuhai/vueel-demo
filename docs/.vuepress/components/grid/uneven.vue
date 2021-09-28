@@ -19,7 +19,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import VueRow from '@/components/grid/VueRow.vue'
 import VueCol from '@/components/grid/VueCol.vue'
 

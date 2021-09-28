@@ -16,7 +16,7 @@
   </VueTab>
 </template>
 
-<script>
+<script lang="ts">
 import VueTab from '@/components/tabs/VueTab.vue';
 import VueTabNav from '@/components/tabs/VueTabNav.vue';
 import VueTabItem from '@/components/tabs/VueTabItem.vue';
@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       selectedTab: 'tab1'
-    }
+    };
   }
-}
+};
 </script>

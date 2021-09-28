@@ -7,16 +7,17 @@
   </VuePopover>
 </template>
 
-<script>
+<script lang="ts">
 import VuePopover from '@/components/popover/VuePopover.vue';
-import VueButton from '@/components/button/VueButton.vue'
+import VueButton from '@/components/button/VueButton.vue';
+
 export default {
   name: 'hover',
   components: {
     VuePopover,
     VueButton
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

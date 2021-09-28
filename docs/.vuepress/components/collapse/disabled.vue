@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import VueCollapse from '@/components/collapse/VueCollapse.vue'
 import VueCollapseItem from '@/components/collapse/VueCollapseItem.vue'
 

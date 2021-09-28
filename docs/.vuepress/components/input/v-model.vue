@@ -9,9 +9,9 @@
   </div>
 </template>
 
-<script>
-import VueInput from '@/components/input/VueInput.vue'
-import VueButton from '@/components/button/VueButton.vue'
+<script lang="ts">
+import VueInput from '@/components/input/VueInput.vue';
+import VueButton from '@/components/button/VueButton.vue';
 
 export default {
   name: 'v-model',
@@ -19,9 +19,9 @@ export default {
   data() {
     return {
       message: ''
-    }
+    };
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

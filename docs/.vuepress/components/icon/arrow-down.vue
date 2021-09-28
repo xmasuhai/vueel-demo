@@ -5,13 +5,13 @@
   </span>
 </template>
 
-<script>
-import VueIcon from '@/components/icon/VueIcon.vue'
+<script lang="ts">
+import VueIcon from '@/components/icon/VueIcon.vue';
 
 export default {
   name: 'arrow-down',
   components: {VueIcon}
-}
+};
 </script>
 
 <style lang="scss" scoped>

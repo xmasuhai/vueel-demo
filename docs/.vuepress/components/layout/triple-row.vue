@@ -7,10 +7,10 @@
 </template>
 
 <script lang="ts">
-import VueMain from '@/components/layout/VueMain.vue'
-import VueContainer from '@/components/layout/VueContainer.vue'
-import VueHeader from '@/components/layout/VueHeader.vue'
-import VueFooter from '@/components/layout/VueFooter.vue'
+import VueMain from '@/components/layout/VueMain.vue';
+import VueContainer from '@/components/layout/VueContainer.vue';
+import VueHeader from '@/components/layout/VueHeader.vue';
+import VueFooter from '@/components/layout/VueFooter.vue';
 
 export default {
   name: 'triple-row',
@@ -20,7 +20,7 @@ export default {
     VueHeader,
     VueFooter
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

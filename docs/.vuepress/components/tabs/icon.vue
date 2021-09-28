@@ -25,13 +25,13 @@
   </VueTab>
 </template>
 
-<script>
-import VueTab from '@/components/tabs/VueTab.vue'
-import VueTabNav from '@/components/tabs/VueTabNav.vue'
-import VueTabItem from '@/components/tabs/VueTabItem.vue'
-import VueTabContent from '@/components/tabs/VueTabContent.vue'
-import VueTabPane from '@/components/tabs/VueTabPane.vue'
-import VueIcon from '@/components/icon/VueIcon.vue'
+<script lang="ts">
+import VueTab from '@/components/tabs/VueTab.vue';
+import VueTabNav from '@/components/tabs/VueTabNav.vue';
+import VueTabItem from '@/components/tabs/VueTabItem.vue';
+import VueTabContent from '@/components/tabs/VueTabContent.vue';
+import VueTabPane from '@/components/tabs/VueTabPane.vue';
+import VueIcon from '@/components/icon/VueIcon.vue';
 
 export default {
   name: 'normal',
@@ -46,7 +46,7 @@ export default {
   data() {
     return {
       selectedTab: 'tab1'
-    }
+    };
   }
-}
+};
 </script>
