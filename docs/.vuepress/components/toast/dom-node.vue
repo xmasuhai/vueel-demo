@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="custom">
     <VueButton @click="showToast">点击出现提示框 提供自定义HTML节点</VueButton>
     <VueButton @click="showToastHTML">点击出现提示框 可设置自定义HTML节点样式</VueButton>
   </div>
@@ -55,3 +55,7 @@ export default {
 };
 
 </script>
+
+<style lang="scss" scoped>
+@import './toast.scss';
+</style>

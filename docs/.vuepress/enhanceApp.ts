@@ -2,7 +2,7 @@
 // import {Component} from 'vue-property-decorator';
 // import VueHighlightJS from 'vue-highlight.js';
 // import 'highlight.js/styles/dark.css';
-import './styles/index.scss'
+import './styles/index.scss';
 // import Vue from 'vue';
 
 export default (({
@@ -24,4 +24,4 @@ export default (({
     })
   */
 
-})
+});

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="custom">
     <VueButton @click="showToast('top')">点击出现顶部提示框</VueButton>
     <VueButton @click="showToast('middle')">点击出现中部提示框</VueButton>
     <VueButton @click="showToast('bottom')">点击出现底部提示框</VueButton>

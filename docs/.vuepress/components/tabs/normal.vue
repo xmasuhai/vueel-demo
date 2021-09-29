@@ -1,6 +1,6 @@
 <template>
   <VueTab :selected.sync="selectedTab">
-    <VueTabNav class="custom-class">
+    <VueTabNav>
       <VueTabItem tab-name="tab1">Item1</VueTabItem>
       <VueTabItem tab-name="tab2">Item2Item2</VueTabItem>
       <VueTabItem tab-name="tab3">Item3Item3Item3</VueTabItem>

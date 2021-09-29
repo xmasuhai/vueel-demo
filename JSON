@@ -1,5 +1,4 @@
-::v-deep .vue-popover {
-  margin-top: 50px;
-  margin-right: 20px; }
+.custom::v-deep > .vue-button-wrapper {
+  margin: 5px; }
 
 /*# sourceMappingURL=JSON.map */
