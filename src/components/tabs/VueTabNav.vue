@@ -52,7 +52,7 @@ export default class VueTabNav extends Vue {
       const parentLeft = vm.$parent.$el.getBoundingClientRect().left;
       (this.$refs.line as HTMLElement).style.width = `${width}px`;
       // (this.$refs.line as HTMLElement).styles.left = `${left - parentLeft}px`;
-      (this.$refs.line as HTMLElement).style.transform = `translateX(${left - parentLeft}px)`;
+      (this.$refs.line as HTMLElement).style.transform = `translate3D(${left - parentLeft}px, 0, 0)`;
     });
   }
 

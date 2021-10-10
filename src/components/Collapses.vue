@@ -56,7 +56,3 @@ export default class Collapses extends Vue {
   selectedTitleList = ['标题1', '标题3'];
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

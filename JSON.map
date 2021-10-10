@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAA,qCAAsC;EACpC,MAAM,EAAE,GAAG",
-"sources": ["docs/.vuepress/components/toast/toast.scss"],
+"mappings": "",
+"sources": [],
 "names": [],
 "file": "JSON"
 }
