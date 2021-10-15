@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/xmasuhai/vueel-demo/actions/workflows/unit-test-actions.yml/badge.svg)](https://github.com/xmasuhai/vueel-demo/actions/workflows/unit-test-actions.yml)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/xmasuhai/vueel-demo)
-![vue-version](https://img.shields.io/badge/vue-v2.6.11)
+![vue-version](https://img.shields.io/npm/v/vue.svg)
 ![npm license](https://img.shields.io/github/license/xmasuhai/vueel-demo)
 
 ## 介绍
