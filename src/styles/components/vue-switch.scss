@@ -21,6 +21,31 @@ $h2: $h - 4px;
       background: white;
       border-radius: math.div($h2, 2);
       transition: all .25s;
+      line-height: $h2;
+
+      .nut-switch-label {
+        color: #fff;
+        font-size: 12px;
+        text-align: center;
+
+        &.open {
+          transform: translateX(-18px);
+        }
+
+        &.close {
+          transform: translateX(18px);
+        }
+      }
+
+      .close-line {
+        width: 10px;
+        height: 2px;
+        background-color: #bfbfbf;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
 
     &.checked {
