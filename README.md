@@ -3,10 +3,8 @@
 [![CI](https://github.com/xmasuhai/vueel-demo/actions/workflows/unit-test-actions.yml/badge.svg)](https://github.com/xmasuhai/vueel-demo/actions/workflows/unit-test-actions.yml)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/xmasuhai/vueel-demo)
 ![vue-version](https://img.shields.io/badge/vue-v3.2.0%2B-%23407fbc)
-[![NPM version][npm-image]](http://nodejs.org/download/)
-[![node version][node-image]](http://nodejs.org/download/)
-[![npm download][download-image]](https://npmjs.org/package/vueel-demo)
-[![npm license][license-image]](https://npmjs.org/package/vueel-demo)
+![npm download](https://npmjs.org/package/vueel-demo)
+![npm license](https://img.shields.io/github/license/xmasuhai/vueel-demo)
 
 ## 介绍
 
