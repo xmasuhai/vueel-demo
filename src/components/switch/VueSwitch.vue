@@ -33,12 +33,16 @@ export default defineComponent({
     inactiveText: {
       type: String,
       default: ''
+    },
+    value: {
+      type: Boolean,
+      default: false
     }
   },
-  setup(/*props, ctx*/) {
+  setup(props, ctx) {
     const checked = ref(false);
     const toggle = () => {
-      checked.value = !checked.value;
+      ctx.emit('update:value', !props.value);
     };
     return {
       checked,
