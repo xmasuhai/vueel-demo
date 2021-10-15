@@ -2,6 +2,10 @@
 
 [![CI](https://github.com/xmasuhai/vueel-demo/actions/workflows/unit-test-actions.yml/badge.svg)](https://github.com/xmasuhai/vueel-demo/actions/workflows/unit-test-actions.yml)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/xmasuhai/vueel-demo)
+![license](https://img.shields.io/github/license/xmasuhai/vueel-demo?style=plastic)
+![npm](https://img.shields.io/npm/v/vueel-demo/ui?style=plastic" alt="version")
+![vue-version](https://img.shields.io/badge/vue-v3.2.0%2B-%23407fbc" alt="vue")
+![](https://img.shields.io/codecov/c/github/haoziqaq/vueel-demo" alt="coverage")
 
 ## 介绍
 
