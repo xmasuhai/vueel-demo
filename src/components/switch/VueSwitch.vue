@@ -8,15 +8,14 @@
              class="close-line">
         </div>
         <template v-if="activeText">
-          <div class="nut-switch-label open" v-show="toggleValue">
+          <div class="vue-switch-label open" v-show="toggleValue">
             {{ activeText }}
           </div>
-          <div class="nut-switch-label close" v-show="!toggleValue">
+          <div class="vue-switch-label close" v-show="!toggleValue">
             {{ inactiveText }}
           </div>
         </template>
       </span>
-
     </button>
   </div>
 </template>

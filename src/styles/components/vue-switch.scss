@@ -23,7 +23,7 @@ $h2: $h - 4px;
       transition: all .25s;
       line-height: $h2;
 
-      .nut-switch-label {
+      .vue-switch-label {
         color: #fff;
         font-size: 12px;
         text-align: center;
@@ -46,9 +46,10 @@ $h2: $h - 4px;
         left: 50%;
         transform: translate(-50%, -50%);
       }
+
     }
 
-    &.checked {
+    &-checked {
       background-color: #1890ff;
 
       & > .vue-switch-toggle {
