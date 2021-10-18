@@ -1,7 +1,14 @@
 <template>
   <div>
-    <VueSwitch :value.sync="bool"></VueSwitch>
-    <VueSwitch :value.sync="bool" activeText="开" inactiveText="关">
+    <VueSwitch :toggleValue.sync="bool1">
+    </VueSwitch>
+    <VueSwitch :toggleValue.sync="bool2"
+               activeText="on"
+               inactiveText="off">
+    </VueSwitch>
+    <VueSwitch :toggleValue.sync="bool3"
+               activeText="开"
+               inactiveText="关">
     </VueSwitch>
   </div>
 </template>
@@ -15,10 +22,11 @@ import VueCodePresentation from './code-presentation/VueCodePresentation.vue';
 export default defineComponent({
   name: 'Switches',
   components: {VueSwitch, VueDetail, VueCodePresentation},
-  props: {},
-  setup(/*props, context*/) {
-    const bool = ref(false);
-    return {bool};
+  setup() {
+    const bool1 = ref(false);
+    const bool2 = ref(false);
+    const bool3 = ref(false);
+    return {bool1, bool2, bool3};
   }
 
 });
