@@ -4,14 +4,14 @@
     <button :class="classes"
             :colorType="colorType"
             :disabled="isDisabled"
+            :theme="theme"
             @click="clickLoading"
             type="button">
       <VueIcon v-if="loadingStatus"
                :icon-name="loadingName"
                class="vue-svg"
-               :class="{
-               loading: isLoading && !isDisabled,
-               [`vue-button-size-${this.size}`]: true}"/>
+               :class="{loading: isLoading && !isDisabled,
+                       [`vue-button-size-${this.size}`]: true}"/>
       <div class="content">
         <slot></slot>
       </div>
@@ -42,6 +42,7 @@ export default class VueButton extends Vue {
         .indexOf(colorType) > -1;
     }
   }) colorType!: string;
+  @Prop({type: String, default: 'button'}) theme!: 'button' | 'link' | 'text';
   @Prop({type: String, default: 'normal'}) size!: 'small' | 'normal' | 'big';
   @Prop({type: String, default: ''}) icon!: 'settings' | 'loading' | 'right' |
     'left' | 'download' | 'arrow-down' | 'thumbs-up' | '';
@@ -70,11 +71,12 @@ export default class VueButton extends Vue {
       'activeHover': !this.isDisabled,
       [`icon-${this.iconPosition}`]: true,
       [`vue-button-${this.colorType}`]: true,
+      [`vue-button-theme-${this.theme}`]: true,
       [`vue-button-size-${this.size}`]: true,
     };
   }
 
-  @Watch('isLoading', {immediate: true})
+  @Watch('isLoading')
   onIsLoadingChange(val: boolean) {
     this.isDisabledFake = val;
   }

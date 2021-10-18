@@ -3,7 +3,9 @@
     <VueCodePresentation legendName="Button Types">
       <VueDetail summaryString="Normal Button 基本样式">
         <VueButton>按钮</VueButton>
-        <VueButton :isDisabled="true">按钮</VueButton>
+        <VueButton theme="link">链接按钮</VueButton>
+        <VueButton theme="text">文字按钮</VueButton>
+        <VueButton :isDisabled="true">禁用按钮</VueButton>
       </VueDetail>
       <VueDetail summaryString="Buttons with icons">
         <VueButton :isLoading="isLoading1"

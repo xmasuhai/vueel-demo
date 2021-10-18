@@ -29,20 +29,23 @@
 }
 
 @mixin setColorType($background: $button-bg) {
+  background: $background;
+  // 普通按钮
   @if $background == $button-bg {
     color: #333;
-    background: $background;
     border: 1px solid $border-color;
     @extend %activeHover;
+
   } @else {
+    // 彩色按钮
     color: #fff;
-    background: $background;
     border: 0 solid transparent;
 
     &.activeHover {
       &:hover {
         background: lighten($background, 10%);
         border: 0 solid transparent;
+        // 代替 border
         box-shadow: 0 0 0 1px $background,
         0 0 1px 1px $background;
       }
@@ -72,6 +75,19 @@
     background: $button-bg;
     color: #000;
 
+    // 相邻组件间隔
+    & + & {
+      margin-left: 8px;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+
     &.content {
       white-space: nowrap;
     }
@@ -92,11 +108,7 @@
 
     @extend %activeHover;
 
-    &:focus {
-      outline: none;
-    }
-
-    // button colors
+    // vue-button colors
     $color-types: (
       'normal': $normal-color,
       'primary': $primary,
@@ -109,6 +121,35 @@
     @each $name, $type in $color-types {
       &-#{$name} {
         @include setColorType($type);
+      }
+    }
+
+    // button-theme
+    // button link text
+    &-theme-link {
+      background-color: #fff;
+      border-color: transparent;
+      box-shadow: none;
+      color: $light-font-color;
+
+      &:hover,
+      &:focus {
+        box-shadow: none;
+        border-color: transparent;
+        color: lighten($light-font-color, 10%);
+      }
+    }
+
+    &-theme-text {
+      border-color: transparent;
+      box-shadow: none;
+      color: inherit;
+
+      &:hover,
+      &:focus {
+        box-shadow: none;
+        border-color: transparent;
+        background: darken(white, 5%);;
       }
 
     }
