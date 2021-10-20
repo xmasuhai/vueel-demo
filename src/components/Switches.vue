@@ -1,15 +1,21 @@
 <template>
   <div>
-    <VueSwitch :toggleValue.sync="bool1">
-    </VueSwitch>
-    <VueSwitch :toggleValue.sync="bool2"
-               activeText="on"
-               inactiveText="off">
-    </VueSwitch>
-    <VueSwitch :toggleValue.sync="bool3"
-               activeText="开"
-               inactiveText="关">
-    </VueSwitch>
+    <VueSwitch :toggleValue.sync="bool1"></VueSwitch>
+    <VueCodePresentation legendName="Switch">
+      <VueDetail summaryString="Switch 基本样式">
+        <VueSwitch :toggleValue.sync="bool1"></VueSwitch>
+      </VueDetail>
+      <VueDetail summaryString="Switch 带文字的开关">
+        <VueSwitch :toggleValue.sync="bool2"
+                   activeText="on"
+                   inactiveText="off">
+        </VueSwitch>
+        <VueSwitch :toggleValue.sync="bool3"
+                   activeText="开"
+                   inactiveText="关">
+        </VueSwitch>
+      </VueDetail>
+    </VueCodePresentation>
   </div>
 </template>
 

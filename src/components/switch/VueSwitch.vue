@@ -1,17 +1,18 @@
 <template>
   <div class="vue-switch-button-wrapper">
     <button class="vue-switch-button"
-            :class="{checked}"
-            @click="toggle">
+            :class="{['vue-switch-checked']: checked}"
+            @click="toggle"
+            type="button">
       <span class="vue-switch-toggle">
         <div v-show="!toggleValue"
-             class="close-line">
+             class="vue-switch-close-line">
         </div>
         <template v-if="activeText">
-          <div class="vue-switch-label open" v-show="toggleValue">
+          <div class="vue-switch-label vue-switch-open" v-show="toggleValue">
             {{ activeText }}
           </div>
-          <div class="vue-switch-label close" v-show="!toggleValue">
+          <div class="vue-switch-label vue-switch-close" v-show="!toggleValue">
             {{ inactiveText }}
           </div>
         </template>
@@ -55,9 +56,11 @@ export default defineComponent({
     const checked = computed(() => {
       return props.toggleValue;
     });
+
     const toggle = () => {
       ctx.emit('update:toggleValue', !props.toggleValue);
     };
+
     return {
       checked,
       toggle

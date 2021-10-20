@@ -28,16 +28,16 @@ $h2: $h - 4px;
         font-size: 12px;
         text-align: center;
 
-        &.open {
+        &.vue-switch-open {
           transform: translateX(-18px);
         }
 
-        &.close {
+        &.vue-switch-close {
           transform: translateX(18px);
         }
       }
 
-      .close-line {
+      .vue-switch-close-line {
         width: 10px;
         height: 2px;
         background-color: #bfbfbf;
@@ -49,7 +49,7 @@ $h2: $h - 4px;
 
     }
 
-    &-checked {
+    &.vue-switch-checked {
       background-color: #1890ff;
 
       & > .vue-switch-toggle {
@@ -63,7 +63,7 @@ $h2: $h - 4px;
       }
     }
 
-    &.checked:active {
+    &.vue-switch-checked:active {
       > .vue-switch-toggle {
         width: $h2 + 4px;
         margin-left: -4px;
