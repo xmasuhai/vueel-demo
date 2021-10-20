@@ -1,7 +1,10 @@
 <template>
   <div class="vue-switch-button-wrapper">
     <button class="vue-switch-button"
-            :class="{['vue-switch-checked']: checked}"
+            :class="{
+            ['vue-switch-checked']: checked,
+            ['vue-switch-disabled']: disabled,
+            }"
             @click="toggle"
             type="button">
       <span class="vue-switch-toggle">
@@ -28,6 +31,7 @@ interface PropsType {
   activeText?: string;
   inactiveText?: string;
   toggleValue?: boolean;
+  disabled?: boolean;
 }
 
 export default defineComponent({
@@ -50,6 +54,10 @@ export default defineComponent({
     toggleValue: {
       type: Boolean,
       default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props: PropsType, ctx: SetupContext) {
@@ -58,7 +66,9 @@ export default defineComponent({
     });
 
     const toggle = () => {
-      ctx.emit('update:toggleValue', !props.toggleValue);
+      !props.disabled
+        ? ctx.emit('update:toggleValue', !props.toggleValue)
+        : null;
     };
 
     return {

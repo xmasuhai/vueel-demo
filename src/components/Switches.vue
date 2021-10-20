@@ -1,9 +1,11 @@
 <template>
   <div>
-    <VueSwitch :toggleValue.sync="bool1"></VueSwitch>
     <VueCodePresentation legendName="Switch">
       <VueDetail summaryString="Switch 基本样式">
         <VueSwitch :toggleValue.sync="bool1"></VueSwitch>
+      </VueDetail>
+      <VueDetail summaryString="Switch 禁用样式">
+        <VueSwitch disabled></VueSwitch>
       </VueDetail>
       <VueDetail summaryString="Switch 带文字的开关">
         <VueSwitch :toggleValue.sync="bool2"

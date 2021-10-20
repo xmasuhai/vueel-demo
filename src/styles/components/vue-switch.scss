@@ -57,6 +57,11 @@ $h2: $h - 4px;
       }
     }
 
+    &.vue-switch-disabled {
+      cursor: not-allowed;
+      background: lighten(#bfbfbf, 10%);
+    }
+
     &:active {
       > .vue-switch-toggle {
         width: $h2 + 4px;
