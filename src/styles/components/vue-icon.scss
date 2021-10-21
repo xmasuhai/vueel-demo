@@ -3,10 +3,16 @@
   width: 1em;
   height: 1em;
 
-  .vue-svg {
+  .vue-icon-svg {
     width: 1em;
     height: 1em;
+
   }
 
+}
 
+@for $i from 2 through 10 {
+  .vue-icon-#{$i}x {
+    transform: scale($i);
+  }
 }

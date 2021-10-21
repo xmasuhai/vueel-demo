@@ -10,6 +10,7 @@
       <VueIcon v-if="loadingStatus"
                :icon-name="loadingName"
                class="vue-svg"
+               :scale="1"
                :class="{loading: isLoading && !isDisabled,
                        [`vue-button-size-${this.size}`]: true}"/>
       <div class="content">
