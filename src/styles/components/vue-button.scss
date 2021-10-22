@@ -34,9 +34,9 @@
   background: $background;
   // 普通按钮
   @if $background == $button-bg {
+    @extend %activeHover;
     color: #333;
     border: 1px solid $border-color;
-    @extend %activeHover;
 
   } @else {
     // 彩色按钮
@@ -77,6 +77,8 @@
     background: $button-bg;
     color: #000;
 
+    //@extend %activeHover;
+
     // 相邻组件间隔
     & + & {
       margin-left: 8px;
@@ -108,8 +110,6 @@
       cursor: not-allowed;
     }
 
-    @extend %activeHover;
-
     // vue-button colors
     $color-types: (
       'normal': $normal-color,
@@ -128,7 +128,7 @@
 
     // button-theme
     // button link text
-    &-theme-link {
+    &-theme-link[theme='link'] {
       background-color: #fff;
       border-color: transparent;
       box-shadow: none;
@@ -140,9 +140,10 @@
         border-color: transparent;
         color: lighten($light-font-color, 10%);
       }
+
     }
 
-    &-theme-text {
+    &-theme-text[theme='text'] {
       border-color: transparent;
       box-shadow: none;
       color: inherit;
