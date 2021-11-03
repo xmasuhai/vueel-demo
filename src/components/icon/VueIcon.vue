@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import '@/assets/icons/svg.js';
+import '../../assets/icons/svg.js';
 import {Component, Prop, Vue} from 'vue-property-decorator';
 
 @Component

@@ -1,5 +1,4 @@
 <template>
-  <!--suppress HtmlUnknownAttribute -->
   <div class="vue-button-wrapper">
     <button :class="classes"
             :colorType="colorType"
