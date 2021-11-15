@@ -1,32 +1,32 @@
-@import '../global.scss';
+@import '../global';
 
 .vue-tab-nav-wrapper {
   display: flex;
 
   .vue-tab-nav {
+    align-items: center;
+    border-bottom: 1px solid $hrline-color;
     display: flex;
-    max-width: 100%;
     height: $tab-nav-height;
     justify-content: flex-start;
-    align-items: center;
+    max-width: 100%;
     position: relative;
-    border-bottom: 1px solid $hrLine-color;
     width: 100%;
 
     .vue-tab-line {
-      position: absolute;
       bottom: 0;
+      box-shadow: 0 1px 0 0 $water-blue;
       height: 1px;
       //outline: 1px solid $waterBlue;
-      box-shadow: 0 1px 0 0 $waterBlue;
+      position: absolute;
       transition: all .3s;
     }
 
     > .vue-tab-actions-wrapper {
-      margin-left: 0;
-      display: flex;
       align-items: center;
+      display: flex;
       justify-content: center;
+      margin-left: 0;
       padding: 0 1em;
     }
 

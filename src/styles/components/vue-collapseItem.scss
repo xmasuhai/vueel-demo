@@ -1,34 +1,38 @@
-@import '../global.scss';
+@import '../global';
 
-@mixin border-bottom-radius($radius: 0px) {
+@mixin border-bottom-radius($radius: 0) {
   border-bottom-left-radius: $radius;
   border-bottom-right-radius: $radius;
 }
 
 .vue-collapse-item {
-  display: flex;
   align-items: center;
+  background-color: lighten($collapse-grey, 30%);
+  border-bottom: 1px solid $collapse-grey;
+  display: flex;
   flex-wrap: wrap;
   width: 100%;
-  border-bottom: 1px solid $collapse-grey;
 
   > .vue-title {
-    width: 100%;
-    min-height: 32px;
-    display: flex;
     align-items: center;
+    border-radius: $border-radius - 1;
+    display: flex;
+    min-height: 32px;
     padding: 0 8px;
+    width: 100%;
 
     &.disabled {
-      color: lighten(#000, 80%);
-      background-color: lighten($collapse-grey, 80%);
+      background-color: lighten($collapse-grey, 50%);
+      border-radius: 0;
+      color: lighten($basic-bg-dk, 80%);
       cursor: not-allowed;
     }
   }
 
   > .vue-content {
-    width: 100%;
+    background-color: $basic-bg-lt;
     padding: 18px;
+    width: 100%;
 
     &.content-show {
       border-top: 1px solid $collapse-grey;
@@ -37,26 +41,26 @@
 
   // .collapse-item
   &:first-child {
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    outline: 1px solid $collapse-grey;
 
-    > .vue-title {
-
-      // v-show = true
-      &.title-show {
-        border-top: none;
-      }
+    // v-show = true
+    > .vue-title.title-show {
+      border-top: 0;
     }
   }
 
   // .collapse-item
   &:last-child {
-    border-bottom: none; //  覆盖 border-bottom: 1px solid $collapse-grey;
+    border-bottom: 0; //  覆盖 border-bottom: 1px solid $collapse-grey;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    outline: 1px solid $collapse-grey;
 
-    > .vue-title {
-
-      // v-show = true
-      &.title-show {
-        @include border-bottom-radius;
-      }
+    // v-show = true
+    > .vue-title.title-show {
+      @include border-bottom-radius;
     }
 
     > .vue-content {
