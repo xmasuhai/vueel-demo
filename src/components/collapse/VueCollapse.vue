@@ -71,5 +71,6 @@ export default class VueCollapse extends Vue {
     this.giveSelectedArrayToSon(this.selectedArray);
     this.monitorSelectedArray();
   }
+
 }
 </script>

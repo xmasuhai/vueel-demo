@@ -69,5 +69,6 @@ export default class VueCollapseItem extends Vue {
     // listen to parent
     this.addBusListener();
   }
+
 }
 </script>

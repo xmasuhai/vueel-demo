@@ -1,7 +1,6 @@
 <template>
   <div>
     <VueCodePresentation legendName="Collapse 折叠面板">
-
       <VueDetail summaryString="基本样式">
         <VueCollapse :selectedArray.sync="selectedTitleList">
           <VueCollapseItem title="标题1">内容1</VueCollapseItem>
