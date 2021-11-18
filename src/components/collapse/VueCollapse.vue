@@ -7,7 +7,6 @@
                        :disabled="item.disabled"
                        :key="index">
       </VueCollapseItem>
-      占位
     </slot>
   </div>
 </template>
@@ -25,7 +24,7 @@ export default class VueCollapse extends Vue {
   @Prop({
     type: Array,
     default() {return [];}
-  }) itemsData!: Record<string, any>[];
+  }) itemsData!: Record<string, unknown>[];
   @Prop({
     type: Array,
     default: () => ['']
@@ -37,39 +36,38 @@ export default class VueCollapse extends Vue {
 
   @Provide() eventBus = new Vue();
 
-  // to son by eventBus
-  giveSelectedArrayToSon(selectedArray: Array<string>) {
+  emitSelectedArrayToSon(selectedArray: Array<string>) {
     this.eventBus.$emit('update:selected', selectedArray);
   }
 
-  updateSelectedArrayToAll(selectedArray: Array<string>) {
-    // to parent
+  emitSelectedArrayToAll(selectedArray: Array<string>) {
+    // emit to parent component // selectedArray replace $event
     this.$emit('update:selectedArray', selectedArray);
-    // to son by eventBus
-    this.giveSelectedArrayToSon(selectedArray);
+    // emit to son by eventBus
+    this.emitSelectedArrayToSon(selectedArray);
   }
 
-  monitorSelectedArray() {
+  onSelectedArrayChange() {
     let selectedArrayCopy = JSON.parse(JSON.stringify(this.selectedArray));
 
     this.eventBus.$on('add:selected', (title: string) => {
       this.onlyShowSingle
         ? selectedArrayCopy = [title]
         : selectedArrayCopy.push(title);
-      this.updateSelectedArrayToAll(selectedArrayCopy);
+      this.emitSelectedArrayToAll(selectedArrayCopy);
     });
 
     this.eventBus.$on('remove:selected', (title: string) => {
       const index = selectedArrayCopy.indexOf(title);
       selectedArrayCopy.splice(index, 1);
-      this.updateSelectedArrayToAll(selectedArrayCopy);
+      this.emitSelectedArrayToAll(selectedArrayCopy);
     });
 
   }
 
   mounted() {
-    this.giveSelectedArrayToSon(this.selectedArray);
-    this.monitorSelectedArray();
+    this.emitSelectedArrayToSon(this.selectedArray);
+    this.onSelectedArrayChange();
   }
 
 }

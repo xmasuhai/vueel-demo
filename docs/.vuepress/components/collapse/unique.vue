@@ -5,6 +5,7 @@
       <vue-collapse-item title="第一项">内容一</vue-collapse-item>
       <vue-collapse-item title="第二项">内容二</vue-collapse-item>
       <vue-collapse-item title="第三项">内容三</vue-collapse-item>
+      <vue-collapse-item title="第四项">内容四</vue-collapse-item>
     </vue-collapse>
   </div>
 </template>

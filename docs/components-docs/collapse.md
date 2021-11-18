@@ -30,6 +30,8 @@ title: Collapse
   <vue-collapse-item title="第一项">第一项</vue-collapse-item>
   <vue-collapse-item title="第二项">第二项</vue-collapse-item>
   <vue-collapse-item title="第三项">第三项</vue-collapse-item>
+  <vue-collapse-item title="第四项">内容四</vue-collapse-item>
+  <vue-collapse-item title="第五项">内容五</vue-collapse-item>
 </vue-collapse>
 ```
 :::
@@ -53,6 +55,7 @@ title: Collapse
   <vue-collapse-item title="第一项">第一项</vue-collapse-item>
   <vue-collapse-item title="第二项" :isDisabled="true">第二项</vue-collapse-item>
   <vue-collapse-item title="第三项" :isDisabled="true">第三项</vue-collapse-item>
+  <vue-collapse-item title="第四项">内容四</vue-collapse-item>
 </vue-collapse>
 ```
 :::
@@ -77,10 +80,10 @@ title: Collapse
   <vue-collapse-item title="第一项">内容一</vue-collapse-item>
   <vue-collapse-item title="第二项">内容二</vue-collapse-item>
   <vue-collapse-item title="第三项">内容三</vue-collapse-item>
+  <vue-collapse-item title="第四项">内容四</vue-collapse-item>
 </vue-collapse>
 ```
 :::
-
 
 ---
 

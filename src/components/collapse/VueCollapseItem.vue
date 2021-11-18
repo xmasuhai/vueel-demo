@@ -7,21 +7,31 @@
             }"
             @click="toggle">
       {{ title }}
+      <VueIcon iconName="right"
+               :class="{'down-icon': isOpen && !isDisabled}">
+      </VueIcon>
     </header>
-    <article class="vue-content"
-             :class="{ 'content-show': isOpen && !isDisabled}"
-             v-show="isOpen && !isDisabled">
-      <slot>
-        VueCollapseItem
-      </slot>
-    </article>
+    <transition name="push-pull">
+      <article class="vue-content"
+               :class="{
+                    'content-show': isOpen && !isDisabled
+                    }"
+               v-show="isOpen && !isDisabled">
+        <slot></slot>
+      </article>
+    </transition>
   </div>
 </template>
 
 <script lang="ts">
+import VueIcon from '../icon/VueIcon.vue';
 import {Component, Inject, Prop, Vue} from 'vue-property-decorator';
 
-@Component
+@Component({
+  components: {
+    VueIcon
+  }
+})
 export default class VueCollapseItem extends Vue {
   name = 'VueCollapseItem';
   isOpen = false;
@@ -39,11 +49,9 @@ export default class VueCollapseItem extends Vue {
   @Inject() readonly eventBus!: Vue;
 
   toggle() {
-    if (this.isOpen) {
-      this.eventBus.$emit('remove:selected', this.title);
-    } else {
-      this.eventBus.$emit('add:selected', this.title);
-    }
+    this.isOpen
+      ? this.eventBus.$emit('remove:selected', this.title)
+      : this.eventBus.$emit('add:selected', this.title);
   }
 
   // listen to parent

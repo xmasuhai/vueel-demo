@@ -5,21 +5,62 @@
   border-bottom-right-radius: $radius;
 }
 
+@keyframes slide-open {
+  0% {
+    height: 0;
+    padding: 0;
+  }
+
+  100% {
+    height: auto;
+    padding: 16px;
+  }
+
+}
+
+@keyframes slide-close {
+  0% {
+    height: auto;
+    padding: 16px;
+  }
+
+  100% {
+    height: 0;
+    padding: 0;
+  }
+
+}
+
+.push-pull-enter-active {
+  animation: slide-open .3s ease-in-out;
+}
+
+.push-pull-leave-active {
+  animation: slide-close .3s ease-in-out;
+}
+
 .vue-collapse-item {
   align-items: center;
   background-color: lighten($collapse-grey, 30%);
   border-bottom: 1px solid $collapse-grey;
   display: flex;
   flex-wrap: wrap;
+  overflow: hidden;
   width: 100%;
 
   > .vue-title {
     align-items: center;
     border-radius: $border-radius - 1;
     display: flex;
+    justify-content: space-between;
+    margin-right: -1px;
     min-height: 32px;
     padding: 0 8px;
     width: 100%;
+
+    > .down-icon {
+      transform: rotate(90deg);
+    }
 
     &.disabled {
       background-color: lighten($collapse-grey, 50%);
