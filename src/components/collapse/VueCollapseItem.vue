@@ -52,7 +52,6 @@ export default class VueCollapseItem extends Vue {
     this.eventBus && this.eventBus.$on('update:selected', (titleList: Array<string>) => {
       this.isOpen = titleList.includes(this.title);
     });
-
   }
 
   initShow() {
