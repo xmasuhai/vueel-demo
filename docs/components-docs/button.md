@@ -161,6 +161,10 @@ export default {
 ```
 :::
 
+:::warning
+VueButtonGroup的子元素应该全是VueButton元素,否则会有警告提示。
+:::
+
 ---
 
 ## 属性列表 Attributes Props
