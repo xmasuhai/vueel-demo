@@ -2,15 +2,15 @@
   <div class="vue-switch-button-wrapper">
     <button class="vue-switch-button"
             :class="{
-            ['vue-switch-checked']: checked,
-            ['vue-switch-disabled']: disabled,
+                    ['vue-switch-checked']: checked,
+                    ['vue-switch-disabled']: disabled,
             }"
             @click="toggle"
             type="button">
       <span class="vue-switch-toggle">
-        <div v-show="!toggleValue"
-             class="vue-switch-close-line">
-        </div>
+        <span v-show="!toggleValue"
+              class="vue-switch-close-line">
+        </span>
         <template v-if="activeText">
           <div class="vue-switch-label vue-switch-open" v-show="toggleValue">
             {{ activeText }}
@@ -71,10 +71,16 @@ export default defineComponent({
         : null;
     };
 
+    const showText = computed(() => {
+      return props.toggleValue ? props.activeText : props.inactiveText;
+    });
+
     return {
       checked,
-      toggle
+      toggle,
+      showText
     };
   }
 });
+
 </script>
