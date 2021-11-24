@@ -27,13 +27,14 @@ $h2: $h - 4px;
         color: #fff;
         font-size: 12px;
         text-align: center;
+        position: absolute;
 
-        &.vue-switch-open {
-          transform: translateX(-18px);
+        &.open {
+          transform: translateX(-($h + 4));
         }
 
-        &.vue-switch-close {
-          transform: translateX(18px);
+        &.close {
+          transform: translateX($h - 10);
         }
       }
 

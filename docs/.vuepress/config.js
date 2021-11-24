@@ -83,6 +83,10 @@ module.exports = (/*options, context*/) => ({
           {
             title: 'Toast',
             path: '/components-docs/toast.md',
+          },
+          {
+            title: 'Switch',
+            path: '/components-docs/switch.md',
           }
         ]
         ,

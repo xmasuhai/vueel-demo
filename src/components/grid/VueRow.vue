@@ -28,7 +28,11 @@ import VueCol from './VueCol.vue';
 export default class VueRow extends Vue {
   name = 'VueRow';
 
-  @Prop({type: Array, default() {return [];}}) colData!: Record<string, unknown>;
+  @Prop({
+    type: Array, default() {
+      return [];
+    }
+  }) colData!: Record<string, unknown>;
   @Prop({
     type: [Number, String],
   }) gutter!: number | string;
@@ -37,7 +41,7 @@ export default class VueRow extends Vue {
     default: 'center',
     validator(value: string): boolean {
       return (['', 'left', 'right', 'center', 'space-between', 'space-around']
-        .includes(value));
+          .includes(value));
     }
   }) align!: string;
 

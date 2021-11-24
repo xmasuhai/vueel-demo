@@ -2,24 +2,19 @@
   <div class="vue-switch-button-wrapper">
     <button class="vue-switch-button"
             :class="{
-                    ['vue-switch-checked']: checked,
+                    ['vue-switch-checked']: toggleValue,
                     ['vue-switch-disabled']: disabled,
             }"
             @click="toggle"
             type="button">
-      <span class="vue-switch-toggle">
+      <div class="vue-switch-toggle">
         <span v-show="!toggleValue"
-              class="vue-switch-close-line">
+              class="vue-switch-close-line"></span>
+        <span class="vue-switch-label"
+              :class="openClose">
+          {{ showText }}
         </span>
-        <template v-if="activeText">
-          <div class="vue-switch-label vue-switch-open" v-show="toggleValue">
-            {{ activeText }}
-          </div>
-          <div class="vue-switch-label vue-switch-close" v-show="!toggleValue">
-            {{ inactiveText }}
-          </div>
-        </template>
-      </span>
+      </div>
     </button>
   </div>
 </template>
@@ -61,25 +56,34 @@ export default defineComponent({
     }
   },
   setup(props: PropsType, ctx: SetupContext) {
+    const toggle = () => {
+      !props.disabled
+          ? ctx.emit('update:toggleValue', !props.toggleValue)
+          : null;
+    };
+
     const checked = computed(() => {
       return props.toggleValue;
     });
 
-    const toggle = () => {
-      !props.disabled
-        ? ctx.emit('update:toggleValue', !props.toggleValue)
-        : null;
-    };
+    const openClose = computed(() => {
+      return {
+        open: props.toggleValue,
+        close: !props.toggleValue,
+      };
+    });
 
     const showText = computed(() => {
       return props.toggleValue ? props.activeText : props.inactiveText;
     });
 
     return {
-      checked,
       toggle,
+      checked,
+      openClose,
       showText
     };
+
   }
 });
 
