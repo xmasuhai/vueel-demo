@@ -26,6 +26,7 @@ import Tabs from '../components/Tabs.vue';
 import Popovers from '../components/Popovers.vue';
 import Collapses from '../components/Collapses.vue';
 import Switches from '../components/Switches.vue';
+import BooksInfo from "@/components/BooksInfo.vue";
 
 @Component({
   components: {
@@ -38,7 +39,8 @@ import Switches from '../components/Switches.vue';
     Tabs,
     Popovers,
     Collapses,
-    Switches
+    Switches,
+    BooksInfo
   }
 })
 export default class Layout extends Vue {
