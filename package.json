@@ -35,6 +35,7 @@
     "@vue/composition-api": "^1.2.4",
     "@vuepress/plugin-back-to-top": "^1.8.2",
     "autoprefixer": "^10.0.2",
+    "axios": "^0.24.0",
     "lodash": "^4.17.21",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",

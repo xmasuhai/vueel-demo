@@ -45,7 +45,7 @@ import BooksInfo from "@/components/BooksInfo.vue";
 })
 export default class Layout extends Vue {
   name = 'Layout';
-  currentTabText = 'Switches';
+  currentTabText = 'BooksInfo';
   layoutType = '';
 
   // 由动态外部参数 获取 类样式
