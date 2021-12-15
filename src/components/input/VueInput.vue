@@ -2,7 +2,7 @@
   <div class="vue-input-wrapper">
     <label class="vue-label-item" :for="labelName">
       <template>
-        <span class="vue-label-name">{{ labelName }}:</span>
+        <span class="vue-label-name">{{ labelName }}</span>
         <input id="labelName"
                type="text"
                :name="labelName"
@@ -11,10 +11,12 @@
                :disabled="disabled"
                :readonly="readonly"
                :error="error"
-               :class="{'fake-focus': isFakeFocus,
+               :class="{
+                        'fake-focus': isFakeFocus,
                         'fake-hover': isFakeHover && !error,
                         'fake-hover-error': isFakeHover && error,
-                        error}"
+                        error
+                        }"
                @change="change"
                @input="input"
                @focus="focus"
@@ -30,23 +32,23 @@
 </template>
 
 <script lang="ts">
-import {Component, Emit, Prop, Vue} from "vue-property-decorator";
-import VueIcon from "../icon/VueIcon.vue";
+import {Component, Emit, Prop, Vue} from 'vue-property-decorator';
+import VueIcon from '../icon/VueIcon.vue';
 
 @Component({
   components: {VueIcon}
 })
 export default class VueInput extends Vue {
-  name = "VueInput";
+  name = 'VueInput';
 
   @Prop(String) labelName!: string;
-  @Prop(String) value!: "";
+  @Prop(String) value!: '';
   @Prop(String) placeholder!: string;
   @Prop(Boolean) isFakeFocus!: false;
   @Prop(Boolean) isFakeHover!: false;
   @Prop(Boolean) readonly!: false;
   @Prop(Boolean) disabled!: false;
-  @Prop(String) error!: "";
+  @Prop(String) error!: '';
 
   @Emit()
   change($event: { target: HTMLInputElement }) {

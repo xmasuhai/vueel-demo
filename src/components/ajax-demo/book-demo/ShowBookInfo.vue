@@ -27,59 +27,57 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from "@vue/composition-api";
-import axios from "axios";
+import {defineComponent, ref} from '@vue/composition-api';
+import axios from 'axios';
+import {getBookList} from '../http-request/getBookList';
 
 export default defineComponent({
-  name: "ShowBookInfo",
+  name: 'ShowBookInfo',
   props: {},
-  setup(/*props, ctx*/) {
-    const rows = ref<string[]>([""]);
-    const getBookList = () => {
-      axios.get("/api/getbooks",
-        {
-          baseURL: "http://www.liulongbin.top:3006"
-        })
-        .then(res => {
-          if (res.status === 200) {
-            const {data} = res.data;
-            rows.value = data;
-          }
-        })
-        .catch(err => {
-          return `获取数据失败！${err.message}`;
-        });
+  setup() {
+    const rows = ref<string[]>(['']);
+    const getBookInfo = () => {
+      getBookList()
+          .then(res => {
+            if (res.status === 200) {
+              const {data} = res.data;
+              rows.value = data;
+            }
+          })
+          .catch(err => {
+            return `获取数据失败！${err.message}`;
+          });
     };
-
-    getBookList();
+    getBookInfo();
 
     // 通过代理的方式为动态添加的元素绑定点击事件 删除图书
     const handleClick = (e: MouseEvent) => {
-      if (Object.keys((e?.target as HTMLElement).dataset).includes("id")) {
+      if (Object.keys((e?.target as HTMLElement).dataset).includes('id')) {
         const bookId = (e?.target as HTMLElement).dataset.id;
         (bookId && +bookId <= 3)
-          ? alert("请勿删除原始数据")
-          : axios.get("/api/delbook",
-            {
-              baseURL: "http://www.liulongbin.top:3006",
-              params: {id: bookId}
-            })
-            .then(res => {
-              if (res.status === 200) {
-                // const {data} = res.data;
-                getBookList();
-                return "删除图书成功！";
-              }
-            })
-            .catch(err => {
-              return `删除图书失败！${err.message}`;
-            });
+            ? alert('请勿删除原始数据')
+            : axios.get(
+                '/api/delbook',
+                {
+                  baseURL: 'http://www.liulongbin.top:3006',
+                  params: {id: bookId}
+                })
+                .then(res => {
+                  if (res.status === 200) {
+                    // const {data} = res.data;
+                    getBookInfo();
+                    return '删除图书成功！';
+                  }
+                })
+                .catch(err => {
+                  return `删除图书失败！${err.message}`;
+                });
       }
     };
 
     return {
       rows,
-      getBookList,
+      getBookInfo,
       handleClick
     };
   }
@@ -87,11 +85,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import './copystrap.scss';
+@import './table.scss';
 
 table {
   text-align: center;
-  margin: 8px;
   border: 1px solid grey;
 }
 </style>

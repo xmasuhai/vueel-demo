@@ -9,9 +9,9 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from "@vue/composition-api";
-import AddBookInfo from "@/components/ajax-demo/book-demo/AddBookInfo.vue";
-import ShowBookInfo from "@/components/ajax-demo/book-demo/ShowBookInfo.vue";
+import AddBookInfo from '@/components/ajax-demo/book-demo/AddBookInfo.vue';
+import ShowBookInfo from '@/components/ajax-demo/book-demo/ShowBookInfo.vue';
+import {defineComponent} from '@vue/composition-api';
 
 export default defineComponent({
   name: "BooksInfo",
@@ -20,17 +20,13 @@ export default defineComponent({
     ShowBookInfo
   },
   props: {},
-  setup(/*props, ctx*/) {
-    const a = ref();
-    return a;
-  }
+/*  setup() {
+  }*/
 });
 </script>
 
 <style lang="scss" scoped>
 
-
 .books-info-demo {
-  padding: 15px;
 }
 </style>

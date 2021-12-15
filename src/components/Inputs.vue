@@ -50,10 +50,10 @@
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
-import VueInput from './input/VueInput.vue';
 import VueButton from './button/VueButton.vue';
-import VueDetail from './code-presentation/VueDetail.vue';
 import VueCodePresentation from './code-presentation/VueCodePresentation.vue';
+import VueDetail from './code-presentation/VueDetail.vue';
+import VueInput from './input/VueInput.vue';
 
 @Component({
   components: {
@@ -71,7 +71,7 @@ export default class Inputs extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/styles/global.scss';
+@import '../styles/global.scss';
 
 details {
   cursor: pointer;
