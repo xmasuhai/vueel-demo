@@ -2,8 +2,9 @@
   <div class="vue-input-wrapper">
     <label class="vue-label-item" :for="labelName">
       <template>
-        <span class="vue-label-name">{{ labelName }}</span>
-        <input type="text"
+        <span class="vue-label-name">{{ labelName }}:</span>
+        <input id="labelName"
+               type="text"
                :name="labelName"
                :value="readonly ? placeholder : value"
                :placeholder="placeholder"
@@ -29,23 +30,23 @@
 </template>
 
 <script lang="ts">
-import {Component, Emit, Prop, Vue} from 'vue-property-decorator';
-import VueIcon from '../icon/VueIcon.vue';
+import {Component, Emit, Prop, Vue} from "vue-property-decorator";
+import VueIcon from "../icon/VueIcon.vue";
 
 @Component({
   components: {VueIcon}
 })
 export default class VueInput extends Vue {
-  name = 'VueInput';
+  name = "VueInput";
 
   @Prop(String) labelName!: string;
-  @Prop(String) value!: '';
+  @Prop(String) value!: "";
   @Prop(String) placeholder!: string;
   @Prop(Boolean) isFakeFocus!: false;
   @Prop(Boolean) isFakeHover!: false;
   @Prop(Boolean) readonly!: false;
   @Prop(Boolean) disabled!: false;
-  @Prop(String) error!: '';
+  @Prop(String) error!: "";
 
   @Emit()
   change($event: { target: HTMLInputElement }) {

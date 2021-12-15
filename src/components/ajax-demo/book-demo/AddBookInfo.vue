@@ -1,46 +1,62 @@
 <template>
-  <div class="panel panel-primary">
-
-    <div class="panel-heading">
-      <h3 class="panel-title">添加新图书</h3>
+  <div class="add-book">
+    <div class="card-heading">
+      <h3 class="card-title">添加新图书</h3>
     </div>
-    <div class="panel-body form-inline">
-
-      <div class="input-group">
-        <div class="input-group-addon">书名</div>
-        <input type="text" class="form-control" id="iptBookname" placeholder="请输入书名">
-      </div>
-
-      <div class="input-group">
-        <div class="input-group-addon">作者</div>
-        <input type="text" class="form-control" id="iptAuthor" placeholder="请输入作者">
-      </div>
-
-      <div class="input-group">
-        <div class="input-group-addon">出版社</div>
-        <input type="text" class="form-control" id="iptPublisher" placeholder="请输入出版社">
-      </div>
-
-      <button id="btnAdd" class="btn btn-primary">添加</button>
-
+    <div class="card-body form-inline">
+      <VueInput labelName="书名"
+                class="form-control"
+                id="iptBookname"
+                placeholder="请输入书名"/>
+      <VueInput labelName="作者"
+                class="form-control"
+                id="iptAuthor"
+                placeholder="请输入作者"/>
+      <VueInput labelName="出版社"
+                class="form-control"
+                id="iptPublisher"
+                placeholder="请输入出版社"/>
+      <VueButton id="btnAdd">添加</VueButton>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "@vue/composition-api";
+import VueButton from "../../button/VueButton.vue";
+import VueInput from "../../input/VueInput.vue";
 
 export default defineComponent({
   name: "AddBookInfo",
   props: {},
+  components: {
+    VueButton,
+    VueInput
+  },
   setup(/*props, ctx*/) {
-    return {
 
-    }
+    return {};
   }
 });
 </script>
 
 <style lang="scss" scoped>
-@import './copystrap.scss';
+@import './card.scss';
+
+.add-book {
+  display: inline-flex;
+  text-align: center;
+
+  .card-heading {
+    display: flex;
+
+    .card-title {
+      margin: auto;
+    }
+  }
+
+  .form-inline {
+
+  }
+}
 </style>

@@ -1,0 +1,381 @@
+@import './var.scss';
+
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @if not $n {
+    @error "breakpoint `#{$name}` not found in `#{$breakpoints}`";
+  }
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $max: map-get($breakpoints, $name);
+  @return if($max and $max > 0, $max - .02, null);
+}
+
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+  @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
+
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+  $max: breakpoint-max($name, $breakpoints);
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($lower, $breakpoints);
+  $max: breakpoint-max($upper, $breakpoints);
+
+  @if $min != null and $max != null {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == null {
+    @include media-breakpoint-up($lower, $breakpoints) {
+      @content;
+    }
+  } @else if $min == null {
+    @include media-breakpoint-down($upper, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+@mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  $next: breakpoint-next($name, $breakpoints);
+  $max: breakpoint-max($next);
+
+  @if $min != null and $max != null {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == null {
+    @include media-breakpoint-up($name, $breakpoints) {
+      @content;
+    }
+  } @else if $min == null {
+    @include media-breakpoint-down($next, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+@function valid-radius($radius) {
+  $return: ();
+  @each $value in $radius {
+    $return: append($return, $value);
+  }
+  @return $return;
+}
+
+@mixin border-radius($radius: $border-radius, $fallback-border-radius: false) {
+  @if $enable-rounded {
+    border-radius: valid-radius($radius);
+  } @else if $fallback-border-radius != false {
+    border-radius: $fallback-border-radius;
+  }
+}
+
+@mixin border-top-radius($radius: $border-radius) {
+  @if $enable-rounded {
+    border-top-left-radius: valid-radius($radius);
+    border-top-right-radius: valid-radius($radius);
+  }
+}
+
+@mixin border-end-radius($radius: $border-radius) {
+  @if $enable-rounded {
+    border-top-right-radius: valid-radius($radius);
+    border-bottom-right-radius: valid-radius($radius);
+  }
+}
+
+@mixin border-bottom-radius($radius: $border-radius) {
+  @if $enable-rounded {
+    border-bottom-right-radius: valid-radius($radius);
+    border-bottom-left-radius: valid-radius($radius);
+  }
+}
+
+@mixin border-start-radius($radius: $border-radius) {
+  @if $enable-rounded {
+    border-top-left-radius: valid-radius($radius);
+    border-bottom-left-radius: valid-radius($radius);
+  }
+}
+
+@mixin border-top-start-radius($radius: $border-radius) {
+  @if $enable-rounded {
+    border-top-left-radius: valid-radius($radius);
+  }
+}
+
+@mixin border-top-end-radius($radius: $border-radius) {
+  @if $enable-rounded {
+    border-top-right-radius: valid-radius($radius);
+  }
+}
+
+@mixin border-bottom-end-radius($radius: $border-radius) {
+  @if $enable-rounded {
+    border-bottom-right-radius: valid-radius($radius);
+  }
+}
+
+@mixin border-bottom-start-radius($radius: $border-radius) {
+  @if $enable-rounded {
+    border-bottom-left-radius: valid-radius($radius);
+  }
+}
+
+@mixin box-shadow($shadow...) {
+  @if $enable-shadows {
+    $result: ();
+    @each $value in $shadow {
+      @if $value != null {
+        $result: append($result, $value, "comma");
+      }
+      @if $value == none and length($shadow) > 1 {
+        @warn "The keyword 'none' must be used as a single argument.";
+      }
+    }
+    @if (length($result) > 0) {
+      box-shadow: $result;
+    }
+  }
+}
+
+// scss-docs-end border-radius-mixins
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: $card-height;
+  word-wrap: break-word;
+  background-color: $card-bg;
+  background-clip: border-box;
+  border: $card-border-width solid $card-border-color;
+  @include border-radius($card-border-radius);
+  @include box-shadow($card-box-shadow);
+
+  > hr {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  > .list-group {
+    border-top: inherit;
+    border-bottom: inherit;
+
+    &:first-child {
+      border-top-width: 0;
+      @include border-top-radius($card-inner-border-radius);
+    }
+
+    &:last-child {
+      border-bottom-width: 0;
+      @include border-bottom-radius($card-inner-border-radius);
+    }
+  }
+
+  // Due to specificity of the above selector (`.card > .list-group`), we must
+  // use a child selector here to prevent double borders.
+  > .card-header + .list-group,
+  > .list-group + .card-footer {
+    border-top: 0;
+  }
+}
+
+.card-body {
+  // Enable `flex-grow: 1` for decks and groups so that card blocks take up
+  // as much space as possible, ensuring footers are aligned to the bottom.
+  flex: 1 1 auto;
+  padding: $card-spacer-y $card-spacer-x;
+  color: $card-color;
+}
+
+.card-title {
+  margin-bottom: $card-title-spacer-y;
+}
+
+.card-subtitle {
+  margin-top: -$card-title-spacer-y * .5;
+  margin-bottom: 0;
+}
+
+.card-text:last-child {
+  margin-bottom: 0;
+}
+
+.card-link {
+  &:hover {
+    text-decoration: if($link-hover-decoration == underline, none, null);
+  }
+
+  + .card-link {
+    margin-left: $card-spacer-x;
+  }
+}
+
+.card-header {
+  padding: $card-cap-padding-y $card-cap-padding-x;
+  margin-bottom: 0; // Removes the default margin-bottom of <hN>
+  color: $card-cap-color;
+  background-color: $card-cap-bg;
+  border-bottom: $card-border-width solid $card-border-color;
+
+  &:first-child {
+    @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
+  }
+}
+
+.card-footer {
+  padding: $card-cap-padding-y $card-cap-padding-x;
+  color: $card-cap-color;
+  background-color: $card-cap-bg;
+  border-top: $card-border-width solid $card-border-color;
+
+  &:last-child {
+    @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
+  }
+}
+
+
+//
+// Header navs
+//
+
+.card-header-tabs {
+  margin-right: -$card-cap-padding-x * .5;
+  margin-bottom: -$card-cap-padding-y;
+  margin-left: -$card-cap-padding-x * .5;
+  border-bottom: 0;
+
+  @if $nav-tabs-link-active-bg != $card-bg {
+    .nav-link.active {
+      background-color: $card-bg;
+      border-bottom-color: $card-bg;
+    }
+  }
+}
+
+.card-header-pills {
+  margin-right: -$card-cap-padding-x * .5;
+  margin-left: -$card-cap-padding-x * .5;
+}
+
+// Card image
+.card-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: $card-img-overlay-padding;
+  @include border-radius($card-inner-border-radius);
+}
+
+.card-img,
+.card-img-top,
+.card-img-bottom {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+}
+
+.card-img,
+.card-img-top {
+  @include border-top-radius($card-inner-border-radius);
+}
+
+.card-img,
+.card-img-bottom {
+  @include border-bottom-radius($card-inner-border-radius);
+}
+
+
+//
+// Card groups
+//
+
+.card-group {
+  // The child selector allows nested `.card` within `.card-group`
+  // to display properly.
+  > .card {
+    margin-bottom: $card-group-margin;
+  }
+
+  @include media-breakpoint-up(sm) {
+    display: flex;
+    flex-flow: row wrap;
+    // The child selector allows nested `.card` within `.card-group`
+    // to display properly.
+    > .card {
+      // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+      flex: 1 0 0;
+      margin-bottom: 0;
+
+      + .card {
+        margin-left: 0;
+        border-left: 0;
+      }
+
+      // Handle rounded corners
+      @if $enable-rounded {
+        &:not(:last-child) {
+          @include border-end-radius(0);
+
+          .card-img-top,
+          .card-header {
+            // stylelint-disable-next-line property-disallowed-list
+            border-top-right-radius: 0;
+          }
+
+          .card-img-bottom,
+          .card-footer {
+            // stylelint-disable-next-line property-disallowed-list
+            border-bottom-right-radius: 0;
+          }
+        }
+
+        &:not(:first-child) {
+          @include border-start-radius(0);
+
+          .card-img-top,
+          .card-header {
+            // stylelint-disable-next-line property-disallowed-list
+            border-top-left-radius: 0;
+          }
+
+          .card-img-bottom,
+          .card-footer {
+            // stylelint-disable-next-line property-disallowed-list
+            border-bottom-left-radius: 0;
+          }
+        }
+      }
+    }
+  }
+}
