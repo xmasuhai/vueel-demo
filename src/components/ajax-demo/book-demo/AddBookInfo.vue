@@ -95,7 +95,18 @@ export default defineComponent({
   }
 
   .form-inline {
+    display: flex;
+    justify-content: start;
 
+    &::v-deep {
+      .vue-button {
+        margin: auto;
+
+        &-wrapper {
+          display: flex;
+        }
+      }
+    }
   }
 }
 </style>
