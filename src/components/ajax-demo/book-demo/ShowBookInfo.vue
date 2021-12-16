@@ -64,7 +64,7 @@ export default defineComponent({
             if (res.status === 200) {
               // const {data} = res.data;
               getBookInfo();
-              return '删除图书成功！';
+              return alert('删除图书成功！');
             }
           })
           .catch(err => {
