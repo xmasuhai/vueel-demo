@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from '@vue/composition-api';
+import {defineComponent, ref, inject} from '@vue/composition-api';
 import axios from 'axios';
 import {getBookList} from '../http-request/getBookList';
 
@@ -35,18 +35,20 @@ export default defineComponent({
   name: 'ShowBookInfo',
   props: {},
   setup() {
+    const eventbus = inject<Vue>('eventbus');
+
     const rows = ref<string[]>(['']);
     const getBookInfo = () => {
       getBookList()
-          .then(res => {
-            if (res.status === 200) {
-              const {data} = res.data;
-              rows.value = data;
-            }
-          })
-          .catch(err => {
-            return `获取数据失败！${err.message}`;
-          });
+        .then(res => {
+          if (res.status === 200) {
+            const {data} = res.data;
+            rows.value = data;
+          }
+        })
+        .catch(err => {
+          return `获取数据失败！${err.message}`;
+        });
     };
     getBookInfo();
 
@@ -54,26 +56,30 @@ export default defineComponent({
     const handleClick = (e: MouseEvent) => {
       if (Object.keys((e?.target as HTMLElement).dataset).includes('id')) {
         const bookId = (e?.target as HTMLElement).dataset.id;
-        (bookId && +bookId <= 3)
-            ? alert('请勿删除原始数据')
-            : axios.get(
-                '/api/delbook',
-                {
-                  baseURL: 'http://www.liulongbin.top:3006',
-                  params: {id: bookId}
-                })
-                .then(res => {
-                  if (res.status === 200) {
-                    // const {data} = res.data;
-                    getBookInfo();
-                    return '删除图书成功！';
-                  }
-                })
-                .catch(err => {
-                  return `删除图书失败！${err.message}`;
-                });
+        (bookId && (+bookId) <= 3)
+          ? alert('请勿删除原始数据')
+          : axios.get(
+            '/api/delbook',
+            {
+              baseURL: 'http://www.liulongbin.top:3006',
+              params: {id: bookId}
+            })
+            .then(res => {
+              if (res.status === 200) {
+                // const {data} = res.data;
+                getBookInfo();
+                return '删除图书成功！';
+              }
+            })
+            .catch(err => {
+              return `删除图书失败！${err.message}`;
+            });
       }
     };
+
+    eventbus?.$on('renderBookList', () => {
+      getBookInfo();
+    });
 
     return {
       rows,

@@ -27,10 +27,11 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from '@vue/composition-api';
+import Vue from 'vue';
+import {defineComponent, ref, inject, Ref} from '@vue/composition-api';
 import axios from 'axios';
-import VueButton from '../../button/VueButton.vue';
-import VueInput from '../../input/VueInput.vue';
+import VueButton from '@/components/button/VueButton.vue';
+import VueInput from '@/components/input/VueInput.vue';
 
 export default defineComponent({
   name: 'AddBookInfo',
@@ -40,34 +41,36 @@ export default defineComponent({
     VueInput
   },
   setup(props, ctx) {
+    const eventbus = inject<Vue>('eventbus');
+
     const msgBook = ref('');
     const msgAuthor = ref('');
     const msgPublisher = ref('');
     const addBookInfo = () => {
-      msgBook.value = (ctx.refs.iptBookname as any).value.trim();
-      msgAuthor.value = (ctx.refs.iptAuthor as any).value.trim();
-      msgPublisher.value = (ctx.refs.iptPublisher as any).value.trim();
+      msgBook.value = (ctx.refs.iptBookname as unknown as Ref<string>).value.trim();
+      msgAuthor.value = (ctx.refs.iptAuthor as unknown as Ref<string>).value.trim();
+      msgPublisher.value = (ctx.refs.iptPublisher as unknown as Ref<string>).value.trim();
       if (msgBook.value.length * msgAuthor.value.length * msgPublisher.value.length === 0) {return alert('请填写完整的图书信息！');}
 
       // 发送添加书本信息请求
       axios.post('/api/addbook',
-          {
-            bookname: msgBook.value,
-            author: msgAuthor.value,
-            publisher: msgPublisher.value
-          },
-          {
-            baseURL: 'http://www.liulongbin.top:3006/',
-            timeout: 0
-          }
+        {
+          bookname: msgBook.value,
+          author: msgAuthor.value,
+          publisher: msgPublisher.value
+        },
+        {
+          baseURL: 'http://www.liulongbin.top:3006/',
+          timeout: 0
+        }
       )
-          .then(res => {
-            const {data} = res;
-            if (data.status === 502) {return alert(data.msg);}
-            alert(data.msg);
-            // 通知兄弟组件 ShowBookInfo.vue 更新渲染图书列表
-
-          });
+        .then(res => {
+          const {data} = res;
+          if (data.status === 502) {return alert(data.msg);}
+          alert(data.msg);
+          // 通知兄弟组件 ShowBookInfo.vue 更新渲染图书列表
+          eventbus?.$emit('renderBookList');
+        });
 
     };
 
