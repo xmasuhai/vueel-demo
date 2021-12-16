@@ -31,7 +31,7 @@ import Vue from 'vue';
 import {defineComponent, ref, inject, Ref} from '@vue/composition-api';
 import VueButton from '@/components/button/VueButton.vue';
 import VueInput from '@/components/input/VueInput.vue';
-import {addBook} from '@/components/ajax-demo/http-request/addbook';
+import {addBook} from '@/components/ajax-demo/http-request/bookInfoOperations';
 
 export default defineComponent({
   name: 'AddBookInfo',
@@ -65,6 +65,7 @@ export default defineComponent({
           alert(data.msg);
           // 通知兄弟组件 ShowBookInfo.vue 更新渲染图书列表
           eventbus?.$emit('renderBookList');
+          msgBook.value = msgAuthor.value = msgPublisher.value = '';
         });
 
     };
@@ -96,7 +97,7 @@ export default defineComponent({
 
   .form-inline {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
 
     &::v-deep {
       .vue-button {
