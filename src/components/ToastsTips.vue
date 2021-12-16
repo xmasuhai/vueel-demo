@@ -43,18 +43,13 @@
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
-import VueToast from './toast/VueToast.vue';
 import VueButton from './button/VueButton.vue';
-import toastPlugin from './toast/toastPlugin';
 import {ToastPosType, VueToast as VueToastType} from '../types/VueToast';
 import VueDetail from './code-presentation/VueDetail.vue';
 import VueCodePresentation from './code-presentation/VueCodePresentation.vue';
 
-Vue.use(toastPlugin);
-
 @Component({
   components: {
-    VueToast,
     VueButton,
     VueDetail,
     VueCodePresentation
