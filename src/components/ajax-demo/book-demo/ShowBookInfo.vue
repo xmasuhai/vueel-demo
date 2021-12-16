@@ -28,7 +28,7 @@
 
 <script lang="ts">
 import {defineComponent, ref, inject} from '@vue/composition-api';
-import {getBookList} from '../http-request/getBookList';
+import {getBookList} from '@/components/ajax-demo/http-request/getBookList';
 import {delBook} from '@/components/ajax-demo/http-request/delBook';
 
 export default defineComponent({
