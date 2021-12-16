@@ -29,9 +29,9 @@
 <script lang="ts">
 import Vue from 'vue';
 import {defineComponent, ref, inject, Ref} from '@vue/composition-api';
-import axios from 'axios';
 import VueButton from '@/components/button/VueButton.vue';
 import VueInput from '@/components/input/VueInput.vue';
+import {addBook} from '@/components/ajax-demo/http-request/addbook';
 
 export default defineComponent({
   name: 'AddBookInfo',
@@ -46,6 +46,7 @@ export default defineComponent({
     const msgBook = ref('');
     const msgAuthor = ref('');
     const msgPublisher = ref('');
+
     const addBookInfo = () => {
       msgBook.value = (ctx.refs.iptBookname as unknown as Ref<string>).value.trim();
       msgAuthor.value = (ctx.refs.iptAuthor as unknown as Ref<string>).value.trim();
@@ -53,17 +54,11 @@ export default defineComponent({
       if (msgBook.value.length * msgAuthor.value.length * msgPublisher.value.length === 0) {return alert('请填写完整的图书信息！');}
 
       // 发送添加书本信息请求
-      axios.post('/api/addbook',
-        {
-          bookname: msgBook.value,
-          author: msgAuthor.value,
-          publisher: msgPublisher.value
-        },
-        {
-          baseURL: 'http://www.liulongbin.top:3006/',
-          timeout: 0
-        }
-      )
+      addBook({
+        bookname: msgBook.value,
+        author: msgAuthor.value,
+        publisher: msgPublisher.value
+      })
         .then(res => {
           const {data} = res;
           if (data.status === 502) {return alert(data.msg);}

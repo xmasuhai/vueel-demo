@@ -28,8 +28,8 @@
 
 <script lang="ts">
 import {defineComponent, ref, inject} from '@vue/composition-api';
-import axios from 'axios';
 import {getBookList} from '../http-request/getBookList';
+import {delBook} from '@/components/ajax-demo/http-request/delBook';
 
 export default defineComponent({
   name: 'ShowBookInfo',
@@ -58,22 +58,19 @@ export default defineComponent({
         const bookId = (e?.target as HTMLElement).dataset.id;
         (bookId && (+bookId) <= 3)
           ? alert('请勿删除原始数据')
-          : axios.get(
-            '/api/delbook',
-            {
-              baseURL: 'http://www.liulongbin.top:3006',
-              params: {id: bookId}
-            })
-            .then(res => {
-              if (res.status === 200) {
-                // const {data} = res.data;
-                getBookInfo();
-                return '删除图书成功！';
-              }
-            })
-            .catch(err => {
-              return `删除图书失败！${err.message}`;
-            });
+          : bookId && delBook(
+          {id: bookId}
+        )
+          .then(res => {
+            if (res.status === 200) {
+              // const {data} = res.data;
+              getBookInfo();
+              return '删除图书成功！';
+            }
+          })
+          .catch(err => {
+            return `删除图书失败！${err.message}`;
+          });
       }
     };
 
