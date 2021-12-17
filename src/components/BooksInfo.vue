@@ -15,7 +15,7 @@ import {defineComponent, provide, reactive} from '@vue/composition-api';
 import Vue from 'vue';
 
 export default defineComponent({
-  name: "BooksInfo",
+  name: 'BooksInfo',
   components: {
     AddBookInfo,
     ShowBookInfo
@@ -23,10 +23,14 @@ export default defineComponent({
   props: {},
   setup() {
     const eventbus = reactive(new Vue());
+    const toast = eventbus.$toast;
+
     provide<Vue>('eventbus', eventbus);
+    provide<Function>('toast', toast);
+
     return {
       eventbus
-    }
+    };
   }
 });
 </script>

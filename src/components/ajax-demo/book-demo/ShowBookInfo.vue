@@ -35,6 +35,7 @@ export default defineComponent({
   props: {},
   setup() {
     const eventbus = inject<Vue>('eventbus');
+    const toast = inject<Function>('toast');
 
     const rows = ref<string[]>(['']);
     const getBookInfo = () => {
@@ -46,6 +47,7 @@ export default defineComponent({
           }
         })
         .catch(err => {
+          toast && toast(`获取数据失败！${err.message}`);
           return `获取数据失败！${err.message}`;
         });
     };
@@ -56,7 +58,7 @@ export default defineComponent({
       if (Object.keys((e?.target as HTMLElement).dataset).includes('id')) {
         const bookId = (e?.target as HTMLElement).dataset.id;
         (bookId && (+bookId) <= 3)
-          ? alert('请勿删除原始数据')
+          ? toast && toast('请勿删除原始数据')
           : bookId && delBook(
           {id: bookId}
         )
@@ -64,11 +66,11 @@ export default defineComponent({
             if (res.status === 200) {
               // const {data} = res.data;
               getBookInfo();
-              return alert('删除图书成功！');
+              return toast && toast('删除图书成功！');
             }
           })
           .catch(err => {
-            return `删除图书失败！${err.message}`;
+            return toast && toast(`删除图书失败！${err.message}`);
           });
       }
     };

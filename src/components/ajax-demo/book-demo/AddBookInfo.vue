@@ -42,16 +42,20 @@ export default defineComponent({
   },
   setup(props, ctx) {
     const eventbus = inject<Vue>('eventbus');
+    const toast = inject<Function>('toast');
 
     const msgBook = ref('');
     const msgAuthor = ref('');
     const msgPublisher = ref('');
 
     const addBookInfo = () => {
+
       msgBook.value = (ctx.refs.iptBookname as unknown as Ref<string>).value.trim();
       msgAuthor.value = (ctx.refs.iptAuthor as unknown as Ref<string>).value.trim();
       msgPublisher.value = (ctx.refs.iptPublisher as unknown as Ref<string>).value.trim();
-      if (msgBook.value.length * msgAuthor.value.length * msgPublisher.value.length === 0) {return alert('请填写完整的图书信息！');}
+      if (msgBook.value.length * msgAuthor.value.length * msgPublisher.value.length === 0) {
+        return toast && toast('请填写完整的图书信息！');
+      }
 
       // 发送添加书本信息请求
       addBook({
@@ -61,8 +65,12 @@ export default defineComponent({
       })
         .then(res => {
           const {data} = res;
-          if (data.status === 502) {return alert(data.msg);}
-          alert(data.msg);
+          if (data.status === 502) {
+            return toast && toast(data.msg);
+          }
+
+          toast && toast(data.msg);
+
           // 通知兄弟组件 ShowBookInfo.vue 更新渲染图书列表
           eventbus?.$emit('renderBookList');
           msgBook.value = msgAuthor.value = msgPublisher.value = '';
