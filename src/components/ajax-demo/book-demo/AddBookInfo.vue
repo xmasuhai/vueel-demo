@@ -49,7 +49,6 @@ export default defineComponent({
     const msgPublisher = ref('');
 
     const addBookInfo = () => {
-
       msgBook.value = (ctx.refs.iptBookname as unknown as Ref<string>).value.trim();
       msgAuthor.value = (ctx.refs.iptAuthor as unknown as Ref<string>).value.trim();
       msgPublisher.value = (ctx.refs.iptPublisher as unknown as Ref<string>).value.trim();

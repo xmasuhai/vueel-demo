@@ -9,7 +9,7 @@
       <th scope="col">操作</th>
     </tr>
     </thead>
-    <tbody id="tb" @click="handleClick">
+    <tbody id="tb" @click="deleteProxy">
     <tr v-for="{id, bookname, author, publisher} in rows" :key="id">
       <th scope="row">{{ id }}</th>
       <td>{{ bookname }}</td>
@@ -27,34 +27,20 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, inject} from '@vue/composition-api';
-import {getBookList, delBook} from '@/components/ajax-demo/http-request/bookInfoOperations';
+import {defineComponent, inject} from '@vue/composition-api';
+import {delBook} from '@/components/ajax-demo/http-request/bookInfoOperations';
+import {getBookInfo} from '@/components/ajax-demo/util/getBookInfo';
 
 export default defineComponent({
   name: 'ShowBookInfo',
   props: {},
   setup() {
+    const rows = getBookInfo();
     const eventbus = inject<Vue>('eventbus');
     const toast = inject<Function>('toast');
 
-    const rows = ref<string[]>(['']);
-    const getBookInfo = () => {
-      getBookList()
-        .then(res => {
-          if (res.status === 200) {
-            const {data} = res.data;
-            rows.value = data;
-          }
-        })
-        .catch(err => {
-          toast && toast(`获取数据失败！${err.message}`);
-          return `获取数据失败！${err.message}`;
-        });
-    };
-    getBookInfo();
-
     // 通过代理的方式为动态添加的元素绑定点击事件 删除图书
-    const handleClick = (e: MouseEvent) => {
+    const deleteProxy = (e: MouseEvent) => {
       if (Object.keys((e?.target as HTMLElement).dataset).includes('id')) {
         const bookId = (e?.target as HTMLElement).dataset.id;
         (bookId && (+bookId) <= 3)
@@ -75,6 +61,7 @@ export default defineComponent({
       }
     };
 
+    // 监听 兄弟组件传来的更新列表事件
     eventbus?.$on('renderBookList', () => {
       getBookInfo();
     });
@@ -82,7 +69,7 @@ export default defineComponent({
     return {
       rows,
       getBookInfo,
-      handleClick
+      deleteProxy
     };
   }
 });
