@@ -4,6 +4,7 @@
   "private": false,
   "description": "一个基于 Vue 2 的UI框架",
   "main": "dist/index.js",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "vdd": "vuepress dev docs",
     "vdb": "vuepress build docs",
@@ -46,6 +47,8 @@
     "vuex": "^3.4.0"
   },
   "devDependencies": {
+    "@parcel/config-default": "^2.0.1",
+    "@parcel/transformer-typescript-tsc": "^2.0.1",
     "@types/chai": "^4.2.21",
     "@types/chai-spies": "^1.0.3",
     "@types/jest": "^24.0.19",
@@ -66,6 +69,7 @@
     "@vue/test-utils": "^1.1.1",
     "@vuepress/shared-utils": "^1.8.2",
     "browserslist": "^4.14.7",
+    "caniuse-lite": "^1.0.30001291",
     "chai": "^4.3.4",
     "chai-spies": "^1.0.0",
     "eslint": "^6.7.2",

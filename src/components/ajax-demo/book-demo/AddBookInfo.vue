@@ -3,7 +3,7 @@
     <div class="card-header">
       <h3 class="card-title">添加新图书</h3>
     </div>
-    <div class="card-body form-inline">
+    <form ref="bookInfoForm" class="card-body form-inline">
       <VueInput labelName="书名"
                 class="form-control"
                 ref="iptBookname"
@@ -22,7 +22,7 @@
       <VueButton @click="addBookInfo"
                  ref="btnAdd">添加
       </VueButton>
-    </div>
+    </form>
   </div>
 </template>
 
@@ -73,7 +73,9 @@ export default defineComponent({
 
           // 通知兄弟组件 ShowBookInfo.vue 更新渲染图书列表
           eventbus?.$emit('renderBookList');
-          msgBook.value = msgAuthor.value = msgPublisher.value = '';
+          // 清空表单
+          (ctx.refs.bookInfoForm as HTMLFormElement).reset();
+
         });
 
     };

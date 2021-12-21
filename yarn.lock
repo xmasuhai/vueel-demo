@@ -2475,6 +2475,21 @@
     posthtml-render "^3.0.0"
     semver "^5.4.1"
 
+"@parcel/transformer-typescript-tsc@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.npmmirror.com/@parcel/transformer-typescript-tsc/download/@parcel/transformer-typescript-tsc-2.0.1.tgz#83e96080b50151b3fc5d0a17ac084811f1fd63e6"
+  integrity sha512-bAlYYFhQFJWx/ij2CjHyzQbz5mcVI6HQRLgpCrZcL7C+z4VozBEjlo313akImU9rIKKCqA5Y3NjduWTySFYfLg==
+  dependencies:
+    "@parcel/plugin" "^2.0.1"
+    "@parcel/ts-utils" "^2.0.1"
+
+"@parcel/ts-utils@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.npmmirror.com/@parcel/ts-utils/download/@parcel/ts-utils-2.0.1.tgz#93b2de96b08aad7cf747f7806330f335c664b96c"
+  integrity sha512-Zu3p+1q3YxSZTuAa26KpQOGmdjNfrbBgyTpncg9+Q+EIGtkhFHWiEpx/fok9qyqFxiTfe1jAUKzTUeqPjt+F0Q==
+  dependencies:
+    nullthrows "^1.1.1"
+
 "@parcel/types@^2.0.1":
   version "2.0.1"
   resolved "https://registry.npmmirror.com/@parcel/types/download/@parcel/types-2.0.1.tgz#e4f30f29e0f1ea53029a0450794a3d0aee90a9f7"
@@ -5424,7 +5439,7 @@ caniuse-lite@^1.0.30001254:
   resolved "https://registry.nlark.com/caniuse-lite/download/caniuse-lite-1.0.30001257.tgz#150aaf649a48bee531104cfeda57f92ce587f6e5"
   integrity sha1-FQqvZJpIvuUxEEz+2lf5LOWH9uU=
 
-caniuse-lite@^1.0.30001286:
+caniuse-lite@^1.0.30001286, caniuse-lite@^1.0.30001291:
   version "1.0.30001291"
   resolved "https://registry.npmmirror.com/caniuse-lite/download/caniuse-lite-1.0.30001291.tgz#08a8d2cfea0b2cf2e1d94dd795942d0daef6108c"
   integrity sha512-roMV5V0HNGgJ88s42eE70sstqGW/gwFndosYrikHthw98N5tLnOTxFqMLQjZVRxTWFlJ4rn+MsgXrR7MDPY4jA==
