@@ -12,7 +12,6 @@ $gray-900: #212529 !default;
 $black:    #000 !default;
 // scss-docs-end gray-color-variables
 
-// fusv-disable
 // scss-docs-start gray-colors-map
 $grays: (
   "100": $gray-100,
@@ -47,20 +46,21 @@ $card-border-radius:                $border-radius !default;
 $card-border-width:                 $border-width !default;
 $card-box-shadow:                   null !default;
 $card-cap-bg:                       rgba($black, .03) !default;
-$card-cap-color:                    null !default;
-$card-cap-padding-x:                $card-spacer-x !default;
-$card-cap-padding-y:                $card-spacer-y * .5 !default;
 $card-color:                        null !default;
 $card-height:                       null !default;
 $card-inner-border-radius:          subtract($card-border-radius, $card-border-width) !default;
 
+$spacer: 1rem !default;
 $card-spacer-x:                     $spacer !default;
 $card-spacer-y:                     $spacer !default;
+$card-cap-color:                    null !default;
+$card-cap-padding-x:                $card-spacer-x !default;
+$card-cap-padding-y:                $card-spacer-y * .5 !default;
 $card-title-spacer-y:               $spacer * .5 !default;
 $enable-rounded:              true !default;
 $enable-shadows:              false !default;
 
-$spacer: 1rem !default;
+$table-color:                 $body-color !default;
 $table-accent-bg:             transparent !default;
 $table-active-color:          $table-color !default;
 $table-active-bg-factor:      .1 !default;
@@ -72,7 +72,6 @@ $table-border-width:          $border-width !default;
 $table-cell-padding-y:        .5rem !default;
 $table-cell-padding-x:        .5rem !default;
 $table-cell-vertical-align:   top !default;
-$table-color:                 $body-color !default;
 $table-group-separator-color: currentColor !default;
 $table-hover-bg-factor:       .075 !default;
 $table-hover-bg:              rgba($black, $table-hover-bg-factor) !default;
