@@ -11,16 +11,16 @@
 
 <script lang="ts">
 import AddBookInfo from '@/components/ajax-demo/book-demo/AddBookInfo.vue';
-import ShowBookInfo from '@/components/ajax-demo/book-demo/ShowBookInfo.vue';
+// import ShowBookInfo from '@/components/ajax-demo/book-demo/ShowBookInfo.vue';
 import ResetBookList from '@/components/ajax-demo/book-demo/ResetBookList.vue';
-import {defineComponent, provide, reactive} from '@vue/composition-api';
+import {defineAsyncComponent, defineComponent, provide, reactive} from '@vue/composition-api';
 import Vue from 'vue';
 
 export default defineComponent({
   name: 'BooksInfo',
   components: {
     AddBookInfo,
-    ShowBookInfo,
+    ShowBookInfo: defineAsyncComponent(() => import('./ajax-demo/book-demo/ShowBookInfo.vue')),
     ResetBookList
   },
   props: {},

@@ -1,12 +1,13 @@
 import Vue from 'vue';
-import VueCompositionAPI, {ref} from '@vue/composition-api';
+import VueCompositionAPI, {/*reactive, */ref} from '@vue/composition-api';
 import {getBookList} from '@/components/ajax-demo/http-request/bookInfoOperations';
 
 Vue.use(VueCompositionAPI);
 const toast = (new Vue()).$toast;
+// 不能使用 reactive
+const rows = ref<Record<string, string>[]>([{}]);
 
 export const getBookInfo = () => {
-  const rows = ref<string[]>(['']);
   getBookList()
     .then(res => {
       if (res.status === 200) {

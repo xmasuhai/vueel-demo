@@ -30,12 +30,13 @@
 import {defineComponent, inject} from '@vue/composition-api';
 import {delBook} from '@/components/ajax-demo/http-request/bookInfoOperations';
 import {getBookInfo} from '@/components/ajax-demo/util/getBookInfo';
+import {watchRenderBookList} from '@/components/ajax-demo/util/watchRenderBookList';
 
 export default defineComponent({
   name: 'ShowBookInfo',
   props: {},
   setup() {
-    const rows = getBookInfo();
+    let rows = getBookInfo();
     const eventbus = inject<Vue>('eventbus');
     const toast = inject<Function>('toast');
 
@@ -51,7 +52,8 @@ export default defineComponent({
           .then(res => {
             if (res.status === 200) {
               // const {data} = res.data;
-              getBookInfo();
+              rows = getBookInfo();
+
               return toast && toast('删除图书成功！');
             }
           })
@@ -62,9 +64,7 @@ export default defineComponent({
     };
 
     // 监听 兄弟组件传来的更新列表事件
-    eventbus?.$on('renderBookList', () => {
-      getBookInfo();
-    });
+    watchRenderBookList(rows, eventbus);
 
     return {
       rows,
