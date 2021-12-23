@@ -7,12 +7,12 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, inject, Ref/*, ref*/} from '@vue/composition-api';
+import {delBook} from '@/components/ajax-demo/http-request/bookInfoOperations';
+import {getBookInfo} from '@/components/ajax-demo/util/getBookInfo';
+import {watchRenderBookList} from '@/components/ajax-demo/util/watchRenderBookList';
 // import {getBookList, delBook} from '@/components/ajax-demo/http-request/bookInfoOperations';
 import VueButton from '@/components/button/VueButton.vue';
-import {getBookInfo} from '@/components/ajax-demo/util/getBookInfo';
-import {delBook} from '@/components/ajax-demo/http-request/bookInfoOperations';
-import {watchRenderBookList} from '@/components/ajax-demo/util/watchRenderBookList';
+import {defineComponent, inject, Ref} from '@vue/composition-api';
 import Vue from 'vue';
 
 export default defineComponent({
@@ -24,6 +24,12 @@ export default defineComponent({
     const eventbus = inject<Vue>('eventbus');
     const toast = inject<Function>('toast');
     let rows: Ref<{ [p: string]: string }[]>;
+
+    /*
+    const getaBook = () => {
+      getBook(1, '西游记');
+    }
+    */
 
     const resetBookList = () => {
       // 获取图书列表 rows
@@ -54,7 +60,8 @@ export default defineComponent({
     };
 
     return {
-      resetBookList
+      resetBookList,
+      /*getaBook*/
     };
   }
 });

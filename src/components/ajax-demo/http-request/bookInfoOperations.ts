@@ -26,3 +26,13 @@ export const getBookList = () => {
     {});
 };
 
+export const getBook = (id: number, bookname?: string) => {
+  return axios.get(
+    '/api/getbooks',
+    {
+      params : {
+        id: `${id}`,
+        bookname: bookname
+      }
+    });
+};
