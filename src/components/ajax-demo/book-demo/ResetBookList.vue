@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, inject/*, ref*/} from '@vue/composition-api';
+import {defineComponent, inject, Ref/*, ref*/} from '@vue/composition-api';
 // import {getBookList, delBook} from '@/components/ajax-demo/http-request/bookInfoOperations';
 import VueButton from '@/components/button/VueButton.vue';
 import {getBookInfo} from '@/components/ajax-demo/util/getBookInfo';
@@ -23,16 +23,17 @@ export default defineComponent({
   setup(/*props, ctx*/) {
     const eventbus = inject<Vue>('eventbus');
     const toast = inject<Function>('toast');
+    let rows: Ref<{ [p: string]: string }[]>;
 
     const resetBookList = () => {
       // 获取图书列表 rows
-      let rows = getBookInfo();
-
+      rows = getBookInfo();
       // 按条件 重置列表
-      if(rows.value.length > 3) {
+      if (rows.value.length <= 3) {
+        return toast && toast('保留初始数据！');
+      } else {
         rows.value.forEach((item) => {
           const id = item.id;
-
           // 根据图书id 依次删除
           (Number(id) > 3) && delBook({id: `${id}`})
             .then(res => {
@@ -46,22 +47,10 @@ export default defineComponent({
             });
 
         });
+        // 监听，渲染图书列表
         watchRenderBookList(getBookInfo(), eventbus);
-
-/*
-
-        // 再次检查
-        rows = getBookInfo();
-        (rows.value.length > 3)
-          ? resetBookList()
-          : toast && toast('无需还原初始数据！');
-*/
-
-
-        return toast && toast('还原初始数据成功！');
+        return toast && toast('重置初始数据！');
       }
-
-      return toast && toast('保留初始数据！');
     };
 
     return {
