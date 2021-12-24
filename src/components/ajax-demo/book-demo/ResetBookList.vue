@@ -31,11 +31,11 @@ export default defineComponent({
     }
     */
 
-    const resetBookList = () => {
+    const resetBookList = (): void => {
       // 获取图书列表 rows
       rows = getBookInfo();
       // 按条件 重置列表
-      if (rows.value.length <= 3) {
+      if (rows.value.length === 3) { // 递归终止条件
         return toast && toast('保留初始数据！');
       } else {
         rows.value.forEach((item) => {
@@ -55,7 +55,7 @@ export default defineComponent({
         });
         // 监听，渲染图书列表
         watchRenderBookList(getBookInfo(), eventbus);
-        return toast && toast('重置初始数据！');
+        return toast && toast('重置初始数据！') && resetBookList(); // 递归判断
       }
     };
 
