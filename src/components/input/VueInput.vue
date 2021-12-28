@@ -2,12 +2,13 @@
   <div class="vue-input-wrapper">
     <label class="vue-label-item" :for="labelName">
       <template>
-        <span class="vue-label-name">{{ labelName }}</span>
-        <input id="labelName"
-               type="text"
+        <span class="vue-label-name">{{ titleName }}</span>
+        <input :id="labelName"
+               :type="type"
                :name="labelName"
                :value="readonly ? placeholder : value"
                :placeholder="placeholder"
+               :autocomplete="autocomplete"
                :disabled="disabled"
                :readonly="readonly"
                :error="error"
@@ -20,6 +21,7 @@
                @change="change"
                @input="input"
                @focus="focus"
+               @submit="submit"
                @blur="blur">
         <div class="vue-input-info" v-if="error">
           <VueIcon icon-name="error-solid"
@@ -40,10 +42,14 @@ import VueIcon from '../icon/VueIcon.vue';
 })
 export default class VueInput extends Vue {
   name = 'VueInput';
+  eventName = {}
 
   @Prop(String) labelName!: string;
+  @Prop(String) titleName!: string;
+  @Prop(String) type!: string;
   @Prop(String) value!: '';
   @Prop(String) placeholder!: string;
+  @Prop(String) autocomplete!: string;
   @Prop(Boolean) isFakeFocus!: false;
   @Prop(Boolean) isFakeHover!: false;
   @Prop(Boolean) readonly!: false;
@@ -67,6 +73,11 @@ export default class VueInput extends Vue {
 
   @Emit()
   blur($event: { target: HTMLInputElement }) {
+    return $event.target.value;
+  }
+
+  @Emit()
+  submit($event: { target: HTMLInputElement }) {
     return $event.target.value;
   }
 

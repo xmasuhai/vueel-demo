@@ -39,13 +39,13 @@ export default class VueButton extends Vue {
     default: 'normal',
     validator(colorType) {
       return ['normal', 'primary', 'warning', 'danger', 'info', 'success', 'attention']
-          .indexOf(colorType) > -1;
+        .indexOf(colorType) > -1;
     }
   }) colorType!: string;
   @Prop({type: String, default: 'button'}) theme!: 'button' | 'link' | 'text';
   @Prop({type: String, default: 'normal'}) size!: 'small' | 'normal' | 'big';
   @Prop({type: String, default: ''}) icon!: 'settings' | 'loading' | 'right' |
-      'left' | 'download' | 'arrow-down' | 'thumbs-up' | '';
+    'left' | 'download' | 'arrow-down' | 'thumbs-up' | '';
   @Prop({
     type: String,
     default: 'left',
