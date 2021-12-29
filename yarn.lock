@@ -6080,10 +6080,15 @@ caniuse-lite@^1.0.30001254:
   resolved "https://registry.nlark.com/caniuse-lite/download/caniuse-lite-1.0.30001257.tgz#150aaf649a48bee531104cfeda57f92ce587f6e5"
   integrity sha1-FQqvZJpIvuUxEEz+2lf5LOWH9uU=
 
-caniuse-lite@^1.0.30001286, caniuse-lite@^1.0.30001291:
+caniuse-lite@^1.0.30001286:
   version "1.0.30001291"
   resolved "https://registry.npmmirror.com/caniuse-lite/download/caniuse-lite-1.0.30001291.tgz#08a8d2cfea0b2cf2e1d94dd795942d0daef6108c"
   integrity sha512-roMV5V0HNGgJ88s42eE70sstqGW/gwFndosYrikHthw98N5tLnOTxFqMLQjZVRxTWFlJ4rn+MsgXrR7MDPY4jA==
+
+caniuse-lite@^1.0.30001294:
+  version "1.0.30001294"
+  resolved "https://registry.npmmirror.com/caniuse-lite/download/caniuse-lite-1.0.30001294.tgz#4849f27b101fd59ddee3751598c663801032533d"
+  integrity sha512-LiMlrs1nSKZ8qkNhpUf5KD0Al1KCBE3zaT7OLOwEkagXMEDij98SiOovn9wxVGQpklk9vVC/pUSqgYmkmKOS8g==
 
 capture-exit@^2.0.0:
   version "2.0.0"

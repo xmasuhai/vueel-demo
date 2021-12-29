@@ -69,7 +69,7 @@
     "@vuepress/shared-utils": "^1.8.2",
     "babel-loader": "^8.2.3",
     "browserslist": "^4.14.7",
-    "caniuse-lite": "^1.0.30001291",
+    "caniuse-lite": "^1.0.30001294",
     "chai": "^4.3.4",
     "chai-spies": "^1.0.0",
     "eslint": "^6.7.2",
