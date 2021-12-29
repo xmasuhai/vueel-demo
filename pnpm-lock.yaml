@@ -32,7 +32,7 @@ specifiers:
   autoprefixer: ^10.0.2
   axios: ^0.24.0
   browserslist: ^4.14.7
-  caniuse-lite: ^1.0.30001291
+  caniuse-lite: 1.0.30001294
   chai: ^4.3.4
   chai-spies: ^1.0.0
   eslint: ^6.7.2
@@ -6045,7 +6045,7 @@ packages:
     dev: true
 
   /caniuse-lite/1.0.30001294:
-    resolution: {integrity: sha512-LiMlrs1nSKZ8qkNhpUf5KD0Al1KCBE3zaT7OLOwEkagXMEDij98SiOovn9wxVGQpklk9vVC/pUSqgYmkmKOS8g==}
+    resolution: {integrity: sha512-LiMlrs1nSKZ8qkNhpUf5KD0Al1KCBE3zaT7OLOwEkagXMEDij98SiOovn9wxVGQpklk9vVC/pUSqgYmkmKOS8g==
 
   /capture-exit/2.0.0:
     resolution: {integrity: sha512-PiT/hQmTonHhl/HFGN+Lx3JJUznrVYJ3+AQsnthneZbvW7x+f08Tk7yLJTLEOUvBTbduLeeBkxEaYXUOUrRq6g==}
