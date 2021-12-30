@@ -16,7 +16,7 @@ module.exports = {
     },
   },
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/vueel-website/'
+    ? '/vueel-demo/'
     : '/',
   lintOnSave: false,
   chainWebpack: config => {

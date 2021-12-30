@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+# ???????????
+set -e
+
+rm -rf dist &&
+
+# ??????
+yarn build &&
+
+# ????????
+cd ./dist &&
+
+git init &&
+git add -A &&
+git commit -m 'deploy-demo' &&
+
+git push -f git@github.com:xmasuhai/vueel-demo.git master:gh-pages &&
+
+cd -

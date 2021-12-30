@@ -4,6 +4,7 @@
 set -e
 
 rm -rf dist &&
+
 # 生成静态文件
 yarn docs:build &&
 
@@ -15,6 +16,7 @@ git add -A &&
 git commit -m 'deploy' &&
 
 git push -f git@github.com:xmasuhai/vueel-demo-website.git master:gh-pages &&
-git remote add origin https://gitee.com/xmasuhai/vue-demo-1.git &&
+
+# git remote add origin https://gitee.com/xmasuhai/vue-demo-1.git &&
 git push -u origin master
 cd -
