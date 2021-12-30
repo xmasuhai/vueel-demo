@@ -16,9 +16,9 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted, ref, reactive} from '@vue/composition-api';
-import VueInput from '@/components/input/VueInput.vue';
 import VueButton from '@/components/button/VueButton.vue';
+import VueInput from '@/components/input/VueInput.vue';
+import {defineComponent, onMounted, reactive, ref} from '@vue/composition-api';
 
 export default defineComponent({
   name: 'FormData',
@@ -68,4 +68,3 @@ export default defineComponent({
   }
 });
 </script>
-

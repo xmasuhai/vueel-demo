@@ -5,7 +5,7 @@
                @click="uploadFile">上传图片
     </VueButton>
     <div style="">
-      <label for="file">File progress:
+      <label for="file">文件上传进度:
         <progress id="file" max="100" :value="`${percentComplete}`"
                   style="vertical-align: text-bottom;width: 30%;margin: 0 10px;"></progress>
         <span>{{ progressTips }}</span>
