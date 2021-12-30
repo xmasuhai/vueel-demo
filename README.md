@@ -10,7 +10,7 @@
 
 - 这是我在学习 Vue.js 过程中做的一个 UI 框架
 - 查看文档请点击: [https://xmasuhai.xyz/vueel-demo-website/](https://xmasuhai.xyz/vueel-demo-website/)
-- 查看demo请点击: [https://xmasuhai.xyz/vueel-demo/](https://xmasuhai.xyz/vueel-demo/)
+- 查看demo请点击: [http://xmasuhai.xyz/vueel-demo/](http://xmasuhai.xyz/vueel-demo/)
 
 作者：徐某人
 
