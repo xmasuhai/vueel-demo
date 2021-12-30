@@ -4,6 +4,13 @@
     <VueButton ref="btnUpload"
                @click="uploadFile">上传图片
     </VueButton>
+    <div style="">
+      <label for="file">File progress:
+        <progress id="file" max="100" :value="`${percentComplete}`"
+                  style="vertical-align: text-bottom;width: 30%;margin: 0 10px;"></progress>
+        <span>{{ progressTips }}</span>
+      </label>
+    </div>
     <br/>
     <img src="" alt="" ref="img" width="800">
   </div>
@@ -12,7 +19,7 @@
 <script lang="ts">
 import VueButton from '@/components/button/VueButton.vue';
 import VueInput from '@/components/input/VueInput.vue';
-import {defineComponent, inject} from '@vue/composition-api';
+import {computed, defineComponent, inject, ref} from '@vue/composition-api';
 import Vue from 'vue';
 
 export default defineComponent({
@@ -20,6 +27,15 @@ export default defineComponent({
   components: {VueInput, VueButton},
   props: {},
   setup: function (props, ctx) {
+    // 动态进度条数值
+    const percentComplete = ref<number>(0);
+    // 进度条提示文字
+    const progressTips = computed(() => {
+      return percentComplete.value === 100
+        ? '上传完成'
+        : `${percentComplete.value}%`;
+    });
+
     const toast = inject<Function>('toast');
     const uploadFile = () => {
       // 获取用户选择的文件列表
@@ -29,11 +45,21 @@ export default defineComponent({
       // 将用户选择的文件添加到 FormData 中
       fileList && fd.append('avatar', fileList[0]);
 
-      // 1. 创建 xhr 对象
+      // 创建 xhr 对象
       const xhr = new XMLHttpRequest();
-      // 2. 调用 open 函数，指定请求类型与 URL 地址，上传文件的请求类型必须为 POST
+
+      // 监听文件上传的进度
+      xhr.upload.onprogress = (e) => {
+        if (e.lengthComputable) {
+          // 计算出上传的进度 动态设置进度条
+          percentComplete.value = Math.ceil((e.loaded / e.total) * 100);
+        }
+      };
+
+      // 调用 open 函数，指定请求类型与 URL 地址，上传文件的请求类型必须为 POST
       xhr.open('POST', 'http://www.liulongbin.top:3006/api/upload/avatar');
-      // 3. 监听 `onreadystatechange` 事件
+
+      // 监听 `onreadystatechange` 事件
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
           const data = JSON.parse(xhr.responseText);
@@ -42,12 +68,15 @@ export default defineComponent({
             : toast && toast(data.message);
         }
       };
-      // 4. 发起请求
+
+      // 发起请求
       xhr.send(fd);
     };
 
     return {
-      uploadFile
+      uploadFile,
+      percentComplete,
+      progressTips
     };
   }
 });
