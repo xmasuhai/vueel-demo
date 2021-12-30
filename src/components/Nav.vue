@@ -37,6 +37,7 @@ export default class Nav extends Vue {
     // 发布 切换对应组件 的自定义事件
     this.$emit('update:tabName', tab);
   }
+
 }
 </script>
 

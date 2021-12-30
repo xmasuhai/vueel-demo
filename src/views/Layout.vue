@@ -1,9 +1,15 @@
 <template>
   <section class="layout-wrapper"
            :class="getLayoutClass('wrapper')">
-    <Nav @update:tabName="changeTabComponent"/>
+    <Nav @update:tabName="changeTabComponent"
+         :class="{
+           'isHide': isHide
+         }"
+         class="home-fixed"/>
     <section class="content"
-             :class="getLayoutClass('content')">
+             :class="getLayoutClass('content')"
+             ref="content"
+             @scroll="scrolling">
       <keep-alive>
         <component :is="currentTabComponentText"
                    :key="currentTabComponentText"
@@ -26,7 +32,7 @@ import Tabs from '../components/Tabs.vue';
 import Popovers from '../components/Popovers.vue';
 import Collapses from '../components/Collapses.vue';
 import Switches from '../components/Switches.vue';
-import BooksInfo from "@/components/BooksInfo.vue";
+import BooksInfo from '@/components/BooksInfo.vue';
 
 @Component({
   components: {
@@ -63,6 +69,37 @@ export default class Layout extends Vue {
     this.layoutType = value;
     return (this.classPrefix && `${this.classPrefix}-${this.layoutType}`);
   }
+
+  oldScrollTop = 0;
+  isHide = false;
+
+  // 获取 内容区
+  get contentEle() {
+    return this.$refs.content;
+  }
+
+  // 头部导航做鼠标滚动优化
+  scrolling() {
+    // 滚动条距文档顶部的距离（做兼容处理）===》不懂的可以结合画图理清逻辑
+    const scrollTop = (this.contentEle as HTMLElement).scrollTop;
+    // 滚动条滚动的距离
+    const scrollStep = scrollTop - this.oldScrollTop;
+    // 更新——滚动前，滚动条距文档顶部的距离
+    this.oldScrollTop = scrollTop;
+    // 关键 scrollStep 为正 向下 隐藏导航栏；为负 向上 显示导航栏
+    scrollStep < 0
+      ? this.isHide = false
+      : this.isHide = true;
+
+  }
+
+  /*
+  // 监听页面滚动事件
+  mounted() {
+    (this.$refs.content as HTMLElement).addEventListener('scroll', this.scrolling);
+  }
+  */
+
 }
 </script>
 
@@ -73,7 +110,24 @@ section.layout-wrapper {
   flex-direction: column;
   height: 100vh;
 
+  .home-fixed {
+    width: 100%;
+    background: #fff;
+    position: fixed;
+
+    left: 0;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 3px 7px 0 rgba(70, 70, 70, 0.35);
+    transition: all 0.3s; // 添加过渡，优化体验，具体可以根据需求扩展
+  }
+
+  .home-fixed.isHide { // 这个类名用来动态改变显示藏（关键）
+    transform: translateY(-100%);
+  }
+
   section.content {
+    padding-top: 30px;
     box-shadow: inset 0 1px 2px 2px #ccc;
 
     .vue-tab {
