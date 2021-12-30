@@ -29,3 +29,16 @@ jobs:
           REPOSITORY_NAME: xmasuhai/vueel-demo-website
           BRANCH: gh-pages
           FOLDER: dist
+
+      # 2、生成静态文件
+      - name: Build
+        run: yarn run build
+
+      # 2、部署到 GitHub Pages
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          REPOSITORY_NAME: xmasuhai/vueel-demo
+          BRANCH: gh-pages
+          FOLDER: dist
