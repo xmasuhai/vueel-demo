@@ -6,8 +6,14 @@
     </VueButton>
     <div style="">
       <label for="file">文件上传进度:
-        <progress id="file" max="100" :value="`${percentComplete}`"
-                  style="vertical-align: text-bottom;width: 30%;margin: 0 10px;"></progress>
+        <progress id="file"
+                  ref="progress"
+                  max="100"
+                  :value="`${percentComplete}`"
+                  :class="{success: isProgressComplete}"
+                  style="vertical-align: text-bottom;width: 30%;margin: 0 10px;">
+          {{ percentComplete }}%
+        </progress>
         <span>{{ progressTips }}</span>
       </label>
     </div>
@@ -35,9 +41,12 @@ export default defineComponent({
         ? '上传完成'
         : `${percentComplete.value}%`;
     });
-
+    const isProgressComplete = ref(false);
     const toast = inject<Function>('toast');
     const uploadFile = () => {
+      // 复原进度条颜色
+      isProgressComplete.value = false;
+
       // 获取用户选择的文件列表
       const fileList = (ctx.refs.file1 as Vue).$el.querySelector('input')?.files;
       if (fileList && fileList.length <= 0) {return toast && toast('请选择要上传的文件！');}
@@ -54,6 +63,11 @@ export default defineComponent({
           // 计算出上传的进度 动态设置进度条
           percentComplete.value = Math.ceil((e.loaded / e.total) * 100);
         }
+      };
+
+      // 上传成功时
+      xhr.upload.onload = () => {
+        isProgressComplete.value = true;
       };
 
       // 调用 open 函数，指定请求类型与 URL 地址，上传文件的请求类型必须为 POST
@@ -76,8 +90,40 @@ export default defineComponent({
     return {
       uploadFile,
       percentComplete,
-      progressTips
+      progressTips,
+      isProgressComplete
     };
   }
 });
 </script>
+
+<style lang="scss" scoped>
+// shadow DOM
+progress {
+  background-color: transparent;
+
+  &::-webkit-progress-inner-element {
+    height: 50%;
+    border-radius: 5px;
+    background-color: #efefef;
+    transform: translateY(40%);
+  }
+
+  &::-webkit-progress-value {
+    background: #0075ff;
+    border-radius: 4px;
+  }
+
+  &::-webkit-progress-bar {
+    background-color: #efefef;
+    border-radius: 4px;
+    border: 1px solid #d1d1d1;
+  }
+}
+
+progress.success {
+  &::-webkit-progress-value {
+    background: #198754;
+  }
+}
+</style>
