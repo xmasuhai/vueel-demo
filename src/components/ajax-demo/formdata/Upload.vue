@@ -2,6 +2,7 @@
   <div>
     <VueInput type="file" ref="file1"/>
     <VueButton ref="btnUpload"
+               :isLoading="isLoading"
                @click="uploadFile">上传图片
     </VueButton>
     <div style="">
@@ -33,19 +34,30 @@ export default defineComponent({
   components: {VueInput, VueButton},
   props: {},
   setup: function (props, ctx) {
+    // 提示框
+    const toast = inject<Function>('toast');
+    // 按钮样式 是否在读取中
+    const isLoading = ref(false);
+
     // 动态进度条数值
     const percentComplete = ref<number>(0);
+
     // 进度条提示文字
     const progressTips = computed(() => {
       return percentComplete.value === 100
         ? '上传完成'
         : `${percentComplete.value}%`;
     });
+
+    // 进度条是否完成
     const isProgressComplete = ref(false);
-    const toast = inject<Function>('toast');
+
+    // 上传的逻辑
     const uploadFile = () => {
       // 复原进度条颜色
       isProgressComplete.value = false;
+      // 按钮样式变为读取中
+      isLoading.value = true;
 
       // 获取用户选择的文件列表
       const fileList = (ctx.refs.file1 as Vue).$el.querySelector('input')?.files;
@@ -68,6 +80,8 @@ export default defineComponent({
       // 上传成功时
       xhr.upload.onload = () => {
         isProgressComplete.value = true;
+        // 按钮样式变回原样 费读取中
+        isLoading.value = false;
       };
 
       // 调用 open 函数，指定请求类型与 URL 地址，上传文件的请求类型必须为 POST
@@ -91,7 +105,8 @@ export default defineComponent({
       uploadFile,
       percentComplete,
       progressTips,
-      isProgressComplete
+      isProgressComplete,
+      isLoading
     };
   }
 });
