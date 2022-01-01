@@ -52,6 +52,12 @@ export default defineComponent({
     // 进度条是否完成
     const isProgressComplete = ref(false);
 
+    const warnMsg = (msg: string) => {
+      toast && toast(msg);
+      // 按钮样式变回原样 费读取中
+      isLoading.value = false;
+    };
+
     // 上传的逻辑
     const uploadFile = () => {
       // 复原进度条颜色
@@ -61,7 +67,7 @@ export default defineComponent({
 
       // 获取用户选择的文件列表
       const fileList = (ctx.refs.file1 as Vue).$el.querySelector('input')?.files;
-      if (fileList && fileList.length <= 0) {return toast && toast('请选择要上传的文件！');}
+      if (fileList && fileList.length <= 0) {return warnMsg('请选择要上传的文件！');}
       const fd = new FormData();
       // 将用户选择的文件添加到 FormData 中
       fileList && fd.append('avatar', fileList[0]);
@@ -93,7 +99,7 @@ export default defineComponent({
           const data = JSON.parse(xhr.responseText);
           data.status === 200
             ? (ctx.refs.img as HTMLImageElement).src = `http://www.liulongbin.top:3006${data.url}`
-            : toast && toast(data.message);
+            : warnMsg(data.message);
         }
       };
 
