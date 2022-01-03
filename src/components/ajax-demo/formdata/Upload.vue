@@ -54,7 +54,7 @@ export default defineComponent({
 
     const warnMsg = (msg: string) => {
       toast && toast(msg);
-      // 按钮样式变回原样 费读取中
+      // 按钮样式变回原样 非读取中的样式
       isLoading.value = false;
     };
 
@@ -66,15 +66,17 @@ export default defineComponent({
       isLoading.value = true;
 
       // 获取用户选择的文件列表
-      const fileList = (ctx.refs.file1 as Vue).$el.querySelector('input')?.files;
+      // const fileList = (ctx.refs.file1 as Vue).$el.querySelector('input')?.files;
+      const VueInputVm = ctx.refs.file1 as Vue
+      const fileList = (VueInputVm.$refs.input as HTMLInputElement).files;
+      // 判断是否选择了文件
       if (fileList && fileList.length <= 0) {return warnMsg('请选择要上传的文件！');}
+      // 表单对象
       const fd = new FormData();
       // 将用户选择的文件添加到 FormData 中
       fileList && fd.append('avatar', fileList[0]);
-
       // 创建 xhr 对象
       const xhr = new XMLHttpRequest();
-
       // 监听文件上传的进度
       xhr.upload.onprogress = (e) => {
         if (e.lengthComputable) {
@@ -83,7 +85,7 @@ export default defineComponent({
         }
       };
 
-      // 上传成功时
+      // 上传成功时的回调
       xhr.upload.onload = () => {
         isProgressComplete.value = true;
         // 按钮样式变回原样 费读取中

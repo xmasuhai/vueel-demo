@@ -18,6 +18,7 @@
                         'fake-hover-error': isFakeHover && error,
                         error
                         }"
+               ref="input"
                @change="change"
                @input="input"
                @focus="focus"
@@ -42,7 +43,7 @@ import VueIcon from '../icon/VueIcon.vue';
 })
 export default class VueInput extends Vue {
   name = 'VueInput';
-  eventName = {}
+  eventName = {};
 
   @Prop(String) labelName!: string;
   @Prop(String) titleName!: string;

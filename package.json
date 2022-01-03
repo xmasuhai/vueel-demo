@@ -32,6 +32,8 @@
     "@babel/preset-env": "^7.12.1",
     "@vssue/api-github-v4": "^1.4.7",
     "@vssue/vuepress-plugin-vssue": "^1.4.8",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
+    "@vue/babel-preset-jsx": "^1.2.4",
     "@vue/cli": "^4.5.13",
     "@vue/cli-plugin-babel": "^4.5.8",
     "@vue/composition-api": "^1.2.4",
@@ -49,6 +51,7 @@
     "vuex": "^3.4.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-typescript": "^7.16.7",
     "@parcel/config-default": "^2.0.1",
     "@parcel/transformer-typescript-tsc": "^2.0.1",
     "@types/chai": "^4.2.21",
@@ -74,6 +77,7 @@
     "caniuse-lite": "^1.0.30001294",
     "chai": "^4.3.4",
     "chai-spies": "^1.0.0",
+    "core-js": "^3.20.2",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "highlight.js": "^11.2.0",
@@ -99,6 +103,7 @@
     "typescript": "^4.4.2",
     "vue-highlight.js": "^3.1.0",
     "vue-template-compiler": "^2.6.11",
+    "vue-tsx-support": "^3.2.0",
     "vuepress": "^1.8.2",
     "vuepress-plugin-demo-container": "^0.2.0",
     "vuepress-plugin-typescript": "^0.3.1",

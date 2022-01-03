@@ -12,8 +12,16 @@ module.exports = {
       alias: {
         'vue2': resolve('./node_modules/vue/dist/vue.esm.js'),
         'vue.2': './node_modules/vue/dist/vue.esm.js',
+        '@': path.resolve(__dirname, './src')
       },
+      extensions: ['.ts', /*'.jsx', */'.tsx']
     },
+    module: {
+      rules: [{
+        test: /\.(jsx|tsx|ts)$/,
+        loader: 'babel-loader'
+      }]
+    }
   },
   publicPath: process.env.NODE_ENV === 'production'
     ? '/vueel-demo/'

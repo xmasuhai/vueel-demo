@@ -28,7 +28,8 @@ export default class Nav extends Vue {
     'Popovers',
     'Collapses',
     'Switches',
-    'BooksInfo'
+    'BooksInfo',
+    'TXSDemo',
   ];
 
   showTab(tab: string) {
@@ -42,8 +43,6 @@ export default class Nav extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/styles/global.scss';
-
 nav {
   display: flex;
   flex-direction: row;

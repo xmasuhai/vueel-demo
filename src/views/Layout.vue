@@ -21,18 +21,19 @@
 </template>
 
 <script lang="ts">
+import BooksInfo from '@/components/BooksInfo.vue';
+import TXSDemo from '@/components/TXSDemo.vue';
 import {Component, Prop, Vue} from 'vue-property-decorator';
 import Buttons from '../components/Buttons.vue';
-import Inputs from '../components/Inputs.vue';
-import GridSystems from '../components/GridSystems.vue';
-import Nav from '../components/Nav.vue';
-import LayoutGroups from '../components/LayoutGroups.vue';
-import ToastsTips from '../components/ToastsTips.vue';
-import Tabs from '../components/Tabs.vue';
-import Popovers from '../components/Popovers.vue';
 import Collapses from '../components/Collapses.vue';
+import GridSystems from '../components/GridSystems.vue';
+import Inputs from '../components/Inputs.vue';
+import LayoutGroups from '../components/LayoutGroups.vue';
+import Nav from '../components/Nav.vue';
+import Popovers from '../components/Popovers.vue';
 import Switches from '../components/Switches.vue';
-import BooksInfo from '@/components/BooksInfo.vue';
+import Tabs from '../components/Tabs.vue';
+import ToastsTips from '../components/ToastsTips.vue';
 
 @Component({
   components: {
@@ -46,16 +47,20 @@ import BooksInfo from '@/components/BooksInfo.vue';
     Popovers,
     Collapses,
     Switches,
-    BooksInfo
+    BooksInfo,
+    TXSDemo
   }
 })
 export default class Layout extends Vue {
   name = 'Layout';
-  currentTabText = 'BooksInfo';
+  currentTabText = 'TXSDemo';
   layoutType = '';
 
   // 由动态外部参数 获取 类样式
-  @Prop(String) ['classPrefix']: string;
+  @Prop({
+    default: '',
+    type: String
+  }) classPrefix!: string;
 
   changeTabComponent(tabName: string) {
     this.currentTabText = tabName;

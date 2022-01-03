@@ -7,14 +7,17 @@
 </template>
 
 <script lang="ts">
-import '../../assets/icons/svg.js';
 import {Component, Prop, Vue} from 'vue-property-decorator';
+import '../../assets/icons/svg.js';
 
 @Component
 export default class VueIcon extends Vue {
   name = 'VueIcon';
   // 动态引入 svg name
-  @Prop({default: ''}) ['iconName']: string;
+  @Prop({
+    default: '',
+    type: String
+  }) iconName!: string;
   @Prop({
     type: Number,
     default: 1,
