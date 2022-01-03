@@ -6,7 +6,7 @@
 
 ## 介绍
 
-> Vueel UI 是一个基于Vue 2.6.11 和 TypeScript 的 UI 组件库
+> Vueel UI 是一个基于 Vue 2.6.11 和 TypeScript 的 UI 组件库
 
 - 这是我在学习 Vue.js 过程中做的一个 UI 框架
 - 查看文档请点击: [https://xmasuhai.xyz/vueel-demo-website/](https://xmasuhai.xyz/vueel-demo-website/)
