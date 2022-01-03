@@ -2,19 +2,21 @@
 /* eslint-disable */
 const path = require('path')
 
+/*
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
+*/
 
 module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        'vue2': resolve('./node_modules/vue/dist/vue.esm.js'),
+        'vue2': path.join(__dirname, './node_modules/vue/dist/vue.esm.js'),
         'vue.2': './node_modules/vue/dist/vue.esm.js',
         '@': path.resolve(__dirname, './src')
       },
-      extensions: ['.ts', /*'.jsx', */'.tsx']
+      extensions: ['.ts', '.jsx', '.tsx']
     },
     module: {
       rules: [{
