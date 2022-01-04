@@ -29,7 +29,7 @@ export default class Nav extends Vue {
     'Collapses',
     'Switches',
     'BooksInfo',
-    'TXSDemo',
+    'TxsDemo',
   ];
 
   showTab(tab: string) {

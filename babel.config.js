@@ -3,7 +3,8 @@ module.exports = {
     compositionAPI: true,
     /*'injectH': false*/
   }] // 开启 jsx
-  ], plugins: [
+  ],
+  plugins: [
     /*'@vue/babel-plugin-jsx', // for Vue3 only */
     ['@babel/plugin-transform-typescript', {
       isTSX: true

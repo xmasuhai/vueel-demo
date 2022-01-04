@@ -1,14 +1,15 @@
 import Toast from './VueToast.vue';
 import {VNode} from 'vue';
 import {VueToast, VueToastOptions} from '@/types/VueToast';
+import Vue from 'vue';
 
 let currentToast: VueToast | null;
 let opt: {};
 
-function createToast(Vue: Record<string, any>,
-                     message: string | VNode,
-                     onCloseCallBack: () => void,
-                     VueToastOptions?: VueToastOptions | {}
+export function createToast(Vue: Record<string, any>,
+                            message: string | VNode,
+                            onCloseCallBack?: () => void,
+                            VueToastOptions?: VueToastOptions | {}
 ): VueToast {
   const Constructor = Vue.extend(Toast);
 

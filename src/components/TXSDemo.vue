@@ -13,9 +13,6 @@ export default defineComponent({
   props: {},
   components: {
     Txs
-  },
-  setup(/*props, ctx*/) {
-    return {};
   }
 });
 </script>
