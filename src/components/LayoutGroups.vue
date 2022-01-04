@@ -64,7 +64,7 @@ import VueCodePresentation from './code-presentation/VueCodePresentation.vue';
     VueCodePresentation
   }
 })
-export default class extends Vue {
+export default class LayoutGroups extends Vue {
   name = 'LayoutGroups';
 }
 </script>
