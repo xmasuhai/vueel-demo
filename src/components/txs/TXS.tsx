@@ -1,21 +1,14 @@
-import {defineComponent, ref} from '@vue/composition-api';
+import {defineComponent} from '@vue/composition-api';
+import Child from './Child';
 
 export default defineComponent({
-  name: 'txs-demo',
+  name: 'Txs',
   props: {},
-  setup(/*props, ctx*/) {
-    const countRef = ref(1);
-    const render = () => {
-      // noinspection JSXNamespaceValidation
-      return <div> Hello TXS </div>;
-    };
-
-    return {
-      countRef,
-      render
-    };
+  components: {
+    Child
   },
+  // render function
   render() {
-    return (<div>Child</div>);
+    return (<Child/>);
   }
 });

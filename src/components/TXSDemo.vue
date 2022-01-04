@@ -1,18 +1,18 @@
 <template>
   <div>
-    <TXS></TXS>
+    <Txs></Txs>
   </div>
 </template>
 
 <script lang="ts">
-import TXS from '@/components/txs/TXS';
+import Txs from '@/components/txs/TXS';
 import {defineComponent} from '@vue/composition-api';
 
 export default defineComponent({
-  name: 'txs-demo',
+  name: 'TXSDemo',
   props: {},
   components: {
-    TXS
+    Txs
   },
   setup(/*props, ctx*/) {
     return {};

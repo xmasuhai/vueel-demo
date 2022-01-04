@@ -1,21 +1,16 @@
 import {defineComponent, ref} from '@vue/composition-api';
 
 export default defineComponent({
-  name: 'txs-demo',
-  props: {},
-  setup(/*props, ctx*/) {
-    const countRef = ref(1);
-    const render = () => {
-      // noinspection JSXNamespaceValidation
-      return <div> Hello TXS </div>;
-    };
-
-    return {
-      countRef,
-      render
-    };
+  name: 'Child',
+  props: {
+    count: {
+      type: Number,
+      default: 1
+    }
   },
+  // render function
   render() {
-    return (<div>Child</div>);
+    const countRef = ref(1);
+    return (<div>Hello TXS Child {countRef.value}</div>);
   }
 });

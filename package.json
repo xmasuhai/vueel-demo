@@ -4,7 +4,11 @@
   "private": false,
   "description": "一个基于 Vue 2 的UI框架",
   "main": "dist/index.js",
-  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "browserslist": [
+                      "> 1%",
+                      "last 2 versions",
+                      "not dead"
+                    ],
   "scripts": {
     "vdd": "vuepress dev docs",
     "vdb": "vuepress build docs",

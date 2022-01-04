@@ -21,8 +21,8 @@
 </template>
 
 <script lang="ts">
+import TxsDemo from '@/components/TXSDemo.vue';
 import BooksInfo from '@/components/BooksInfo.vue';
-import TXSDemo from '@/components/TXSDemo.vue';
 import {Component, Prop, Vue} from 'vue-property-decorator';
 import Buttons from '../components/Buttons.vue';
 import Collapses from '../components/Collapses.vue';
@@ -48,12 +48,12 @@ import ToastsTips from '../components/ToastsTips.vue';
     Collapses,
     Switches,
     BooksInfo,
-    TXSDemo
+    TxsDemo
   }
 })
 export default class Layout extends Vue {
   name = 'Layout';
-  currentTabText = 'TXSDemo';
+  currentTabText = 'TxsDemo';
   layoutType = '';
 
   // 由动态外部参数 获取 类样式
