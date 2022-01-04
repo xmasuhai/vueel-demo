@@ -1,9 +1,17 @@
 import {defineComponent} from '@vue/composition-api';
 import VueCol from '@/components/grid/VueCol.vue';
 import VueRow from '@/components/grid/VueRow.vue';
-// import VuePopover from './popover/VuePopover.vue';
+import VuePopoverOrig from '@/components/popover/VuePopover.vue';
 import {User} from '@/components/txs/userInterface';
-import "vue-tsx-support/enable-check"
+import 'vue-tsx-support/enable-check';
+import * as tsx from 'vue-tsx-support';
+
+type VuePopoverProps = {
+  trigger: string;
+  position: string;
+}
+
+export const VuePopover = tsx.ofType<VuePopoverProps>().convert(VuePopoverOrig);
 
 export default defineComponent({
   name: 'Child',
@@ -18,20 +26,26 @@ export default defineComponent({
   },
   components: {
     VueCol,
-    VueRow
+    VueRow,
+    VuePopover
   },
   // render function
   render() {
     return (
       <div>
         <VueRow>
-          <VueCol>
-            <img width="100px"
-                 height="100px"
-                 src={this.users[0]?.avatar_url}
-                 alt={this.users[0]?.login}/>
-            <div>{this.users[0]?.login}</div>
-          </VueCol>
+          <VuePopover trigger="hover"
+                      position="bottom">
+            <template slot="content">
+              <div>{this.users[0]?.login}</div>
+            </template>
+            <VueCol>
+              <img width="100px"
+                   height="100px"
+                   src={this.users[0]?.avatar_url}
+                   alt={this.users[0]?.login}/>
+            </VueCol>
+          </VuePopover>
         </VueRow>
       </div>);
   }

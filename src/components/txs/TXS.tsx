@@ -1,7 +1,7 @@
 import {defineComponent/*, watch*/} from '@vue/composition-api';
 import ChildOrig from './Child';
 import useUsers from '@/components/txs/useUsers';
-import * as tsx from "vue-tsx-support";
+import * as tsx from 'vue-tsx-support';
 import {User} from '@/components/txs/userInterface';
 
 type ChildProps = {
@@ -18,6 +18,19 @@ export default defineComponent({
   },
   setup(/*props, ctx*/) {
     const {users} = useUsers();
+    const rowData: Record<string, string>[] = [];
+
+    const filterData = (Data: Record<string, string>[]): Record<string, string>[] => {
+
+      Data.splice(0, 6).forEach((item) => {
+        rowData.push(item);
+      });
+
+      return (
+        Data.length <= 6
+          ? rowData
+          : filterData(rowData));
+    };
 
     /*
       // users为异步函数的返回值
@@ -28,7 +41,8 @@ export default defineComponent({
     */
 
     return {
-      users
+      users,
+      filterData
     };
   },
   render() {
