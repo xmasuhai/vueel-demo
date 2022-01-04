@@ -1,7 +1,9 @@
-import VueCompositionAPI from '@vue/composition-api';
+// 基础依赖
 import Vue from 'vue';
+import VueCompositionAPI from '@vue/composition-api';
 import 'vue-tsx-support/enable-check';
-import App from './App.vue';
+// 入口文件
+import App from './App';
 // 组件
 import VueButton from './components/button/VueButton.vue';
 import VueButtonGroup from './components/button/VueButtonGroup.vue';
