@@ -1,8 +1,8 @@
-import {defineComponent/*, watch*/} from '@vue/composition-api';
-import ChildOrig from './Child';
-import useUsers from '@/components/txs/useUsers';
-import * as tsx from 'vue-tsx-support';
 import {User} from '@/components/txs/userInterface';
+import useUsers from '@/components/txs/useUsers';
+import {defineComponent} from '@vue/composition-api';
+import * as tsx from 'vue-tsx-support';
+import ChildOrig from './Child';
 
 type ChildProps = {
   users: User[];
@@ -46,6 +46,7 @@ export default defineComponent({
     };
   },
   render() {
+    // noinspection JSXNamespaceValidation
     return (
       <div>
         <Child users={this.users}/>

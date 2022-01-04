@@ -1,10 +1,10 @@
-import {defineComponent} from '@vue/composition-api';
 import VueCol from '@/components/grid/VueCol.vue';
 import VueRow from '@/components/grid/VueRow.vue';
 import VuePopoverOrig from '@/components/popover/VuePopover.vue';
 import {User} from '@/components/txs/userInterface';
-import 'vue-tsx-support/enable-check';
+import {defineComponent} from '@vue/composition-api';
 import * as tsx from 'vue-tsx-support';
+import 'vue-tsx-support/enable-check';
 
 type VuePopoverProps = {
   trigger: string;
@@ -31,6 +31,7 @@ export default defineComponent({
   },
   // render function
   render() {
+    // noinspection JSXNamespaceValidation
     return (
       <div>
         <VueRow>
