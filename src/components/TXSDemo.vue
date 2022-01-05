@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import Txs from '@/components/txs/TXS';
+import Txs from '@/components/tsx-render/TXS';
 import {defineComponent} from '@vue/composition-api';
 
 export default defineComponent({
