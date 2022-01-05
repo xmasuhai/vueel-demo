@@ -17,7 +17,7 @@ import {Component, Vue} from 'vue-property-decorator';
 @Component
 export default class Nav extends Vue {
   name = 'Nav';
-  currentTabText = 'TXSDemo';
+  currentTabText = 'GetGithubAvatar';
   tabs = [
     'Buttons',
     'Inputs',
@@ -29,7 +29,7 @@ export default class Nav extends Vue {
     'Collapses',
     'Switches',
     'BooksInfo',
-    'TxsDemo',
+    'GetGithubAvatar',
   ];
 
   showTab(tab: string) {

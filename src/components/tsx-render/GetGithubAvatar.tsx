@@ -1,20 +1,20 @@
 import {User} from '@/components/tsx-render/userInterface';
-import useUsers from '@/components/tsx-render/useUsers';
+import useUsers from '@/components/tsx-render/useGetUsersAvatar';
 import {computed, defineComponent} from '@vue/composition-api';
 import * as tsx from 'vue-tsx-support';
-import ChildOrig from './Child';
+import ShowAvatarOrig from './ShowAvatar';
 
 type ChildProps = {
   users: User[];
 }
 
-export const Child = tsx.ofType<ChildProps>().convert(ChildOrig);
+export const ShowAvatar = tsx.ofType<ChildProps>().convert(ShowAvatarOrig);
 
 export default defineComponent({
-  name: 'Txs',
+  name: 'GetGithubAvatar',
   props: {},
   components: {
-    Child
+    ShowAvatar
   },
   setup(/*props, ctx*/) {
     const {users} = useUsers(); // users: Ref<User[]>
@@ -32,7 +32,7 @@ export default defineComponent({
     // noinspection JSXNamespaceValidation
     return (
       <div>
-        <Child users={this.usersResult}/>
+        <ShowAvatar users={this.usersResult}/>
       </div>
     );
   }

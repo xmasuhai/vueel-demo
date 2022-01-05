@@ -15,7 +15,7 @@ type VuePopoverProps = {
 export const VuePopover = tsx.ofType<VuePopoverProps>().convert(VuePopoverOrig);
 
 export default defineComponent({
-  name: 'Child',
+  name: 'ShowAvatar',
   props: {
     users: {
       type: Array as { (): User[] }, // 提供调用处的类型推到

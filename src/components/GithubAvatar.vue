@@ -1,18 +1,18 @@
 <template>
   <div>
-    <Txs></Txs>
+    <GetGithubAvatar></GetGithubAvatar>
   </div>
 </template>
 
 <script lang="ts">
-import Txs from '@/components/tsx-render/TXS';
+import GetGithubAvatar from '@/components/tsx-render/GetGithubAvatar';
 import {defineComponent} from '@vue/composition-api';
 
 export default defineComponent({
-  name: 'TXSDemo',
+  name: 'GithubAvatar',
   props: {},
   components: {
-    Txs
+    GetGithubAvatar
   }
 });
 </script>
