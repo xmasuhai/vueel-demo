@@ -52,7 +52,7 @@ export default defineComponent({
                           position="bottom"
                           key={index}>
                 <template slot="content">
-                  <div>{user.login}</div>
+                  <div>昵称: {user.login}</div>
                 </template>
                 <VueCol>
                   <img width="100px"

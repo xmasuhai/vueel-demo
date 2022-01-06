@@ -1,12 +1,25 @@
 import {defineComponent,} from '@vue/composition-api';
 import style from '@/components/ajax-demo/cross-domain/SearchByJSONP.module.scss';
+import logo from '@/components/ajax-demo/cross-domain/taobao_logo.png';
 
 export default defineComponent({
   name: 'SearchByJSONP',
   props: {},
   components: {},
   setup(/*props, ctx*/) {
+    // 定义延时器的Id
+
+    // 定义缓存对象
+
+    // 定义防抖的函数
+
+    // 为输入框绑定 keyup 事件
+
+    // 渲染UI结构
+
     const suggestList = '';
+
+
     return {
       suggestList
     };
@@ -14,32 +27,30 @@ export default defineComponent({
   render() {
     // noinspection JSXNamespaceValidation
     return (
-      <div class={style.test}>
+      <div class={style.container}>
         {/* Logo */}
-        <img src="./images/taobao_logo.png"
-             alt=""
+        <img src={logo}
+             alt="taobao_logo"
              class={style.logo}/>
 
         <div class={style.box}>
-          {/* tab ? */}
+          {/* tab 栏 */}
           <div class={style.tabs}>
-            <div class={style['tab-active']}>??</div>
-            <div>??</div>
+            <div class={style['tab-active']}>宝贝</div>
+            <div>店铺</div>
           </div>
 
-          {/* ?????????????? */}
+          {/* 搜索区域（搜索框和搜索按钮） */}
           <div class={style['search-box']}>
             <input id="ipt"
                    type="text"
                    class={style.ipt}
-                   placeholder="?????????"/>
-            <button class={style.btnSearch}>
-              ??
-            </button>
+                   placeholder="请输入要搜索的内容"/>
+            <button class={style.btnSearch}>搜索</button>
           </div>
 
-          {/* ?????? */}
-          <div id={this.suggestList}></div>
+          {/* 搜索建议列表 */}
+          <div id={this.suggestList}>搜索建议列表</div>
         </div>
       </div>
     );
