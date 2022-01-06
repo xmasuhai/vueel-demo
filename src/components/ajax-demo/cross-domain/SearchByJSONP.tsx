@@ -1,6 +1,10 @@
 import {defineComponent, Ref, ref,} from '@vue/composition-api';
 import style from '@/components/ajax-demo/cross-domain/SearchByJSONP.module.scss';
 import logo from '@/components/ajax-demo/cross-domain/taobao_logo.png';
+import axios from 'axios';
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+import jsonpAdapter from 'axios-jsonp';
 
 export default defineComponent({
   name: 'SearchByJSONP',
@@ -12,10 +16,28 @@ export default defineComponent({
     // 定义缓存对象
     const cacheObj = ref({});
 
+    // 接受数据，渲染UI结构
+    const renderSuggestList = (result: Array<string>) => {
+      /*
+        result.length <= 0
+          ?
+          : ;
+      */
+      return result
+    };
+
     // 发送请求 搜索关键字
     const getSuggestList = (keyword: string) => {
-      keyword = '';
-      return keyword;
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+      axios({
+        url: `https://suggest.taobao.com/sug?q=${keyword}`,
+        adapter: jsonpAdapter,
+        callbackParamName: 'callback' // optional, 'callback' by default
+      })
+        .then((res) => {
+          return res
+        });
     };
 
     // 定义防抖的函数
@@ -27,13 +49,13 @@ export default defineComponent({
 
     // 为输入框绑定 keyup 事件
 
-    // 渲染UI结构
 
     const suggestList = '';
 
     return {
       suggestList,
       debounceSearch,
+      renderSuggestList,
       cacheObj,
       timer
     };
@@ -64,7 +86,10 @@ export default defineComponent({
           </div>
 
           {/* 搜索建议列表 */}
-          <div id={this.suggestList}>搜索建议列表</div>
+          <div id={this.suggestList}>
+            {}
+            <div class={style['suggest-item']}>123</div>
+          </div>
         </div>
       </div>
     );

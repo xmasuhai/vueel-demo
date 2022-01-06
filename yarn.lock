@@ -5413,6 +5413,11 @@ aws4@^1.8.0:
   resolved "https://registry.nlark.com/aws4/download/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
   integrity sha1-1h9G2DslGSUOJ4Ta9bCUeai0HFk=
 
+axios-jsonp@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npm.taobao.org/axios-jsonp/download/axios-jsonp-1.0.4.tgz#28878a48bbf38dbf07875fa283d9cf958c63b498"
+  integrity sha1-KIeKSLvzjb8Hh1+ig9nPlYxjtJg=
+
 axios@^0.21.1:
   version "0.21.3"
   resolved "https://registry.nlark.com/axios/download/axios-0.21.3.tgz?cache=0&sync_timestamp=1630782385763&other_urls=https%3A%2F%2Fregistry.nlark.com%2Faxios%2Fdownload%2Faxios-0.21.3.tgz#f85d9b747f9b66d59ca463605cedf1844872b82e"
