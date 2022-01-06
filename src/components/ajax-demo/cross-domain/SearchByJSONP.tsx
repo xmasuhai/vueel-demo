@@ -1,4 +1,4 @@
-import {defineComponent,} from '@vue/composition-api';
+import {defineComponent, Ref, ref,} from '@vue/composition-api';
 import style from '@/components/ajax-demo/cross-domain/SearchByJSONP.module.scss';
 import logo from '@/components/ajax-demo/cross-domain/taobao_logo.png';
 
@@ -8,10 +8,22 @@ export default defineComponent({
   components: {},
   setup(/*props, ctx*/) {
     // 定义延时器的Id
-
+    const timer: Ref<ReturnType<typeof setTimeout> | undefined> = ref();
     // 定义缓存对象
+    const cacheObj = ref({});
+
+    // 发送请求 搜索关键字
+    const getSuggestList = (keyword: string) => {
+      keyword = '';
+      return keyword;
+    };
 
     // 定义防抖的函数
+    const debounceSearch = (kw: string) => {
+      timer.value = setTimeout(function () {
+        getSuggestList(kw);
+      }, 500);
+    };
 
     // 为输入框绑定 keyup 事件
 
@@ -19,9 +31,11 @@ export default defineComponent({
 
     const suggestList = '';
 
-
     return {
-      suggestList
+      suggestList,
+      debounceSearch,
+      cacheObj,
+      timer
     };
   },
   render() {
@@ -36,7 +50,7 @@ export default defineComponent({
         <div class={style.box}>
           {/* tab 栏 */}
           <div class={style.tabs}>
-            <div class={style['tab-active']}>宝贝</div>
+            <div class={style['tabs-active']}>宝贝</div>
             <div>店铺</div>
           </div>
 
