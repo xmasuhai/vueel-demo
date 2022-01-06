@@ -29,6 +29,9 @@ module.exports = {
     ? '/vueel-demo/'
     : '/',
   lintOnSave: false,
+  css: {
+    requireModuleExtension: true
+  },
   chainWebpack: config => {
     const dir = path.resolve(__dirname, 'src/assets/icons') // 确定目录
     config.module.rule('svg').uses.clear() //

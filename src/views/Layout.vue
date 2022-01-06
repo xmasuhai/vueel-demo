@@ -34,6 +34,7 @@ import Popovers from '../components/Popovers.vue';
 import Switches from '../components/Switches.vue';
 import Tabs from '../components/Tabs.vue';
 import ToastsTips from '../components/ToastsTips.vue';
+import JsonP from '@/components/JsonP';
 
 @Component({
   components: {
@@ -48,12 +49,13 @@ import ToastsTips from '../components/ToastsTips.vue';
     Collapses,
     Switches,
     BooksInfo,
-    GetGithubAvatar
+    GetGithubAvatar,
+    JsonP
   }
 })
 export default class Layout extends Vue {
   name = 'Layout';
-  currentTabText = 'GetGithubAvatar';
+  currentTabText = 'JsonP';
   layoutType = '';
 
   // 由动态外部参数 获取 类样式

@@ -17,7 +17,7 @@ import {Component, Vue} from 'vue-property-decorator';
 @Component
 export default class Nav extends Vue {
   name = 'Nav';
-  currentTabText = 'GetGithubAvatar';
+  currentTabText = 'JsonP';
   tabs = [
     'Buttons',
     'Inputs',
@@ -30,6 +30,7 @@ export default class Nav extends Vue {
     'Switches',
     'BooksInfo',
     'GetGithubAvatar',
+    'JsonP'
   ];
 
   showTab(tab: string) {
