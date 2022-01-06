@@ -27,9 +27,7 @@ export default defineComponent({
           timeout: 1000
         }
       )
-        .then(
-          res => {
-            return toast && toast(res);
+        .then( (res) => { return res;
           },
           () => {
             return toast && toast('跨域失败');
