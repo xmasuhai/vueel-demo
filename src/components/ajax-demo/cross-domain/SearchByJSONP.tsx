@@ -45,7 +45,7 @@ export default defineComponent({
     const debounceSearch = (kw: string) => {
       timer = window.setTimeout(function () {
         getSuggestList(kw);
-      }, 800);
+      }, 500);
     };
 
     // 为输入框绑定 keyup 事件回调函数
