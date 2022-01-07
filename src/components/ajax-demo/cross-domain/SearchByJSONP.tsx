@@ -50,6 +50,9 @@ export default defineComponent({
 
     // 为输入框绑定 keyup 事件回调函数
     const sendQuery = () => {
+      // 清空原数据
+      responseData.value = []
+
       // 清空 timer
       clearTimeout(timer);
 
@@ -60,10 +63,9 @@ export default defineComponent({
       if (cacheObj[inputValue.value]) {
         return responseData.value = cacheObj[inputValue.value];
       }
+
       // 获取搜索建议列表 加防抖
       // getSuggestList(keywords)
-      // 清空原数据
-      responseData.value = []
       return inputValue.value.trim() && debounceSearch(inputValue.value);
     };
 
