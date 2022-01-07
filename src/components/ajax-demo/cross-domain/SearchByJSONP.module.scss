@@ -22,21 +22,22 @@
         cursor: pointer;
 
         &:hover {
-          text-decoration: underline;
           color: #ff5700;
+          text-decoration: none;
         }
       }
 
-      &-active {
+      & > div.tab-active {
         background-color: #ff5700;
         font-weight: bold;
         color: white;
 
         &:hover {
           color: white;
-          text-decoration: none;
         }
+
       }
+
     }
 
     .search-box {
@@ -75,20 +76,23 @@
 
     }
 
+    .suggest-list {
+      border: 1px solid #ccc;
+
+      .suggest-item {
+        line-height: 30px;
+        padding-left: 5px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: #eee;
+        }
+
+      }
+    }
+
   }
 }
 
-#suggest-list {
-  border: 1px solid #ccc;
-  display: none;
-}
 
-.suggest-item {
-  line-height: 30px;
-  padding-left: 5px;
-}
 
-.suggest-item:hover {
-  cursor: pointer;
-  background-color: #eee;
-}
