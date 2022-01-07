@@ -37,7 +37,7 @@ export default defineComponent({
             : responseData.value = result;
           // 将获取到用户输入的内容，当做键
           // 将需要将数据作为值，进行缓存
-          cacheObj[inputValue.value] = result;
+          inputValue.value && (cacheObj[inputValue.value] = result);
         });
     };
 
@@ -63,7 +63,7 @@ export default defineComponent({
 
       // 获取搜索建议列表 加防抖
       // getSuggestList(keywords)
-      debounceSearch(inputValue.value);
+      inputValue.value.trim() && debounceSearch(inputValue.value);
     };
 
     return {
