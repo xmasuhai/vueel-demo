@@ -58,20 +58,20 @@ export default defineComponent({
 
       // 判断缓存中对应的关键字如果有数据，更新数据 responseData
       if (cacheObj[inputValue.value]) {
-        responseData.value = cacheObj[inputValue.value];
+        return responseData.value = cacheObj[inputValue.value];
       }
-
       // 获取搜索建议列表 加防抖
       // getSuggestList(keywords)
-      inputValue.value.trim() && debounceSearch(inputValue.value);
+      // 清空原数据
+      responseData.value = []
+      return inputValue.value.trim() && debounceSearch(inputValue.value);
     };
 
     return {
+      inputValue,
+      responseData,
       debounceSearch,
       sendQuery,
-      inputValue,
-      cacheObj,
-      responseData
     };
   },
   render() {
