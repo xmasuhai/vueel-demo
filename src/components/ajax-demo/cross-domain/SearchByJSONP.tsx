@@ -1,27 +1,28 @@
-import {defineComponent, Ref, ref} from '@vue/composition-api';
 import style from '@/components/ajax-demo/cross-domain/SearchByJSONP.module.scss';
 import logo from '@/components/ajax-demo/cross-domain/taobao_logo.png';
+import {defineComponent, Ref, ref} from '@vue/composition-api';
 import axios from 'axios';
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore
 import jsonpAdapter from 'axios-jsonp';
 
+type keywordQueue = { keywordQueue: Array<Array<string>> };
+
 export default defineComponent({
   name: 'SearchByJSONP',
-  props: {},
-  components: {},
-  setup(/*props, ctx*/) {
+  setup() {
     // 定义延时器的Id
     let timer: number;
     // 定义缓存对象
-    const cacheObj: Record<string, Array<Array<string>>> = {};
+    const cacheObj: Record<string, keywordQueue['keywordQueue']> = {};
     // 获取用户输入的字符 并去掉两边的空格
     const inputValue = ref('');
-
-    const responseData: Ref<Array<Array<string>>> = ref([]);
+    // 响应数据
+    const responseData: Ref<keywordQueue['keywordQueue']> = ref([['']]);
 
     // 发送请求JSONP 搜索关键字
     const getSuggestList = (keyword: string) => {
+      responseData.value = [['搜索中...']];
       // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       // @ts-ignore
       axios({
@@ -51,7 +52,7 @@ export default defineComponent({
     // 为输入框绑定 keyup 事件回调函数
     const sendQuery = () => {
       // 清空原数据
-      responseData.value = []
+      responseData.value = [['搜索中...']];
 
       // 清空 timer
       clearTimeout(timer);
@@ -106,20 +107,20 @@ export default defineComponent({
 
           {/* 搜索建议列表 */}
           {/* 条件渲染 */}
-          {this.inputValue.length === 0
-            ? null
-            : (
-              <div class={style['suggest-list']}>
-                {/* 循环渲染 */}
-                {this.responseData.map((item, index) => (
-                  <div class={style['suggest-item']}
-                       key={index}>
-                    {item[0]}
-                  </div>
-                ))}
-              </div>
-            )
-
+          {
+            (this.inputValue.length === 0)
+              ? null
+              : (
+                <div class={style['suggest-list']}>
+                  {/* 循环渲染 */}
+                  {this.responseData.map((item, index) => (
+                    <div class={style['suggest-item']}
+                         key={index}>
+                      {item[0]}
+                    </div>
+                  ))}
+                </div>
+              )
           }
 
         </div>
