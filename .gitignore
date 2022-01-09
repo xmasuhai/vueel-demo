@@ -7,6 +7,7 @@ dist-ssr
 .temp/
 .yarn/
 .sass-cache/
+.history
 
 # mac
 .DS_Store/
