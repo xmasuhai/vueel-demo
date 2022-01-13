@@ -1,6 +1,6 @@
 // 基础依赖
-import Vue from 'vue';
 import VueCompositionAPI from '@vue/composition-api';
+import Vue from 'vue';
 import 'vue-tsx-support/enable-check';
 // 入口文件
 import App from './App';
@@ -35,31 +35,35 @@ import './styles/normalize.scss';
 
 Vue.use(VueCompositionAPI);
 
-// export const bus = new Vue();
-
 // 全局注册组件
-Vue.component('v-button', VueButton);
-Vue.component('v-button-group', VueButtonGroup);
-Vue.component('v-icon', VueIcon);
-Vue.component('v-input', VueInput);
-Vue.component('v-row', VueRow);
-Vue.component('v-col', VueCol);
-Vue.component('v-main', VueMain);
-Vue.component('v-header', VueHeader);
-Vue.component('v-footer', VueFooter);
-Vue.component('v-aside', VueAside);
-Vue.component('v-container', VueContainer);
-Vue.component('v-toast', VueToast);
-Vue.component('v-tab', VueTab);
-Vue.component('v-tab-nav', VueTabNav);
-Vue.component('v-tab-item', VueTabItem);
-Vue.component('v-tab-content', VueTabContent);
-Vue.component('v-tab-pane', VueTabPane);
-Vue.component('v-popover', VuePopover);
-Vue.component('v-collapse', VueCollapse);
-Vue.component('v-switch', VueSwitch);
-Vue.component('v-detail', VueDetail);
-Vue.component('v-code-presentation', VueCodePresentation);
+const componentList = [
+  {id: 'v-button', compo: VueButton},
+  {id: 'v-button-group', compo: VueButtonGroup},
+  {id: 'v-icon', compo: VueIcon},
+  {id: 'v-input', compo: VueInput},
+  {id: 'v-row', compo: VueRow},
+  {id: 'v-col', compo: VueCol},
+  {id: 'v-main', compo: VueMain},
+  {id: 'v-header', compo: VueHeader},
+  {id: 'v-footer', compo: VueFooter},
+  {id: 'v-aside', compo: VueAside},
+  {id: 'v-container', compo: VueContainer},
+  {id: 'v-toast', compo: VueToast},
+  {id: 'v-tab', compo: VueTab},
+  {id: 'v-tab-nav', compo: VueTabNav},
+  {id: 'v-tab-item', compo: VueTabItem},
+  {id: 'v-tab-content', compo: VueTabContent},
+  {id: 'v-tab-pane', compo: VueTabPane},
+  {id: 'v-popover', compo: VuePopover},
+  {id: 'v-collapse', compo: VueCollapse},
+  {id: 'v-switch', compo: VueSwitch},
+  {id: 'v-detail', compo: VueDetail},
+  {id: 'v-code-presentation', compo: VueCodePresentation},
+];
+
+componentList.forEach((componentMap) => {
+  Vue.component(componentMap.id, componentMap.compo);
+});
 
 Vue.use(toastPlugin);
 
@@ -102,6 +106,16 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
+Vue.config.productionTip = false;
+
+const mainAppVm = new Vue({
+  router,
+  store,
+  render: h => h(App)
+});
+
+mainAppVm.$mount('#app');
+
 export default {
   version: '2.26.12',
   install,
@@ -129,11 +143,3 @@ export default {
   VueDetail,
   VueSwitch
 };
-
-Vue.config.productionTip = false;
-
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app');
