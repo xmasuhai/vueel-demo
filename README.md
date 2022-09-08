@@ -30,10 +30,13 @@
 
 ## 开始使用
 
+- `node`版本 `12 ~ 16`
+
 ### 1.安装组件
 
 ```sh
 yarn add vueel-demo
+yarn global add @vue/cli
 ```
 
 ### 2.使用
